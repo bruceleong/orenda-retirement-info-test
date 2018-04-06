@@ -19,6 +19,7 @@ export default class Home extends Component {
           <p>super secret links</p>
           <Link to={'/Transamerica'}>Transamerica</Link>
           <br />
+          <br />
           <Link to={'/Principal'}>Principal</Link>
           </div>
         )
