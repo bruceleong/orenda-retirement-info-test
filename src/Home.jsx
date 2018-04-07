@@ -1,27 +1,40 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class Home extends Component {
     constructor(props) {
-        super(props)
-
+        super(props);
+        this.state = {open: false};
     }
+
+    handleToggle = () => this.setState({open: !this.state.open});
 
     render() {
         return (
-          <div>
-          <h1>Hey Participant! Welcome to my awesome site</h1>
-          <h1>This site is so cool</h1>
-            <br />
-            <br />
-          <Link to={'/About'}>About</Link>
+            <div>
+            <RaisedButton
+            label="Drawer Test"
+            onClick={this.handleToggle}
+          />
+          <Drawer open={this.state.open}>
+            <MenuItem>Menu Item</MenuItem>
+            <MenuItem>Menu Item 2</MenuItem>
+          </Drawer>
+                <h1>Hey Participant! Welcome to Employee Resource</h1>
+                <p></p>
+                <br />
+                <br />
+                <Link to={'/About'}>About</Link>
 
-          <p>super secret links</p>
-          <Link to={'/Transamerica'}>Transamerica</Link>
-          <br />
-          <br />
-          <Link to={'/Principal'}>Principal</Link>
-          </div>
+                <p>super secret links</p>
+                <Link to={'/Transamerica'}>Transamerica</Link>
+                <br />
+                <br />
+                <Link to={'/Principal'}>Principal</Link>
+            </div>
         )
     }
 }

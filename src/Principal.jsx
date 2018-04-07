@@ -13,7 +13,7 @@ export default class Principal extends Component {
             <div>
                 <h1>Principal</h1>
                 <p>principal is so amazing!</p>
-                <a target='_blank' href={SBSF}><button>Download!</button></a>
+                <a target='_blank' href={SBSF}><button>Download Summary Plan Description</button></a>
                 <br />
                 <Link to={'/'}>Home</Link>
             </div>
