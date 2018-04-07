@@ -24,7 +24,7 @@ export default class Home extends Component {
             <MenuItem>Menu Item 2</MenuItem>
           </Drawer>
                 <h1>Hey Participant! Welcome to Employee Resource</h1>
-                <p></p>
+                <p>where will i go</p>
                 <br />
                 <br />
                 <Link to={'/About'}>About</Link>
