@@ -21,16 +21,6 @@ export default class Home extends Component {
             <div>
                 <h1>Hey Participant! Welcome to Employee Resource</h1>
                 <p>where will i go</p>
-                <br />
-                <br />
-                <Link to={'/Login'}>Login</Link>
-                <Link to={'/About'}>About</Link>
-
-                <p>super secret links</p>
-                <Link to={'/Transamerica'}>Transamerica</Link>
-                <br />
-                <br />
-                <Link to={'/Principal'}>Principal</Link>
             </div>
         )
     }
@@ -47,4 +37,4 @@ export default class Home extends Component {
           <Link to={'/Forms'} style={{textDecoration: 'none'}}><MenuItem primaryText="Forms" /></Link>
           <Link to={'/Contact'} style={{textDecoration: 'none'}}><MenuItem primaryText="Contact" /></Link>
           </IconMenu>
-        </div>*/} 
+        </div>*/}

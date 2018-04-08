@@ -126,6 +126,7 @@ class App extends Component {
               style={{margin: 20}}
             />*/}
             <AppBar
+
               title="SBSF"
               onLeftIconButtonClick={this.handleToggle}
               // iconElementRight={this.state.logged ? <Logged /> : <Login />}
@@ -134,6 +135,10 @@ class App extends Component {
             <Routes />
           </div>
         </HashRouter>
+        <br />
+        <div id="footer">
+        <p>Side by Side Financials LLC. 2018</p>
+        </div>
       </div>
     );
   }

@@ -45,3 +45,20 @@ body {
 .login-button button{
   background-color: green
 }
+
+/* #appBar {
+  top: 0;
+  width: 100%;
+  z-index: 0;
+} */
+
+
+#footer {
+  width: 100%;
+  border-top: solid 2px green;
+  font-family: Lora;
+  color: black;
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+}
