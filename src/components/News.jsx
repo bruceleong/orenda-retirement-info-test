@@ -20,7 +20,6 @@ export default class News extends Component {
   }
 
   render() {
-    console.log(this.state, 'state')
     return (
       <div>
       <Link to={'/'}>Home</Link>

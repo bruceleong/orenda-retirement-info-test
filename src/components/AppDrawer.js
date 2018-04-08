@@ -26,11 +26,11 @@ export default class AppDrawer extends Component {
                 <Link to="/Contact" style={{textDecoration: "none"}}>
                 <ListItem primaryText="About" onClick={this.props.handleClose} />
                 </Link>
-                <Link to={"/Principal"} style={{textDecoration: "none"}}>
-                <ListItem primaryText="Principal" onClick={this.props.handleClose} />
+                <Link to={"/NormsRestaurant"} style={{textDecoration: "none"}}>
+                <ListItem primaryText="Norms Restaurant (test)" onClick={this.props.handleClose} />
                 </Link>
-                <Link to={"/Transamerica"} style={{textDecoration: "none"}}>
-                <ListItem primaryText="Transamerica" onClick={this.props.handleClose} />
+                <Link to={"/AudioInteriors"} style={{textDecoration: "none"}}>
+                <ListItem primaryText="Audio Interiors (test)" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/News" style={{textDecoration: "none"}}>
                 <ListItem primaryText="News" onClick={this.props.handleClose} />

@@ -42,11 +42,11 @@ export const Routes = () => {
               component={About}
             />
             <Route
-              path="/Principal"
+              path="/NormsRestaurant"
               component={Principal}
             />
             <Route
-              path="/Transamerica"
+              path="/AudioInteriors"
               component={Transamerica}
             />
             <Route
