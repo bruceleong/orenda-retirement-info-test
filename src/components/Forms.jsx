@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class Forms extends Component {
+
+class Forms extends Component {
     constructor(props) {
         super(props)
 
@@ -16,3 +18,10 @@ export default class Forms extends Component {
         )
     }
 }
+
+const mapState = (state) => ({
+  user: state.user,
+  forms: state.forms
+})
+
+export default connect(mapState)(Forms);

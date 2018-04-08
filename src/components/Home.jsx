@@ -9,6 +9,8 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import menu from './menu-alt-256.png';
+import {connect} from 'react-redux'
+
 
 export default class Home extends Component {
     constructor(props) {
@@ -35,6 +37,12 @@ export default class Home extends Component {
         )
     }
 }
+
+const mapState = (state) => ({
+    user: state.user
+})
+
+export default connect(mapState)(Home);
 
 
  {/*<div id='menu'>

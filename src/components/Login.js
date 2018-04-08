@@ -4,6 +4,9 @@ import { login, resetPassword } from '../helpers/auth';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { green500 } from 'material-ui/styles/colors';
+import {connect} from 'react-redux'
+import getUser from '../store'
+import getFormData from '../store'
 
 
 function setErrorMsg(error) {
@@ -15,37 +18,35 @@ function setErrorMsg(error) {
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      companyName: '',
-      password: '',
-      loginMessage: null
-    };
+    
   }
 
   handleSubmit = e => {
     e.preventDefault();
 
-    this.setState({companyName: `${this.state.companyName}@gmail.com`});
-    console.log('did companyName update?', this.state.companyName);
+    // this.setState({companyName: `${this.state.companyName}@gmail.com`});
+    // console.log('did companyName update?', this.state.companyName);
     
-    login(this.state.companyName, this.state.password).catch(error => {
-      this.setState(setErrorMsg('Invalid username/password.'));
-    });
+    // login(this.state.companyName, this.state.password).catch(error => {
+    //   this.setState(setErrorMsg('Invalid username/password.'));
+    // });
   };
   resetPassword = () => {
-    resetPassword(this.state.companyName)
-      .then(() =>
-        this.setState(
-          setErrorMsg(`Password reset companyName sent to ${this.state.companyName}.`)
-        )
-      )
-      .catch(error => this.setState(setErrorMsg(`Company Name address not found.`)));
+    // resetPassword(this.state.companyName)
+    //   .then(() =>
+    //     this.setState(
+    //       setErrorMsg(`Password reset companyName sent to ${this.state.companyName}.`)
+    //     )
+    //   )
+    //   .catch(error => this.setState(setErrorMsg(`Company Name address not found.`)));
   };
 
   setCompany = (bool) => {
-    if(bool){
-      
-    }
+    let name = bool ? 'Audio Interiors' : 'Norm\'s Restaurant';
+    // if (bool) this.props.getUsers('Audio Interiors');
+    // else this.props.getUsers('Norm\'s Restaurant');
+
+    
 
   }
   render() {
@@ -131,3 +132,17 @@ const styles = {
     }
 
 }
+
+const mapState = (state) => ({
+  user: state.user,
+  forms: state.forms
+})
+const mapDispatch = (dispatch) => () => ({
+  getForms(providerName) {
+    dispatch(getFormData(providerName))
+  },
+  getUsers(clientName) {
+    dispatch(getUserData(clientName))
+  }
+})
+export default connect(mapState, mapDispatch)(Login);
