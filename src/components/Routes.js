@@ -37,6 +37,10 @@ export const Routes = () => {
               component={Login}
             />
             <Route
+              path="/Contact"
+              component={About}
+            />
+            <Route
               path="/Principal"
               component={Principal}
             />
