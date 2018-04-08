@@ -2,6 +2,44 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: lightgray;
+  border: lawngreen;
+}
+
+#menu {
+  top: 2vh;
+  left: 3vw;
+  width: 10%;
+}
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 160px;
+  height: auto;
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: rgb(144, 238, 194);
+}
+
+.article:hover {
+  box-shadow: 0 20px 30px 0 rgba(0,0,0,0.2);
+}
+
+.articleContainer {
+  /* padding: 5px; */
+  /* margin: 5px; */
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  overflow: hidden;
+  width: 100%;
 }
 
 .login-button button{
