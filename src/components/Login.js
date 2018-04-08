@@ -3,6 +3,8 @@ import { login, resetPassword } from '../helpers/auth';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { green500 } from 'material-ui/styles/colors';
+
 
 function setErrorMsg(error) {
   return {
@@ -14,7 +16,7 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      companyName: '',
       password: '',
       loginMessage: null
     };
@@ -22,18 +24,18 @@ export default class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    login(this.state.email, this.state.password).catch(error => {
+    login(this.state.companyName, this.state.password).catch(error => {
       this.setState(setErrorMsg('Invalid username/password.'));
     });
   };
   resetPassword = () => {
-    resetPassword(this.state.email)
+    resetPassword(this.state.companyName)
       .then(() =>
         this.setState(
-          setErrorMsg(`Password reset email sent to ${this.state.email}.`)
+          setErrorMsg(`Password reset companyName sent to ${this.state.companyName}.`)
         )
       )
-      .catch(error => this.setState(setErrorMsg(`Email address not found.`)));
+      .catch(error => this.setState(setErrorMsg(`Company Name address not found.`)));
   };
   render() {
     return (
@@ -42,15 +44,19 @@ export default class Login extends Component {
         onSubmit={event => this.handleSubmit(event)}
       >
         <TextField
-          hintText="Enter your Email"
-          floatingLabelText="Email"
-          onChange={(event, newValue) => this.setState({ email: newValue })}
+          hintText="Enter your Company Name"
+          floatingLabelText="Company Name"
+          underlineFocusStyle = {styles.underlineStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+          onChange={(event, newValue) => this.setState({ companyName: newValue })}
         />
         <br />
         <TextField
           type="password"
           hintText="Enter your Password"
           floatingLabelText="Password"
+          underlineFocusStyle = {styles.underlineStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
           onChange={(event, newValue) => this.setState({ password: newValue })}
         />
         <br />
@@ -68,10 +74,12 @@ export default class Login extends Component {
           </div>
         )}
         <RaisedButton
-          label="Login"
-          primary={true}
-          style={style.raisedBtn}
-          type="submit"
+            backgroundColor="green"
+            labelColor="white"
+            color="white"
+            label="Login"
+            style={style.raisedBtn}
+            type="submit"
         />
         <br />
       </form>
@@ -80,7 +88,7 @@ export default class Login extends Component {
 }
 
 const raisedBtn = {
-  margin: 15
+  margin: 15,
 };
 
 const container = {
@@ -92,3 +100,13 @@ const style = {
   raisedBtn,
   container
 };
+
+const styles = {
+    floatingLabelFocusStyle: {
+        color: 'green',
+    },
+    underlineStyle: {
+        borderColor: 'green'
+    }
+
+}

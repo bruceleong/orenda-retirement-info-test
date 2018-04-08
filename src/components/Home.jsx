@@ -34,6 +34,7 @@ export default class Home extends Component {
                 <p>where will i go</p>
                 <br />
                 <br />
+                <Link to={'/Login'}>Login</Link>
                 <Link to={'/About'}>About</Link>
 
                 <p>super secret links</p>

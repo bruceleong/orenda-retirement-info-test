@@ -5,6 +5,8 @@ import Principal from './Principal';
 import history from './history'
 import Transamerica from './Transamerica';
 import About from './About';
+import Login from './Login';
+
 
 export const Routes = () => {
   return (
@@ -14,6 +16,7 @@ export const Routes = () => {
             <Route exact path="/About" component={About} />
             <Route exact path="/" component={Home} />
             <Route exact path="/Principal" component={Principal} />
+            <Route exact path="/Login" component={Login} />
             <Route exact path="/Transamerica" component={Transamerica} />
         </Switch>
     </Router>
