@@ -43,15 +43,68 @@ Logged.muiName = 'IconMenu';
 class App extends Component {
   state = {
     logged: true,
+    open: false,
+    authed: false,
+
   };
 
-  handleChange = (event, logged) => {
-    this.setState({logged: logged});
-  };
+  handleChange = (event, logged) => this.setState({logged: logged});
+  handleClose = () => this.setState({ open: false });
+  handleToggle = () => this.setState({ open: !this.state.open });
+
+
+  componentDidMount() {
+    this.removeListener = firebaseAuth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          authed: true,
+          loading: false,
+          user: user,
+        });
+      } else {
+        this.setState({
+          authed: false,
+          loading: false,
+          user: null,
+        });
+      }
+    });
+  }
+  componentWillUnmount() {
+    this.removeListener();
+  }
+
+
 
   render() {
+
+    const authButtons = this.state.authed ? (
+      <FlatButton
+        label="Logout"
+        onClick={() => {
+          logout();
+        }}
+        style={{ color: '#fff' }}
+      />
+    ) : (
+      <span>
+        <Link to="/login">
+          <FlatButton label="Login" style={{ color: '#fff' }} />
+        </Link>
+        <Link to="/register">
+          <FlatButton label="Register" style={{ color: '#fff' }} />
+        </Link>
+      </span>
+    );
+
+    
     return (
       <div className="App">
+        <AppDrawer
+            open={this.state.open}
+            handleClose={this.handleClose}
+            handleToggle={this.handleToggle}
+        />
         {/*<Toggle
           label="Logged"
           defaultToggled={true}
