@@ -19,21 +19,12 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-            <div id='menu'>
-            <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-            targetOrigin={{horizontal: 'left', vertical: 'top'}}
-          >
-          <Link to={'/News'} style={{textDecoration: 'none'}}><MenuItem primaryText="News" /></Link>
-          <Link to={'/Forms'} style={{textDecoration: 'none'}}><MenuItem primaryText="Forms" /></Link>
-          <Link to={'/Contact'} style={{textDecoration: 'none'}}><MenuItem primaryText="Contact" /></Link>
-          </IconMenu>
-          </div>
                 <h1>Hey Participant! Welcome to Employee Resource</h1>
                 <p>where will i go</p>
                 <br />
                 <br />
+                <Link to={'/Login'}>Login</Link>
+                <Link to={'/About'}>About</Link>
 
                 <p>super secret links</p>
                 <Link to={'/Transamerica'}>Transamerica</Link>
@@ -46,14 +37,14 @@ export default class Home extends Component {
 }
 
 
-// <RaisedButton
-// backgroundColor="white"
-// label={
-//     <FontIcon className="material-icons" color={red500}>flight_takeoff</FontIcon>
-// }
-// onClick={this.handleToggle}
-// />
-// <Drawer open={this.state.open}>
-// <MenuItem>Menu Item</MenuItem>
-// <MenuItem>Menu Item 2</MenuItem>
-// </Drawer>
+ {/*<div id='menu'>
+            <IconMenu
+            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          >
+          <Link to={'/News'} style={{textDecoration: 'none'}}><MenuItem primaryText="News" /></Link>
+          <Link to={'/Forms'} style={{textDecoration: 'none'}}><MenuItem primaryText="Forms" /></Link>
+          <Link to={'/Contact'} style={{textDecoration: 'none'}}><MenuItem primaryText="Contact" /></Link>
+          </IconMenu>
+        </div>*/} 
