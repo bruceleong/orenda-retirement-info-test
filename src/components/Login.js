@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { login, resetPassword } from '../helpers/auth';
+import { Link } from 'react-router-dom'
 
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
@@ -25,9 +26,9 @@ export default class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.setState({companyName: `${this.state.companyName}@gmail.com`});
+    this.setState({ companyName: `${this.state.companyName}@gmail.com` });
     console.log('did companyName update?', this.state.companyName);
-    
+
     login(this.state.companyName, this.state.password).catch(error => {
       this.setState(setErrorMsg('Invalid username/password.'));
     });
@@ -50,7 +51,7 @@ export default class Login extends Component {
         <TextField
           hintText="Enter your Company Name"
           floatingLabelText="Company Name"
-          underlineFocusStyle = {styles.underlineStyle}
+          underlineFocusStyle={styles.underlineStyle}
           floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
           onChange={(event, newValue) => this.setState({ companyName: newValue })}
         />
@@ -59,7 +60,7 @@ export default class Login extends Component {
           type="password"
           hintText="Enter your Password"
           floatingLabelText="Password"
-          underlineFocusStyle = {styles.underlineStyle}
+          underlineFocusStyle={styles.underlineStyle}
           floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
           onChange={(event, newValue) => this.setState({ password: newValue })}
         />
@@ -78,14 +79,17 @@ export default class Login extends Component {
           </div>
         )}
         <RaisedButton
-            backgroundColor="green"
-            labelColor="white"
-            color="white"
-            label="Login"
-            style={style.raisedBtn}
-            type="submit"
+          backgroundColor="green"
+          labelColor="white"
+          color="white"
+          label="Login"
+          style={style.raisedBtn}
+          type="submit"
         />
         <br />
+        <Link to={'/NormsRestaurant'}>Norms</Link>
+        <div> OR </div>
+        <Link to={'/AudioInteriors'}>AudioI</Link>
       </form>
     );
   }
@@ -106,11 +110,11 @@ const style = {
 };
 
 const styles = {
-    floatingLabelFocusStyle: {
-        color: 'green',
-    },
-    underlineStyle: {
-        borderColor: 'green'
-    }
+  floatingLabelFocusStyle: {
+    color: 'green',
+  },
+  underlineStyle: {
+    borderColor: 'green'
+  }
 
 }
