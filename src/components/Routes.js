@@ -6,6 +6,7 @@ import history from './history'
 import Transamerica from './Transamerica';
 import About from './About';
 import Login from './Login';
+import Norms from './Home-Norms';
 
 import News from './News';
 import Forms from './Forms';
@@ -47,6 +48,10 @@ export const Routes = () => {
             <Route
               path="/Transamerica"
               component={Transamerica}
+            />
+            <Route
+              path="/Norms"
+              component={Norms}
             />
             <Route
               path="/News"

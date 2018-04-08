@@ -41,6 +41,9 @@ export default class AppDrawer extends Component {
                 <Link to="/Admin" style={{textDecoration: "none"}}>
                 <ListItem primaryText="Admin" onClick={this.props.handleClose} />
                 </Link>
+                <Link to={"/Norms"} style={{textDecoration: "none"}}>
+                <ListItem primaryText="Norm's Restaurant" onClick={this.props.handleClose} />
+                </Link>
             </List>
         </Drawer>
       </div>
