@@ -28,7 +28,6 @@ function PublicRoute({ component: Component, authed, ...rest }) {
 
 export const Routes = () => {
   return (
-    <Router history={history}>
       <div className="container d-flex justify-content-center">
         <div className="row">
           <Switch>
@@ -36,10 +35,6 @@ export const Routes = () => {
             <Route
               path="/Login"
               component={Login}
-            />
-            <Route
-              path="/"
-              component={Home}
             />
             <Route
               path="/Principal"
@@ -62,7 +57,6 @@ export const Routes = () => {
           </Switch>
         </div>
       </div>
-    </Router>
   )
 }
 

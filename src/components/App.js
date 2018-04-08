@@ -145,41 +145,4 @@ const styles = {
   }
 }
 
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     //test connection to firestore
-//     // db.collection('test').doc('vJfbQhx3gs0XsAwErxza').get()
-//     // .then((doc) => {
-//     //   console.log('doc data', doc.data().stuff);
-//     // })
-//   }
-
-//   render() {
-//     return (
-//       <div className="App">
-//       <AppBar
-//           title="Title"
-//           iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-//           iconElementRight={this.state.logged ? <Logged /> : <Login />}
-//         />
-//         {/*<AppBar
-//                 title={<img src="/sbsf-cropped-logo.png" style={{height: '30px' }} alt="logo" />}
-//                 onLeftIconButtonTouchTap={this.handleToggle}
-//                 // iconElementRight={topbarButtons}
-//                 //iconElementRight={authButtons}
-//                 // children={tabs}
-//                 iconStyleRight={{
-//                   display: 'flex',
-//                   alignItems: 'center',
-//                   marginTop: '0'
-//                 }}
-//               />*/}
-//         <Routes />
-//       </div>
-//     );
-//   }
-// }
-
 export default App;
