@@ -24,6 +24,10 @@ export default class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    this.setState({companyName: `${this.state.companyName}@gmail.com`});
+    console.log('did companyName update?', this.state.companyName);
+    
     login(this.state.companyName, this.state.password).catch(error => {
       this.setState(setErrorMsg('Invalid username/password.'));
     });
