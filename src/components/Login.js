@@ -46,8 +46,6 @@ export default class Login extends Component {
     // if (bool) this.props.getUsers('Audio Interiors');
     // else this.props.getUsers('Norm\'s Restaurant');
 
-    
-
   }
   render() {
     return (
