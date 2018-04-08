@@ -83,30 +83,8 @@ export default class Home extends Component {
             <br />
             <br />
             <div>
-                <form>
-                <h4>Login for more details on your retirement plan:</h4>
-                    <div>
-                        <label>Company Name</label>
-                        <input
-                            name="company"
-                            value={this.state.company}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <br />
-                    <div>
-                        <label>Password</label>
-                        <input
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div> Go to </div>
-                    <Link to={'/NormsRestaurant'}>Norms</Link>
-                    <div> OR </div>
-                    <Link to={'/AudioInteriors'}>AudioI</Link>
-                </form>
+                <h4>Login for more details on your retirement plan: <Link to={'/Login'}>Login Here</Link></h4>
+
             </div>
             </div >
         )
