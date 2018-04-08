@@ -41,8 +41,16 @@ export default class Login extends Component {
       )
       .catch(error => this.setState(setErrorMsg(`Company Name address not found.`)));
   };
+
+  setCompany = (bool) => {
+    if(bool){
+      
+    }
+
+  }
   render() {
     return (
+      <div>
       <form
         style={style.container}
         onSubmit={event => this.handleSubmit(event)}
@@ -87,6 +95,15 @@ export default class Login extends Component {
         />
         <br />
       </form>
+      <div id='Audio Interiors' onClick={this.setCompany(true)}>
+        <img src='https://drive.google.com/uc?export=download&id=1kFe7pR-18rEZbQGn1TCfk65XCt5XNFqV'/>
+      <h4>Audio Interiors</h4>
+      </div>
+      <div id='norm' onClick={this.setCompany(false)}>
+        <img src='https://drive.google.com/uc?export=download&id=1QAatpWyoftrYmgCQs6E39OJ2V7g7KQrM'/>
+        <h4>Norm's Restaurant</h4>
+      </div>
+      </div>
     );
   }
 }
