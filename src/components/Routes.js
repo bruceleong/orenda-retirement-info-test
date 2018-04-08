@@ -23,7 +23,7 @@ function PrivateRoute({ component: Component, authed, user, ...rest}) {
 }
 
 function PublicRoute({ component: Component, authed, ...rest }) {
-  return ( <Route {...rest} render={props => (authed === false ? ( <Component {...props} /> ) : ( <Redirect to="/gardens" /> ))} /> );
+  return ( <Route {...rest} render={props => (authed === false ? ( <Component {...props} /> ) : ( <Redirect to="/" /> ))} /> );
 }
 
 export const Routes = () => {
@@ -33,27 +33,27 @@ export const Routes = () => {
         <div className="row">
           <Switch>
             <Route path="/" exact component={Home} />
-            <PublicRoute
+            <Route
               path="/Login"
               component={Login}
             />
-            <PublicRoute
+            <Route
               path="/"
               component={Home}
             />
-            <PublicRoute
+            <Route
               path="/Principal"
               component={Principal}
             />
-            <PublicRoute
+            <Route
               path="/Transamerica"
               component={Transamerica}
             />
-            <PublicRoute
+            <Route
               path="/News"
               component={News}
             />
-            <PublicRoute
+            <Route
               path="/Forms"
               component={Forms}
             />
