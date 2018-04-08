@@ -18,42 +18,24 @@ export default class AppDrawer extends Component {
           <List>
             <Link to="/">
               <ListItem primaryText="Home" onClick={this.props.handleClose} />
-
-            <Divider />
-
             </Link>
-            <Link to="/account">
-              <ListItem
-                primaryText="Account"
-                onClick={this.props.handleClose}
-              />
+            <Link to="/Login">
+              <ListItem primaryText="Login" onClick={this.props.handleClose} />
             </Link>
-            <Link to="/directDonations">
-              <ListItem
-                primaryText="Donate Directly"
-                onClick={this.props.handleClose}
-              />
+            <Link to="/Contact">
+              <ListItem primaryText="About" onClick={this.props.handleClose} />
             </Link>
-            <Link to="/transactions">
-              <ListItem
-                primaryText="Transactions"
-                onClick={this.props.handleClose}
-              />
+            <Link to="/Principal">
+              <ListItem primaryText="Principal" onClick={this.props.handleClose} />
             </Link>
-
-            <Divider />
-
-            <Link to="/gardens">
-              <ListItem
-                primaryText="Gardens"
-                onClick={this.props.handleClose}
-              />
+            <Link to="/Transamerica">
+              <ListItem primaryText="Transamerica" onClick={this.props.handleClose} />
             </Link>
-            <Link to="/orgs">
-              <ListItem
-                primaryText="Organizations"
-                onClick={this.props.handleClose}
-              />
+            <Link to="/News">
+              <ListItem primaryText="News" onClick={this.props.handleClose} />
+            </Link>
+            <Link to="/Forms">
+              <ListItem primaryText="Forms" onClick={this.props.handleClose} />
             </Link>
           </List>
         </Drawer>
