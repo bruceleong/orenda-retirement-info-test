@@ -13,12 +13,7 @@ import menu from './menu-alt-256.png';
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            company: '',
-            password: ''
-        };
         this.handleChange = this.handleChange.bind(this);
-
     }
 
     handleChange(evt) {
