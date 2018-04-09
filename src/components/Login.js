@@ -87,7 +87,7 @@ export default class Login extends Component {
           type="submit"
         />
         <br />
-        <Link to={'/NormsRestaurant'}>Norms</Link>
+        <Link to={'/Norms'}>Norms</Link>
         <div> OR </div>
         <Link to={'/AudioInteriors'}>AudioI</Link>
       </form>
