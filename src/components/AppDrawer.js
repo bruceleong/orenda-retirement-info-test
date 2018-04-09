@@ -26,8 +26,8 @@ export default class AppDrawer extends Component {
                 <Link to="/Contact" style={{textDecoration: "none"}}>
                 <ListItem primaryText="About" onClick={this.props.handleClose} />
                 </Link>
-                <Link to={"/NormsRestaurant"} style={{textDecoration: "none"}}>
-                <ListItem primaryText="Norms Restaurant (test)" onClick={this.props.handleClose} />
+                <Link to={"/Norms"} style={{textDecoration: "none"}}>
+                <ListItem primaryText="Norm's Restaurant (test)" onClick={this.props.handleClose} />
                 </Link>
                 <Link to={"/AudioInteriors"} style={{textDecoration: "none"}}>
                 <ListItem primaryText="Audio Interiors (test)" onClick={this.props.handleClose} />
@@ -41,12 +41,13 @@ export default class AppDrawer extends Component {
                 <Link to="/Admin" style={{textDecoration: "none"}}>
                 <ListItem primaryText="Admin" onClick={this.props.handleClose} />
                 </Link>
-                <Link to={"/Norms"} style={{textDecoration: "none"}}>
-                <ListItem primaryText="Norm's Restaurant" onClick={this.props.handleClose} />
-                </Link>
             </List>
         </Drawer>
       </div>
     );
   }
 }
+
+// <Link to={"/NormsRestaurant"} style={{textDecoration: "none"}}>
+// <ListItem primaryText="Norms Restaurant (test)" onClick={this.props.handleClose} />
+// </Link>
