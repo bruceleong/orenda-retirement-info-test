@@ -47,6 +47,32 @@ body {
   background-color: green
 }
 
+
+/* Home Norms */
+.Home-Norms-header{
+  background-image: url('https://drive.google.com/uc?export=download&id=1FM10BDePRx9wluinRgFOPwppiF6pssh0');
+}
+
+.Home-Norms-links{
+  height: 10%;
+  width: 100%;
+  display: flex;
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+
+}
+
+.Home-Norms-links > img{
+  flex-grow: 1;
+  height: 12vh;
+  max-height: 150px;
+  max-width: 12vh;
+}
+
+.Home-Norms-links > div{
+  flex-grow: 2;
+
+}
 /* #appBar {
   top: 0;
   width: 100%;
