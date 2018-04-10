@@ -126,14 +126,22 @@ class App extends Component {
               style={{margin: 20}}
             />*/}
             <AppBar
-              title="SBSF"
+
+              title="Side By Side Financials"
               onLeftIconButtonClick={this.handleToggle}
               // iconElementRight={this.state.logged ? <Logged /> : <Login />}
               style={styles.navBarStyle}
             />
+            <div id="header">
+            <h1 id="title">Employee Resource</h1>
+            </div>
             <Routes />
           </div>
         </HashRouter>
+        <br />
+        <div id="footer">
+        <p>Side by Side Financials LLC. 2018</p>
+        </div>
       </div>
     );
   }

@@ -3,31 +3,31 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const SET_USER = 'SET_USER'
+const SET_COMPANY = 'SET_COMPANY'
 
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultCompany = ''
 
 /**
  * ACTION CREATORS
  */
-const setUser = user => ({type: SET_USER, user})
+const setCompany = company => ({type: SET_COMPANY, company})
 
 /**
  * THUNK CREATORS
  */
 
-export const getUserData = (userName) =>
+export const getCompanyData = (companyName) =>
 async (dispatch) => {
   try {
     db.collection('clientInfo')
-    .doc(userName)
+    .doc(companyName)
     .get()
     .then(doc => {
         console.log('doc.data()', doc.data());
-        dispatch(setUser(doc.data()))
+        dispatch(setCompany(doc.data()))
     })
     // const updatedUser = await axios.put(`/api/users/${id}`, user)
     // dispatch(setUser(updatedUser.data))
@@ -41,10 +41,10 @@ async (dispatch) => {
 /**
  * REDUCER
  */
-export default function (state = defaultUser, action) {
+export default function (state = defaultCompany, action) {
   switch (action.type) {
-    case SET_USER:
-      return action.user
+    case SET_COMPANY:
+      return action.company
     default:
       return state
   }
