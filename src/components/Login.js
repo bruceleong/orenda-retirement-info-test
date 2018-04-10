@@ -16,7 +16,7 @@ function setErrorMsg(error) {
   };
 }
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     
@@ -144,7 +144,7 @@ const mapDispatch = (dispatch) => () => ({
     dispatch(getFormData(providerName))
   },
   getUsers(clientName) {
-    dispatch(getUserData(clientName))
+    // dispatch(getUserData(clientName))
   }
 })
 export default connect(mapState, mapDispatch)(Login);

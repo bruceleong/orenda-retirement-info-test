@@ -1,4 +1,4 @@
-import history from '../history'
+import { db } from '../config/constants'
 
 /**
  * ACTION TYPES

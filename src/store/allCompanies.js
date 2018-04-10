@@ -1,4 +1,5 @@
-import history from '../history'
+import { db } from '../config/constants'
+
 
 /**
  * ACTION TYPES
@@ -20,7 +21,7 @@ const setAllCompanies = allCompanies => ({type: SET_ALL_COMPANIES, allCompanies}
  */
 
 export const getAllCompaniesData = () =>
-async (dispatch) => {
+  (dispatch) => {
   try {
     db.collection('clientInfo')
     .get()
@@ -31,7 +32,7 @@ async (dispatch) => {
         })
         dispatch(setAllCompanies(companyArr))
     })
- 
+
   }
   catch (err) {
     console.log(err)

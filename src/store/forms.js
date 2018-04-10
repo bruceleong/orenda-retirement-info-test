@@ -1,4 +1,5 @@
-import history from '../history'
+import { db } from '../config/constants'
+
 
 /**
  * ACTION TYPES
@@ -32,7 +33,6 @@ async (dispatch) => {
             console.log('in snapshot arr data is', doc.data());
             formDataArr.push(doc.data());
         })
-        console.log('doc.data()', doc.data());
         dispatch(setForms(formDataArr))
     })
   }

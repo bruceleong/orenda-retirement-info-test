@@ -12,7 +12,7 @@ import menu from './menu-alt-256.png';
 import {connect} from 'react-redux'
 
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
