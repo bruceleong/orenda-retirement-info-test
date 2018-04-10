@@ -80,16 +80,21 @@ export default class Home extends Component {
             <br />
             <br />
             <div>
+                <select></select>
                 <h4>Login for more details on your retirement plan: <Link to={'/Login'}>Login Here</Link></h4>
 
             </div>
-            </div >
+            </div>
         )
     }
 }
 
 const mapState = (state) => ({
-    user: state.user
+    allCompanies: state.allCompanies
+})
+
+const mapDispatch = (state) => ({
+    allCompanies: state.allCompanies
 })
 
 export default connect(mapState)(Home);

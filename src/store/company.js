@@ -29,9 +29,7 @@ async (dispatch) => {
         console.log('doc.data()', doc.data());
         dispatch(setCompany(doc.data()))
     })
-    // const updatedUser = await axios.put(`/api/users/${id}`, user)
-    // dispatch(setUser(updatedUser.data))
-    // return updatedUser;
+ 
   }
   catch (err) {
     console.log(err)
