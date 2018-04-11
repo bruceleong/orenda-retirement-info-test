@@ -1,6 +1,5 @@
 import { db } from '../config/constants'
 
-
 /**
  * ACTION TYPES
  */
@@ -23,13 +22,14 @@ const setAllCompanies = allCompanies => ({type: SET_ALL_COMPANIES, allCompanies}
 export const getAllCompaniesData = () =>
   (dispatch) => {
   try {
-    db.collection('clientInfo')
+    db.collection('companies')
     .get()
     .then(snapshot => {
         let companyArr = []
         snapshot.forEach(doc => {
             companyArr.push(doc.data().name)
         })
+        console.log('the name arr is', companyArr)
         dispatch(setAllCompanies(companyArr))
     })
 
@@ -45,6 +45,7 @@ export const getAllCompaniesData = () =>
 export default function (state = defaultAllCompanies, action) {
   switch (action.type) {
     case SET_ALL_COMPANIES:
+      console.log('in the reducer ', action.allCompanies)
       return action.allCompanies
     default:
       return state

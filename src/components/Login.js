@@ -1,27 +1,13 @@
 import React, { Component } from 'react';
-import { login, resetPassword } from '../helpers/auth';
 import { Link } from 'react-router-dom'
 
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { green500 } from 'material-ui/styles/colors';
 import {connect} from 'react-redux'
-import getUser from '../store'
 import getFormData from '../store'
 
-
-function setErrorMsg(error) {
-  return {
-    loginMessage: error
-  };
-}
-
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    
-  }
-
+ 
   handleSubmit = e => {
     e.preventDefault();
 
@@ -43,7 +29,7 @@ class Login extends Component {
   };
 
   setCompany = (bool) => {
-    let name = bool ? 'Audio Interiors' : 'Norm\'s Restaurant';
+    //let name = bool ? 'Audio Interiors' : 'Norm\'s Restaurant';
     // if (bool) this.props.getUsers('Audio Interiors');
     // else this.props.getUsers('Norm\'s Restaurant');
 
@@ -99,11 +85,11 @@ class Login extends Component {
         <Link to={'/AudioInteriors'}>AudioI</Link>
       </form>
       <div id='Audio Interiors' onClick={this.setCompany(true)}>
-        <img src='https://drive.google.com/uc?export=download&id=1kFe7pR-18rEZbQGn1TCfk65XCt5XNFqV'/>
+        <img src='https://drive.google.com/uc?export=download&id=1kFe7pR-18rEZbQGn1TCfk65XCt5XNFqV' alt='Audio Interiors logo' />
       <h4>Audio Interiors</h4>
       </div>
       <div id='norm' onClick={this.setCompany(false)}>
-        <img src='https://drive.google.com/uc?export=download&id=1QAatpWyoftrYmgCQs6E39OJ2V7g7KQrM'/>
+        <img src='https://drive.google.com/uc?export=download&id=1QAatpWyoftrYmgCQs6E39OJ2V7g7KQrM' alt='Norms Restaurant logo' />
         <h4>Norm's Restaurant</h4>
       </div>
       </div>

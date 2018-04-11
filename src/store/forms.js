@@ -1,15 +1,9 @@
 import { db } from '../config/constants'
 
-
 /**
  * ACTION TYPES
  */
 const SET_FORMS = 'SET_FORMS'
-
-/**
- * INITIAL STATE
- */
-const defaultForms = []
 
 /**
  * ACTION CREATORS
@@ -21,17 +15,17 @@ const setForms = forms => ({type: SET_FORMS, forms})
  */
 
 export const getFormData = (providerName) =>
-async (dispatch) => {
+  (dispatch) => {
   try {
     db.collection('clientForms')
     .doc(providerName)
     .collection('forms')
     .get()
     .then(snapshot => {
-        let formDataArr = [];
+        let formDataArr = []
         snapshot.forEach(doc => {
-            console.log('in snapshot arr data is', doc.data());
-            formDataArr.push(doc.data());
+            console.log('in snapshot arr data is', doc.data())
+            formDataArr.push(doc.data())
         })
         dispatch(setForms(formDataArr))
     })

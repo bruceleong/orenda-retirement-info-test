@@ -20,7 +20,7 @@ const setCompany = company => ({type: SET_COMPANY, company})
  */
 
 export const getCompanyData = (companyName) =>
-async (dispatch) => {
+ (dispatch) => {
   try {
     db.collection('clientInfo')
     .doc(companyName)
@@ -29,7 +29,6 @@ async (dispatch) => {
         console.log('doc.data()', doc.data());
         dispatch(setCompany(doc.data()))
     })
- 
   }
   catch (err) {
     console.log(err)

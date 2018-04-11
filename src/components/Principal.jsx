@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 const SBSF = 'https://drive.google.com/open?id=17lT5REEVzmZPVSJrUVzyRS8rUh1KS9wt'
 
 export default class Principal extends Component {
-    constructor(props) {
-        super(props)
-
-    }
 
     render() {
         return (
