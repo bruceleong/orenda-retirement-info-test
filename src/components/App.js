@@ -7,9 +7,10 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import logo from './logo.svg';
 import './App.css';
-import {Routes} from './Routes'
+import Routes from './Routes'
 import { db } from '../config/constants';
-import AppDrawer from './AppDrawer';
+import AppDrawerLoggdedOut from './AppDrawerLoggedOut';
+import AppDrawerLoggdedIn from './AppDrawerLoggedIn';
 
 import { logout } from '../helpers/auth';
 import { firebaseAuth } from '../config/constants';
@@ -55,7 +56,7 @@ class App extends Component {
     logged: true,
     open: false,
     authed: false,
-
+    company: false
   };
 
   handleChange = (event, logged) => this.setState({logged: logged});
@@ -87,44 +88,30 @@ class App extends Component {
 
 
   render() {
-
-    // const authButtons = this.state.authed ? (
-    //   <FlatButton
-    //     label="Logout"
-    //     onClick={() => {
-    //       logout();
-    //     }}
-    //     style={{ color: '#fff' }}
-    //   />
-    // ) : (
-    //   <span>
-    //     <Link to="/login">
-    //       <FlatButton label="Login" style={{ color: '#fff' }} />
-    //     </Link>
-    //     <Link to="/register">
-    //       <FlatButton label="Register" style={{ color: '#fff' }} />
-    //     </Link>
-    //   </span>
-    // );
-
-
+    console.log(this.state, 'current state')
     return (
       <div className="App">
         <HashRouter>
           <div>
-            <AppDrawer
+            <AppDrawerLoggdedOut
                 open={this.state.open}
                 handleClose={this.handleClose}
                 handleToggle={this.handleToggle}
             />
 
-            {/*<Toggle
-              label="Logged"
-              defaultToggled={true}
-              onToggle={this.handleChange}
-              labelPosition="right"
-              style={{margin: 20}}
-            />*/}
+            {
+              !this.state.company
+              ? <AppDrawerLoggdedOut
+              open={this.state.open}
+              handleClose={this.handleClose}
+              handleToggle={this.handleToggle}
+          />
+          :<AppDrawerLoggdedIn
+          open={this.state.open}
+          handleClose={this.handleClose}
+          handleToggle={this.handleToggle}
+      />
+            }
             <AppBar
 
               title="Side By Side Financials"

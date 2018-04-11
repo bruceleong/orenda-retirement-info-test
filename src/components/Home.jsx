@@ -10,6 +10,10 @@ import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import menu from './menu-alt-256.png';
 
+
+import TextField from 'material-ui/TextField';
+import { green500 } from 'material-ui/styles/colors';
+
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -73,28 +77,12 @@ export default class Home extends Component {
                             </a>
                         </div>
                     </div>
+                </div>
+                <br />
+                <br />
+                <br />
             </div>
-            <br />
-            <br />
-            <br />
-            <div>
-                <h4>Login for more details on your retirement plan: <Link to={'/Login'}>Login Here</Link></h4>
-
-            </div>
-            </div >
         )
     }
 }
 
-
-{/*<div id='menu'>
-            <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-            targetOrigin={{horizontal: 'left', vertical: 'top'}}
-          >
-          <Link to={'/News'} style={{textDecoration: 'none'}}><MenuItem primaryText="News" /></Link>
-          <Link to={'/Forms'} style={{textDecoration: 'none'}}><MenuItem primaryText="Forms" /></Link>
-          <Link to={'/Contact'} style={{textDecoration: 'none'}}><MenuItem primaryText="Contact" /></Link>
-          </IconMenu>
-        </div>*/}
