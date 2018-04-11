@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 import React, { Component } from "react"
 
-export default class AppDrawer extends Component {
+export default class AppDrawerLoggedIn extends Component {
   render() {
     return (
 

@@ -4,14 +4,7 @@ import {connect} from 'react-redux'
 import { getCompanyData } from '../store'
 
 
-<<<<<<< HEAD
-import TextField from 'material-ui/TextField';
-import { green500 } from 'material-ui/styles/colors';
-
-export default class Home extends Component {
-=======
 class Home extends Component {
->>>>>>> master
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -80,11 +73,6 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <br />
-                <br />
-                <br />
-=======
             <br />
             <br />
             <br />
@@ -100,14 +88,11 @@ class Home extends Component {
                     <input type="submit" />
                 </form>
             </div>
->>>>>>> master
             </div>
         )
     }
 }
 
-<<<<<<< HEAD
-=======
 const mapState = ({allCompanies}) => ({
     allCompanies
 })
@@ -120,4 +105,3 @@ const mapDispatch = (dispatch) => ({
 })
 
 export default connect(mapState, mapDispatch)(Home)
->>>>>>> master
