@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router-dom'
-import Home from './Home';
-import Principal from './Principal';
-import history from './history'
-import Transamerica from './Transamerica';
-import About from './About';
-import Login from './Login';
-import Norms from './Home-Norms';
+import {  Route, Switch } from 'react-router-dom'
+import Home from './Home'
+import Principal from './Principal'
+import Transamerica from './Transamerica'
+import About from './About'
+import Login from './Login'
+import Norms from './Home-Norms'
+import {connect} from 'react-redux'
 
-import News from './News';
-import Forms from './Forms';
 
+<<<<<<< HEAD
 // function PrivateRoute({ component: Component, authed, user, ...rest }) {
 //   return (<Route
 //     {...rest} // these are props passed to Route
@@ -31,6 +30,20 @@ export default class Routes extends Component {
 
   render() {
     console.log(this.props, 'current props')
+=======
+import News from './News'
+import Forms from './Forms'
+import { getAllCompaniesData } from '../store'
+
+class Routes extends Component{
+
+  componentDidMount(){
+    this.props.loadInitialData()
+
+  }
+
+  render(){
+>>>>>>> master
     return (
       <div className="container d-flex justify-content-center">
         <div className="row">
@@ -69,6 +82,7 @@ export default class Routes extends Component {
           </Switch>
         </div>
       </div>
+<<<<<<< HEAD
     )
   }
 }
@@ -82,3 +96,32 @@ export default class Routes extends Component {
             <Route exact path="/Transamerica" component={Transamerica} />
             <Route exact path="/News" component={News} />
   <Route exact path="/Forms" component={Forms} />*/}
+=======
+  )
+  }
+  
+}
+
+
+const mapState = (state) => {
+  return {
+    allCompanies: state.allCompanies,
+    selectedCompany: state.company,
+    isLoggedIn: Boolean(state.company)
+  }
+}
+
+
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData() {
+      dispatch(getAllCompaniesData());
+    }
+  }
+}
+
+// The `withRouter` wrapper makes sure that updates are not blocked
+// when the url changes
+export default connect(mapState, mapDispatch)(Routes)
+
+>>>>>>> master

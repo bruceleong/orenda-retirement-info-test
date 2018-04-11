@@ -1,38 +1,37 @@
-import React, {Component} from 'react';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import Toggle from 'material-ui/Toggle';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import logo from './logo.svg';
+import React, {Component} from 'react'
+import IconButton from 'material-ui/IconButton'
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import './App.css';
 import Routes from './Routes'
+<<<<<<< HEAD
 import { db } from '../config/constants';
 import AppDrawerLoggdedOut from './AppDrawerLoggedOut';
 import AppDrawerLoggdedIn from './AppDrawerLoggedIn';
 
 import { logout } from '../helpers/auth';
 import { firebaseAuth } from '../config/constants';
+=======
+import AppDrawer from './AppDrawer'
+>>>>>>> master
 
 // Material UI
 import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
-import CircularProgress from 'material-ui/CircularProgress';
 
-import { Route, Link, Redirect, Switch, HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 
 
-class Login extends Component {
-  static muiName = 'FlatButton';
+// class Login extends Component {
+//   static muiName = 'FlatButton';
 
-  render() {
-    return (
-      <FlatButton {...this.props} label="Login" />
-    );
-  }
-}
+//   render() {
+//     return (
+//       <FlatButton {...this.props} label="Login" />
+//     );
+//   }
+// }
 
 const Logged = (props) => (
   <IconMenu
@@ -52,43 +51,41 @@ const Logged = (props) => (
 Logged.muiName = 'IconMenu';
 
 class App extends Component {
+<<<<<<< HEAD
   state = {
     logged: true,
     open: false,
     authed: false,
     company: false
   };
+=======
+  constructor(){
+    super()
+
+    this.state = {
+      logged: true,
+      open: false,
+      authed: false,
+  
+    };
+
+  }
+  
+>>>>>>> master
 
   handleChange = (event, logged) => this.setState({logged: logged});
   handleClose = () => this.setState({ open: false });
   handleToggle = () => this.setState({ open: !this.state.open });
 
 
-  componentDidMount() {
-    this.removeListener = firebaseAuth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          authed: true,
-          loading: false,
-          user: user,
-        });
-      } else {
-        this.setState({
-          authed: false,
-          loading: false,
-          user: null,
-        });
-      }
-    });
-  }
-  componentWillUnmount() {
-    this.removeListener();
-  }
-
-
 
   render() {
+<<<<<<< HEAD
     console.log(this.state, 'current state')
+=======
+
+
+>>>>>>> master
     return (
       <div className="App">
         <HashRouter>
@@ -140,4 +137,4 @@ const styles = {
   }
 }
 
-export default App;
+export default App
