@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
+import axios from 'axios'
 
 export default class News extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {}
   }
 
@@ -22,9 +22,9 @@ export default class News extends Component {
   render() {
     return (
       <div>
-      <Link to={'/'}>Home</Link>
+      <Link to="/">Home</Link>
       <h1>Tips on Retirement Planning</h1>
-      <iframe width="450" height="205" src="https://www.youtube.com/embed/tP4zWCS4dMM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe width="450" title="News video" height="205" src="https://www.youtube.com/embed/tP4zWCS4dMM" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
       <h1>Latest Financial News</h1>
         <div className="articles">
           {!this.state.articles ?

@@ -1,9 +1,8 @@
-import Drawer from "material-ui/Drawer";
-import { List, ListItem } from "material-ui/List";
-import Divider from "material-ui/Divider";
-import { Link, HashRouter } from "react-router-dom";
+import Drawer from "material-ui/Drawer"
+import { List, ListItem } from "material-ui/List"
+import { Link } from "react-router-dom"
 
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 export default class AppDrawer extends Component {
   render() {
@@ -26,10 +25,10 @@ export default class AppDrawer extends Component {
                 <Link to={"/AudioInteriors"} style={{textDecoration: "none"}}>
                 <ListItem primaryText="Audio Interiors (test)" onClick={this.props.handleClose} />
                 </Link>
-                <a target='_blank' href='https://www.transamerica.com' style={{textDecoration: "none"}}>
+                <a target='_blank' rel="noopener noreferrer" href='https://www.transamerica.com' style={{textDecoration: "none"}}>
                 <ListItem primaryText="401k Plan Details" onClick={this.props.handleClose} />
                 </a>
-                <a target='_blank' href='https://drive.google.com/open?id=17lT5REEVzmZPVSJrUVzyRS8rUh1KS9wt' style={{textDecoration: "none"}}>
+                <a target='_blank' rel="noopener noreferrer" href='https://drive.google.com/open?id=17lT5REEVzmZPVSJrUVzyRS8rUh1KS9wt' style={{textDecoration: "none"}}>
                 <ListItem primaryText="Summary Plan Description" onClick={this.props.handleClose} />
                 </a>
                 <Link to="/News" style={{textDecoration: "none"}}>

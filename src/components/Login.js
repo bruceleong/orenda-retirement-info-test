@@ -1,49 +1,42 @@
 import React, { Component } from 'react';
-import { login, resetPassword } from '../helpers/auth';
 import { Link } from 'react-router-dom'
 
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { green500 } from 'material-ui/styles/colors';
+import {connect} from 'react-redux'
+import getFormData from '../store'
 
-
-function setErrorMsg(error) {
-  return {
-    loginMessage: error
-  };
-}
-
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      companyName: '',
-      password: '',
-      loginMessage: null
-    };
-  }
-
+class Login extends Component {
+ 
   handleSubmit = e => {
     e.preventDefault();
 
-    this.setState({ companyName: `${this.state.companyName}@gmail.com` });
-    console.log('did companyName update?', this.state.companyName);
-
-    login(this.state.companyName, this.state.password).catch(error => {
-      this.setState(setErrorMsg('Invalid username/password.'));
-    });
+    // this.setState({companyName: `${this.state.companyName}@gmail.com`});
+    // console.log('did companyName update?', this.state.companyName);
+    
+    // login(this.state.companyName, this.state.password).catch(error => {
+    //   this.setState(setErrorMsg('Invalid username/password.'));
+    // });
   };
   resetPassword = () => {
-    resetPassword(this.state.companyName)
-      .then(() =>
-        this.setState(
-          setErrorMsg(`Password reset companyName sent to ${this.state.companyName}.`)
-        )
-      )
-      .catch(error => this.setState(setErrorMsg(`Company Name address not found.`)));
+    // resetPassword(this.state.companyName)
+    //   .then(() =>
+    //     this.setState(
+    //       setErrorMsg(`Password reset companyName sent to ${this.state.companyName}.`)
+    //     )
+    //   )
+    //   .catch(error => this.setState(setErrorMsg(`Company Name address not found.`)));
   };
+
+  setCompany = (bool) => {
+    //let name = bool ? 'Audio Interiors' : 'Norm\'s Restaurant';
+    // if (bool) this.props.getUsers('Audio Interiors');
+    // else this.props.getUsers('Norm\'s Restaurant');
+
+  }
   render() {
     return (
+      <div>
       <form
         style={style.container}
         onSubmit={event => this.handleSubmit(event)}
@@ -91,6 +84,15 @@ export default class Login extends Component {
         <div> OR </div>
         <Link to={'/AudioInteriors'}>AudioI</Link>
       </form>
+      <div id='Audio Interiors' onClick={this.setCompany(true)}>
+        <img src='https://drive.google.com/uc?export=download&id=1kFe7pR-18rEZbQGn1TCfk65XCt5XNFqV' alt='Audio Interiors logo' />
+      <h4>Audio Interiors</h4>
+      </div>
+      <div id='norm' onClick={this.setCompany(false)}>
+        <img src='https://drive.google.com/uc?export=download&id=1QAatpWyoftrYmgCQs6E39OJ2V7g7KQrM' alt='Norms Restaurant logo' />
+        <h4>Norm's Restaurant</h4>
+      </div>
+      </div>
     );
   }
 }
@@ -118,3 +120,17 @@ const styles = {
   }
 
 }
+
+const mapState = (state) => ({
+  user: state.user,
+  forms: state.forms
+})
+const mapDispatch = (dispatch) => () => ({
+  getForms(providerName) {
+    dispatch(getFormData(providerName))
+  },
+  getUsers(clientName) {
+    // dispatch(getUserData(clientName))
+  }
+})
+export default connect(mapState, mapDispatch)(Login);
