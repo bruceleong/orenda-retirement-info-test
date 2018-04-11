@@ -9,6 +9,28 @@ import Norms from './Home-Norms'
 import {connect} from 'react-redux'
 
 
+<<<<<<< HEAD
+// function PrivateRoute({ component: Component, authed, user, ...rest }) {
+//   return (<Route
+//     {...rest} // these are props passed to Route
+//     render={props => // "props" are passed to sub-component
+//       (authed === true ? (
+//         <Component {...props} user={user} /> // remember to declare what other props you need. i.e "user={user}"
+//       ) : (
+//           <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+//         ))} />
+//   );
+// }
+
+// function PublicRoute({ component: Component, authed, ...rest }) {
+//   return (<Route {...rest} render={props => (authed === false ? (<Component {...props} />) : (<Redirect to="/" />))} />);
+// }
+
+export default class Routes extends Component {
+
+  render() {
+    console.log(this.props, 'current props')
+=======
 import News from './News'
 import Forms from './Forms'
 import { getAllCompaniesData } from '../store'
@@ -21,6 +43,7 @@ class Routes extends Component{
   }
 
   render(){
+>>>>>>> master
     return (
       <div className="container d-flex justify-content-center">
         <div className="row">
@@ -59,6 +82,21 @@ class Routes extends Component{
           </Switch>
         </div>
       </div>
+<<<<<<< HEAD
+    )
+  }
+}
+
+{/*<Switch>*/ }
+{/* Routes placed here are available to all visitors */ }
+{/*<Route exact path="/Contact" component={About} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Principal" component={Principal} />
+            <Route exact path="/Login" component={Login} />
+            <Route exact path="/Transamerica" component={Transamerica} />
+            <Route exact path="/News" component={News} />
+  <Route exact path="/Forms" component={Forms} />*/}
+=======
   )
   }
   
@@ -86,3 +124,4 @@ const mapDispatch = (dispatch) => {
 // when the url changes
 export default connect(mapState, mapDispatch)(Routes)
 
+>>>>>>> master

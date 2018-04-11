@@ -5,7 +5,16 @@ import MenuItem from 'material-ui/MenuItem'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import './App.css';
 import Routes from './Routes'
+<<<<<<< HEAD
+import { db } from '../config/constants';
+import AppDrawerLoggdedOut from './AppDrawerLoggedOut';
+import AppDrawerLoggdedIn from './AppDrawerLoggedIn';
+
+import { logout } from '../helpers/auth';
+import { firebaseAuth } from '../config/constants';
+=======
 import AppDrawer from './AppDrawer'
+>>>>>>> master
 
 // Material UI
 import AppBar from 'material-ui/AppBar';
@@ -42,6 +51,14 @@ const Logged = (props) => (
 Logged.muiName = 'IconMenu';
 
 class App extends Component {
+<<<<<<< HEAD
+  state = {
+    logged: true,
+    open: false,
+    authed: false,
+    company: false
+  };
+=======
   constructor(){
     super()
 
@@ -54,6 +71,7 @@ class App extends Component {
 
   }
   
+>>>>>>> master
 
   handleChange = (event, logged) => this.setState({logged: logged});
   handleClose = () => this.setState({ open: false });
@@ -62,25 +80,35 @@ class App extends Component {
 
 
   render() {
+<<<<<<< HEAD
+    console.log(this.state, 'current state')
+=======
 
 
+>>>>>>> master
     return (
       <div className="App">
         <HashRouter>
           <div>
-            <AppDrawer
+            <AppDrawerLoggdedOut
                 open={this.state.open}
                 handleClose={this.handleClose}
                 handleToggle={this.handleToggle}
             />
 
-            {/*<Toggle
-              label="Logged"
-              defaultToggled={true}
-              onToggle={this.handleChange}
-              labelPosition="right"
-              style={{margin: 20}}
-            />*/}
+            {
+              !this.state.company
+              ? <AppDrawerLoggdedOut
+              open={this.state.open}
+              handleClose={this.handleClose}
+              handleToggle={this.handleToggle}
+          />
+          :<AppDrawerLoggdedIn
+          open={this.state.open}
+          handleClose={this.handleClose}
+          handleToggle={this.handleToggle}
+      />
+            }
             <AppBar
 
               title="Side By Side Financials"
