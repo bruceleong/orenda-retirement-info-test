@@ -14,9 +14,10 @@ import { firebaseAuth } from '../config/constants';
 
 // Material UI
 import AppBar from 'material-ui/AppBar';
+import { HashRouter, BrowserRouter } from 'react-router-dom';
 
-import { HashRouter } from 'react-router-dom';
-
+import {connect} from 'react-redux'
+import { getAllCompaniesData } from '../store'
 
 
 // class Login extends Component {
@@ -67,31 +68,16 @@ class App extends Component {
 
 
   render() {
-
-
     return (
       <div className="App">
         <HashRouter>
           <div>
-            <AppDrawerLoggdedOut
+            <AppDrawerLoggdedIn
                 open={this.state.open}
                 handleClose={this.handleClose}
                 handleToggle={this.handleToggle}
             />
 
-            {
-              !this.state.company
-              ? <AppDrawerLoggdedOut
-              open={this.state.open}
-              handleClose={this.handleClose}
-              handleToggle={this.handleToggle}
-          />
-          :<AppDrawerLoggdedIn
-          open={this.state.open}
-          handleClose={this.handleClose}
-          handleToggle={this.handleToggle}
-      />
-            }
             <AppBar
 
               title="Side By Side Financials"
@@ -120,4 +106,35 @@ const styles = {
   }
 }
 
-export default App
+const mapState = (state) => {
+  return {
+    allCompanies: state.allCompanies,
+    selectedCompany: state.company,
+    isLoggedIn: Boolean(state.company)
+  }
+}
+
+
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData() {
+      dispatch(getAllCompaniesData());
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(App);
+
+// {
+//   !this.props.selectedCompany
+//   ? <AppDrawerLoggdedOut
+//   open={this.state.open}
+//   handleClose={this.handleClose}
+//   handleToggle={this.handleToggle}
+// />
+// :<AppDrawerLoggdedIn
+// open={this.state.open}
+// handleClose={this.handleClose}
+// handleToggle={this.handleToggle}
+// />
+// }
