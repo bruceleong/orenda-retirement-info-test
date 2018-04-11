@@ -68,7 +68,8 @@ class Routes extends Component{
 const mapState = (state) => {
   return {
     allCompanies: state.allCompanies,
-    selectedCompany: state.company
+    selectedCompany: state.company,
+    isLoggedIn: Boolean(state.company)
   }
 }
 

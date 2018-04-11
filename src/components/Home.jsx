@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
+import { getCompanyData } from '../store'
 
 
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange(evt) {
-        this.setState({ [evt.target.name]: evt.target.value })
+    handleSubmit(evt) {
+        evt.preventDefault()
+        this.props.loadCompanyData(evt.target.selectCompany.value)
+
+        //add a redirect to specific company's homepage
+
     }
 
     render() {
@@ -28,41 +33,41 @@ class Home extends Component {
                     <div className="articles">
                         <div className="article">
                             <div className="articleContainer">
-                                <a href='https://www.fedsmith.com/2018/03/12/common-sense-need-plan-retirement/'>
-                                    <img src='https://www.fedsmith.com/wp-content/uploads/2018/03/whats-your-plan-for-retirement.jpg' alt="article" width="160px" className="images" />
+                                <a href="https://www.fedsmith.com/2018/03/12/common-sense-need-plan-retirement/">
+                                    <img src="https://www.fedsmith.com/wp-content/uploads/2018/03/whats-your-plan-for-retirement.jpg" alt="article" width="160px" className="images" />
                                     <h4><b>Is Common Sense All You Need to Plan Your Retirement?</b></h4>
                                 </a>
                                 <p>Have you done all your planning? Are you ready?</p>
-                                <a href='https://www.fedsmith.com/2018/03/12/common-sense-need-plan-retirement/'>
+                                <a href="https://www.fedsmith.com/2018/03/12/common-sense-need-plan-retirement/">
                                     <p><strong>More Info</strong></p>
                                 </a>
                             </div>
                         </div>
                         <div className="article">
                             <div className="articleContainer">
-                                <a href='https://www.nytimes.com/2017/07/21/your-money/retirement-planning-advice.html'>
-                                    <img src='https://static01.nyt.com/images/2017/07/23/business/23RETIRINGArt/23RETIRINGArt-master768.jpg' alt="article" width="160px" className="images" />
+                                <a href="https://www.nytimes.com/2017/07/21/your-money/retirement-planning-advice.html">
+                                    <img src="https://static01.nyt.com/images/2017/07/23/business/23RETIRINGArt/23RETIRINGArt-master768.jpg" alt="article" width="160px" className="images" />
                                     <h4>
                                         <b>Three Things I Should Have Said About Retirement Planning</b>
                                     </h4>
                                 </a>
                                 <p>I have put an addendum on the retirement advice I give to people: “And no matter how much money you think you are going to need, save another 15 percent, just in case.”</p>
-                                <a href='https://www.nytimes.com/2017/07/21/your-money/retirement-planning-advice.html'>
+                                <a href="https://www.nytimes.com/2017/07/21/your-money/retirement-planning-advice.html">
                                     <p><strong>More Info</strong></p>
                                 </a>
                             </div>
                         </div>
                         <div className="article">
-                          
-                            <a href='https://www.fool.com/retirement/2018/02/21/2018-guide-to-retirement-planning.aspx'>
-                                <img src='https://g.foolcdn.com/editorial/images/473596/mid-aged-man-with-glasses-smiling_gettyimages-825083248_large.jpg' alt="article" width="160px" className="images" />
+
+                            <a href="https://www.fool.com/retirement/2018/02/21/2018-guide-to-retirement-planning.aspx">
+                                <img src="https://g.foolcdn.com/editorial/images/473596/mid-aged-man-with-glasses-smiling_gettyimages-825083248_large.jpg" alt="article" width="160px" className="images" />
                                 <h4>
                                     <b>2018 Guide to Retirement Planning</b>
                                 </h4>
                             </a>
                             <p>Ready to secure your financial future? Here's what you need to know.
                             </p>
-                            <a href='https://www.fool.com/retirement/2018/02/21/2018-guide-to-retirement-planning.aspx'>
+                            <a href="https://www.fool.com/retirement/2018/02/21/2018-guide-to-retirement-planning.aspx">
                                 <p><strong>More Info</strong></p>
                             </a>
                         </div>
@@ -72,16 +77,31 @@ class Home extends Component {
             <br />
             <br />
             <div>
-                <h4>Login for more details on your retirement plan: <Link to={'/Login'}>Login Here</Link></h4>
-
+                <h4>Login for more details on your retirement plan: <Link to="/Login">Login Here</Link></h4>
+                <h1>What's your company?</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <select name="selectCompany">
+                        {this.props.allCompanies.map(company => (
+                            <option key={company} value={company}>{company}</option>
+                        ))}
+                    </select>
+                    <input type="submit" />
+                </form>
             </div>
             </div>
         )
     }
 }
 
-const mapState = (state) => ({
-    allCompanies: state.allCompanies
+const mapState = ({allCompanies}) => ({
+    allCompanies
 })
 
-export default connect(mapState)(Home);
+const mapDispatch = (dispatch) => ({
+    loadCompanyData(company) {
+        console.log('typeof', typeof getCompanyData)
+        dispatch(getCompanyData(company))
+    }
+})
+
+export default connect(mapState, mapDispatch)(Home)

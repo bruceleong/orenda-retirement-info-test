@@ -22,13 +22,8 @@ const setCompany = company => ({type: SET_COMPANY, company})
 export const getCompanyData = (companyName) =>
  (dispatch) => {
   try {
-    db.collection('clientInfo')
-    .doc(companyName)
-    .get()
-    .then(doc => {
-        console.log('doc.data()', doc.data());
-        dispatch(setCompany(doc.data()))
-    })
+    //hmmm maybe we should grab everything else from firestore directly
+    dispatch(setCompany(companyName))
   }
   catch (err) {
     console.log(err)

@@ -45,7 +45,6 @@ export const getAllCompaniesData = () =>
 export default function (state = defaultAllCompanies, action) {
   switch (action.type) {
     case SET_ALL_COMPANIES:
-      console.log('in the reducer ', action.allCompanies)
       return action.allCompanies
     default:
       return state
