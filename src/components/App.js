@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import IconButton from 'material-ui/IconButton'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
@@ -16,7 +16,7 @@ import { firebaseAuth } from '../config/constants';
 import AppBar from 'material-ui/AppBar';
 import { HashRouter, BrowserRouter } from 'react-router-dom';
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { getAllCompaniesData } from '../store'
 
 
@@ -36,8 +36,8 @@ const Logged = (props) => (
     iconButtonElement={
       <IconButton><MoreVertIcon /></IconButton>
     }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+    anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
   >
     <MenuItem primaryText="Refresh" />
     <MenuItem primaryText="Help" />
@@ -48,7 +48,7 @@ const Logged = (props) => (
 Logged.muiName = 'IconMenu';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
 
     this.state = {
@@ -61,7 +61,7 @@ class App extends Component {
   }
 
 
-  handleChange = (event, logged) => this.setState({logged: logged});
+  handleChange = (event, logged) => this.setState({ logged: logged });
   handleClose = () => this.setState({ open: false });
   handleToggle = () => this.setState({ open: !this.state.open });
 
@@ -70,14 +70,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HashRouter>
+        <BrowserRouter>
           <div>
-            <AppDrawerLoggdedIn
-                open={this.state.open}
-                handleClose={this.handleClose}
-                handleToggle={this.handleToggle}
-            />
-
+            {
+              !this.props.selectedCompany
+                ? <AppDrawerLoggdedOut
+                  open={this.state.open}
+                  handleClose={this.handleClose}
+                  handleToggle={this.handleToggle}
+                />
+                : <AppDrawerLoggdedIn
+                  open={this.state.open}
+                  handleClose={this.handleClose}
+                  handleToggle={this.handleToggle}
+                />
+            }
             <AppBar
 
               title="Side By Side Financials"
@@ -86,14 +93,14 @@ class App extends Component {
               style={styles.navBarStyle}
             />
             <div id="header">
-            <h1 id="title">Employee Resource</h1>
+              <h1 id="title">Employee Resource</h1>
             </div>
             <Routes />
           </div>
-        </HashRouter>
+        </BrowserRouter>
         <br />
         <div id="footer">
-        <p>Side by Side Financials LLC. 2018</p>
+          <p>Side by Side Financials LLC. 2018</p>
         </div>
       </div>
     );
@@ -102,7 +109,7 @@ class App extends Component {
 
 const styles = {
   navBarStyle: {
-      backgroundColor: 'green',
+    backgroundColor: 'green',
   }
 }
 
@@ -124,17 +131,3 @@ const mapDispatch = (dispatch) => {
 }
 
 export default connect(mapState, mapDispatch)(App);
-
-// {
-//   !this.props.selectedCompany
-//   ? <AppDrawerLoggdedOut
-//   open={this.state.open}
-//   handleClose={this.handleClose}
-//   handleToggle={this.handleToggle}
-// />
-// :<AppDrawerLoggdedIn
-// open={this.state.open}
-// handleClose={this.handleClose}
-// handleToggle={this.handleToggle}
-// />
-// }
