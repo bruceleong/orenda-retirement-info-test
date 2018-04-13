@@ -6,7 +6,9 @@ import Transamerica from './Transamerica'
 import About from './About'
 import Login from './Login'
 import Norms from './Home-Norms'
+import CompanyHome from './CompanyHome'
 import {connect} from 'react-redux'
+import { HashRouter, BrowserRouter, withRouter } from 'react-router-dom';
 
 
 import News from './News'
@@ -33,6 +35,10 @@ class Routes extends Component{
             <Route
               path="/Contact"
               component={About}
+            />
+            <Route
+              path="/CompanyHome"
+              component={CompanyHome}
             />
             <Route
               path="/NormsRestaurant"
@@ -74,15 +80,14 @@ const mapState = (state) => {
 }
 
 
-const mapDispatch = (dispatch) => {
-  return {
+const mapDispatch = (dispatch) =>  ({
     loadInitialData() {
       dispatch(getAllCompaniesData());
     }
-  }
-}
+  })
+
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default connect(mapState, mapDispatch)(Routes)
+export default withRouter(connect(mapState, mapDispatch)(Routes))
 

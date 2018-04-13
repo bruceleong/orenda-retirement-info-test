@@ -22,8 +22,8 @@ export default class AppDrawerLoggedIn extends Component {
                 <Link to={"/Norms"} style={{textDecoration: "none"}}>
                 <ListItem primaryText="Norm's Restaurant (test)" onClick={this.props.handleClose} />
                 </Link>
-                <Link to={"/AudioInteriors"} style={{textDecoration: "none"}}>
-                <ListItem primaryText="Audio Interiors (test)" onClick={this.props.handleClose} />
+                <Link to={"/CompanyHome"} style={{textDecoration: "none"}}>
+                <ListItem primaryText="Company Home" onClick={this.props.handleClose} />
                 </Link>
                 <a target='_blank' rel="noopener noreferrer" href='https://www.transamerica.com' style={{textDecoration: "none"}}>
                 <ListItem primaryText="401k Plan Details" onClick={this.props.handleClose} />
