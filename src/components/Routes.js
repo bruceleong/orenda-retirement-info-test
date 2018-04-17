@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Route, Switch } from 'react-router-dom'
+import {  Route, Switch, withRouter } from 'react-router-dom'
 import Home from './Home'
 import Principal from './Principal'
 import Transamerica from './Transamerica'
@@ -8,7 +8,6 @@ import Login from './Login'
 import Norms from './Home-Norms'
 import CompanyHome from './CompanyHome'
 import {connect} from 'react-redux'
-import { HashRouter, BrowserRouter, withRouter } from 'react-router-dom';
 
 
 import News from './News'
@@ -37,10 +36,6 @@ class Routes extends Component{
               component={About}
             />
             <Route
-              path="/CompanyHome"
-              component={CompanyHome}
-            />
-            <Route
               path="/NormsRestaurant"
               component={Principal}
             />
@@ -58,6 +53,10 @@ class Routes extends Component{
             />
             <Route
               path="/Forms"
+              component={Forms}
+            />
+            <Route
+              path="/CompanyHome"
               component={Forms}
             />
             {/*recent add lumpSum route*/}
@@ -80,12 +79,13 @@ const mapState = (state) => {
 }
 
 
-const mapDispatch = (dispatch) =>  ({
+const mapDispatch = (dispatch) => {
+  return {
     loadInitialData() {
       dispatch(getAllCompaniesData());
     }
-  })
-
+  }
+}
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes

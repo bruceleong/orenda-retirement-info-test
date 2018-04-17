@@ -8,11 +8,14 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
+        console.log('props are', props)
     }
 
     handleSubmit(evt) {
         evt.preventDefault()
         this.props.loadCompanyData(evt.target.selectCompany.value)
+
+        this.props.history.push(`/companyHome`);
 
         //add a redirect to specific company's homepage
 

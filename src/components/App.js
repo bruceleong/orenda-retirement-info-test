@@ -125,7 +125,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
-      dispatch(getAllCompaniesData());
+      //dispatch(getAllCompaniesData());
     }
   }
 }
