@@ -37,10 +37,10 @@ class Forms extends Component {
   }
 }
 
-// const mapState = (state) => {
-//   return {
-//     company: state.company
-//   }
-// }
+const mapState = (state) => {
+  return {
+    company: state.company
+  }
+}
 
-export default (Forms);
+export default connect(mapState)(Forms);
