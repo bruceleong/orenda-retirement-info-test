@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
-
+import { Link } from "react-router-dom"
 
 class Forms extends Component {
   constructor(props) {
@@ -37,6 +37,7 @@ class Forms extends Component {
             <div>
               <h1>{company} Forms</h1>
               <h2>Here you can find forms for commonly requested items</h2>
+              <p>To view and download the form, click on the links</p>
               {
                 !localStorage.getItem('company')
                   ? 'Wrong Page'
@@ -58,6 +59,15 @@ class Forms extends Component {
                           )
                         })
                     }
+                    <br />
+                    <Link to="/CompanyHome" style={{ textDecoration: "none" }}>
+                      back to {company} Home
+                    </Link>
+                    <br />
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                      back to SBSF Home
+                    </Link>
+                    <br />
                     <br />
                     <button onClick={() => {
                       localStorage.clear()
