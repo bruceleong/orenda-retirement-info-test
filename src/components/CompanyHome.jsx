@@ -30,7 +30,7 @@ class CompanyHome extends Component {
         if (this.state.companyData) {
             result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
         }
-        console.log(result, 'results')
+        console.log(result, 'results info')
         console.log(this.props, 'props')
         console.log(this.state, 'current state')
         return (
