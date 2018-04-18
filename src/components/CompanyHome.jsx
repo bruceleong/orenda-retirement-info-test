@@ -17,9 +17,12 @@ class CompanyHome extends Component {
             .then(snapshot => {
                 let companyData = []
                 snapshot.forEach(doc => {
-                    companyData.push(doc.data())
+                  companyData.push(doc.data())
                 });
                 this.setState({ companyData })
+            })
+            .catch(error => {
+                console.log(error)
             })
     }
 
@@ -28,7 +31,10 @@ class CompanyHome extends Component {
         if (this.state.companyData) {
             result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
             company = localStorage.getItem('company')
+            console.log(company, 'current company')
         }
+        console.log(this.state, 'state')
+
         return (
             <div>
                 {
