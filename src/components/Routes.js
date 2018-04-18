@@ -57,7 +57,7 @@ class Routes extends Component{
             />
             <Route
               path="/CompanyHome"
-              component={Forms}
+              component={CompanyHome}
             />
             {/*recent add lumpSum route*/}
             <Route render={() => <h3>No Match</h3>} />
