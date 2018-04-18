@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
 
 
@@ -33,7 +33,7 @@ class Home extends Component {
 
         } else {
             this.props.loadCompanyData(this.props.allCompanies[idx])
-            console.log(this.props.allCompanies[idx], 'company.....' )
+            console.log(this.props.allCompanies[idx], 'company.....')
             localStorage.setItem('company', this.props.allCompanies[idx])
             this.props.history.push(`/companyHome`)
         }
@@ -94,37 +94,38 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-            <br />
-            <br />
-            <br />
-            <div>
-                <h4>Login for more details on your retirement plan: <Link to="/Login">Login Here</Link></h4>
-                <h1>What's your company?</h1>
-                <h3>Drop Down Selection</h3>
-                <form onSubmit={this.handleSubmit}>
-                    <select name="selectCompany">
-                        {this.props.allCompanies.map(company => (
-                            <option key={company} value={company}>{company}</option>
-                        ))}
-                    </select>
-                    <input type="submit" />
-                </form>
-                <h3>Input Selection</h3>
-                <form onSubmit={this.handleInput}>
-                    <input type="text" name="inputField" />
-                    <input type="submit" />
-                </form>
-                {this.state.firstAttempt
-                    ? null
-                    : <p style={{color: 'red'}}>That input didn't match any registered company</p>
-                }
-            </div>
+                <br />
+                <div>
+                    {
+                        !localStorage.getItem('company')
+                            ?
+                            <div>
+                                <h4>Enter your company name for more details on your retirement plan:</h4>
+                                <form onSubmit={this.handleInput}>
+                                    <input type="text" name="inputField" />
+                                    <input type="submit" />
+                                </form>
+                                {
+                                    this.state.firstAttempt
+                                        ? null
+                                        : <p style={{ color: 'red' }}>That input didn't match any registered company</p>
+                                }
+                            </div>
+                            :
+                            <button onClick={() => {
+                                localStorage.clear()
+                                this.props.history.push(
+                                    '/'
+                                )
+                            }}>Logout</button>
+                    }
+                </div>
             </div>
         )
     }
 }
 
-const mapState = ({allCompanies}) => ({
+const mapState = ({ allCompanies }) => ({
     allCompanies
 })
 
@@ -136,3 +137,14 @@ const mapDispatch = (dispatch) => ({
 })
 
 export default connect(mapState, mapDispatch)(Home)
+
+// <h1>What's your company?</h1>
+//                 <h3>Drop Down Selection</h3>
+//                 <form onSubmit={this.handleSubmit}>
+//                     <select name="selectCompany">
+//                         {this.props.allCompanies.map(company => (
+//                             <option key={company} value={company}>{company}</option>
+//                         ))}
+//                     </select>
+//                     <input type="submit" />
+//                 </form>

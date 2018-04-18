@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { db } from '../config/constants'
 
 
@@ -26,9 +24,10 @@ class CompanyHome extends Component {
     }
 
     render() {
-        let result;
+        let result, company;
         if (this.state.companyData) {
             result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
+            company = localStorage.getItem('company')
         }
         console.log(result, 'results info')
         console.log(this.props, 'props')
@@ -40,21 +39,7 @@ class CompanyHome extends Component {
                         ? 'Wrong Page'
                         :
                         <div>
-                            <h1>{localStorage.getItem('company')} Home</h1>
-                            {
-                                !this.state.companyData
-                                    ? ''
-                                    :
-                                    result.map(data => {
-                                        return (
-                                            <div key={Object.keys(data)}>
-                                            <a href={Object.values(data)}>
-                                            {Object.keys(data)}
-                                            </a>
-                                            </div>
-                                        )
-                                    })
-                            }
+                            <p>Hello, welcome to {company} portal page</p>
                             <button onClick={() => {
                                 localStorage.clear()
                                 this.props.history.push(
