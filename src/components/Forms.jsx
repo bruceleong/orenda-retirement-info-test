@@ -23,9 +23,10 @@ class Forms extends Component {
   }
 
   render() {
-    let result;
+    let result, company;
     if (this.state.companyData) {
       result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
+      company = localStorage.getItem('company')
     }
     return (
       <div>
@@ -34,7 +35,7 @@ class Forms extends Component {
             ? <h1>Wrong Page</h1>
             :
             <div>
-              <h1>Forms</h1>
+              <h1>{company} Forms</h1>
               <h2>Here you can find forms for commonly requested items</h2>
               {
                 !localStorage.getItem('company')
