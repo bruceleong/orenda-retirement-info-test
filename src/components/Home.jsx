@@ -136,14 +136,3 @@ const mapDispatch = (dispatch) => ({
 })
 
 export default connect(mapState, mapDispatch)(Home)
-
-// <h1>What's your company?</h1>
-//                 <h3>Drop Down Selection</h3>
-//                 <form onSubmit={this.handleSubmit}>
-//                     <select name="selectCompany">
-//                         {this.props.allCompanies.map(company => (
-//                             <option key={company} value={company}>{company}</option>
-//                         ))}
-//                     </select>
-//                     <input type="submit" />
-//                 </form>

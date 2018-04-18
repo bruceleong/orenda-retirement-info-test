@@ -27,7 +27,6 @@ class Forms extends Component {
     if (this.state.companyData) {
       result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
     }
-    console.log(this.state, 'current state', result, 'current results')
     return (
       <div>
         {

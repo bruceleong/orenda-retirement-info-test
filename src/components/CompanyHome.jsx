@@ -29,9 +29,6 @@ class CompanyHome extends Component {
             result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
             company = localStorage.getItem('company')
         }
-        console.log(result, 'results info')
-        console.log(this.props, 'props')
-        console.log(this.state, 'current state')
         return (
             <div>
                 {

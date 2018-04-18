@@ -24,7 +24,6 @@ export default class AppDrawerLoggedIn extends Component {
   }
 
   render() {
-    console.log(this.state, 'current app drawer state')
 
     let spdLink;
 
