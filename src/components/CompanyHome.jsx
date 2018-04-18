@@ -9,12 +9,12 @@ class CompanyHome extends Component {
         super(props)
         // this.handleSubmit = this.handleSubmit.bind(this)
         this.state = {
-
         }
     }
 
     componentDidMount() {
-        db.collection('companies').doc(this.props.company).collection('forms')
+        let company = localStorage.getItem('company')
+        db.collection('companies').doc(company).collection('forms')
             .get()
             .then(snapshot => {
                 let companyData = []
@@ -26,15 +26,20 @@ class CompanyHome extends Component {
     }
 
     render() {
-        console.log(this.props, 'current props in CompanyHome')
-        console.log(this.state, 'state')
+        console.log(this.props, 'props')
         return (
             <div>
-                <h1>Company home</h1>
+            {
+                !localStorage.getItem('company')
+                ? 'Wrong Page'
+                :
+                <div>
+                <h1>{localStorage.getItem('company')} Home</h1>
                 {
                     !this.state.companyData
                     ? ''
-                    : this.state.companyData.map(data => {
+                    :
+                    this.state.companyData.map(data => {
                         return (
                             <h1>
                             {Object.keys(data)} -
@@ -43,17 +48,25 @@ class CompanyHome extends Component {
                         )
                     })
                 }
+                <button onClick={()=> {
+                    localStorage.clear()
+                    this.props.history.push(
+                        '/'
+                    )
+                }}>Logout</button>
+                </div>
+            }
             </div>
         )
     }
 }
 
-const mapState = (state) => {
-    return {
-        allCompanies: state.allCompanies,
-        company: state.company
-    }
-}
+// const mapState = (state) => {
+//     return {
+//         allCompanies: state.allCompanies,
+//         company: state.company
+//     }
+// }
 
 // const mapDispatch = (dispatch) => ({
 //     loadCompanyData(company) {
@@ -64,4 +77,4 @@ const mapState = (state) => {
 
 // export default CompanyHome
 
-export default connect(mapState)(CompanyHome)
+export default (CompanyHome)

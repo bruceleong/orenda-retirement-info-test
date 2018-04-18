@@ -33,6 +33,8 @@ class Home extends Component {
 
         } else {
             this.props.loadCompanyData(this.props.allCompanies[idx])
+            console.log(this.props.allCompanies[idx], 'company.....' )
+            localStorage.setItem('company', this.props.allCompanies[idx])
             this.props.history.push(`/companyHome`)
         }
     }
