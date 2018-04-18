@@ -8,17 +8,33 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleInput = this.handleInput.bind(this)
         console.log('props are', props)
+        this.state = {
+            firstAttempt: true
+        }
     }
 
     handleSubmit(evt) {
         evt.preventDefault()
         this.props.loadCompanyData(evt.target.selectCompany.value)
 
-        this.props.history.push(`/companyHome`);
+        this.props.history.push(`/companyHome`)
 
-        //add a redirect to specific company's homepage
+    }
 
+    handleInput(evt) {
+        evt.preventDefault()
+        let lowerCaseAllCompanies = this.props.allCompanies.map(ele => ele.toLowerCase())
+        let idx = lowerCaseAllCompanies.indexOf(evt.target.inputField.value.toLowerCase())
+
+        if (idx === -1) {
+            this.setState({ firstAttempt: false })
+
+        } else {
+            this.props.loadCompanyData(this.props.allCompanies[idx])
+            this.props.history.push(`/companyHome`)
+        }
     }
 
     render() {
@@ -82,6 +98,7 @@ class Home extends Component {
             <div>
                 <h4>Login for more details on your retirement plan: <Link to="/Login">Login Here</Link></h4>
                 <h1>What's your company?</h1>
+                <h3>Drop Down Selection</h3>
                 <form onSubmit={this.handleSubmit}>
                     <select name="selectCompany">
                         {this.props.allCompanies.map(company => (
@@ -90,6 +107,15 @@ class Home extends Component {
                     </select>
                     <input type="submit" />
                 </form>
+                <h3>Input Selection</h3>
+                <form onSubmit={this.handleInput}>
+                    <input type="text" name="inputField" />
+                    <input type="submit" />
+                </form>
+                {this.state.firstAttempt
+                    ? null
+                    : <p style={{color: 'red'}}>That input didn't match any registered company</p>
+                }
             </div>
             </div>
         )
