@@ -6,6 +6,7 @@ import Transamerica from './Transamerica'
 import About from './About'
 import Login from './Login'
 import Norms from './Home-Norms'
+import PlanDetails from './PlanDetails'
 import CompanyHome from './CompanyHome'
 import {connect} from 'react-redux'
 
@@ -36,8 +37,8 @@ class Routes extends Component{
               component={About}
             />
             <Route
-              path="/NormsRestaurant"
-              component={Principal}
+              path="/PlanDetails"
+              component={PlanDetails}
             />
             <Route
               path="/AudioInteriors"

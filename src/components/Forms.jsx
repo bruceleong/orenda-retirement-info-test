@@ -1,46 +1,76 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { db } from '../config/constants'
 
 
 class Forms extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+    }
+  }
+
+  componentDidMount() {
+    let company = localStorage.getItem('company')
+    db.collection('companies').doc(company).collection('Forms')
+      .get()
+      .then(snapshot => {
+        let companyData = []
+        snapshot.forEach(doc => {
+          companyData.push(doc.data())
+        });
+        this.setState({ companyData })
+      })
   }
 
   render() {
-    console.log(this.props, 'current props')
+    let result;
+    if (this.state.companyData) {
+      result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
+    }
     return (
       <div>
-        {!this.props.company
-          ? <h1>Wrong Page</h1>
-          :
-          <div>
-            <h1>Forms</h1>
-            <h2>Here you can find forms for commonly requested items</h2>
-            <a target='_blank' rel="noopener noreferrer"
-              href='https://drive.google.com/open?id=1A5t11KrR5xE9-cfWpNClubo9sDie0xs1' style={{ textDecoration: 'none' }}><h4>Principal Rollover IRA Form</h4>
-            </a>
-            <a target='_blank' rel="noopener noreferrer"
-              href='https://drive.google.com/open?id=1Y-v89j-GtwabbGHjTAxrUKwAFVdk1FWZ' style={{ textDecoration: 'none' }}><h4>Principal Distribution IRA Form</h4>
-            </a>
-            <a target='_blank' rel="noopener noreferrer"
-              href='https://drive.google.com/open?id=1AxHLkEhf5FRb1Y7link5-NOFAjvOUxnu' style={{ textDecoration: 'none' }}><h4>Transamerica Distribution 401k Form</h4>
-            </a>
-            <a target='_blank' rel="noopener noreferrer"
-              href='https://drive.google.com/open?id=1OZuDOe4t5CtZ22pG0mC9I3Z-4es6RChU' style={{ textDecoration: 'none' }}><h4>Transamerica Distribution IRA Form</h4>
-            </a>
-          </div>
+        {
+          !localStorage.getItem('company')
+            ? <h1>Wrong Page</h1>
+            :
+            <div>
+              <h1>Forms</h1>
+              <h2>Here you can find forms for commonly requested items</h2>
+              {
+                !localStorage.getItem('company')
+                  ? 'Wrong Page'
+                  :
+                  <div>
+                    {
+                      !this.state.companyData
+                        ? ''
+                        :
+                        result.map(data => {
+                          return (
+                            <div key={Object.keys(data)}>
+                              <li>
+                                <a href={Object.values(data)}>
+                                  {Object.keys(data)}
+                                </a>
+                              </li>
+                            </div>
+                          )
+                        })
+                    }
+                    <br />
+                    <button onClick={() => {
+                      localStorage.clear()
+                      this.props.history.push(
+                        '/'
+                      )
+                    }}>Logout</button>
+                  </div>
+              }
+            </div>
         }
       </div>
     )
   }
 }
 
-const mapState = (state) => {
-  return {
-    company: state.company
-  }
-}
-
-export default connect(mapState)(Forms);
+export default Forms;
