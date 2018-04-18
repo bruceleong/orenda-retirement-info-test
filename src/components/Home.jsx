@@ -47,6 +47,31 @@ class Home extends Component {
                 <li><strong>Approaching retirement:</strong> Compare your estimated expenses in retirement against your current expenses. Plan for essential, discretionary, and emergency expenses.</li>
                 <li><strong>Living well into retirement:</strong> Combine dependable income for everyday expenses with other income to cover unexpected costs.</li>
                 <br />
+                <div>
+                    {
+                        !localStorage.getItem('company')
+                            ?
+                            <div>
+                                <h4>Enter your company name for more details on your retirement plan:</h4>
+                                <form onSubmit={this.handleInput}>
+                                    <input type="text" name="inputField" />
+                                    <input type="submit" />
+                                </form>
+                                {
+                                    this.state.firstAttempt
+                                        ? null
+                                        : <p style={{ color: 'red' }}>That input didn't match any registered company</p>
+                                }
+                            </div>
+                            :
+                            <button onClick={() => {
+                                localStorage.clear()
+                                this.props.history.push(
+                                    '/'
+                                )
+                            }}>Logout</button>
+                    }
+                </div>
                 <br />
                 <br />
                 <h2>Checkout our top picks for retirement planning today:</h2>
@@ -93,32 +118,6 @@ class Home extends Component {
                             </a>
                         </div>
                     </div>
-                </div>
-                <br />
-                <div>
-                    {
-                        !localStorage.getItem('company')
-                            ?
-                            <div>
-                                <h4>Enter your company name for more details on your retirement plan:</h4>
-                                <form onSubmit={this.handleInput}>
-                                    <input type="text" name="inputField" />
-                                    <input type="submit" />
-                                </form>
-                                {
-                                    this.state.firstAttempt
-                                        ? null
-                                        : <p style={{ color: 'red' }}>That input didn't match any registered company</p>
-                                }
-                            </div>
-                            :
-                            <button onClick={() => {
-                                localStorage.clear()
-                                this.props.history.push(
-                                    '/'
-                                )
-                            }}>Logout</button>
-                    }
                 </div>
             </div>
         )
