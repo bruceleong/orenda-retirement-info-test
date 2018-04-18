@@ -1,6 +1,7 @@
 import Drawer from "material-ui/Drawer"
 import { List, ListItem } from "material-ui/List"
 import { Link } from "react-router-dom"
+import AppDrawerLoggedOut from "./AppDrawerLoggedOut"
 
 import React, { Component } from "react"
 
@@ -15,6 +16,15 @@ export default class AppDrawerLoggedIn extends Component {
           open={this.props.open}
           onRequestChange={this.props.handleClose}
         >
+        {
+          !localStorage.getItem('company')
+          ?
+          <List>
+                <Link to="/" style={{textDecoration: "none"}}>
+                <ListItem primaryText="Home" onClick={this.props.handleClose} />
+                </Link>
+            </List>
+          :
           <List>
             <Link to="/" style={{ textDecoration: "none" }}>
               <ListItem primaryText="Home" onClick={this.props.handleClose} />
@@ -43,12 +53,13 @@ export default class AppDrawerLoggedIn extends Component {
             <Link to="/Admin" style={{ textDecoration: "none" }}>
               <ListItem primaryText="Admin" onClick={this.props.handleClose} />
             </Link>
-            <a href='http://www.localhost:3000'>
-              <ListItem primaryText="Logout" onClick={() => {
-                localStorage.clear()
-              }} />
-            </a>
+            <Link to="/" style={{textDecoration: "none"}}>
+            <ListItem primaryText="Logout" onClick={() => {
+              localStorage.clear()
+            }} />
+            </Link>
           </List>
+        }
         </Drawer>
       </div>
     );
@@ -61,4 +72,16 @@ export default class AppDrawerLoggedIn extends Component {
 
 // <Link to={"/NormsRestaurant"} style={{textDecoration: "none"}}>
 // <ListItem primaryText="Norms Restaurant (test)" onClick={this.props.handleClose} />
+// </Link>
+
+// <a href='http://www.localhost:3000'>
+// <ListItem primaryText="Logout" onClick={() => {
+//   localStorage.clear()
+// }} />
+// </a>
+
+// <Link to="/" style={{textDecoration: "none"}}>
+// <ListItem primaryText="Logout" onClick={() => {
+//   localStorage.clear()
+// }} />
 // </Link>
