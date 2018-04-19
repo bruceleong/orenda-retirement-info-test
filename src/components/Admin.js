@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
 
 
-class Home extends Component {
+class Admin extends Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -42,6 +42,7 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <h1>In the admin ahhhhhh!!!!!!!!!</h1>
                 <h1>Hey Participant! Welcome to your Employee Resource</h1>
                 <h2>The SBSF Perspective</h2>
                 <li><strong>Approaching retirement:</strong> Compare your estimated expenses in retirement against your current expenses. Plan for essential, discretionary, and emergency expenses.</li>
@@ -134,4 +135,4 @@ const mapDispatch = (dispatch) => ({
     }
 })
 
-export default connect(mapState, mapDispatch)(Home)
+export default connect(mapState, mapDispatch)(Admin)
