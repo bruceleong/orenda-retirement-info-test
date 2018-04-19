@@ -17,9 +17,12 @@ class CompanyHome extends Component {
             .then(snapshot => {
                 let companyData = []
                 snapshot.forEach(doc => {
-                    companyData.push(doc.data())
+                  companyData.push(doc.data())
                 });
                 this.setState({ companyData })
+            })
+            .catch(error => {
+                console.log(error)
             })
     }
 
@@ -29,6 +32,7 @@ class CompanyHome extends Component {
             result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
             company = localStorage.getItem('company')
         }
+
         return (
             <div>
                 {
@@ -66,4 +70,4 @@ class CompanyHome extends Component {
 
 // export default CompanyHome
 
-export default (CompanyHome)
+export default CompanyHome

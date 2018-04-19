@@ -16,11 +16,14 @@ export default class AppDrawerLoggedOut extends Component {
           open={this.props.open}
           onRequestChange={this.props.handleClose}
         >
-            <List>
-                <Link to="/" style={{textDecoration: "none"}}>
-                <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
-                </Link>
-            </List>
+          <List>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
+            </Link>
+            <Link to="/Contact" style={{ textDecoration: "none" }}>
+              <ListItem primaryText="Contact" onClick={this.props.handleClose} />
+            </Link>
+          </List>
         </Drawer>
       </div>
     );

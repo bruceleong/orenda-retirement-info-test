@@ -29,9 +29,6 @@ class PlanDetails extends Component {
             result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
             company = localStorage.getItem('company')
         }
-        console.log(result, 'results info')
-        console.log(this.props, 'props')
-        console.log(this.state, 'current state')
         return (
             <div>
                 {
@@ -47,7 +44,7 @@ class PlanDetails extends Component {
                                     <br />
                                         {company} retirement plan:
                                     <br />
-                                        <a href={this.state.companyData[0]['Provider Website']}>
+                                        <a target="_blank" rel="noopener noreferrer" href={this.state.companyData[0]['Provider Website']}>
                                             Click Here
                                         </a>
                                     </h1>
