@@ -43,6 +43,12 @@ export default class AppDrawerLoggedIn extends Component {
             <Link to="/" style={{ textDecoration: 'none' }}>
               <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
             </Link>
+            <Link to="/Contact" style={{ textDecoration: 'none' }}>
+              <ListItem primaryText="Contact" onClick={this.props.handleClose} />
+            </Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
+            </Link>
             <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
               <ListItem primaryText={localStorage.getItem('company') + ' Home'} onClick={this.props.handleClose} />
             </Link>
@@ -66,9 +72,9 @@ export default class AppDrawerLoggedIn extends Component {
             </Link>
             <Link to="/" style={{ textDecoration: 'none' }}>
               <ListItem
-primaryText="Logout" onClick={() => {
-                localStorage.clear()
-              }} />
+                primaryText="Logout" onClick={() => {
+                  localStorage.clear()
+                }} />
             </Link>
           </List>
         </Drawer>
