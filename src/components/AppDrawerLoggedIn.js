@@ -39,64 +39,53 @@ export default class AppDrawerLoggedIn extends Component {
           open={this.props.open}
           onRequestChange={this.props.handleClose}
         >
-          <List>
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
-            </Link>
-            <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
-              <ListItem primaryText={localStorage.getItem('company') + ' Home'} onClick={this.props.handleClose} />
-            </Link>
-            <Link to="/PlanDetails" style={{ textDecoration: 'none' }}>
-              <ListItem primaryText="Plan Details" onClick={this.props.handleClose} />
-            </Link>
-            <a target="_blank" rel="noopener noreferrer" href={spdLink} style={{ textDecoration: 'none' }}>
-              <ListItem primaryText="Summary Plan Description" onClick={this.props.handleClose} />
-            </a>
-            <Link to="/News" style={{ textDecoration: 'none' }}>
-              <ListItem primaryText="News" onClick={this.props.handleClose} />
-            </Link>
-            <Link to="/Forms" style={{ textDecoration: 'none' }}>
-              <ListItem primaryText="Forms & Notices" onClick={this.props.handleClose} />
-            </Link>
-            <Link to="/Contact" style={{ textDecoration: 'none' }}>
-              <ListItem primaryText="Contact" onClick={this.props.handleClose} />
-            </Link>
-            <Link to="/Admin" style={{ textDecoration: 'none' }}>
-              <ListItem primaryText="Admin" onClick={this.props.handleClose} />
-            </Link>
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <ListItem
-primaryText="Logout" onClick={() => {
-                localStorage.clear()
-              }} />
-            </Link>
-          </List>
+          {
+            !localStorage.getItem('company')
+              ?
+              <List>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/Contact" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Contact" onClick={this.props.handleClose} />
+                </Link>
+              </List>
+              :
+              <List>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText={localStorage.getItem('company') + ' Home'} onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/PlanDetails" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Plan Details" onClick={this.props.handleClose} />
+                </Link>
+                <a target="_blank" rel="noopener noreferrer" href={spdLink} style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Summary Plan Description" onClick={this.props.handleClose} />
+                </a>
+                <Link to="/News" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="News" onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/Forms" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Forms & Notices" onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/Contact" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Contact" onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/Admin" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Admin" onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                  <ListItem
+                    primaryText="Logout" onClick={() => {
+                      localStorage.clear()
+                    }} />
+                </Link>
+              </List>
+          }
         </Drawer>
       </div>
     )
   }
 }
-
-// <Link to={"/Norms"} style={{ textDecoration: "none" }}>
-// <ListItem primaryText="Norm's Restaurant (test)" onClick={this.props.handleClose} />
-// </Link>
-
-// <Link to={"/Login"} style={{textDecoration: "none"}}>
-// <ListItem primaryText="Login" onClick={this.props.handleClose} />
-// </Link>
-
-// <Link to={"/NormsRestaurant"} style={{textDecoration: "none"}}>
-// <ListItem primaryText="Norms Restaurant (test)" onClick={this.props.handleClose} />
-// </Link>
-
-// <a href='http://www.localhost:3000'>
-// <ListItem primaryText="Logout" onClick={() => {
-//   localStorage.clear()
-// }} />
-// </a>
-
-// <Link to="/" style={{textDecoration: "none"}}>
-// <ListItem primaryText="Logout" onClick={() => {
-//   localStorage.clear()
-// }} />
-// </Link>
