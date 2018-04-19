@@ -1,8 +1,8 @@
-import Drawer from 'material-ui/Drawer';
-import { List, ListItem } from 'material-ui/List';
-import { Link } from 'react-router-dom';
+import Drawer from 'material-ui/Drawer'
+import { List, ListItem } from 'material-ui/List'
+import { Link } from 'react-router-dom'
 
-import React from 'react';
+import React from 'react'
 
 const AppDrawerLoggedOut = (props) => (
   <div>
@@ -25,8 +25,6 @@ const AppDrawerLoggedOut = (props) => (
 )
 
 export default AppDrawerLoggedOut
-
-
 
 
 // export default class AppDrawerLoggedOut extends Component {

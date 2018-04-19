@@ -6,8 +6,8 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import './App.css';
 import Routes from './Routes'
 import { db } from '../config/constants';
-import AppDrawerLoggdedOut from './AppDrawerLoggedOut';
-import AppDrawerLoggdedIn from './AppDrawerLoggedIn';
+import AppDrawerLoggedOut from './AppDrawerLoggedOut';
+import AppDrawerLoggedIn from './AppDrawerLoggedIn';
 
 import { logout } from '../helpers/auth';
 import { firebaseAuth } from '../config/constants';
@@ -74,12 +74,12 @@ class App extends Component {
           <div>
             {
               !localStorage.getItem('company')
-                ? <AppDrawerLoggdedOut
+                ? <AppDrawerLoggedOut
                   open={this.state.open}
                   handleClose={this.handleClose}
                   handleToggle={this.handleToggle}
                 />
-                : <AppDrawerLoggdedIn
+                : <AppDrawerLoggedIn
                   open={this.state.open}
                   handleClose={this.handleClose}
                   handleToggle={this.handleToggle}

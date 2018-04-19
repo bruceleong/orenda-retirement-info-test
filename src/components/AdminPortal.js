@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
+import AddEditCompany from './AddEditCompany'
 
 
 export default class AdminPortal extends Component {
@@ -61,8 +62,7 @@ export default class AdminPortal extends Component {
                         )
                     }
                 </div>)
-            :  (<h1>YOU selected a comp</h1>)
+            :  (<AddEditCompany company={this.state.selectedCompany} />)
         )
     }
 }
-
