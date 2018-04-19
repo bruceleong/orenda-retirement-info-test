@@ -8,7 +8,6 @@ import Login from './Login'
 import Norms from './Home-Norms'
 import PlanDetails from './PlanDetails'
 import CompanyHome from './CompanyHome'
-import Admin from './Admin'
 import AdminLogin from './AdminLogin'
 import {connect} from 'react-redux'
 
@@ -73,14 +72,6 @@ class Routes extends Component{
                 </div>
               )
             }
-            {/*probably will have to scrape this and have admin login and regular admin portal be the same component*/}
-            {!localStorage.getItem('admin')
-              ? null
-              : (<Route
-                  path="/Admin"
-                  component={Admin}
-                />)
-            }  
             {/*recent add lumpSum route*/}
             <Route render={() => <h3>No Match</h3>} />
           </Switch>

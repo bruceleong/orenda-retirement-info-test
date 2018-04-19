@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
-
-
-import RaisedButton from 'material-ui/RaisedButton'
-import TextField from 'material-ui/TextField'
-import {connect} from 'react-redux'
-import getFormData from '../store'
+import AdminPortal from './AdminPortal'
 
 export default class AdminLogin extends Component {
     constructor(){
@@ -17,7 +11,8 @@ export default class AdminLogin extends Component {
         // for testing purposes
         this.state = {
             allAdmin: ['qaz'],
-            firstAttempt: true
+            firstAttempt: true,
+            adminLoggedIn: false
         }
 
     }
@@ -31,9 +26,7 @@ export default class AdminLogin extends Component {
         this.setState({ firstAttempt: false })
 
     } else {
-        localStorage.setItem('admin', 'true')
-        this.props.history.push(`/Admin`)
- 
+        this.setState({adminLoggedIn: true})
     }
 
   }
@@ -58,18 +51,24 @@ export default class AdminLogin extends Component {
 
   render() {
     return (
-        <div>
-            <h4>Enter your admin code below:</h4>
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" name="inputField" />
-                <input type="submit" />
-            </form>
-            {
-                this.state.firstAttempt
-                    ? null
-                    : <p style={{ color: 'red' }}>We have notified the authorities</p>
-            }
-        </div>
+        
+        !this.state.adminLoggedIn
+        ? (
+            <div>
+                <h4>Enter your admin code below:</h4>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" name="inputField" />
+                    <input type="submit" />
+                </form>
+                {
+                    this.state.firstAttempt
+                        ? null
+                        : <p style={{ color: 'red' }}>We have notified the authorities</p>
+                }
+            </div>
+        )
+        : <h1>Logged In</h1>
+        
     )
   }
 }
