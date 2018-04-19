@@ -36,30 +36,37 @@ class Routes extends Component{
               path="/Contact"
               component={About}
             />
-            <Route
-              path="/PlanDetails"
-              component={PlanDetails}
-            />
-            <Route
-              path="/AudioInteriors"
-              component={Transamerica}
-            />
-            <Route
-              path="/Norms"
-              component={Norms}
-            />
-            <Route
-              path="/News"
-              component={News}
-            />
-            <Route
-              path="/Forms"
-              component={Forms}
-            />
-            <Route
-              path="/CompanyHome"
-              component={CompanyHome}
-            />
+            {!localStorage.getItem('company') 
+              ? null
+              : (
+                <div>
+                  <Route
+                    path="/PlanDetails"
+                    component={PlanDetails}
+                  />
+                  <Route
+                    path="/AudioInteriors"
+                    component={Transamerica}
+                  />
+                  <Route
+                    path="/Norms"
+                    component={Norms}
+                  />
+                  <Route
+                    path="/News"
+                    component={News}
+                  />
+                  <Route
+                    path="/Forms"
+                    component={Forms}
+                  />
+                  <Route
+                    path="/CompanyHome"
+                    component={CompanyHome}
+                  />
+                </div>
+              )
+            }  
             {/*recent add lumpSum route*/}
             <Route render={() => <h3>No Match</h3>} />
           </Switch>
