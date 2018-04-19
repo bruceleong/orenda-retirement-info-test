@@ -13,14 +13,14 @@ export default class AppDrawerLoggedIn extends Component {
   componentDidMount() {
     let company = localStorage.getItem('company')
     db.collection('companies').doc(company).collection('SPD')
-    .get()
-    .then(snapshot => {
-      let companyData = []
-      snapshot.forEach(doc => {
-        companyData.push(doc.data())
-      });
-      this.setState({ companyData })
-    })
+      .get()
+      .then(snapshot => {
+        let companyData = []
+        snapshot.forEach(doc => {
+          companyData.push(doc.data())
+        });
+        this.setState({ companyData })
+      })
   }
 
   render() {
@@ -46,6 +46,9 @@ export default class AppDrawerLoggedIn extends Component {
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
                 </Link>
+                <Link to="/Contact" style={{ textDecoration: "none" }}>
+                  <ListItem primaryText="Contact" onClick={this.props.handleClose} />
+                </Link>
               </List>
               :
               <List>
@@ -65,10 +68,10 @@ export default class AppDrawerLoggedIn extends Component {
                   <ListItem primaryText="News" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/Forms" style={{ textDecoration: "none" }}>
-                  <ListItem primaryText="Forms" onClick={this.props.handleClose} />
+                  <ListItem primaryText="Forms & Notices" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/Contact" style={{ textDecoration: "none" }}>
-                  <ListItem primaryText="About" onClick={this.props.handleClose} />
+                  <ListItem primaryText="Contact" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/Admin" style={{ textDecoration: "none" }}>
                   <ListItem primaryText="Admin" onClick={this.props.handleClose} />

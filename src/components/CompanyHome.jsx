@@ -31,9 +31,7 @@ class CompanyHome extends Component {
         if (this.state.companyData) {
             result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
             company = localStorage.getItem('company')
-            console.log(company, 'current company')
         }
-        console.log(this.state, 'state')
 
         return (
             <div>
@@ -72,4 +70,4 @@ class CompanyHome extends Component {
 
 // export default CompanyHome
 
-export default (CompanyHome)
+export default CompanyHome
