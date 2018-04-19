@@ -64,6 +64,10 @@ class Routes extends Component{
                     path="/CompanyHome"
                     component={CompanyHome}
                   />
+                  <Route
+                    path="/AdminLogin"
+                    component={AdminLogin}
+                  />
                 </div>
               )
             }  
