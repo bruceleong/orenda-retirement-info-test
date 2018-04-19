@@ -67,7 +67,7 @@ export default class AdminLogin extends Component {
                 }
             </div>
         )
-        : <h1>Logged In</h1>
+        : <AdminPortal />
         
     )
   }

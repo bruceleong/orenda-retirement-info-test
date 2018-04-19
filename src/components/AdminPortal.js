@@ -1,62 +1,68 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { getCompanyData } from '../store'
+import { db } from '../config/constants'
 
 
-class AdminPortal extends Component {
-    constructor(props) {
-        super(props)
+export default class AdminPortal extends Component {
+    constructor() {
+        super()
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleInput = this.handleInput.bind(this)
-        console.log('props are', props)
-        this.state = {
-            company: true
-        }
+        this.onAdd = this.onAdd.bind(this)
+        this.onEdit = this.onEdit.bind(this)
+        this.state = {}
     }
 
     handleSubmit(evt) {
         evt.preventDefault()
-        this.props.loadCompanyData(evt.target.selectCompany.value)
-
-        this.props.history.push(`/companyHome`)
-
+        this.setState({selectedCompany: evt.target.selectCompany.value})
     }
 
-    handleInput(evt) {
-        evt.preventDefault()
-        let lowerCaseAllCompanies = this.props.allCompanies.map(ele => ele.toLowerCase())
-        let idx = lowerCaseAllCompanies.indexOf(evt.target.inputField.value.toLowerCase())
+    onAdd(){
+        this.setState({selectedCompany: 'newCompany'})
+    }
 
-        if (idx === -1) {
-            this.setState({ firstAttempt: false })
+    onEdit(){
+        this.setState({edit: true})
+    }
 
-        } else {
-            this.props.loadCompanyData(this.props.allCompanies[idx])
-            console.log(this.props.allCompanies[idx], 'company.....')
-            localStorage.setItem('company', this.props.allCompanies[idx])
-            this.props.history.push(`/companyHome`)
-        }
+    componentDidMount() {
+        db.collection('companies')
+        .get()
+        .then(snapshot => {
+            let allCompanies = []
+            snapshot.forEach(doc => {
+                allCompanies.push(doc.data().name)
+            })
+            this.setState({allCompanies})
+        })
     }
 
     render() {
         return (
-            <div>
-            </div>
-            
+            !this.state.selectedCompany
+            ?  (<div>
+                <h1>Would you like to add a new company or edit an existing one?</h1>
+                <button type="button" onClick={this.onAdd}>Add Company</button>
+                <button type="button" onClick={this.onEdit}>Edit Company</button>
+                    {
+                        !this.state.edit
+                        ? null
+                        : (
+                            <div>
+                                <h1>What Company would you like to edit?</h1>
+                                <form onSubmit={this.handleSubmit}>
+                                    <select name="selectCompany">
+                                        {this.state.allCompanies.map(company => (
+                                            <option key={company} value={company}>{company}</option>
+                                        ))}
+                                    </select>
+                                    <input type="submit" />
+                                </form>
+                            </div>
+                        )
+                    }
+                </div>)
+            :  (<h1>YOU selected a comp</h1>)
         )
     }
 }
 
-const mapState = ({ allCompanies }) => ({
-    allCompanies
-})
-
-const mapDispatch = (dispatch) => ({
-    loadCompanyData(company) {
-        console.log('typeof', typeof getCompanyData)
-        dispatch(getCompanyData(company))
-    }
-})
-
-export default connect(mapState, mapDispatch)(AdminPortal)
