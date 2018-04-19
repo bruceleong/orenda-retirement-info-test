@@ -48,8 +48,7 @@ class Home extends Component {
                 <li><strong>Living well into retirement:</strong> Combine dependable income for everyday expenses with other income to cover unexpected costs.</li>
                 <br />
                 <div>
-                    {
-                        !localStorage.getItem('company')
+                    {!localStorage.getItem('company')
                             ?
                             <div>
                                 <h4>Enter your company name for more details on your retirement plan:</h4>

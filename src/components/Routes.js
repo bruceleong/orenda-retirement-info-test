@@ -8,6 +8,7 @@ import Login from './Login'
 import Norms from './Home-Norms'
 import PlanDetails from './PlanDetails'
 import CompanyHome from './CompanyHome'
+import AdminLogin from './AdminLogin'
 import {connect} from 'react-redux'
 
 
@@ -64,9 +65,13 @@ class Routes extends Component{
                     path="/CompanyHome"
                     component={CompanyHome}
                   />
+                  <Route
+                    path="/AdminLogin"
+                    component={AdminLogin}
+                  />
                 </div>
               )
-            }  
+            }
             {/*recent add lumpSum route*/}
             <Route render={() => <h3>No Match</h3>} />
           </Switch>
