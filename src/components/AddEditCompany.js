@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
 
-class AddEditCompany extends Component {
+export default class AddEditCompany extends Component {
   constructor(props) {
     super(props)
     //state will be empty if new company, but if user is editing a company then
@@ -10,10 +10,12 @@ class AddEditCompany extends Component {
         companyName: '',
         companyProvider: '',
         companyProviderUrl: '',
-        companyData: [],  
+        companyData: [],
     }
-    this.submit = this.submit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  handleSubmit(){}
 
   componentDidMount() {
     if (this.props.company !== 'newCompany'){
@@ -23,7 +25,12 @@ class AddEditCompany extends Component {
         .then(snapshot => {
             let companyData = []
             snapshot.forEach(doc => {
-            companyData.push(doc.data())
+                let obj = doc.data()
+                let keys = Object.keys(obj)
+                keys.forEach(key => {
+                    companyData.push([key, obj[key]])
+                })
+
             })
             this.setState({ companyData, companyName: this.props.company })
         })
@@ -34,22 +41,36 @@ class AddEditCompany extends Component {
     return (
 
     //still under construction
-      <div>
-        <form onClick={this.submit}>
-            {/*labels for each piece of company of data*/}
-            <label htmlFor="companyName">Company Name</label><input name="companyName" value={this.state.companyName} />
-            <label htmlFor="companyProvider">Company Provider</label><input name="companyProvider" value={this.state.companyProvider} />
-            <label htmlFor="companyForms">Add New Company Form</label><input name="companyForms" />
-            <h3>Current Forms:</h3>
-            <ul>
-                {this.state.companyData.map((form) => (
-                    <li key={Object.keys[form][0]}>{Object.keys[form][0]}</li>
-                ))}
-            </ul>
-        </form>
-      </div>
+        <div>
+            <h2>General Company Info</h2>
+            <form onClick={this.handleSubmit}>
+                {/*labels for each piece of company of data*/}
+                <div>
+                    <label htmlFor="companyName">Company Name:</label><input name="companyName" value={this.state.companyName} />
+                </div>
+                <div>
+                    <label htmlFor="companyProvider">Company Provider:</label><input name="companyProvider" value={this.state.companyProvider} />
+                </div>
+            </form>
+            <h2>Company Forms</h2>
+            <form>
+                <h3>Add new Forms</h3>
+                <div>
+                    <label htmlFor="companyForms">Name of form:</label><input name="companyForms" />
+                </div>
+                <div>
+                    <label htmlFor="companyFormUrl">Url of form:</label><input name="companyFormUrl" />
+                </div>
+                <h3>Current Forms:</h3>
+                <ul>
+                    {this.state.companyData.map((ele) => (
+                            <a target="_blank" href={ele[1]} style={{display: 'block'}} key={ele[0]}>
+                                {ele[0]}
+                            </a>
+                    ))}
+                </ul>
+            </form>
+        </div>  
     )
   }
 }
-
-export default AddEditCompany
