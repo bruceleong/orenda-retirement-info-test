@@ -12,23 +12,31 @@ export default class AddEditCompany extends Component {
         companyData: [],
         spd: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.formHandleSubmit = this.formHandleSubmit.bind(this)
   }
 
-  handleSubmit(){}
+  formHandleSubmit(evt){
+      evt.preventDefault()
+
+      // using company from props instead of from state because
+      // state company will change with handleInput
+      db.collection('companies').doc(this.props.company).collection('Forms')
+      .doc('formDoc')
+      .set({ [evt.target.companyFormName.value]: evt.target.companyFormUrl.value}, {merge: true})
+
+  }
 
   componentDidMount() {
     if (this.props.company !== 'newCompany'){
 
-        let company = localStorage.getItem('company'),
-            companyRef = db.collection('companies').doc(company)
+        let companyRef = db.collection('companies').doc(this.props.company)
 
         companyRef.collection('Forms')
         .get()
         .then(snapshot => {
             let companyData = []
             snapshot.forEach(doc => {
-                let obj = doc.data(), 
+                let obj = doc.data(),
                     keys = Object.keys(obj)
 
                 keys.forEach(key => {
@@ -73,24 +81,25 @@ export default class AddEditCompany extends Component {
                 </div>
             </form>
             <h2>Company Forms</h2>
-            <form>
+            <form onSubmit={this.formHandleSubmit}>
                 <h3>Add new Forms</h3>
                 <div>
-                    <label htmlFor="companyForms">Name of form:</label><input name="companyForms" />
+                    <label htmlFor="companyFormName">Name of form:</label><input name="companyFormName" />
                 </div>
                 <div>
                     <label htmlFor="companyFormUrl">Url of form:</label><input name="companyFormUrl" />
                 </div>
+                <input type="submit" />
                 <h3>Current Forms:</h3>
                 <ul>
                     {this.state.companyData.map((ele) => (
-                            <a target="_blank" href={ele[1]} style={{display: 'block'}} key={ele[0]}>
-                                {ele[0]}
-                            </a>
+                        <a target="_blank" href={ele[1]} style={{display: 'block'}} key={ele[0]}>
+                            {ele[0]}
+                        </a>
                     ))}
                 </ul>
             </form>
-        </div>  
+        </div>
     )
   }
 }
