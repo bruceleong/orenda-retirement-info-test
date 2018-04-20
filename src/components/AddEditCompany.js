@@ -9,7 +9,6 @@ export default class AddEditCompany extends Component {
     this.state = {
         companyName: '',
         companyProvider: '',
-        companyProviderUrl: '',
         companyData: [],
     }
     this.handleSubmit = this.handleSubmit.bind(this)
