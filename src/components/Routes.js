@@ -66,7 +66,7 @@ class Routes extends Component{
                     component={CompanyHome}
                   />
                   <Route
-                    path="/AdminLogin"
+                    path="/Admin"
                     component={AdminLogin}
                   />
                 </div>
