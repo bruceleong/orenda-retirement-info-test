@@ -10,6 +10,7 @@ export default class AddEditCompany extends Component {
         companyName: '',
         companyProvider: '',
         companyData: [],
+        spd: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -18,20 +19,37 @@ export default class AddEditCompany extends Component {
 
   componentDidMount() {
     if (this.props.company !== 'newCompany'){
-        let company = localStorage.getItem('company')
-        db.collection('companies').doc(company).collection('Forms')
+
+        let company = localStorage.getItem('company'),
+            companyRef = db.collection('companies').doc(company)
+
+        companyRef.collection('Forms')
         .get()
         .then(snapshot => {
             let companyData = []
             snapshot.forEach(doc => {
-                let obj = doc.data()
-                let keys = Object.keys(obj)
+                let obj = doc.data(), 
+                    keys = Object.keys(obj)
+
                 keys.forEach(key => {
                     companyData.push([key, obj[key]])
                 })
-
             })
-            this.setState({ companyData, companyName: this.props.company })
+            return { companyData, companyName: this.props.company }
+            //this.setState({ companyData, companyName: this.props.company })
+        })
+        .then(data => {
+            companyRef
+            .get()
+            .then(doc => {
+                let spd = doc.data().spd
+                db.collection('providers').doc(doc.data().providerName)
+                .get()
+                .then(providerDoc => {
+                    console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
+                    this.setState({companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, spd})
+                })
+            })
         })
     }
   }
@@ -49,6 +67,9 @@ export default class AddEditCompany extends Component {
                 </div>
                 <div>
                     <label htmlFor="companyProvider">Company Provider:</label><input name="companyProvider" value={this.state.companyProvider} />
+                </div>
+                <div>
+                    <label htmlFor="companyProvider">Summary Plan Description:</label><input name="spd" value={this.state.spd} />
                 </div>
             </form>
             <h2>Company Forms</h2>
