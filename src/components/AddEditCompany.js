@@ -31,20 +31,18 @@ export default class AddEditCompany extends Component {
 
         let companyRef = db.collection('companies').doc(this.props.company)
 
-        companyRef.collection('Forms')
+        companyRef.collection('Forms').doc('formDoc')
         .get()
-        .then(snapshot => {
-            let companyData = []
-            snapshot.forEach(doc => {
-                let obj = doc.data(),
-                    keys = Object.keys(obj)
+        .then(doc => {
+            let formObj = doc.data(),
+                companyData = []
 
-                keys.forEach(key => {
-                    companyData.push([key, obj[key]])
-                })
+            Object.keys(formObj).forEach(key => {
+                companyData.push([key, formObj[key]])
             })
+
             return { companyData, companyName: this.props.company }
-            //this.setState({ companyData, companyName: this.props.company })
+
         })
         .then(data => {
             companyRef
