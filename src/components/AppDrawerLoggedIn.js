@@ -7,19 +7,41 @@ import { db } from '../config/constants'
 export default class AppDrawerLoggedIn extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      companyName: '',
+      companyProvider: '',
+      companyData: [],
+      spd: ''
+    }
   }
 
   componentDidMount() {
-    let company = localStorage.getItem('company')
-    db.collection('companies').doc(company).collection('SPD')
+    let companyRef = db.collection('companies').doc(localStorage.getItem('company'))
+
+    companyRef.collection('Forms').doc('formDoc')
       .get()
-      .then(snapshot => {
-        let companyData = []
-        snapshot.forEach(doc => {
-          companyData.push(doc.data())
+      .then(doc => {
+        let formObj = doc.data(),
+          companyData = []
+
+        Object.keys(formObj).forEach(key => {
+          companyData.push([key, formObj[key]])
         })
-        this.setState({ companyData })
+
+        return { companyData, companyName: localStorage.getItem('company') }
+      })
+      .then(data => {
+        companyRef
+          .get()
+          .then(doc => {
+            let spd = doc.data().spd
+            db.collection('providers').doc(doc.data().providerName)
+              .get()
+              .then(providerDoc => {
+                console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
+                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, spd })
+              })
+          })
       })
   }
 
@@ -27,9 +49,6 @@ export default class AppDrawerLoggedIn extends Component {
 
     let spdLink
 
-    if (this.state.companyData) {
-      spdLink = Object.values(this.state.companyData[0])[0]
-    }
     return (
 
       <div>
@@ -61,7 +80,7 @@ export default class AppDrawerLoggedIn extends Component {
                 <Link to="/PlanDetails" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Plan Details" onClick={this.props.handleClose} />
                 </Link>
-                <a target="_blank" rel="noopener noreferrer" href={spdLink} style={{ textDecoration: 'none' }}>
+                <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Summary Plan Description" onClick={this.props.handleClose} />
                 </a>
                 <Link to="/News" style={{ textDecoration: 'none' }}>

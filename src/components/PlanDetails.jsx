@@ -5,30 +5,48 @@ import { db } from '../config/constants'
 class PlanDetails extends Component {
     constructor(props) {
         super(props)
-        // this.handleSubmit = this.handleSubmit.bind(this)
         this.state = {
+            companyName: '',
+            companyProvider: '',
+            companyData: [],
+            spd: '',
+            companyProviderWebsite: ''
         }
     }
 
     componentDidMount() {
-        let company = localStorage.getItem('company')
-        db.collection('companies').doc(company).collection('Provider')
+        let companyRef = db.collection('companies').doc(localStorage.getItem('company'))
+
+        companyRef.collection('Forms').doc('formDoc')
             .get()
-            .then(snapshot => {
-                let companyData = []
-                snapshot.forEach(doc => {
-                    companyData.push(doc.data())
-                });
-                this.setState({ companyData })
+            .then(doc => {
+                let formObj = doc.data(),
+                    companyData = []
+
+                Object.keys(formObj).forEach(key => {
+                    companyData.push([key, formObj[key]])
+                })
+
+                return { companyData, companyName: localStorage.getItem('company') }
+            })
+            .then(data => {
+                companyRef
+                    .get()
+                    .then(doc => {
+                        let spd = doc.data().spd
+                        let providerWebsite = doc.data().providerWebsite
+                        db.collection('providers').doc(doc.data().providerName)
+                            .get()
+                            .then(providerDoc => {
+                                console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
+                                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, companyProviderWebsite: providerWebsite, spd })
+                            })
+                    })
             })
     }
 
     render() {
-        let result, company;
-        if (this.state.companyData) {
-            result = Object.keys(this.state.companyData[0]).map(data => ({ [data]: this.state.companyData[0][data] }))
-            company = localStorage.getItem('company')
-        }
+        console.log(this.state, 'current plan details state')
         return (
             <div>
                 {
@@ -42,9 +60,9 @@ class PlanDetails extends Component {
                                     :
                                     <h1>For additional information on your
                                     <br />
-                                        {company} retirement plan:
+                                        {localStorage.getItem('company')} retirement plan:
                                     <br />
-                                        <a target="_blank" rel="noopener noreferrer" href={this.state.companyData[0]['Provider Website']}>
+                                        <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
                                             Click Here
                                         </a>
                                     </h1>
