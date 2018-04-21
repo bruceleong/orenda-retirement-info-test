@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Home from './Home'
 import Principal from './Principal'
 import Transamerica from './Transamerica'
@@ -9,21 +9,21 @@ import Norms from './Home-Norms'
 import PlanDetails from './PlanDetails'
 import CompanyHome from './CompanyHome'
 import AdminLogin from './AdminLogin'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 
 import News from './News'
 import Forms from './Forms'
 import { getAllCompaniesData } from '../store'
 
-class Routes extends Component{
+class Routes extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.loadInitialData()
 
   }
 
-  render(){
+  render() {
     return (
       <div className="container d-flex justify-content-center">
         <div className="row">
@@ -37,48 +37,52 @@ class Routes extends Component{
               path="/Contact"
               component={About}
             />
+            <Route
+              path="/Admin"
+              component={AdminLogin}
+            />
             {
               !localStorage.getItem('company')
-              ? null
-              : (
-                <div>
-                  <Route
-                    path="/PlanDetails"
-                    component={PlanDetails}
-                  />
-                  <Route
-                    path="/AudioInteriors"
-                    component={Transamerica}
-                  />
-                  <Route
-                    path="/Norms"
-                    component={Norms}
-                  />
-                  <Route
-                    path="/News"
-                    component={News}
-                  />
-                  <Route
-                    path="/Forms"
-                    component={Forms}
-                  />
-                  <Route
-                    path="/CompanyHome"
-                    component={CompanyHome}
-                  />
-                  <Route
-                    path="/Admin"
-                    component={AdminLogin}
-                  />
-                </div>
-              )
+                ? null
+                : (
+                  <div>
+                    <Route
+                      path="/PlanDetails"
+                      component={PlanDetails}
+                    />
+                    <Route
+                      path="/AudioInteriors"
+                      component={Transamerica}
+                    />
+                    <Route
+                      path="/Norms"
+                      component={Norms}
+                    />
+                    <Route
+                      path="/News"
+                      component={News}
+                    />
+                    <Route
+                      path="/Forms"
+                      component={Forms}
+                    />
+                    <Route
+                      path="/CompanyHome"
+                      component={CompanyHome}
+                    />
+                    <Route
+                      path="/Admin"
+                      component={AdminLogin}
+                    />
+                  </div>
+                )
             }
             {/*recent add lumpSum route*/}
             <Route render={() => <h3>No Match</h3>} />
           </Switch>
         </div>
       </div>
-  )
+    )
   }
 
 }

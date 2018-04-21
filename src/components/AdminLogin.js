@@ -23,6 +23,7 @@ export default class AdminLogin extends Component {
             .then(doc => {
                 if (doc.data()[un] === pw) {
                     this.setState({ adminLoggedIn: true })
+                    localStorage.setItem('admin', 'true')
                 } else {
                     this.setState({ firstAttempt: false })
                 }
@@ -49,7 +50,7 @@ export default class AdminLogin extends Component {
 
     render() {
         return (
-            !this.state.adminLoggedIn
+                !localStorage.getItem('admin')
                 ? (
                     <div>
                         <h4>Enter Login Details:</h4>
