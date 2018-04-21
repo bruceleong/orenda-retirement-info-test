@@ -7,8 +7,6 @@ export default class AddEditCompany extends Component {
     constructor(props) {
         super(props)
         this.updateCompanyData()
-        //state will be empty if new company, but if user is editing a company then
-        // state will be filled with local data
         this.state = {
             companyName: '',
             companyProvider: '',
