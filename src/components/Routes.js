@@ -37,7 +37,8 @@ class Routes extends Component{
               path="/Contact"
               component={About}
             />
-            {!localStorage.getItem('company') 
+            {
+              !localStorage.getItem('company')
               ? null
               : (
                 <div>

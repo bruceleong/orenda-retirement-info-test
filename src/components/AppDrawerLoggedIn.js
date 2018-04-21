@@ -11,7 +11,8 @@ export default class AppDrawerLoggedIn extends Component {
       companyName: '',
       companyProvider: '',
       companyData: [],
-      spd: ''
+      spd: '',
+      companyProviderWebsite: ''
     }
   }
 
@@ -35,11 +36,11 @@ export default class AppDrawerLoggedIn extends Component {
           .get()
           .then(doc => {
             let spd = doc.data().spd
+            let providerWebsite = doc.data().providerWebsite
             db.collection('providers').doc(doc.data().providerName)
               .get()
               .then(providerDoc => {
-                console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
-                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, spd })
+                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name,companyProviderWebsite: providerWebsite, spd })
               })
           })
       })

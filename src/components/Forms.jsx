@@ -9,7 +9,8 @@ class Forms extends Component {
       companyName: '',
       companyProvider: '',
       companyData: [],
-      spd: ''
+      spd: '',
+      companyProviderWebsite: ''
     }
   }
 
@@ -17,31 +18,32 @@ class Forms extends Component {
     let companyRef = db.collection('companies').doc(localStorage.getItem('company'))
 
     companyRef.collection('Forms').doc('formDoc')
-      .get()
-      .then(doc => {
-        let formObj = doc.data(),
-          companyData = []
+        .get()
+        .then(doc => {
+            let formObj = doc.data(),
+                companyData = []
 
-        Object.keys(formObj).forEach(key => {
-          companyData.push([key, formObj[key]])
+            Object.keys(formObj).forEach(key => {
+                companyData.push([key, formObj[key]])
+            })
+
+            return { companyData, companyName: localStorage.getItem('company') }
         })
-
-        return { companyData, companyName: localStorage.getItem('company') }
-      })
-      .then(data => {
-        companyRef
-          .get()
-          .then(doc => {
-            let spd = doc.data().spd
-            db.collection('providers').doc(doc.data().providerName)
-              .get()
-              .then(providerDoc => {
-                console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
-                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, spd })
-              })
-          })
-      })
-  }
+        .then(data => {
+            companyRef
+                .get()
+                .then(doc => {
+                    let spd = doc.data().spd
+                    let providerWebsite = doc.data().providerWebsite
+                    db.collection('providers').doc(doc.data().providerName)
+                        .get()
+                        .then(providerDoc => {
+                            console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
+                            this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, companyProviderWebsite: providerWebsite, spd })
+                        })
+                })
+        })
+}
 
   render() {
     return (
