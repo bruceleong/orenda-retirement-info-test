@@ -42,7 +42,7 @@ class CompanyHome extends Component {
                         <div>
                             <h1>Welcome to the {company} portal page</h1>
                             <button onClick={() => {
-                                localStorage.clear()
+                                localStorage.removeItem('company')
                                 this.props.history.push(
                                     '/'
                                 )
