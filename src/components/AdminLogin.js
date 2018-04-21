@@ -3,72 +3,76 @@ import { db } from '../config/constants'
 import AdminPortal from './AdminPortal'
 
 export default class AdminLogin extends Component {
-    constructor(){
+    constructor() {
         super()
-        // what the state would originally be
-        //this.state = {allAdmin: [], firstAttempt: true}
-
-        // for testing purposes
         this.state = {
-            allAdmin: ['qaz'],
             firstAttempt: true,
             adminLoggedIn: false
         }
 
     }
- 
-  handleSubmit = evt => {
-    evt.preventDefault()
 
-    let idx = this.state.allAdmin.indexOf(evt.target.inputField.value)
+    handleSubmit = evt => {
+        evt.preventDefault()
 
-    if (idx === -1) {
-        this.setState({ firstAttempt: false })
+        let un = evt.target.userName.value
+        let pw = evt.target.password.value
 
-    } else {
-        this.setState({adminLoggedIn: true})
+        db.collection('admin').doc('admin')
+            .get()
+            .then(doc => {
+                if (doc.data()[un] === pw) {
+                    this.setState({ adminLoggedIn: true })
+                } else {
+                    this.setState({ firstAttempt: false })
+                }
+            })
     }
 
-  }
-  
 
-  componentDidMount(){
+    componentDidMount() {
 
-    // what I'm guessing we'd need. Assuming we're just storing admin data in
-    // firestore
+        // what I'm guessing we'd need. Assuming we're just storing admin data in
+        // firestore
 
-    // db.collection('admin')
-    // .get()
-    // .then(snapshot => {
-    //     let allAdmin = []
-    //     snapshot.forEach(doc => {
-    //         allAdmin.push(doc.data().code)
-    //     })
-    //     this.setState({ allAdmin })
-    // })
+        // db.collection('admin')
+        // .get()
+        // .then(snapshot => {
+        //     let allAdmin = []
+        //     snapshot.forEach(doc => {
+        //         allAdmin.push(doc.data().code)
+        //     })
+        //     this.setState({ allAdmin })
+        // })
 
-  }
+    }
 
-  render() {
-    return (
-        
-        !this.state.adminLoggedIn
-        ? (
-            <div>
-                <h4>Enter your admin code below:</h4>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="inputField" />
-                    <input type="submit" />
-                </form>
-                {
-                    this.state.firstAttempt
-                        ? null
-                        : <p style={{ color: 'red' }}>We have notified the authorities</p>
-                }
-            </div>
+    render() {
+        return (
+            !this.state.adminLoggedIn
+                ? (
+                    <div>
+                        <h4>Enter Login Details:</h4>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>Username: <input type="text" name="userName" />
+                            </label>
+                            <br />
+                            <br />
+                            <label>Password: <input type="password" name="password" />
+                            </label>
+                            <br />
+                            <br />
+                            <input type="submit" />
+                        </form>
+                        {
+                            this.state.firstAttempt
+                                ? null
+                                : <p style={{ color: 'red' }}>We have notified the authorities</p>
+                        }
+                    </div>
+                )
+                : <AdminPortal />
+
         )
-        : <AdminPortal />
-        
-    )
-  }
+    }
 }
