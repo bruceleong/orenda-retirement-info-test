@@ -19,6 +19,9 @@ const AppDrawerLoggedOut = (props) => (
         <Link to="/Contact" style={{ textDecoration: 'none' }}>
           <ListItem primaryText="Contact" onClick={props.handleClose} />
         </Link>
+        <Link to="/Admin" style={{ textDecoration: 'none' }}>
+          <ListItem primaryText="Admin" onClick={props.handleClose} />
+        </Link>
       </List>
     </Drawer>
   </div>

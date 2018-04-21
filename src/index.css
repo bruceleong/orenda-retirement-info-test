@@ -86,6 +86,10 @@ body {
  height: 300px;
 }
 
+.formFormating {
+  display: inline;
+}
+
 #title {
   text-align: center;
   font-size: 50px;

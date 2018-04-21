@@ -75,7 +75,7 @@ class Forms extends Component {
             <button
               type="button"
               onClick={() => {
-                localStorage.clear()
+                localStorage.removeItem('company')
                 this.props.history.push(
                   '/'
                 )

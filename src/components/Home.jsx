@@ -64,7 +64,7 @@ class Home extends Component {
                             </div>
                             :
                             <button onClick={() => {
-                                localStorage.clear()
+                                localStorage.removeItem('company')
                                 this.props.history.push(
                                     '/'
                                 )

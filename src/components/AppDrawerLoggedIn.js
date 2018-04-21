@@ -99,7 +99,7 @@ export default class AppDrawerLoggedIn extends Component {
                 <Link to="/" style={{ textDecoration: 'none' }}>
                   <ListItem
                     primaryText="Logout" onClick={() => {
-                      localStorage.clear()
+                      localStorage.removeItem('company')
                     }} />
                 </Link>
               </List>

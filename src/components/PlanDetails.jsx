@@ -67,7 +67,7 @@ class PlanDetails extends Component {
                                     </h1>
                             }
                             <button onClick={() => {
-                                localStorage.clear()
+                                localStorage.removeItem('company')
                                 this.props.history.push(
                                     '/'
                                 )
