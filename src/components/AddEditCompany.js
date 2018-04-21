@@ -37,12 +37,10 @@ export default class AddEditCompany extends Component {
     }
 
     componentDidMount() {
-        console.log('component is mounting')
         this.updateCompanyData()
     }
 
     updateCompanyData = () => {
-        console.log('callllling update company data')
         if (this.props.company !== 'newCompany') {
 
             let companyRef = db.collection('companies').doc(this.props.company)
@@ -68,7 +66,6 @@ export default class AddEditCompany extends Component {
                             db.collection('providers').doc(doc.data().providerName)
                                 .get()
                                 .then(providerDoc => {
-                                    console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
                                     this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, spd })
                                 })
                         })
@@ -112,7 +109,7 @@ export default class AddEditCompany extends Component {
                                 <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
                                     {ele[0]}
                                 </a> <button onClick={() => {
-                                    db.collection('companies').doc('Audio Interiors').collection('Forms').doc('formDoc').update({
+                                    db.collection('companies').doc(this.state.companyName).collection('Forms').doc('formDoc').update({
                                         [ele[0]]: firebase.firestore.FieldValue.delete()
                                     })
                                     this.updateCompanyData()
