@@ -46,7 +46,6 @@ class PlanDetails extends Component {
     }
 
     render() {
-        console.log(this.state, 'current plan details state')
         return (
             <div>
                 {
