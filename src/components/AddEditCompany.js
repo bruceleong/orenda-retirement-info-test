@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
 import firebase from 'firebase'
 require('firebase/firestore');
@@ -49,8 +50,8 @@ export default class AddEditCompany extends Component {
                     let formObj = doc.data(),
                         companyData = []
                     Object.keys(formObj).forEach(key => {
-                        if (key){
-                        companyData.push([key, formObj[key]])
+                        if (key) {
+                            companyData.push([key, formObj[key]])
                         }
                     })
                     return { companyData, companyName: this.props.company }
@@ -71,7 +72,7 @@ export default class AddEditCompany extends Component {
         }
     }
     render() {
-        console.log(this.props, 'current props')
+        console.log(this.state, 'current company data')
         return (
             <div>
                 <h2>General Company Info</h2>
@@ -101,22 +102,30 @@ export default class AddEditCompany extends Component {
                     <input type="submit" />
                     <h3>Current Forms:</h3>
                     <ul>
-                        {this.state.companyData.map((ele, idx) => (
-                            <div key={ele[0]}>
-                            <br />
-                                <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                    {ele[0]}
-                                </a> <button onClick={() => {
-                                    db.collection('companies').doc(this.state.companyName).collection('Forms').doc('formDoc').update({
-                                        [ele[0]]: firebase.firestore.FieldValue.delete()
-                                    })
-                                    this.updateCompanyData()
-                                }}>Delete</button>
-                                <br />
-                            </div>
-                        ))}
+                        {
+                            this.state.companyData.map((ele, idx) => (
+                                <div key={ele[0]}>
+                                    <br />
+                                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                        {ele[0]}
+                                    </a> <button
+                                        type='button'
+                                        onClick={
+                                            () => {
+                                                db.collection('companies').doc(this.state.companyName).collection('Forms').doc('formDoc').update({
+                                                    [ele[0]]: firebase.firestore.FieldValue.delete()
+                                                })
+                                                this.updateCompanyData()
+                                            }
+                                        }>Delete</button>
+                                    <br />
+                                    <br />
+                                </div>
+                            ))
+                        }
                     </ul>
                 </form>
+                <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
             </div>
         )
     }
