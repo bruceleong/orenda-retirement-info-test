@@ -100,6 +100,12 @@ export default class EditForm extends Component {
         }
         <button type="button" onClick={() => { this.props.returnToSelectedCompany(this.props.company); this.props.removeFormToUpdate() }}>Back to Company Home</button>
         <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
+        <button onClick={() => {
+          localStorage.removeItem('admin')
+          this.props.history.push(
+              '/'
+          )
+      }}>Logout of Admin</button>
       </div>
     )
   }
