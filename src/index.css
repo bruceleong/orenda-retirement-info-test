@@ -102,10 +102,10 @@ body {
 } */
 
 #header {
- background: url("../src/Financial-planning-1.jpg");
+ /* background: url("../src/Financial-planning-1.jpg"); */
  background-size: cover;
- /* background-color: lightgreen; */
- height: 300px;
+ background-color: lightgreen;
+ height: 40vh;
 }
 
 .formFormating {
@@ -121,8 +121,8 @@ body {
   padding: .2em .2em;
   border: black solid 6px;
   letter-spacing: .05em;
-  margin-top: 100px;
-  margin-bottom: 15px;
+  margin-top: 8vh;
+  margin-bottom: 15vh;
   clear: both;
 }
 

@@ -55,7 +55,8 @@ export default class News extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Home</Link>
+        <br />
+        <Link to="/companyHome">Return Home</Link>
         <h1>Tips on Retirement Planning</h1>
         <h1>Our Favorite Videos</h1>
         <div className="videos">
