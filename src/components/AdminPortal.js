@@ -78,7 +78,6 @@ export default class AdminPortal extends Component {
     }
 
     render() {
-        console.log(this.state.articleData, 'current state')
         return (
             !this.state.selectedCompany
                 ?

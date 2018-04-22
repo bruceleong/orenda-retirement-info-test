@@ -13,7 +13,6 @@ export default class AddEditMedia extends Component {
   }
 
   componentDidMount() {
-    console.log('I am mounting')
     this.getNewsData()
     this.getVideoData()
   }
@@ -57,7 +56,6 @@ export default class AddEditMedia extends Component {
       db.collection('videos').doc('videoData')
         .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
       this.setState({
-        mediaType: 'article',
         mediaTitle: '',
         mediaLink: ''
       })
@@ -67,7 +65,6 @@ export default class AddEditMedia extends Component {
       db.collection('articles').doc('newsArticles')
         .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
       this.setState({
-        mediaType: 'article',
         mediaTitle: '',
         mediaLink: ''
       })
@@ -87,14 +84,11 @@ export default class AddEditMedia extends Component {
   }
 
   editForm = (type, title, url) => {
-    // console.log(type, title, url)
     this.setState({ mediaType: type, mediaURL: url })
     this.setState({ mediaToUpdate: title })
   }
 
   render() {
-    // console.log(this.props, 'current company data')
-    // console.log(this.state, 'current state in edit form')
     return (
       !this.state.mediaToUpdate
         ?
