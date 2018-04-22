@@ -80,14 +80,14 @@ export default class AddEditMedia extends Component {
   }
 
   editForm = (type, title, url) => {
-    console.log(type, title, url)
+    // console.log(type, title, url)
     this.setState({ mediaType: type, mediaURL: url })
     this.setState({ mediaToUpdate: title })
   }
 
   render() {
-    console.log(this.props, 'current company data')
-    console.log(this.state, 'current state in edit form')
+    // console.log(this.props, 'current company data')
+    // console.log(this.state, 'current state in edit form')
     return (
       !this.state.mediaToUpdate
         ?

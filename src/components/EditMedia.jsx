@@ -7,17 +7,11 @@ export default class EditMedia extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      changesSubmitted: false
+      changesSubmitted: false,
+      mediaType: this.props.mediaType,
+      mediaTitle: this.props.mediaTitle,
+      mediaLink: this.props.mediaLink
     }
-  }
-
-  componentWillReceiveProps(newProps) {
-    console.log(newProps, 'newProps from component')
-    this.setState({
-      mediaType: newProps.mediaType,
-      mediaTitle: newProps.mediaTitle,
-      mediaLink: newProps.mediaLink,
-    })
   }
 
   getNewsData = () => {
@@ -53,24 +47,28 @@ export default class EditMedia extends Component {
   }
 
   handleChange = evt => {
+    console.log('are you changing at least')
     this.setState({ [evt.target.name]: evt.target.value })
   }
 
-  handleSubmit = evt => {
+  handleMediaSubmit = evt => {
+    console.log('are you getting to handle submit')
     evt.preventDefault()
 
-    if (this.props.mediaType === 'video') {
+    if (this.state.mediaType === 'video') {
+      console.log('am i hereererereraereaere video')
       db.collection('videos').doc('videoData')
-        .set({ [this.props.mediaTitle]: this.state.mediaLink }, { merge: true })
+        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
     } else {
+      console.log('am i here', this.state.mediaTitle, 'title', this.state.mediaLink, 'link')
       db.collection('articles').doc('newsArticles')
-        .set({ [this.props.mediaTitle]: this.state.mediaLink }, { merge: true })
+        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
     }
   }
 
   render() {
-    console.log(this.props, '------------- props -------')
-    console.log(this.state, 'current state in edit form')
+    // console.log(this.props, '------------- props -------')
+    // console.log(this.state, 'current state in edit form')
     let media;
     if (this.props.mediaType === 'article') {
       media = 'Article'
@@ -85,26 +83,27 @@ export default class EditMedia extends Component {
             :
             <div>
               <h1>{`Edit ${media} "${this.props.mediaTitle}"`}</h1>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleMediaSubmit}>
                 <div>
                   <label>{media} URL: </label>
                   <input name="mediaLink" value={this.state.mediaLink} onChange={this.handleChange} style={{ width: '25vw', height: 'auto' }} />
                 </div>
                 <div>
-                <a target="_blank" href={this.props.mediaLink} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.props.mediaLink}</p></a>
+                  <a target="_blank" href={this.state.mediaLink} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.state.mediaLink}</p></a>
                 </div>
-                <div>
-                { !this.state.changesSubmitted
-                  ?
-                <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
-
-                  :
+                <button type="submit" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
+                {
+                  this.state.changesSubmitted &&
                   <div>
-                  <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Make Additional Changes</button>
-                    <h2>Your changes were submitted</h2>
+                    <br />
+                    <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Click to make additional changes</button>
+                    <br />
+
+                    <h1>
+                      Your changes were submitted
+                    </h1>
                   </div>
                 }
-                </div>
               </form>
             </div>
         }
@@ -113,9 +112,9 @@ export default class EditMedia extends Component {
         <button onClick={() => {
           localStorage.removeItem('admin')
           this.props.history.push(
-              '/'
+            '/'
           )
-      }}>Logout of Admin</button>
+        }}>Logout of Admin</button>
       </div>
     )
   }

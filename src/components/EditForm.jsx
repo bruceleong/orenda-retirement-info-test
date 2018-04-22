@@ -16,14 +16,6 @@ export default class EditForm extends Component {
     }
   }
 
-  componentWillReceiveProps(newProps) {
-    this.setState({
-      company: newProps.company,
-      formToUpdate: newProps.formToUpdate,
-      formURL: newProps.formURL,
-    })
-  }
-
   updateCompanyData() {
     let companyRef = db.collection('companies').doc(this.state.company)
 
@@ -61,6 +53,7 @@ export default class EditForm extends Component {
   }
 
   handleSubmit = evt => {
+    console.log(evt, 'are you making any changes')
     evt.preventDefault()
     db.collection('companies').doc(this.state.company).collection('Forms')
       .doc('formDoc')
@@ -68,8 +61,8 @@ export default class EditForm extends Component {
   }
 
   render() {
-    console.log(this.props, 'current company data')
-    console.log(this.state, 'current state in edit form')
+    // console.log(this.props, 'current company data')
+    // console.log(this.state, 'current state in edit form')
     return (
       <div>
         {
@@ -86,18 +79,19 @@ export default class EditForm extends Component {
                 <div>
                 <a target="_blank" href={this.state.formURL} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.state.formURL}</p></a>
                 </div>
-                <div>
-                { !this.state.changesSubmitted
-                  ?
-                <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
-
-                  :
+                <button type="submit" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
+                {
+                  this.state.changesSubmitted &&
                   <div>
-                  <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Make Additional Changes</button>
-                    <h2>Your changes were submitted</h2>
+                    <br />
+                    <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Click to make additional changes</button>
+                    <br />
+
+                    <h1>
+                      Your changes were submitted
+                    </h1>
                   </div>
                 }
-                </div>
               </form>
             </div>
         }
