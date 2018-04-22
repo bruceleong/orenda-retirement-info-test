@@ -84,6 +84,9 @@ export default class EditForm extends Component {
                   <input name="formURL" value={this.state.formURL} onChange={this.handleChange} style={{ width: '25vw', height: 'auto' }} />
                 </div>
                 <div>
+                <a target="_blank" href={this.state.formURL} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.state.formURL}</p></a>
+                </div>
+                <div>
                 { !this.state.changesSubmitted
                   ?
                 <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
