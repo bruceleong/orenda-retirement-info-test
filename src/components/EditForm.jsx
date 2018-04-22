@@ -60,7 +60,6 @@ export default class EditForm extends Component {
   }
 
   render() {
-    console.log(this.state, 'current state in edit form')
     return (
       <div>
         {

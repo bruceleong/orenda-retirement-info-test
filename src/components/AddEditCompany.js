@@ -81,7 +81,6 @@ export default class AddEditCompany extends Component {
         }
     }
     render() {
-        console.log(this.state, 'current state')
         return (
             !this.state.formToUpdate
                 ?
