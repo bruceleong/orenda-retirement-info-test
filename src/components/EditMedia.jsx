@@ -69,7 +69,7 @@ export default class EditMedia extends Component {
   }
 
   render() {
-    console.log(this.props, '------------- props --------')
+    console.log(this.props, '------------- props -------')
     console.log(this.state, 'current state in edit form')
     let media;
     if (this.props.mediaType === 'article') {
