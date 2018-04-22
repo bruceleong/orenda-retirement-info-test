@@ -26,6 +26,10 @@ export default class AdminPortal extends Component {
         this.setState({ selectedCompany: '' })
     }
 
+    returnToSelectedCompany = company => {
+        this.setState({ selectedCompany: company })
+    }
+
     componentDidMount() {
         db.collection('companies')
             .get()
@@ -75,7 +79,7 @@ export default class AdminPortal extends Component {
                         }
                     </div>
                 )
-                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} />)
+                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} />)
         )
     }
 }
