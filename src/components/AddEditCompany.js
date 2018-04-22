@@ -124,7 +124,6 @@ export default class AddEditCompany extends Component {
                             ))
                         }
                     </ul>
-                </form>
                 <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
             </div>
         )
