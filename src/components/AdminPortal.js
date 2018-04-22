@@ -22,6 +22,14 @@ export default class AdminPortal extends Component {
         this.setState({ edit: true })
     }
 
+    returnButton = () => {
+        this.setState({ selectedCompany: '' })
+    }
+
+    returnToSelectedCompany = company => {
+        this.setState({ selectedCompany: company })
+    }
+
     componentDidMount() {
         db.collection('companies')
             .get()
@@ -35,11 +43,20 @@ export default class AdminPortal extends Component {
     }
 
     render() {
+        console.log(this.state, 'current state')
         return (
             !this.state.selectedCompany
                 ?
                 (
                     <div>
+                        <h1>Welcome Admin</h1>
+                        {
+                            !this.state.allCompanies
+                                ? ''
+                                :
+                                <h3>Currently there are: {this.state.allCompanies.length} companies</h3>
+
+                        }
                         <h1>Would you like to add a new company or edit an existing one?</h1>
                         <button type="button" onClick={this.onAdd}>Add Company</button>
                         <button type="button" onClick={this.onEdit}>Edit Company</button>
@@ -62,7 +79,7 @@ export default class AdminPortal extends Component {
                         }
                     </div>
                 )
-                : (<AddEditCompany company={this.state.selectedCompany} />)
+                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} />)
         )
     }
 }

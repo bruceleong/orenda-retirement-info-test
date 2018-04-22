@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
+import EditForm from './EditForm.jsx'
 import firebase from 'firebase'
 require('firebase/firestore');
 
@@ -15,14 +17,25 @@ export default class AddEditCompany extends Component {
             companyFormName: '',
             companyFormUrl: ''
         }
-        this.formHandleSubmit = this.formHandleSubmit.bind(this)
+    }
+
+    componentDidMount() {
+        this.updateCompanyData()
+    }
+
+    editForm = (form, url) => {
+        this.setState({ formToUpdate: form, formURL: url })
+    }
+
+    removeFormToUpdate = () => {
+        this.setState({ formToUpdate: ''})
     }
 
     handleChange = evt => {
         this.setState({ [evt.target.name]: evt.target.value })
     }
 
-    formHandleSubmit(evt) {
+    formHandleSubmit = evt => {
         evt.preventDefault()
         db.collection('companies').doc(this.props.company).collection('Forms')
             .doc('formDoc')
@@ -31,10 +44,6 @@ export default class AddEditCompany extends Component {
             companyFormName: '',
             companyFormUrl: ''
         })
-        this.updateCompanyData()
-    }
-
-    componentDidMount() {
         this.updateCompanyData()
     }
 
@@ -49,8 +58,8 @@ export default class AddEditCompany extends Component {
                     let formObj = doc.data(),
                         companyData = []
                     Object.keys(formObj).forEach(key => {
-                        if (key){
-                        companyData.push([key, formObj[key]])
+                        if (key) {
+                            companyData.push([key, formObj[key]])
                         }
                     })
                     return { companyData, companyName: this.props.company }
@@ -71,53 +80,71 @@ export default class AddEditCompany extends Component {
         }
     }
     render() {
-        console.log(this.props, 'current props')
         return (
-            <div>
-                <h2>General Company Info</h2>
-                <form onClick={this.handleSubmit}>
-                    {/*labels for each piece of company of data*/}
-                    <div>
-                        <label htmlFor="companyName">Company Name:</label><input name="companyName" value={this.state.companyName} />
-                    </div>
-                    <div>
-                        <label htmlFor="companyProvider">Company Provider:</label><input name="companyProvider" value={this.state.companyProvider} />
-                    </div>
-                    <div>
-                        <label htmlFor="companyProvider">Summary Plan Description:</label><input name="spd" value={this.state.spd} />
-                    </div>
-                </form>
-                <h2>Company Forms</h2>
-                <form onSubmit={this.formHandleSubmit}>
-                    <h3>Add new Forms</h3>
-                    <div>
-                        <label htmlFor="companyFormName">Name of form:</label><input name="companyFormName" onChange={this.handleChange}
-                            value={this.state.companyFormName} />
-                    </div>
-                    <div>
-                        <label htmlFor="companyFormUrl">Url of form:</label><input name="companyFormUrl" onChange={this.handleChange}
-                            value={this.state.companyFormUrl} />
-                    </div>
-                    <input type="submit" />
+            !this.state.formToUpdate
+                ?
+                <div>
+                    <h2>{this.state.companyName} Company Info</h2>
+                    <form onClick={this.handleSubmit}>
+                        <div>
+                            <label htmlFor="companyName">Company Name:</label><input name="companyName" value={this.state.companyName} />
+                        </div>
+                        <div>
+                            <label htmlFor="companyProvider">Company Provider:</label><input name="companyProvider" value={this.state.companyProvider} />
+                        </div>
+                        <div>
+                            <label htmlFor="companyProvider">Summary Plan Description:</label><input name="spd" value={this.state.spd} />
+                        </div>
+                    </form>
+                    <h2>Company Forms</h2>
+                    <form onSubmit={this.formHandleSubmit}>
+                        <h3>Add new Forms</h3>
+                        <div>
+                            <label htmlFor="companyFormName">Name of form:</label><input name="companyFormName" onChange={this.handleChange}
+                                value={this.state.companyFormName} />
+                        </div>
+                        <div>
+                            <label htmlFor="companyFormUrl">Url of form:</label><input name="companyFormUrl" onChange={this.handleChange}
+                                value={this.state.companyFormUrl} />
+                        </div>
+                        <input type="submit" />
+                    </form>
                     <h3>Current Forms:</h3>
                     <ul>
-                        {this.state.companyData.map((ele, idx) => (
-                            <div key={ele[0]}>
-                            <br />
-                                <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                    {ele[0]}
-                                </a> <button onClick={() => {
-                                    db.collection('companies').doc(this.state.companyName).collection('Forms').doc('formDoc').update({
-                                        [ele[0]]: firebase.firestore.FieldValue.delete()
-                                    })
-                                    this.updateCompanyData()
-                                }}>Delete</button>
-                                <br />
-                            </div>
-                        ))}
+                        {
+                            this.state.companyData.map((ele, idx) => (
+                                <div key={ele[0]}>
+                                    <br />
+                                    <p>Name of form: <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                        {ele[0]}
+                                    </a></p>
+                                    <p>Link of form: <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                        {ele[1]}
+                                    </a></p>
+                                    <button
+                                        type='button'
+                                        onClick={() => this.editForm(ele[0], ele[1])}>Edit Link
+                                    </button>
+                                    <button
+                                    type='button'
+                                    onClick={
+                                        () => {
+                                            db.collection('companies').doc(this.state.companyName).collection('Forms').doc('formDoc').update({
+                                                [ele[0]]: firebase.firestore.FieldValue.delete()
+                                            })
+                                            this.updateCompanyData()
+                                        }
+                                    }>Delete Form</button>
+                                    <br />
+                                    <br />
+                                </div>
+                            ))
+                        }
                     </ul>
-                </form>
-            </div>
+                    <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
+                </div>
+                :
+                (<EditForm formToUpdate={this.state.formToUpdate} formURL={this.state.formURL} company={this.state.companyName} returnLink={this.props.returnLink} returnToSelectedCompany={this.props.returnToSelectedCompany} removeFormToUpdate={this.removeFormToUpdate} />)
         )
     }
 }
