@@ -29,6 +29,7 @@ export default class AddEditCompany extends Component {
 
     removeFormToUpdate = () => {
         this.setState({ formToUpdate: ''})
+        this.updateCompanyData()
     }
 
     handleChange = evt => {
@@ -150,7 +151,9 @@ export default class AddEditCompany extends Component {
                     }}>Logout of Admin</button>
                 </div>
                 :
-                (<EditForm formToUpdate={this.state.formToUpdate} formURL={this.state.formURL} company={this.state.companyName} returnLink={this.props.returnLink} returnToSelectedCompany={this.props.returnToSelectedCompany} removeFormToUpdate={this.removeFormToUpdate} history={this.props.history} />)
+                (
+                    <EditForm formToUpdate={this.state.formToUpdate} formURL={this.state.formURL} company={this.state.companyName} returnLink={this.props.returnLink} returnToSelectedCompany={this.props.returnToSelectedCompany} removeFormToUpdate={this.removeFormToUpdate} history={this.props.history} />
+                )
         )
     }
 }
