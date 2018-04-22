@@ -29,7 +29,7 @@ export default class AppDrawerLoggedIn extends Component {
           companyData.push([key, formObj[key]])
         })
 
-        return { companyData, companyName: localStorage.getItem('company') }
+        return { companyName: localStorage.getItem('company') }
       })
       .then(data => {
         companyRef

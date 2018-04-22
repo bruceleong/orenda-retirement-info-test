@@ -9,10 +9,10 @@ export default class AdminLogin extends Component {
             firstAttempt: true,
             adminLoggedIn: false
         }
-
     }
 
     handleSubmit = evt => {
+        console.log('are you submitting')
         evt.preventDefault()
 
         let un = evt.target.userName.value
@@ -24,28 +24,11 @@ export default class AdminLogin extends Component {
                 if (doc.data()[un] === pw) {
                     this.setState({ adminLoggedIn: true })
                     localStorage.setItem('admin', 'true')
+                    this.props.history.push('/admin')
                 } else {
                     this.setState({ firstAttempt: false })
                 }
             })
-    }
-
-
-    componentDidMount() {
-
-        // what I'm guessing we'd need. Assuming we're just storing admin data in
-        // firestore
-
-        // db.collection('admin')
-        // .get()
-        // .then(snapshot => {
-        //     let allAdmin = []
-        //     snapshot.forEach(doc => {
-        //         allAdmin.push(doc.data().code)
-        //     })
-        //     this.setState({ allAdmin })
-        // })
-
     }
 
     render() {
@@ -63,13 +46,13 @@ export default class AdminLogin extends Component {
                             </label>
                             <br />
                             <br />
-                            <input type="submit" />
+                            <button type="submit">Submit</button>
+                            {
+                                this.state.firstAttempt
+                                    ? null
+                                    : <p style={{ color: 'red' }}>We have notified the authorities</p>
+                            }
                         </form>
-                        {
-                            this.state.firstAttempt
-                                ? null
-                                : <p style={{ color: 'red' }}>We have notified the authorities</p>
-                        }
                     </div>
                 )
                 : <AdminPortal history={this.props.history} />
