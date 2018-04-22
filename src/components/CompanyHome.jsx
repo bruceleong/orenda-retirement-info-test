@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
 
 
 class CompanyHome extends Component {
     constructor(props) {
         super(props)
-        // this.handleSubmit = this.handleSubmit.bind(this)
-        this.state = {
-        }
+        this.state = {}
     }
 
     componentDidMount() {
@@ -17,7 +16,7 @@ class CompanyHome extends Component {
             .then(snapshot => {
                 let companyData = []
                 snapshot.forEach(doc => {
-                  companyData.push(doc.data())
+                    companyData.push(doc.data())
                 });
                 this.setState({ companyData })
             })
@@ -41,33 +40,31 @@ class CompanyHome extends Component {
                         :
                         <div>
                             <h1>Welcome to the {company} portal page</h1>
-                            <button onClick={() => {
-                                localStorage.removeItem('company')
-                                this.props.history.push(
-                                    '/'
-                                )
-                            }}>Logout</button>
+                            <br />
+                            <p>On this website you can get more information on forms, notices and etc</p>
+                            <p>Click on the navigation on the top left or click below to go to each page</p>
+                            <br /><br />
+                            <Link to="/PlanDetails" style={{ textDecoration: 'none' }}>Plan Details</Link>
+                            <br /><br />
+                            <Link to="/News" style={{ textDecoration: 'none' }}>News</Link>
+                            <br /><br />
+                            <Link to="/Forms" style={{ textDecoration: 'none' }}>Forms & Notices</Link>
+                            <br /><br />
+                            <Link to="/Contact" style={{ textDecoration: 'none' }}>Contact</Link>
+                            <br /><br />
+                            <button
+                                type="button" onClick={() => {
+                                    localStorage.removeItem('company')
+                                    this.props.history.push(
+                                        '/'
+                                    )
+                                }}>Logout
+                            </button>
                         </div>
                 }
             </div>
         )
     }
 }
-
-// const mapState = (state) => {
-//     return {
-//         allCompanies: state.allCompanies,
-//         company: state.company
-//     }
-// }
-
-// const mapDispatch = (dispatch) => ({
-//     loadCompanyData(company) {
-//         console.log('typeof', typeof getCompanyData)
-//         dispatch(getCompanyData(company))
-//     }
-// })
-
-// export default CompanyHome
 
 export default CompanyHome
