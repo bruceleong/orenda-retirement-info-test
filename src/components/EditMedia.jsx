@@ -68,7 +68,7 @@ export default class EditMedia extends Component {
 
   render() {
     // console.log(this.props, '------------- props -------')
-    // console.log(this.state, 'current state in edit form')
+    console.log(this.state, 'current state in edit form')
     let media;
     if (this.props.mediaType === 'article') {
       media = 'Article'
@@ -107,8 +107,8 @@ export default class EditMedia extends Component {
               </form>
             </div>
         }
-        <button type="button" onClick={() => { this.props.returnToSelectedCompany(this.props.company); this.props.removeFormToUpdate() }}>Back to Company Home</button>
-        <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
+        <button type="button" onClick={() => { this.props.returnToMediaHome() }}>Back to Media Home</button>
+        <Link to="/Admin"><button type="button">Back to Admin Home</button></Link>
         <button onClick={() => {
           localStorage.removeItem('admin')
           this.props.history.push(

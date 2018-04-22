@@ -29,6 +29,7 @@ export default class AddEditCompany extends Component {
 
     removeFormToUpdate = () => {
         this.setState({ formToUpdate: ''})
+        this.updateCompanyData()
     }
 
     handleChange = evt => {

@@ -13,6 +13,7 @@ export default class AddEditMedia extends Component {
   }
 
   componentDidMount() {
+    console.log('I am mounting')
     this.getNewsData()
     this.getVideoData()
   }
@@ -73,6 +74,12 @@ export default class AddEditMedia extends Component {
       this.getNewsData()
       this.getVideoData()
     }
+  }
+
+  returnToMediaHome = () => {
+    this.setState({ mediaToUpdate: '' })
+    this.getNewsData()
+    this.getVideoData()
   }
 
   handleChange = evt => {
@@ -182,7 +189,7 @@ export default class AddEditMedia extends Component {
         </div>
         :
         (
-          <EditMedia history={this.props.history} mediaType={this.state.mediaType} mediaTitle={this.state.mediaToUpdate} mediaLink={this.state.mediaURL} />
+          <EditMedia history={this.props.history} mediaType={this.state.mediaType} mediaTitle={this.state.mediaToUpdate} mediaLink={this.state.mediaURL} returnToMediaHome={this.returnToMediaHome} />
         )
     )
   }
