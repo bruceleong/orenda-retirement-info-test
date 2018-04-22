@@ -77,9 +77,15 @@ export default class AdminPortal extends Component {
                                     </div>
                                 )
                         }
+                        <button onClick={() => {
+                            localStorage.removeItem('admin')
+                            this.props.history.push(
+                                '/'
+                            )
+                        }}>Logout of Admin</button>
                     </div>
                 )
-                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} />)
+                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} history={this.props.history} />)
         )
     }
 }

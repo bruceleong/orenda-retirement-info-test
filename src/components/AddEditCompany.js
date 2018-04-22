@@ -142,9 +142,15 @@ export default class AddEditCompany extends Component {
                         }
                     </ul>
                     <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
+                    <button onClick={() => {
+                        localStorage.removeItem('admin')
+                        this.props.history.push(
+                            '/'
+                        )
+                    }}>Logout of Admin</button>
                 </div>
                 :
-                (<EditForm formToUpdate={this.state.formToUpdate} formURL={this.state.formURL} company={this.state.companyName} returnLink={this.props.returnLink} returnToSelectedCompany={this.props.returnToSelectedCompany} removeFormToUpdate={this.removeFormToUpdate} />)
+                (<EditForm formToUpdate={this.state.formToUpdate} formURL={this.state.formURL} company={this.state.companyName} returnLink={this.props.returnLink} returnToSelectedCompany={this.props.returnToSelectedCompany} removeFormToUpdate={this.removeFormToUpdate} history={this.props.history} />)
         )
     }
 }
