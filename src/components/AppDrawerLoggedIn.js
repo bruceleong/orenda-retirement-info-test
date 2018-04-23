@@ -33,17 +33,13 @@ export default class AppDrawerLoggedIn extends Component {
       })
       .then(data => {
         companyRef
-          .get()
-          .then(doc => {
-            let spd = doc.data().spd
-            let providerWebsite = doc.data().providerWebsite
-            db.collection('providers').doc(doc.data().providerName)
-              .get()
-              .then(providerDoc => {
-                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, companyProviderWebsite: providerWebsite, spd })
-              })
-          })
-      })
+            .get()
+            .then(doc => {
+                let spd = doc.data().spd
+
+                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: doc.data().providerName, providerWebsite: doc.data().providerWebsite, spd })
+            })
+    })
   }
 
   render() {

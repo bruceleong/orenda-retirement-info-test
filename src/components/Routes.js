@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Home from './Home'
-import Principal from './Principal'
 import Transamerica from './Transamerica'
 import About from './About'
 import Login from './Login'

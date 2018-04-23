@@ -29,7 +29,6 @@ export const getAllCompaniesData = () =>
         snapshot.forEach(doc => {
             companyArr.push(doc.data().name)
         })
-        console.log('the name arr is', companyArr)
         dispatch(setAllCompanies(companyArr))
     })
 
