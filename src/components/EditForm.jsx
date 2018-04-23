@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
-import firebase from 'firebase'
-require('firebase/firestore');
 
 export default class EditForm extends Component {
   constructor(props) {
@@ -16,35 +13,19 @@ export default class EditForm extends Component {
     }
   }
 
-  updateCompanyData() {
-    let companyRef = db.collection('companies').doc(this.state.company)
-
+  updateCompanyData = () => {
+    let companyRef = db.collection('companies').doc(this.props.company)
     companyRef.collection('Forms').doc('formDoc')
       .get()
       .then(doc => {
         let formObj = doc.data(),
           companyData = []
-
         Object.keys(formObj).forEach(key => {
-          companyData.push([key, formObj[key]])
+          if (key === this.state.formToUpdate) {
+            companyData.push([key, formObj[key]])
+          }
         })
-
-        return { companyData }
-      })
-      .then(data => {
-        companyRef
-          .get()
-          .then(doc => {
-            let spd = doc.data().spd
-            let providerWebsite = doc.data().providerWebsite
-            db.collection('providers').doc(doc.data().providerName)
-              .get()
-              .then(providerDoc => {
-                console.log('spd is', spd, 'companyProvider is', providerDoc.data().name, 'companyData is', data.companyData, 'companyName is', data.companyName)
-                this.setState({ companyData: data.companyData })
-                this.setState({ formURL: data.companyData[this.props.formToUpdate] })
-              })
-          })
+        this.setState({ [this.state.formURL]: companyData[1] })
       })
   }
 
@@ -57,6 +38,9 @@ export default class EditForm extends Component {
     db.collection('companies').doc(this.state.company).collection('Forms')
       .doc('formDoc')
       .set({ [this.state.formToUpdate]: this.state.formURL }, { merge: true })
+      .then(() => {
+      })
+    this.updateCompanyData()
   }
 
   render() {
@@ -74,7 +58,7 @@ export default class EditForm extends Component {
                   <input name="formURL" value={this.state.formURL} onChange={this.handleChange} style={{ width: '25vw', height: 'auto' }} />
                 </div>
                 <div>
-                <a target="_blank" href={this.state.formURL} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.state.formURL}</p></a>
+                  <a target="_blank" href={this.state.formURL} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.state.formURL}</p></a>
                 </div>
                 <button type="submit" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
                 {
@@ -97,9 +81,9 @@ export default class EditForm extends Component {
         <button onClick={() => {
           localStorage.removeItem('admin')
           this.props.history.push(
-              '/'
+            '/'
           )
-      }}>Logout of Admin</button>
+        }}>Logout of Admin</button>
       </div>
     )
   }
