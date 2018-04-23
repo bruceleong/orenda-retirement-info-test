@@ -68,7 +68,6 @@ class Home extends Component {
 
         } else {
             this.props.loadCompanyData(this.props.allCompanies[idx])
-            console.log(this.props.allCompanies[idx], 'company.....')
             localStorage.setItem('company', this.props.allCompanies[idx])
             this.props.history.push(`/companyHome`)
         }
@@ -136,7 +135,7 @@ class Home extends Component {
                             <a target="_blank" rel="noopener noreferrer" href={article[1]}>
                               <h4><b>{article[0]}</b></h4>
                             </a>
-                            <a href={article[1]}>
+                            <a target="_blank" rel="noopener noreferrer" href={article[1]}>
                               <p><strong>Read Article Here</strong></p>
                             </a>
                           </div>
@@ -155,7 +154,6 @@ const mapState = ({ allCompanies }) => ({
 
 const mapDispatch = (dispatch) => ({
     loadCompanyData(company) {
-        console.log('typeof', typeof getCompanyData)
         dispatch(getCompanyData(company))
     }
 })
