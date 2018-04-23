@@ -5,30 +5,15 @@ import MenuItem from 'material-ui/MenuItem'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import './App.css';
 import Routes from './Routes'
-import { db } from '../config/constants';
 import AppDrawerLoggedOut from './AppDrawerLoggedOut';
 import AppDrawerLoggedIn from './AppDrawerLoggedIn';
 
-import { logout } from '../helpers/auth';
-import { firebaseAuth } from '../config/constants';
-
 // Material UI
 import AppBar from 'material-ui/AppBar';
-import { HashRouter, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux'
-import { getAllCompaniesData } from '../store'
 
-
-// class Login extends Component {
-//   static muiName = 'FlatButton';
-
-//   render() {
-//     return (
-//       <FlatButton {...this.props} label="Login" />
-//     );
-//   }
-// }
 
 const Logged = (props) => (
   <IconMenu

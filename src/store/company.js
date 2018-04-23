@@ -1,5 +1,3 @@
-import { db } from '../config/constants'
-
 /**
  * ACTION TYPES
  */
