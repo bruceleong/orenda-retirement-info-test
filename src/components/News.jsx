@@ -28,7 +28,6 @@ export default class News extends Component {
       .then(snapshot => {
         let videos = snapshot.data(),
           videoData = []
-
         Object.keys(videos).forEach(key => {
           if (key) {
             videoData.push([key, videos[key]])
@@ -44,7 +43,6 @@ export default class News extends Component {
       .then(snapshot => {
         let articles = snapshot.data(),
           articleData = []
-
         Object.keys(articles).forEach(key => {
           articleData.push([key, articles[key]])
         })
@@ -62,7 +60,7 @@ export default class News extends Component {
         <div className="videos">
           {
             !this.state.videoData
-              ? <h2>'We are updating this page, check back soon'</h2>
+              ? <h2>We are updating this page, check back soon</h2>
               :
               this.state.videoData.map(video => (
                 <div key={video[0]} className="video">
@@ -78,7 +76,7 @@ export default class News extends Component {
         <div className="articles">
           {
             !this.state.articleData
-              ? <h2>'We are updating this page, check back soon'</h2>
+              ? <h2>We are updating this page, check back soon</h2>
               :
               this.state.articleData.map(article => (
                 <div key={article[0]} className="article">
