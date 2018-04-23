@@ -12,7 +12,6 @@ export default class AdminLogin extends Component {
     }
 
     handleSubmit = evt => {
-        console.log('are you submitting')
         evt.preventDefault()
 
         let un = evt.target.userName.value

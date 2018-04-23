@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { db } from '../config/constants'
 import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
 
@@ -13,6 +13,41 @@ class Home extends Component {
         this.state = {
             firstAttempt: true
         }
+    }
+
+    componentDidMount() {
+        this.getNewsData()
+        this.getVideoData()
+    }
+
+    getVideoData = () => {
+        db.collection('videos').doc('videoData')
+            .get()
+            .then(snapshot => {
+                let videos = snapshot.data(),
+                    videoData = []
+
+                Object.keys(videos).forEach(key => {
+                    if (key) {
+                        videoData.push([key, videos[key]])
+                    }
+                })
+                this.setState({ videoData })
+            })
+    }
+
+    getNewsData = () => {
+        db.collection('articles').doc('newsArticles')
+            .get()
+            .then(snapshot => {
+                let articles = snapshot.data(),
+                    articleData = []
+
+                Object.keys(articles).forEach(key => {
+                    articleData.push([key, articles[key]])
+                })
+                this.setState({ articleData })
+            })
     }
 
     handleSubmit(evt) {
@@ -49,74 +84,65 @@ class Home extends Component {
                 <br />
                 <div>
                     {!localStorage.getItem('company')
-                            ?
-                            <div>
-                                <h4>Enter your company name for more details on your retirement plan:</h4>
-                                <form onSubmit={this.handleInput}>
-                                    <input type="text" name="inputField" />
-                                    <input type="submit" />
-                                </form>
-                                {
-                                    this.state.firstAttempt
-                                        ? null
-                                        : <p style={{ color: 'red' }}>That input didn't match any registered company</p>
-                                }
-                            </div>
-                            :
-                            <button onClick={() => {
-                                localStorage.removeItem('company')
-                                this.props.history.push(
-                                    '/'
-                                )
-                            }}>Logout</button>
+                        ?
+                        <div>
+                            <h4>Enter your company name for more details on your retirement plan:</h4>
+                            <form onSubmit={this.handleInput}>
+                                <input type="text" name="inputField" />
+                                <input type="submit" />
+                            </form>
+                            {
+                                this.state.firstAttempt
+                                    ? null
+                                    : <p style={{ color: 'red' }}>That input didn't match any registered company</p>
+                            }
+                        </div>
+                        :
+                        <button onClick={() => {
+                            localStorage.removeItem('company')
+                            this.props.history.push(
+                                '/'
+                            )
+                        }}>Logout</button>
                     }
                 </div>
                 <br />
                 <br />
-                <h2>Checkout our top picks for retirement planning today:</h2>
-                <div id="homeContent">
-                    <div className="articles">
-                        <div className="article">
-                            <div className="articleContainer">
-                                <a href="https://www.fedsmith.com/2018/03/12/common-sense-need-plan-retirement/">
-                                    <img src="https://www.fedsmith.com/wp-content/uploads/2018/03/whats-your-plan-for-retirement.jpg" alt="article" width="160px" className="images" />
-                                    <h4><b>Is Common Sense All You Need to Plan Your Retirement?</b></h4>
-                                </a>
-                                <p>Have you done all your planning? Are you ready?</p>
-                                <a href="https://www.fedsmith.com/2018/03/12/common-sense-need-plan-retirement/">
-                                    <p><strong>More Info</strong></p>
-                                </a>
-                            </div>
+                <h1>Our Favorite Videos</h1>
+                <div className="videos">
+                  {
+                    !this.state.videoData
+                      ? <h2>'We are updating this page, check back soon'</h2>
+                      :
+                      this.state.videoData.map(video => (
+                        <div key={video[0]} className="video">
+                          <div className="videoContainer">
+                            <h2>{video[0]}</h2>
+                            <iframe width="320" title="News video" height="auto" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
+                          </div>
                         </div>
-                        <div className="article">
-                            <div className="articleContainer">
-                                <a href="https://www.nytimes.com/2017/07/21/your-money/retirement-planning-advice.html">
-                                    <img src="https://static01.nyt.com/images/2017/07/23/business/23RETIRINGArt/23RETIRINGArt-master768.jpg" alt="article" width="160px" className="images" />
-                                    <h4>
-                                        <b>Three Things I Should Have Said About Retirement Planning</b>
-                                    </h4>
-                                </a>
-                                <p>I have put an addendum on the retirement advice I give to people: “And no matter how much money you think you are going to need, save another 15 percent, just in case.”</p>
-                                <a href="https://www.nytimes.com/2017/07/21/your-money/retirement-planning-advice.html">
-                                    <p><strong>More Info</strong></p>
-                                </a>
-                            </div>
-                        </div>
-                        <div className="article">
-
-                            <a href="https://www.fool.com/retirement/2018/02/21/2018-guide-to-retirement-planning.aspx">
-                                <img src="https://g.foolcdn.com/editorial/images/473596/mid-aged-man-with-glasses-smiling_gettyimages-825083248_large.jpg" alt="article" width="160px" className="images" />
-                                <h4>
-                                    <b>2018 Guide to Retirement Planning</b>
-                                </h4>
+                      ))
+                  }
+                </div>
+                <h1>Our Top Articles</h1>
+                <div className="articles">
+                  {
+                    !this.state.articleData
+                      ? <h2>'We are updating this page, check back soon'</h2>
+                      :
+                      this.state.articleData.map(article => (
+                        <div key={article[0]} className="article">
+                          <div className="articleContainer">
+                            <a target="_blank" rel="noopener noreferrer" href={article[1]}>
+                              <h4><b>{article[0]}</b></h4>
                             </a>
-                            <p>Ready to secure your financial future? Here's what you need to know.
-                            </p>
-                            <a href="https://www.fool.com/retirement/2018/02/21/2018-guide-to-retirement-planning.aspx">
-                                <p><strong>More Info</strong></p>
+                            <a href={article[1]}>
+                              <p><strong>Read Article Here</strong></p>
                             </a>
+                          </div>
                         </div>
-                    </div>
+                      ))
+                  }
                 </div>
             </div>
         )

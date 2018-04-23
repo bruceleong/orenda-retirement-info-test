@@ -40,18 +40,14 @@ export default class AppDrawerLoggedIn extends Component {
             db.collection('providers').doc(doc.data().providerName)
               .get()
               .then(providerDoc => {
-                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name,companyProviderWebsite: providerWebsite, spd })
+                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, companyProviderWebsite: providerWebsite, spd })
               })
           })
       })
   }
 
   render() {
-
-    let spdLink
-
     return (
-
       <div>
         <Drawer
           docked={false}
@@ -68,6 +64,9 @@ export default class AppDrawerLoggedIn extends Component {
                 </Link>
                 <Link to="/Contact" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Contact" onClick={this.props.handleClose} />
+                </Link>
+                <Link to="/Admin" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Admin" onClick={this.props.handleClose} />
                 </Link>
               </List>
               :

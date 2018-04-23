@@ -53,7 +53,6 @@ export default class EditForm extends Component {
   }
 
   handleSubmit = evt => {
-    console.log(evt, 'are you making any changes')
     evt.preventDefault()
     db.collection('companies').doc(this.state.company).collection('Forms')
       .doc('formDoc')
@@ -61,8 +60,6 @@ export default class EditForm extends Component {
   }
 
   render() {
-    // console.log(this.props, 'current company data')
-    // console.log(this.state, 'current state in edit form')
     return (
       <div>
         {
