@@ -71,15 +71,15 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route
-              path="/Login"
+              exact path="/Login"
               component={Login}
             />
             <Route
-              path="/Contact"
+              exact path="/Contact"
               component={About}
             />
             <Route
-              path="/Admin"
+              exact path="/Admin"
               component={AdminLogin}
             />
             {
@@ -88,31 +88,31 @@ class Routes extends Component {
                 : (
                   <div>
                     <Route
-                      path="/PlanDetails"
+                      exact path="/PlanDetails"
                       component={PlanDetails}
                     />
                     <Route
-                      path="/AudioInteriors"
+                      exact path="/AudioInteriors"
                       component={Transamerica}
                     />
                     <Route
-                      path="/Norms"
+                      exact path="/Norms"
                       component={Norms}
                     />
                     <Route
-                      path="/News"
+                      exact path="/News"
                       component={News}
                     />
                     <Route
-                      path="/Forms"
+                      exact path="/Forms"
                       component={Forms}
                     />
                     <Route
-                      path="/CompanyHome"
+                      exact path="/CompanyHome"
                       component={CompanyHome}
                     />
                     <Route
-                      path="/Admin"
+                      exact path="/Admin"
                       component={AdminLogin}
                     />
                   </div>
@@ -124,7 +124,7 @@ class Routes extends Component {
               : (
                 <div>
                 <Route
-                      path="/AddEditMedia"
+                      exact path="/AddEditMedia"
                       component={AddEditMedia}
                     />
                 </div>
