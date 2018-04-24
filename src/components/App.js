@@ -11,7 +11,6 @@ export default class App extends Component {
           <div>
             <Routes />
           </div>
-        <br />
         <div id="footer">
           <p>Side by Side Financials LLC. 2018</p>
         </div>
