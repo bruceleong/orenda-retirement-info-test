@@ -63,6 +63,9 @@ class Routes extends Component {
             onLeftIconButtonClick={this.handleToggle}
             style={{ backgroundColor: 'green' }}
           />
+          <div id="header">
+            <h1 id="title">Employee Resource</h1>
+          </div>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route
