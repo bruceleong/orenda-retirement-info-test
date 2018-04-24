@@ -16,8 +16,6 @@ export default class AppDrawerLoggedIn extends Component {
 
   componentDidMount() {
     db.collection('companies').doc(localStorage.getItem('company'))
-    .collection('Forms')
-    .doc('formDoc')
     .get()
     .then(doc => {
       let spd = doc.data().spd

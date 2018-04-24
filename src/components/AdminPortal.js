@@ -56,6 +56,7 @@ export default class AdminPortal extends Component {
                 snapshot.forEach(doc => {
                     allCompanies.push(doc.data().name)
                 })
+                console.log('about to set state', allCompanies)
                 this.setState({ allCompanies })
             })
 
