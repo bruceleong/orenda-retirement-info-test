@@ -37,14 +37,8 @@ export default class AdminLogin extends Component {
                     <div>
                         <h4>Enter Login Details:</h4>
                         <form onSubmit={this.handleSubmit}>
-                            <label>Username: <input type="text" name="userName" />
-                            </label>
-                            <br />
-                            <br />
-                            <label>Password: <input type="password" name="password" />
-                            </label>
-                            <br />
-                            <br />
+                            <label style={{display: 'block', margin: '10px'}}>Username: <input type="text" name="userName" /></label>
+                            <label style={{display: 'block', margin: '10px'}}>Password: <input type="password" name="password" /></label>
                             <button type="submit">Submit</button>
                             {
                                 this.state.firstAttempt

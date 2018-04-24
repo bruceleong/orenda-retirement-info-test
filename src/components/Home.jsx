@@ -4,15 +4,16 @@ import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
 
 
+
 class Home extends Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleInput = this.handleInput.bind(this)
-        console.log('props are', props)
         this.state = {
             firstAttempt: true
         }
+
     }
 
     componentDidMount() {

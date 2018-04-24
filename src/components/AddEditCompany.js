@@ -7,7 +7,6 @@ require('firebase/firestore');
 export default class AddEditCompany extends Component {
     constructor(props) {
         super(props)
-        this.updateCompanyData()
         this.state = {
             companyName: '',
             companyProvider: '',
@@ -17,9 +16,12 @@ export default class AddEditCompany extends Component {
             companyFormUrl: '',
             changesSubmitted: false
         }
+        //exists to make load time a little faster
+        this.updateCompanyData()
     }
 
     componentDidMount() {
+        console.log('in componentDidMount')
         this.updateCompanyData()
     }
 
@@ -52,9 +54,7 @@ export default class AddEditCompany extends Component {
         evt.preventDefault()
         db.collection('companies').doc(this.state.companyName)
             .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.companyName, providerWebsite: this.state.providerWebsite }, { merge: true })
-            .then(() => {
-                this.updateCompanyData()
-            })
+            .then(() => this.updateCompanyData())
 
     }
 
@@ -68,11 +68,11 @@ export default class AddEditCompany extends Component {
                 .then(doc => {
                     let formObj = doc.data(),
                         companyData = []
-                    Object.keys(formObj).forEach(key => {
-                        if (key) {
-                            companyData.push([key, formObj[key]])
-                        }
-                    })
+                    if (formObj){
+                        Object.keys(formObj).forEach(key => {
+                            companyData.push([key, formObj[key]]) 
+                        })
+                    }
                     return { companyData, companyName: this.props.company }
 
                 })
@@ -80,6 +80,7 @@ export default class AddEditCompany extends Component {
                     companyRef
                         .get()
                         .then(doc => {
+                            //spd is now required so ignore error that comes up when spd is not defined
                             let spd = doc.data().spd
 
                             this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: doc.data().providerName, providerWebsite: doc.data().providerWebsite, spd })
@@ -100,41 +101,35 @@ export default class AddEditCompany extends Component {
                     <h3>Company Provider Website: {this.state.providerWebsite}</h3>
                     <a target="_blank" rel="noopener noreferrer" href={this.state.spd}><h3>Summary Plan Description:  {this.state.spd}</h3></a>
                     <form onSubmit={this.updateCompanyProfile}>
-                        <div>
-                            <label htmlFor="companyName">Company Name:</label><input
-                                name="companyName" value={this.state.companyName}
-                                required
-                                onChange={this.handleChange} />
-                        </div>
-                        <div>
-                            <label htmlFor="companyProvider">Company Provider:</label><input
-                                name="companyProvider" value={this.state.companyProvider}
-                                required
-                                onChange={this.handleChange} />
-                        </div>
-                        <div>
-                            <label htmlFor="providerWebsite">Company Provider Website:</label><input
-                                name="providerWebsite" value={this.state.providerWebsite}
-                                required
-                                onChange={this.handleChange} />
-                        </div>
-                        <div>
-                            <label htmlFor="companyProvider">Summary Plan Description:</label><input
-                                name="spd" value={this.state.spd}
-                                required
-                                onChange={this.handleChange} />
-                        </div>
-                        <button type="submit" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
-                        <br />
+                        <label style={{display: 'block', margin: '10px'}} htmlFor="companyName">Company Name:<input
+                            name="companyName" value={this.state.companyName}
+                            required
+                            onChange={this.handleChange} />
+                        </label>
+                        <label style={{display: 'block', margin: '10px'}} htmlFor="companyProvider">Company Provider:<input
+                            name="companyProvider" value={this.state.companyProvider}
+                            required
+                            onChange={this.handleChange} />
+                        </label> 
+                        <label style={{display: 'block', margin: '10px'}} htmlFor="providerWebsite">Company Provider Website:<input
+                            name="providerWebsite" value={this.state.providerWebsite}
+                            required
+                            onChange={this.handleChange} />
+                        </label>
+                        <label style={{display: 'block', margin: '10px'}} htmlFor="companyProvider">Summary Plan Description:<input
+                            name="spd" value={this.state.spd}
+                            required
+                            onChange={this.handleChange} />
+                        </label>
+                        <button type="submit" style={{display: 'block', margin: '0 auto'}} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
                         {
                             this.state.changesSubmitted &&
                             <div>
-                                <br />
-                                <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Click to make additional changes</button>
-                                <br />
-                                <h1>
-                                    Your changes were submitted
-                              </h1>
+                                <button style={{display: 'block', margin: '10px, auto'}}type="button" onClick={() => { 
+                                    let newBool = !this.state.changesSubmitted; 
+                                    this.setState({ changesSubmitted: newBool })
+                                 }}>Click to make additional changes</button>
+                                <h1>Your changes were submitted</h1>
                             </div>
                         }
                     </form>
@@ -163,21 +158,26 @@ export default class AddEditCompany extends Component {
                                         this.state.companyData.map((ele, idx) => (
                                             <div key={ele[0]}>
                                                 <br />
-                                                <p>Name of form: <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                                    {ele[0]}
-                                                </a></p>
-                                                <p>Link of form: <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                                    {ele[1]}
-                                                </a></p>
-                                                <button
-                                                    type='button'
-                                                    onClick={() => this.editForm(ele[0], ele[1])}>Edit Link
-                                    </button>
+                                                <p>Name of form: 
+                                                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                        {ele[0]}
+                                                    </a>
+                                                </p>
+                                                <p>Link of form: 
+                                                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                        {ele[1]}
+                                                    </a>
+                                                </p>
+                                                <button type="button" onClick={() => this.editForm(ele[0], ele[1])}>
+                                                    Edit Link
+                                                </button>
                                                 <button
                                                     type='button'
                                                     onClick={
                                                         () => {
-                                                            db.collection('companies').doc(this.state.companyName).collection('Forms').doc('formDoc').update({
+                                                            db.collection('companies').doc(this.state.companyName).collection('Forms')
+                                                            .doc('formDoc')
+                                                            .update({
                                                                 [ele[0]]: firebase.firestore.FieldValue.delete()
                                                             })
                                                             this.updateCompanyData()
@@ -193,12 +193,13 @@ export default class AddEditCompany extends Component {
                             : ''
                     }
                     <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
-                    <button onClick={() => {
+                    <button type="button" onClick={() => {
                         localStorage.removeItem('admin')
                         this.props.history.push(
                             '/'
                         )
-                    }}>Logout of Admin</button>
+                    }}>Logout of Admin
+                    </button>
                 </div>
                 :
                 (
