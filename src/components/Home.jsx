@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
 
 
+
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -13,12 +14,14 @@ class Home extends Component {
         this.state = {
             firstAttempt: true
         }
+
+        console.log('props', props)
     }
 
     componentDidMount() {
         this.getNewsData()
         this.getVideoData()
-        console.log('this.props.allcom',this.props.allCompanies)
+        console.log('this.props.allcom', this.props.allCompanies)
     }
 
     getVideoData = () => {
