@@ -10,18 +10,15 @@ class Home extends Component {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleInput = this.handleInput.bind(this)
-        console.log('props are', props)
         this.state = {
             firstAttempt: true
         }
 
-        console.log('props', props)
     }
 
     componentDidMount() {
         this.getNewsData()
         this.getVideoData()
-        console.log('this.props.allcom', this.props.allCompanies)
     }
 
     getVideoData = () => {

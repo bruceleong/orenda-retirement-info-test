@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Home from './Home'
 import Transamerica from './Transamerica'
@@ -15,9 +15,14 @@ import { connect } from 'react-redux'
 import News from './News'
 import Forms from './Forms'
 import { getAllCompaniesData } from '../store'
-import AdminPortal from './AdminPortal';
+import AdminPortal from './AdminPortal'
 
 class Routes extends Component {
+
+  componentDidMount() {
+    this.props.loadInitialData()
+
+  }
 
   render() {
 
@@ -95,13 +100,26 @@ class Routes extends Component {
 
 }
 
+const mapState = (state) => {
+  return {
+    allCompanies: state.allCompanies,
+    selectedCompany: state.company,
+    isLoggedIn: Boolean(state.company)
+  }
+}
+
+
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData() {
+      dispatch(getAllCompaniesData())
+    }
+  }
+}
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default Routes
-
-
-
+export default withRouter(connect(mapState, mapDispatch)(Routes))
 
 
 {/*return (
