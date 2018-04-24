@@ -65,6 +65,9 @@ class Routes extends Component {
         style={{backgroundColor: 'green'}}
       />
       <div className="container d-flex justify-content-center">
+      <div id="header">
+      <h1 id="title">Employee Resource</h1>
+    </div>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route
