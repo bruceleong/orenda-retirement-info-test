@@ -18,6 +18,7 @@ class Home extends Component {
     componentDidMount() {
         this.getNewsData()
         this.getVideoData()
+        console.log('this.props.allcom',this.props.allCompanies)
     }
 
     getVideoData = () => {
