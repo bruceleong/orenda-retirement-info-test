@@ -16,10 +16,12 @@ export default class AddEditCompany extends Component {
             companyFormUrl: '',
             changesSubmitted: false
         }
+        //exists to make load time a little faster
         this.updateCompanyData()
     }
 
     componentDidMount() {
+        console.log('in componentDidMount')
         this.updateCompanyData()
     }
 
@@ -52,9 +54,7 @@ export default class AddEditCompany extends Component {
         evt.preventDefault()
         db.collection('companies').doc(this.state.companyName)
             .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.companyName, providerWebsite: this.state.providerWebsite }, { merge: true })
-            .then(() => {
-                this.updateCompanyData()
-            })
+            .then(() => this.updateCompanyData())
 
     }
 
@@ -68,11 +68,11 @@ export default class AddEditCompany extends Component {
                 .then(doc => {
                     let formObj = doc.data(),
                         companyData = []
-                    Object.keys(formObj).forEach(key => {
-                        if (key) {
-                            companyData.push([key, formObj[key]])
-                        }
-                    })
+                    if (formObj){
+                        Object.keys(formObj).forEach(key => {
+                            companyData.push([key, formObj[key]]) 
+                        })
+                    }
                     return { companyData, companyName: this.props.company }
 
                 })
@@ -80,6 +80,7 @@ export default class AddEditCompany extends Component {
                     companyRef
                         .get()
                         .then(doc => {
+                            //spd is now required so ignore error that comes up when spd is not defined
                             let spd = doc.data().spd
 
                             this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: doc.data().providerName, providerWebsite: doc.data().providerWebsite, spd })
@@ -124,7 +125,10 @@ export default class AddEditCompany extends Component {
                         {
                             this.state.changesSubmitted &&
                             <div>
-                                <button style={{display: 'block', margin: '10px'}}type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Click to make additional changes</button>
+                                <button style={{display: 'block', margin: '10px, auto'}}type="button" onClick={() => { 
+                                    let newBool = !this.state.changesSubmitted; 
+                                    this.setState({ changesSubmitted: newBool })
+                                 }}>Click to make additional changes</button>
                                 <h1>Your changes were submitted</h1>
                             </div>
                         }
@@ -171,7 +175,9 @@ export default class AddEditCompany extends Component {
                                                     type='button'
                                                     onClick={
                                                         () => {
-                                                            db.collection('companies').doc(this.state.companyName).collection('Forms').doc('formDoc').update({
+                                                            db.collection('companies').doc(this.state.companyName).collection('Forms')
+                                                            .doc('formDoc')
+                                                            .update({
                                                                 [ele[0]]: firebase.firestore.FieldValue.delete()
                                                             })
                                                             this.updateCompanyData()
