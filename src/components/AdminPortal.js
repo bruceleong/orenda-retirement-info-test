@@ -15,7 +15,7 @@ export default class AdminPortal extends Component {
     }
 
     onAdd = () => {
-        this.setState({ selectedCompany: 'newCompany' })
+        this.setState({ selectedCompany: 'newCompany', adding: true })
     }
 
     onEdit = () => {
@@ -160,7 +160,7 @@ export default class AdminPortal extends Component {
                         </button>
                     </div>
                 )
-                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} history={this.props.history} />)
+                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} history={this.props.history} adding={this.state.adding} />)
         )
     }
 }

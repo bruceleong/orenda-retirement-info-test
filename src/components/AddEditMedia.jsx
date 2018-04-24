@@ -89,6 +89,7 @@ export default class AddEditMedia extends Component {
   }
 
   render() {
+    console.log(this.state, 'current state')
     return (
       !this.state.mediaToUpdate
         ?
