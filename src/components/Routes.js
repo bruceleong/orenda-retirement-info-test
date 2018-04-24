@@ -45,93 +45,70 @@ class Routes extends Component {
     return (
       <Router history={history}>
         <div>
-          {
-            !localStorage.getItem('company')
-              ? <AppDrawerLoggedOut
-                open={this.state.open}
-                handleClose={this.handleClose}
-                handleToggle={this.handleToggle}
-              />
-              : <AppDrawerLoggedIn
-                open={this.state.open}
-                handleClose={this.handleClose}
-                handleToggle={this.handleToggle}
-              />
-          }
-          <AppBar
-            title="Side By Side Financials"
-            onLeftIconButtonClick={this.handleToggle}
-            style={{ backgroundColor: 'green' }}
-          />
-          <div className="container d-flex justify-content-center">
-            <div id="header">
-              <h1 id="title">Employee Resource</h1>
-            </div>
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route
-                exact path="/Login"
-                component={Login}
-              />
-              <Route
-                exact path="/Contact"
-                component={About}
-              />
-              <Route
-                exact path="/Admin"
-                component={AdminLogin}
-              />
-              {
-                !localStorage.getItem('company')
-                  ? null
-                  : (
-                    <div>
-                      <Route
-                        exact path="/PlanDetails"
-                        component={PlanDetails}
-                      />
-                      <Route
-                        exact path="/AudioInteriors"
-                        component={Transamerica}
-                      />
-                      <Route
-                        exact path="/Norms"
-                        component={Norms}
-                      />
-                      <Route
-                        exact path="/News"
-                        component={News}
-                      />
-                      <Route
-                        exact path="/Forms"
-                        component={Forms}
-                      />
-                      <Route
-                        exact path="/CompanyHome"
-                        component={CompanyHome}
-                      />
-                      <Route
-                        exact path="/Admin"
-                        component={AdminLogin}
-                      />
-                    </div>
-                  )
-              }
-              {
-                !localStorage.getItem('admin')
-                  ? null
-                  : (
-                    <div>
-                      <Route
-                        exact path="/AddEditMedia"
-                        component={AddEditMedia}
-                      />
-                    </div>
-                  )
-              }
-              <Route render={() => <h3>No Match</h3>} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route
+              exact path="/Login"
+              component={Login}
+            />
+            <Route
+              exact path="/Contact"
+              component={About}
+            />
+            <Route
+              exact path="/Admin"
+              component={AdminLogin}
+            />
+            {
+              !localStorage.getItem('company')
+                ? null
+                : (
+                  <div>
+                    <Route
+                      exact path="/PlanDetails"
+                      component={PlanDetails}
+                    />
+                    <Route
+                      exact path="/AudioInteriors"
+                      component={Transamerica}
+                    />
+                    <Route
+                      exact path="/Norms"
+                      component={Norms}
+                    />
+                    <Route
+                      exact path="/News"
+                      component={News}
+                    />
+                    <Route
+                      exact path="/Forms"
+                      component={Forms}
+                    />
+                    <Route
+                      exact path="/CompanyHome"
+                      component={CompanyHome}
+                    />
+                    <Route
+                      exact path="/Admin"
+                      component={AdminLogin}
+                    />
+                  </div>
+                )
+            }
+            {
+              !localStorage.getItem('admin')
+                ? null
+                : (
+                  <div>
+                    <Route
+                      exact path="/AddEditMedia"
+                      component={AddEditMedia}
+                    />
+                  </div>
+                )
+            }
+            <Route render={() => <h3>No Match</h3>} />
+          </Switch>
         </div>
       </Router>
     )
@@ -158,3 +135,22 @@ const mapDispatch = (dispatch) => {
 
 
 export default connect(mapState, mapDispatch)(Routes)
+
+// {
+//   !localStorage.getItem('company')
+//     ? <AppDrawerLoggedOut
+//       open={this.state.open}
+//       handleClose={this.handleClose}
+//       handleToggle={this.handleToggle}
+//     />
+//     : <AppDrawerLoggedIn
+//       open={this.state.open}
+//       handleClose={this.handleClose}
+//       handleToggle={this.handleToggle}
+//     />
+// }
+// <AppBar
+//   title="Side By Side Financials"
+//   onLeftIconButtonClick={this.handleToggle}
+//   style={{ backgroundColor: 'green' }}
+// />
