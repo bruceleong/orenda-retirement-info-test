@@ -4,41 +4,24 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { db } from '../config/constants'
 
+//Bruce look!
+
 export default class AppDrawerLoggedIn extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      companyName: '',
-      companyProvider: '',
-      companyData: [],
       spd: '',
-      companyProviderWebsite: ''
     }
   }
 
   componentDidMount() {
-    let companyRef = db.collection('companies').doc(localStorage.getItem('company'))
-
-    companyRef.collection('Forms').doc('formDoc')
-      .get()
-      .then(doc => {
-        let formObj = doc.data(),
-          companyData = []
-
-        Object.keys(formObj).forEach(key => {
-          companyData.push([key, formObj[key]])
-        })
-
-        return { companyName: localStorage.getItem('company') }
-      })
-      .then(data => {
-        companyRef
-            .get()
-            .then(doc => {
-                let spd = doc.data().spd
-
-                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: doc.data().providerName, providerWebsite: doc.data().providerWebsite, spd })
-            })
+    db.collection('companies').doc(localStorage.getItem('company'))
+    .collection('Forms')
+    .doc('formDoc')
+    .get()
+    .then(doc => {
+      let spd = doc.data().spd
+      this.setState({ spd })
     })
   }
 
