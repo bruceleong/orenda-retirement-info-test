@@ -18,11 +18,6 @@ import { getAllCompaniesData } from '../store'
 
 class Routes extends Component {
 
-  componentDidMount() {
-    this.props.loadInitialData()
-
-  }
-
   render() {
     return (
       <div className="container d-flex justify-content-center">
@@ -78,6 +73,7 @@ class Routes extends Component {
                 )
             }
             {
+            
               !localStorage.getItem('admin')
               ? null
               : (
@@ -85,7 +81,7 @@ class Routes extends Component {
                 <Route
                       path="/AddEditMedia"
                       component={AddEditMedia}
-                    />
+                />
                 </div>
               )
             }
@@ -99,24 +95,7 @@ class Routes extends Component {
 }
 
 
-const mapState = (state) => {
-  return {
-    allCompanies: state.allCompanies,
-    selectedCompany: state.company,
-    isLoggedIn: Boolean(state.company)
-  }
-}
-
-
-const mapDispatch = (dispatch) => {
-  return {
-    loadInitialData() {
-      dispatch(getAllCompaniesData());
-    }
-  }
-}
-
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Routes))
+export default Routes
 

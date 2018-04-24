@@ -7,7 +7,6 @@ require('firebase/firestore');
 export default class AddEditCompany extends Component {
     constructor(props) {
         super(props)
-        this.updateCompanyData()
         this.state = {
             companyName: '',
             companyProvider: '',
@@ -17,6 +16,7 @@ export default class AddEditCompany extends Component {
             companyFormUrl: '',
             changesSubmitted: false
         }
+        this.updateCompanyData()
     }
 
     componentDidMount() {
@@ -134,7 +134,7 @@ export default class AddEditCompany extends Component {
                                 <br />
                                 <h1>
                                     Your changes were submitted
-                              </h1>
+                                </h1>
                             </div>
                         }
                     </form>
@@ -163,16 +163,19 @@ export default class AddEditCompany extends Component {
                                         this.state.companyData.map((ele, idx) => (
                                             <div key={ele[0]}>
                                                 <br />
-                                                <p>Name of form: <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                                    {ele[0]}
-                                                </a></p>
-                                                <p>Link of form: <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                                    {ele[1]}
-                                                </a></p>
-                                                <button
-                                                    type='button'
-                                                    onClick={() => this.editForm(ele[0], ele[1])}>Edit Link
-                                    </button>
+                                                <p>Name of form: 
+                                                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                        {ele[0]}
+                                                    </a>
+                                                </p>
+                                                <p>Link of form: 
+                                                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                        {ele[1]}
+                                                    </a>
+                                                </p>
+                                                <button type="button" onClick={() => this.editForm(ele[0], ele[1])}>
+                                                    Edit Link
+                                                </button>
                                                 <button
                                                     type='button'
                                                     onClick={
@@ -193,12 +196,13 @@ export default class AddEditCompany extends Component {
                             : ''
                     }
                     <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
-                    <button onClick={() => {
+                    <button type="button" onClick={() => {
                         localStorage.removeItem('admin')
                         this.props.history.push(
                             '/'
                         )
-                    }}>Logout of Admin</button>
+                    }}>Logout of Admin
+                    </button>
                 </div>
                 :
                 (
