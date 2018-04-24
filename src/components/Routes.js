@@ -45,6 +45,24 @@ class Routes extends Component {
     return (
       <Router history={history}>
         <div>
+          {
+            !localStorage.getItem('company')
+              ? <AppDrawerLoggedOut
+                open={this.state.open}
+                handleClose={this.handleClose}
+                handleToggle={this.handleToggle}
+              />
+              : <AppDrawerLoggedIn
+                open={this.state.open}
+                handleClose={this.handleClose}
+                handleToggle={this.handleToggle}
+              />
+          }
+          <AppBar
+            title="Side By Side Financials"
+            onLeftIconButtonClick={this.handleToggle}
+            style={{ backgroundColor: 'green' }}
+          />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route
@@ -135,22 +153,3 @@ const mapDispatch = (dispatch) => {
 
 
 export default connect(mapState, mapDispatch)(Routes)
-
-// {
-//   !localStorage.getItem('company')
-//     ? <AppDrawerLoggedOut
-//       open={this.state.open}
-//       handleClose={this.handleClose}
-//       handleToggle={this.handleToggle}
-//     />
-//     : <AppDrawerLoggedIn
-//       open={this.state.open}
-//       handleClose={this.handleClose}
-//       handleToggle={this.handleToggle}
-//     />
-// }
-// <AppBar
-//   title="Side By Side Financials"
-//   onLeftIconButtonClick={this.handleToggle}
-//   style={{ backgroundColor: 'green' }}
-// />
