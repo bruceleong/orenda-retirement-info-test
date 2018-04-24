@@ -19,11 +19,23 @@ export default class AdminPortal extends Component {
     }
 
     onEdit = () => {
-        this.setState({ edit: true })
+        this.setState({ edit: true, action: 'edit' })
+    }
+
+    onDelete = () => {
+        //this.setState({ edit: true })
+        this.setState({ action: 'delete' })
     }
 
     returnButton = () => {
         this.setState({ selectedCompany: '' })
+    }
+
+    handleDelete = (evt) => {
+        evt.preventDefault()
+        db.collection('companies').doc(evt.target.selectCompany.value).delete()
+        this.getCompanies()
+        
     }
 
     returnToSelectedCompany = company => {
@@ -96,29 +108,32 @@ export default class AdminPortal extends Component {
                                 </div>
 
                         }
-                        <h1>Would you like to add a new company or edit an existing one?</h1>
+                        <h1>Would you like to add, edit, or delete a company?</h1>
                         <button type="button" onClick={this.onAdd}>Add Company</button>
                         <br />
                         <br />
                         <button type="button" onClick={this.onEdit}>Edit Company</button>
                         <br />
                         <br />
+                        <button type="button" onClick={this.onDelete}>Delete Company</button>
+                        <br />
+                        <br />
                         {
-                            !this.state.edit
-                                ? null
-                                : (
+                            this.state.action === 'edit' || this.state.action === 'delete'
+                                ? (
                                     <div>
-                                        <h1>What Company would you like to edit?</h1>
-                                        <form onSubmit={this.handleSubmit}>
+                                        <h1>What Company would you like to {this.state.action}?</h1>
+                                        <form onSubmit={this.state.action === 'edit' ? this.handleSubmit : this.handleDelete}>
                                             <select name="selectCompany">
                                                 {this.state.allCompanies.map(company => (
                                                     <option key={company} value={company}>{company}</option>
                                                 ))}
                                             </select>
-                                            <input type="submit" />
+                                            <input type="submit" value={this.state.action} />
                                         </form>
                                     </div>
                                 )
+                                : null
                         }
                         <div>
                             <h2>Current Media: </h2>
