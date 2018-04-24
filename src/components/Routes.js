@@ -30,7 +30,6 @@ class Routes extends Component {
       <div className="container d-flex justify-content-center">
         <div className="row">
           <Switch>
-            <Route path="/" exact component={Home} />
             <Route
               path="/Login"
               component={Login}
@@ -43,6 +42,7 @@ class Routes extends Component {
               path="/Admin"
               component={AdminLogin}
             />
+            <Route path="/" component={Home} />
             {
               !localStorage.getItem('company')
                 ? null
