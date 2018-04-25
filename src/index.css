@@ -6,6 +6,10 @@ body {
   border: lawngreen;
 }
 
+.clientContent {
+  margin: 5vw;
+}
+
 #menu {
   top: 2vh;
   left: 3vw;
@@ -73,43 +77,11 @@ body {
   background-color: green
 }
 
-
-/* Home Norms */
-.Home-Norms-header{
-  background-image: url('https://drive.google.com/uc?export=download&id=1FM10BDePRx9wluinRgFOPwppiF6pssh0');
-}
-
-.Home-Norms-links{
-  height: 10%;
-  width: 100%;
-  display: flex;
-  border-top: 1px black solid;
-  border-bottom: 1px black solid;
-
-}
-
-.Home-Norms-links > img{
-  flex-grow: 1;
-  height: 12vh;
-  max-height: 150px;
-  max-width: 12vh;
-}
-
-.Home-Norms-links > div{
-  flex-grow: 2;
-
-}
-/* #appBar {
-  top: 0;
-  width: 100%;
-  z-index: 0;
-} */
-
 #header {
- /* background: url("../src/Financial-planning-1.jpg"); */
+ background: url("../src/Financial-planning-1.jpg");
  background-size: cover;
  background-color: lightgreen;
- height: 40vh;
+ height: 30vh;
 }
 
 .formFormating {
@@ -118,14 +90,14 @@ body {
 
 #title {
   text-align: center;
+  font-style: lora;
   font-size: 50px;
   font-weight: 900;
   color: black;
   display: inline-block;
-  padding: .2em .2em;
-  border: black solid 6px;
+  padding: .1em .1em;
   letter-spacing: .05em;
-  margin-top: 8vh;
+  margin-top: 5vh;
   margin-bottom: 15vh;
   clear: both;
 }

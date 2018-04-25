@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, withRouter, Router } from 'react-router-dom'
+import { Route, Switch, Router } from 'react-router-dom'
 import Home from './Home'
 import Transamerica from './Transamerica'
 import About from './About'
@@ -14,7 +14,6 @@ import history from './history'
 import AppDrawerLoggedOut from './AppDrawerLoggedOut'
 import AppDrawerLoggedIn from './AppDrawerLoggedIn'
 
-// Material UI
 import AppBar from 'material-ui/AppBar'
 
 
