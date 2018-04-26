@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
 import AddEditCompany from './AddEditCompany'
+import AddEditMedia from './AddEditMedia'
 import { Link } from 'react-router-dom'
 
 export default class AdminPortal extends Component {
     constructor() {
         super()
         this.state = {
-            allCompanies: []
+            allCompanies: [],
+            showEditMedia: false
         }
     }
 
@@ -37,7 +39,7 @@ export default class AdminPortal extends Component {
         evt.preventDefault()
         db.collection('companies').doc(evt.target.selectCompany.value).delete()
         this.getCompanies()
-        
+
     }
 
     returnToSelectedCompany = company => {
@@ -48,6 +50,10 @@ export default class AdminPortal extends Component {
         this.getCompanies()
         this.getNewsData()
         this.getVideoData()
+    }
+
+    showEditMediaPage = () => {
+        this.setState({showEditMedia: !this.state.showEditMedia})
     }
 
     getCompanies = () => {
@@ -164,7 +170,11 @@ export default class AdminPortal extends Component {
                                     </div>
 
                             }
-                            <Link to="/AddEditMedia"><button type="button">Edit Media</button></Link>
+                            <button type="button" onClick={this.showEditMediaPage}>Edit Media</button>
+                            {
+                                this.state.showEditMedia &&
+                                <AddEditMedia />
+                            }
                         </div>
                         <br />
                         <br />
