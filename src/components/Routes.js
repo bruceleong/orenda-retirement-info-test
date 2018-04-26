@@ -41,8 +41,6 @@ class Routes extends Component {
 
   render() {
 
-    console.log('Routes', localStorage.getItem('admin'))
-
     return (
       <Router history={history}>
         <div>
@@ -120,8 +118,7 @@ class Routes extends Component {
             {
               !localStorage.getItem('admin')
                 ? null
-                : (
-                  
+                : (   
                   <div>
                     <Route
                       exact path="/AddEditMedia"
