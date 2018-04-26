@@ -118,7 +118,7 @@ class Routes extends Component {
             {
               !localStorage.getItem('admin')
                 ? null
-                : (
+                : (   
                   <div>
                     <Route
                       exact path="/AddEditMedia"
