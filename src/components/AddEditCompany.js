@@ -172,7 +172,7 @@ export default class AddEditCompany extends Component {
                         {
                             this.state.changesSubmitted &&
                             <div>
-                                <button style={{display: 'block', margin: '10px, auto'}}type="button" onClick={() => { 
+                                <button style={{display: 'block', margin: '0 auto'}}type="button" onClick={() => { 
                                     let newBool = !this.state.changesSubmitted; 
                                     this.setState({ changesSubmitted: newBool })
                                  }}>Click to make additional changes</button>

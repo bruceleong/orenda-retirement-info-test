@@ -178,7 +178,10 @@ export default class AddEditMedia extends Component {
         </div>
         :
         (
-          <EditMedia history={this.props.history} mediaType={this.state.mediaType} mediaTitle={this.state.mediaToUpdate} mediaLink={this.state.mediaURL} returnToMediaHome={this.returnToMediaHome} />
+          <div>
+            <EditMedia history={this.props.history} mediaType={this.state.mediaType} mediaTitle={this.state.mediaToUpdate} mediaLink={this.state.mediaURL} returnToMediaHome={this.returnToMediaHome} />
+            <h1>Look here</h1>
+          </div>
         )
     )
   }
