@@ -90,7 +90,7 @@ export default class AddEditMedia extends Component {
   }
 
   render() {
-    console.log(this.state, 'current state')
+    console.log('on add edit media page')
     return (
       !this.state.mediaToUpdate
         ?
@@ -173,7 +173,7 @@ export default class AddEditMedia extends Component {
                   </div>
                 ))
           }
-          
+
           <Link to="/Admin"><button type="button">Back to Admin Home</button></Link>
         </div>
         :
