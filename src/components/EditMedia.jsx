@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
+import splashScreen from './SplashScreen'
+import SplashScreen from './SplashScreen';
 
 export default class EditMedia extends Component {
   constructor(props) {
@@ -78,7 +80,7 @@ export default class EditMedia extends Component {
       <div>
         {
           !this.props.mediaType && !this.props.mediaTitle
-            ? <h1>No media to edit</h1>
+            ? <SplashScreen />
             :
             <div>
               <h1>{`Edit ${media} "${this.props.mediaTitle}"`}</h1>

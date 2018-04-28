@@ -134,9 +134,18 @@ export default class AdminPortal extends Component {
 
                                 }
                                 <h2>Would you like to add, edit, or delete a company?</h2>
-                                <button className="buttons" type="button" onClick={this.onAdd}>Add Company</button>
-                                <button className="buttons" type="button" onClick={this.onEdit}>Edit Company</button>
-                                <button className="buttons" type="button" onClick={this.onDelete}>Delete Company</button>
+                                <button
+                                    className="buttons"
+                                    type="button"
+                                    onClick={this.onAdd}>Add Company</button>
+                                <button
+                                    className="buttons"
+                                    type="button"
+                                    onClick={this.onEdit}>Edit Company</button>
+                                <button
+                                    className="buttons"
+                                    type="button"
+                                    onClick={this.onDelete}>Delete Company</button>
                                 {
                                     this.state.action === 'edit' || this.state.action === 'delete'
                                         ? (

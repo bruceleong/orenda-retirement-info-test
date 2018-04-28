@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
+import SplashScreen from './SplashScreen';
 
 export default class EditForm extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class EditForm extends Component {
       <div>
         {
           !this.props.company && !this.props.formToUpdate
-            ? <h1>No forms to edit</h1>
+            ? <SplashScreen />
             :
             <div>
               <h1>{`${this.state.company} Edit "${this.state.formToUpdate}"`}</h1>
