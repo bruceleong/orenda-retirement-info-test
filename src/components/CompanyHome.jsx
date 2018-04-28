@@ -7,6 +7,7 @@ export default class CompanyHome extends Component {
     constructor(props) {
         super(props)
         this.state = {}
+        console.log('in company home', localStorage)
     }
 
     componentDidMount() {

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {connect} from 'react-redux'
-import getFormData from '../store'
 
 class Login extends Component {
 
@@ -121,16 +120,4 @@ const styles = {
 
 }
 
-const mapState = (state) => ({
-  user: state.user,
-  forms: state.forms
-})
-const mapDispatch = (dispatch) => () => ({
-  getForms(providerName) {
-    dispatch(getFormData(providerName))
-  },
-  getUsers(clientName) {
-    // dispatch(getUserData(clientName))
-  }
-})
-export default connect(mapState, mapDispatch)(Login);
+export default Login

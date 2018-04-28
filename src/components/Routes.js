@@ -19,7 +19,6 @@ import AppBar from 'material-ui/AppBar'
 
 import News from './News'
 import Forms from './Forms'
-import { getAllCompaniesData } from '../store'
 
 class Routes extends Component {
   constructor() {
@@ -30,10 +29,10 @@ class Routes extends Component {
       authed: false,
     }
   }
-  componentDidMount() {
-    this.props.loadInitialData()
+  // componentDidMount() {
+  //   this.props.loadInitialData()
 
-  }
+  // }
 
   handleChange = (event, logged) => this.setState({ logged: logged })
   handleClose = () => this.setState({ open: false })
@@ -136,22 +135,4 @@ class Routes extends Component {
 
 }
 
-const mapState = (state) => {
-  return {
-    allCompanies: state.allCompanies,
-    selectedCompany: state.company,
-    isLoggedIn: Boolean(state.company)
-  }
-}
-
-
-const mapDispatch = (dispatch) => {
-  return {
-    loadInitialData() {
-      dispatch(getAllCompaniesData())
-    }
-  }
-}
-
-
-export default connect(mapState, mapDispatch)(Routes)
+export default Routes

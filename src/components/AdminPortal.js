@@ -99,7 +99,6 @@ export default class AdminPortal extends Component {
     }
 
     render() {
-        console.log('admin portal')
         return (
             !this.state.selectedCompany
                 ?
