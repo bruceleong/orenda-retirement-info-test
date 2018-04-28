@@ -43,7 +43,7 @@ class Forms extends Component {
               .get()
               .then(providerDoc => {
                   this.setState({ companyData: data.companyData, companyName: data.companyName, /*companyProvider: providerDoc.data().name,*/ companyProviderWebsite: providerWebsite, spd })
-                
+
               })
           })
       })
@@ -78,6 +78,7 @@ class Forms extends Component {
             <br />
             <br />
             <button
+              className="buttons"
               type="button"
               onClick={() => {
                 localStorage.removeItem('company')

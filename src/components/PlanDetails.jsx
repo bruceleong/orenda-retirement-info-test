@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
+import splashScreen from './SplashScreen';
 
 
 class PlanDetails extends Component {
@@ -55,16 +56,14 @@ class PlanDetails extends Component {
                         <div>
                             {
                                 !this.state.companyData
-                                    ? ''
+                                    ? <splashScreen />
                                     :
-                                    <h1>For additional information on your
-                                    <br />
+                                    <h2>For additional information on your
                                         {localStorage.getItem('company')} retirement plan:
-                                    <br />
                                         <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
                                             Click Here
                                         </a>
-                                    </h1>
+                                    </h2>
                             }
                             <button
                                 className="buttons"

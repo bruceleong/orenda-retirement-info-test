@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
+import splashScreen from './SplashScreen'
 
 
 export default class CompanyHome extends Component {
@@ -13,8 +14,6 @@ export default class CompanyHome extends Component {
         this.updateCompanyData()
     }
 
-    //Look Bruce
-
     updateCompanyData = () => {
 
         db.collection('companies').doc(localStorage.getItem('company'))
@@ -24,42 +23,12 @@ export default class CompanyHome extends Component {
         })
     }
 
-
-        // let companyRef = db.collection('companies').doc(localStorage.getItem('company'))
-
-        // companyRef.collection('Forms').doc('formDoc')
-        //     .get()
-        //     .then(doc => {
-        //         let formObj = doc.data(),
-        //             companyData = []
-        //         Object.keys(formObj).forEach(key => {
-        //             if (key) {
-        //                 companyData.push([key, formObj[key]])
-        //             }
-        //         })
-        //         return { companyData, companyName: this.props.company }
-
-        //     })
-        //     .then(data => {
-        //         companyRef
-        //             .get()
-        //             .then(doc => {
-        //                 let spd = doc.data().spd
-        //                 db.collection('providers').doc(doc.data().providerName)
-        //                     .get()
-        //                     .then(providerDoc => {
-        //                         this.setState({ companyData: data.companyData, companyName: data.companyName, companyProvider: providerDoc.data().name, spd })
-        //                     })
-        //             })
-        //     })
-    // }
-
     render() {
         return (
             <div>
                 {
                     !localStorage.getItem('company')
-                        ? 'Wrong Page'
+                        ? <splashScreen />
                         :
                         <div className="page">
                             <h1 style={{marginBottom: '10px'}}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page</h1>
