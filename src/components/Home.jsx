@@ -157,4 +157,9 @@ class Home extends Component {
     }
 }
 
+
+const mapState = ({}) => {}
+const mapDispatch = () => {}
+
+
 export default Home
