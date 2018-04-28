@@ -3,8 +3,12 @@ import { db } from '../config/constants'
 import AddEditCompany from './AddEditCompany'
 import AddEditMedia from './AddEditMedia'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { reRenderRoutes } from '../store'
 
-export default class AdminPortal extends Component {
+
+
+class AdminPortal extends Component {
     constructor() {
         super()
         this.state = {
@@ -181,6 +185,7 @@ export default class AdminPortal extends Component {
                         <button
                             type="button" onClick={() => {
                                 localStorage.removeItem('admin')
+                                this.props.reRoute(this.props.routeBoolean)
                                 this.props.history.push(
                                     '/'
                                 )
@@ -192,3 +197,15 @@ export default class AdminPortal extends Component {
         )
     }
 }
+
+const mapState = ({reroute}) => ({routeBoolean: reroute})
+
+const mapDispatch = (boolean) => (dispatch) => {
+  return {
+    reRoute(){
+      dispatch(reRenderRoutes(boolean))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(AdminPortal)

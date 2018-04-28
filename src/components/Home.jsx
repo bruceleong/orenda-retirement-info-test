@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
+import { connect } from 'react-redux'
+import { reRenderRoutes } from '../store'
+
 
 class Home extends Component {
     constructor(props) {
@@ -7,12 +10,14 @@ class Home extends Component {
         this.state = {
             firstAttempt: true
         }
+        console.log('props', this.props)
     }
 
     componentDidMount() {
         this.getNewsData()
         this.getVideoData()
         this.getAllCompanies()
+        console.log('this.props', this.props)
     }
 
     getVideoData = () => {
@@ -62,6 +67,8 @@ class Home extends Component {
     }
 
     handleSubmit = (evt) => {
+        console.log('about to reRoute')
+
         evt.preventDefault()
         this.props.history.push(`/companyHome`)
     }
@@ -74,8 +81,11 @@ class Home extends Component {
             this.setState({ firstAttempt: false })
 
         } else {
+            console.log('in the else')
             localStorage.setItem('company', this.state.allCompanies[idx])
+            this.props.reRoute(!this.props.routeBoolean)
             this.props.history.push(`/companyHome`)
+
         }
     }
 
@@ -107,6 +117,7 @@ class Home extends Component {
                             type="button"
                             onClick={() => {
                                 localStorage.removeItem('company')
+                                this.props.reRoute(!this.props.routeBoolean)
                                 this.props.history.push(
                                     '/'
                                 )
@@ -157,9 +168,14 @@ class Home extends Component {
     }
 }
 
+const mapState = ({routeBoolean}) => ({routeBoolean})
 
-const mapState = ({}) => {}
-const mapDispatch = () => {}
+const mapDispatch = (boolean) => (dispatch) => {
+  return {
+    reRoute(){
+      dispatch(reRenderRoutes(boolean))
+    }
+  }
+}
 
-
-export default Home
+export default connect(mapState, mapDispatch)(Home)

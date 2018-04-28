@@ -13,6 +13,8 @@ import { connect } from 'react-redux'
 import history from './history'
 import AppDrawerLoggedOut from './AppDrawerLoggedOut'
 import AppDrawerLoggedIn from './AppDrawerLoggedIn'
+import { reRenderRoutes } from '../store'
+
 
 import AppBar from 'material-ui/AppBar'
 
@@ -22,23 +24,24 @@ import Forms from './Forms'
 
 class Routes extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       logged: true,
       open: false,
       authed: false,
     }
   }
-  // componentDidMount() {
-  //   this.props.loadInitialData()
+  componentDidMount() {
+    console.log('mounted routes localStorage', localStorage, this.props)
 
-  // }
+  }
 
   handleChange = (event, logged) => this.setState({ logged: logged })
   handleClose = () => this.setState({ open: false })
   handleToggle = () => this.setState({ open: !this.state.open })
 
   render() {
+
 
     return (
       <Router history={history}>
@@ -56,6 +59,7 @@ class Routes extends Component {
                 handleToggle={this.handleToggle}
               />
           }
+          {this.props.routeBoolean ? console.log('A in routes.js localStorage', localStorage) : console.log('B in routes.js localStorage', localStorage)}
           <AppBar
             title="Side By Side Financials"
             onLeftIconButtonClick={this.handleToggle}
@@ -135,4 +139,6 @@ class Routes extends Component {
 
 }
 
-export default Routes
+const mapState = ({routeBoolean}) => ({routeBoolean})
+
+export default connect(mapState)(Routes)

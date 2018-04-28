@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
 import AdminPortal from './AdminPortal'
+import { connect } from 'react-redux'
+import { reRenderRoutes } from '../store'
 
-export default class AdminLogin extends Component {
+
+class AdminLogin extends Component {
     constructor() {
         super()
         this.state = {
@@ -21,8 +24,10 @@ export default class AdminLogin extends Component {
             .get()
             .then(doc => {
                 if (doc.data()[un] === pw) {
+                    console.log('about to reroute')
                     this.setState({ adminLoggedIn: true })
                     localStorage.setItem('admin', 'true')
+                    this.props.reRoute(!this.props.routeBoolean)
                     this.props.history.push('/admin')
                 } else {
                     this.setState({ firstAttempt: false })
@@ -53,3 +58,17 @@ export default class AdminLogin extends Component {
         )
     }
 }
+
+
+const mapState = ({routeBoolean}) => ({routeBoolean})
+
+const mapDispatch = (boolean) => (dispatch) => {
+  return {
+    reRoute(){
+      dispatch(reRenderRoutes(boolean))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(AdminLogin)
+
