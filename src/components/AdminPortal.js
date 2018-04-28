@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { db } from '../config/constants'
 import AddEditCompany from './AddEditCompany'
 import AddEditMedia from './AddEditMedia'
+import SplashScreen from './SplashScreen'
 import { Link } from 'react-router-dom'
 
 export default class AdminPortal extends Component {
@@ -9,7 +10,8 @@ export default class AdminPortal extends Component {
         super()
         this.state = {
             allCompanies: [],
-            showEditMedia: false
+            showEditMedia: false,
+            loading: true
         }
     }
 
@@ -50,10 +52,11 @@ export default class AdminPortal extends Component {
         this.getCompanies()
         this.getNewsData()
         this.getVideoData()
+        this.setState({ loading: false })
     }
 
     showEditMediaPage = () => {
-        this.setState({showEditMedia: !this.state.showEditMedia})
+        this.setState({ showEditMedia: !this.state.showEditMedia })
     }
 
     getCompanies = () => {
@@ -99,8 +102,10 @@ export default class AdminPortal extends Component {
     }
 
     render() {
-        console.log('admin portal')
-        return (
+        console.log(this.state)
+        return this.state.loading === true ? (
+            <SplashScreen /> )
+            : (
             !this.state.selectedCompany
                 ?
                 (
@@ -114,7 +119,7 @@ export default class AdminPortal extends Component {
                                 </div>
                                 :
                                 <div>
-                                    <h3>Currently there are: {this.state.allCompanies.length} companies</h3>
+                                    <h3>Currently there are: {!this.state.allCompanies.length ? <SplashScreen /> : this.state.allCompanies.length} companies</h3>
                                 </div>
 
                         }
@@ -155,9 +160,8 @@ export default class AdminPortal extends Component {
                                     </div>
                                     :
                                     <div>
-                                        <h3>{this.state.articleData.length} articles</h3>
+                                        <h3>{!this.state.articleData.length ? <SplashScreen /> : this.state.articleData.length} articles</h3>
                                     </div>
-
                             }
                             {
                                 !this.state.videoData
@@ -167,7 +171,7 @@ export default class AdminPortal extends Component {
                                     </div>
                                     :
                                     <div>
-                                        <h3>{this.state.videoData.length} videos</h3>
+                                        <h3>{!this.state.videoData.length ? <SplashScreen /> : this.state.videoData.length} videos</h3>
                                     </div>
 
                             }
