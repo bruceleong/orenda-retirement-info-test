@@ -104,96 +104,101 @@ export default class AdminPortal extends Component {
     render() {
         console.log(this.state)
         return this.state.loading === true ? (
-            <SplashScreen /> )
+            <SplashScreen />)
             : (
-            !this.state.selectedCompany
-                ?
-                (
-                    <div>
-                        <h1>Welcome Admin</h1>
-                        {
-                            !this.state.allCompanies
-                                ?
-                                <div>
-                                    <h3>Currently there are no companies</h3>
-                                </div>
-                                :
-                                <div>
-                                    <h3>Currently there are: {!this.state.allCompanies.length ? <SplashScreen /> : this.state.allCompanies.length} companies</h3>
-                                </div>
-
-                        }
-                        <h1>Would you like to add, edit, or delete a company?</h1>
-                        <button type="button" onClick={this.onAdd}>Add Company</button>
-                        <br />
-                        <br />
-                        <button type="button" onClick={this.onEdit}>Edit Company</button>
-                        <br />
-                        <br />
-                        <button type="button" onClick={this.onDelete}>Delete Company</button>
-                        <br />
-                        <br />
-                        {
-                            this.state.action === 'edit' || this.state.action === 'delete'
-                                ? (
-                                    <div>
-                                        <h1>What Company would you like to {this.state.action}?</h1>
-                                        <form onSubmit={this.state.action === 'edit' ? this.handleSubmit : this.handleDelete}>
-                                            <select name="selectCompany">
-                                                {this.state.allCompanies.map(company => (
-                                                    <option key={company} value={company}>{company}</option>
-                                                ))}
-                                            </select>
-                                            <input type="submit" value={this.state.action} />
-                                        </form>
-                                    </div>
-                                )
-                                : null
-                        }
+                !this.state.selectedCompany
+                    ?
+                    (
                         <div>
-                            <h2>Current Media: </h2>
+                            <h1>Welcome Admin</h1>
                             {
-                                !this.state.articleData
+                                !this.state.allCompanies
                                     ?
                                     <div>
-                                        <h3>no articles</h3>
+                                        <h3>Currently there are no companies</h3>
                                     </div>
                                     :
                                     <div>
-                                        <h3>{!this.state.articleData.length ? <SplashScreen /> : this.state.articleData.length} articles</h3>
-                                    </div>
-                            }
-                            {
-                                !this.state.videoData
-                                    ?
-                                    <div>
-                                        <h3>no videos</h3>
-                                    </div>
-                                    :
-                                    <div>
-                                        <h3>{!this.state.videoData.length ? <SplashScreen /> : this.state.videoData.length} videos</h3>
+                                        {
+                                            !this.state.allCompanies.length
+                                                ? <SplashScreen />
+                                                :
+                                                <h3>Currently there are: {this.state.allCompanies.length} companies</h3>
+                                        }
                                     </div>
 
                             }
-                            <button type="button" onClick={this.showEditMediaPage}>Edit Media</button>
+                            <h1>Would you like to add, edit, or delete a company?</h1>
+                            <button type="button" onClick={this.onAdd}>Add Company</button>
+                            <br />
+                            <br />
+                            <button type="button" onClick={this.onEdit}>Edit Company</button>
+                            <br />
+                            <br />
+                            <button type="button" onClick={this.onDelete}>Delete Company</button>
+                            <br />
+                            <br />
                             {
-                                this.state.showEditMedia &&
-                                <AddEditMedia />
+                                this.state.action === 'edit' || this.state.action === 'delete'
+                                    ? (
+                                        <div>
+                                            <h1>What Company would you like to {this.state.action}?</h1>
+                                            <form onSubmit={this.state.action === 'edit' ? this.handleSubmit : this.handleDelete}>
+                                                <select name="selectCompany">
+                                                    {this.state.allCompanies.map(company => (
+                                                        <option key={company} value={company}>{company}</option>
+                                                    ))}
+                                                </select>
+                                                <input type="submit" value={this.state.action} />
+                                            </form>
+                                        </div>
+                                    )
+                                    : null
                             }
-                        </div>
-                        <br />
-                        <br />
-                        <button
-                            type="button" onClick={() => {
-                                localStorage.removeItem('admin')
-                                this.props.history.push(
-                                    '/'
-                                )
-                            }}>Logout of Admin
+                            <div>
+                                <h2>Current Media: </h2>
+                                {
+                                    !this.state.articleData
+                                        ?
+                                        <div>
+                                            <h3>no articles</h3>
+                                        </div>
+                                        :
+                                        <div>
+                                            <h3>{this.state.articleData.length} articles</h3>
+                                        </div>
+                                }
+                                {
+                                    !this.state.videoData
+                                        ?
+                                        <div>
+                                            <h3>no videos</h3>
+                                        </div>
+                                        :
+                                        <div>
+                                            <h3>{this.state.videoData.length} videos</h3>
+                                        </div>
+
+                                }
+                                <button type="button" onClick={this.showEditMediaPage}>Edit Media</button>
+                                {
+                                    this.state.showEditMedia &&
+                                    <AddEditMedia />
+                                }
+                            </div>
+                            <br />
+                            <br />
+                            <button
+                                type="button" onClick={() => {
+                                    localStorage.removeItem('admin')
+                                    this.props.history.push(
+                                        '/'
+                                    )
+                                }}>Logout of Admin
                         </button>
-                    </div>
-                )
-                : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} history={this.props.history} adding={this.state.adding} />)
-        )
+                        </div>
+                    )
+                    : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} history={this.props.history} adding={this.state.adding} />)
+            )
     }
 }
