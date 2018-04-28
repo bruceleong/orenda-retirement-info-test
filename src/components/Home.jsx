@@ -67,12 +67,11 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="clientContent">
-                <h1>Welcome to your Employee Resource</h1>
-                <h2>The Side by Side Financials Perspective</h2>
-                <li><strong>Approaching retirement:</strong> Compare your estimated expenses in retirement against your current expenses. Plan for essential, discretionary, and emergency expenses.</li>
-                <li><strong>Living well into retirement:</strong> Combine dependable income for everyday expenses with other income to cover unexpected costs.</li>
-                <br />
+            <div>
+                <div className="page">
+                    <h1>Welcome to your Employee Resource</h1>
+                    <h2>by Side by Side Financials</h2>
+                    <p>On "Employee Resource", you can access your 401(k) account and get comprehensive information about your retirement planning. Retirement Planning is an important phase in your life. As you continue your working career, we are here to provide you the tools and education you need to help reach your retirement goals.</p>
                 <div>
                     {!localStorage.getItem('company')
                         ?
@@ -90,6 +89,7 @@ class Home extends Component {
                         </div>
                         :
                         <button
+                            className="buttons"
                             type="button"
                             onClick={() => {
                                 localStorage.removeItem('company')
@@ -100,8 +100,7 @@ class Home extends Component {
                         </button>
                     }
                 </div>
-                <br />
-                <br />
+                </div>
                 <h1>Our Favorite Videos</h1>
                 <div className="videos">
                     {

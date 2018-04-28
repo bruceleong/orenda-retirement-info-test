@@ -38,7 +38,7 @@ class PlanDetails extends Component {
                         db.collection('providers').doc(doc.data().providerName)
                             .get()
                             .then(providerDoc => {
-                                
+
                                 this.setState({ companyData: data.companyData, companyName: data.companyName, /*companyProvider: providerDoc.data().name,*/ companyProviderWebsite: providerWebsite, spd })
                             })
                     })
@@ -66,12 +66,16 @@ class PlanDetails extends Component {
                                         </a>
                                     </h1>
                             }
-                            <button onClick={() => {
+                            <button
+                                className="buttons"
+                                type="button"
+                                onClick={() => {
                                 localStorage.removeItem('company')
                                 this.props.history.push(
                                     '/'
                                 )
-                            }}>Logout</button>
+                            }}>Logout
+                            </button>
                         </div>
                 }
             </div>

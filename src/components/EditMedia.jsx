@@ -106,14 +106,27 @@ export default class EditMedia extends Component {
               </form>
             </div>
         }
-        <button type="button" onClick={() => { this.props.returnToMediaHome() }}>Back to Media Home</button>
-        <Link to="/Admin"><button type="button">Back to Admin Home</button></Link>
-        <button onClick={() => {
-          localStorage.removeItem('admin')
-          this.props.history.push(
-            '/'
-          )
-        }}>Logout of Admin</button>
+        <button
+          className="buttons"
+          type="button"
+          onClick={() => { this.props.returnToMediaHome() }}>Back to Media Home
+        </button>
+        <Link to="/Admin">
+          <button
+            className="buttons"
+            type="button">Back to Admin Home
+          </button>
+        </Link>
+        <button
+          className="buttons"
+          type="button"
+          onClick={() => {
+            localStorage.removeItem('admin')
+            this.props.history.push(
+              '/'
+            )
+          }}>Logout of Admin
+        </button>
       </div>
     )
   }
