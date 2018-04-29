@@ -51,8 +51,8 @@ export default class AppDrawerLoggedIn extends Component {
                 <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText={`${localStorage.getItem('company')} Home`} onClick={this.props.handleClose} />
                 </Link>
-                <Link to="/PlanDetails" style={{ textDecoration: 'none' }}>
-                  <ListItem primaryText="Plan Details" onClick={this.props.handleClose} />
+                <Link to="/YourAccount" style={{ textDecoration: 'none' }}>
+                  <ListItem primaryText="Your Account" onClick={this.props.handleClose} />
                 </Link>
                 <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Plan Documents" onClick={this.props.handleClose} />

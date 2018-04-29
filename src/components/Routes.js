@@ -85,12 +85,8 @@ class Routes extends Component {
                 : (
                   <div>
                     <Route
-                      exact path="/PlanDetails"
+                      exact path="/YourAccount"
                       component={PlanDetails}
-                    />
-                    <Route
-                      exact path="/AudioInteriors"
-                      component={Transamerica}
                     />
                     <Route
                       exact path="/Norms"
@@ -118,7 +114,7 @@ class Routes extends Component {
             {
               !localStorage.getItem('admin')
                 ? null
-                : (   
+                : (
                   <div>
                     <Route
                       exact path="/AddEditMedia"
