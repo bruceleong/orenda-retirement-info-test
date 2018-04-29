@@ -41,7 +41,7 @@ class PlanDetails extends Component {
                             .get()
                             .then(providerDoc => {
 
-                                this.setState({ companyData: data.companyData, companyName: data.companyName, /*companyProvider: providerDoc.data().name,*/ companyProviderWebsite: providerWebsite, spd })
+                                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProviderWebsite: providerWebsite, spd })
                             })
                     })
             })
@@ -60,9 +60,9 @@ class PlanDetails extends Component {
                                     ? <splashScreen />
                                     :
                                     <div className="page">
-                                        <h2>For additional information on your
-                                        {localStorage.getItem('company')} retirement plan:
-                                        <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
+                                        <h2>{`For additional information on your
+                                        ${localStorage.getItem('company')} retirement plan:
+                            `}<a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
                                                 Click Here
                                         </a>
                                         </h2>
