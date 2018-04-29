@@ -76,10 +76,10 @@ class Home extends Component {
                     <h1>Welcome to your Employee Resource</h1>
                     <h2>by Side by Side Financials</h2>
                     <p>On "Employee Resource", you can access your 401(k) account and get comprehensive information about your retirement planning. Retirement Planning is an important phase in your life. As you continue your working career, we are here to provide you the tools and education you need to help reach your retirement goals.</p>
-                    <div className="page">
+                    <div>
                         {!localStorage.getItem('company')
                             ?
-                            <div>
+                            <div className="page">
                                 <h4>Enter your company name for more details on your retirement plan:</h4>
                                 <form onSubmit={this.handleInput}>
                                     <input type="text" name="inputField" />
@@ -92,16 +92,19 @@ class Home extends Component {
                                 }
                             </div>
                             :
-                            <button
-                                className="buttons"
-                                type="button"
-                                onClick={() => {
-                                    localStorage.removeItem('company')
-                                    this.props.history.push(
-                                        '/'
-                                    )
-                                }}>Logout
-                        </button>
+                            <div className="page">
+                                <h4>You are currently logged in</h4>
+                                <button
+                                    className="buttons"
+                                    type="button"
+                                    onClick={() => {
+                                        localStorage.removeItem('company')
+                                        this.props.history.push(
+                                            '/'
+                                        )
+                                    }}>Logout
+                                </button>
+                            </div>
                         }
                     </div>
                 </div>

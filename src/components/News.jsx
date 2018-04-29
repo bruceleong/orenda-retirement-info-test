@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import SplashScreen from './SplashScreen'
 
@@ -15,14 +14,6 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://newsapi.org/v2/top-headlines?sources=bloomberg&apiKey=3a5dd10ce9054e6ba869313942e848f0')
-      .then(res => res.data)
-      .then(news => {
-        this.setState(news)
-      })
-      .catch(error => {
-        console.log(error)
-      })
     this.getNewsData()
     this.getVideoData()
   }
@@ -56,7 +47,6 @@ export default class News extends Component {
   }
 
   render() {
-    console.log(this.state, 'current state')
     return this.state.loading === true
       ? (<SplashScreen />)
       : (
@@ -99,28 +89,6 @@ export default class News extends Component {
 
             }
           </div>
-          <h1>Latest Financial News</h1>
-          <div className="articles">
-            {
-              this.state.articles === 0
-                ? <h2>There is no content</h2>
-                : this.state.articles.map(article => {
-                  return (
-                    <div key={article.title} className="article">
-                      <div className="articleContainer">
-                        <a href={article.url}>
-                          <h4><b>{article.title}</b></h4>
-                        </a>
-                        <a href={article.url}>
-                          <p><strong>Read Article Here</strong></p>
-                        </a>
-                      </div>
-                    </div>
-                  )
-                })
-            }
-          </div>
-          <br />
           <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
             <button
               className="buttons"

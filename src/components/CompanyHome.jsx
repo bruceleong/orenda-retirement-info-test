@@ -15,12 +15,11 @@ export default class CompanyHome extends Component {
     }
 
     updateCompanyData = () => {
-
         db.collection('companies').doc(localStorage.getItem('company'))
-        .get()
-        .then(doc => {
-            this.setState({ spd: doc.data().spd })
-        })
+            .get()
+            .then(doc => {
+                this.setState({ spd: doc.data().spd })
+            })
     }
 
     render() {
@@ -31,7 +30,7 @@ export default class CompanyHome extends Component {
                         ? <splashScreen />
                         :
                         <div className="page">
-                            <h1 style={{marginBottom: '10px'}}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page</h1>
+                            <h1 style={{ marginBottom: '10px' }}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page</h1>
                             <p>On this website you can get more information on forms, notices and etc</p>
                             <p>Click on the navigation on the top left or click below to go to each page</p>
                             <Link to="/YourAccount" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Your Account</Link>

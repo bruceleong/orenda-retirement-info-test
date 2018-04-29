@@ -30,7 +30,6 @@ export default class AdminPortal extends Component {
     }
 
     onDelete = () => {
-        //this.setState({ edit: true })
         this.setState({ action: 'delete' })
     }
 
