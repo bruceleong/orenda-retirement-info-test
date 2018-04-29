@@ -102,7 +102,6 @@ export default class AdminPortal extends Component {
     }
 
     render() {
-        console.log(this.state, 'current state')
         return this.state.loading === true
             ? (<SplashScreen />)
             : (
@@ -118,7 +117,7 @@ export default class AdminPortal extends Component {
                                 <h2> Company Infomation: </h2>
                                 <p>Here you can add/edit company information</p>
                                 {
-                                    !this.state.allCompanies
+                                    this.state.loading === true
                                         ? <SplashScreen />
                                         :
                                         <div>
@@ -166,7 +165,7 @@ export default class AdminPortal extends Component {
                                 <h2>Media Information: </h2>
                                 <p>Here you can add/edit media information (news/videos)</p>
                                 {
-                                    !this.state.articleData
+                                    this.state.loading === true
                                         ? <SplashScreen />
                                         :
                                         <div>
@@ -179,7 +178,7 @@ export default class AdminPortal extends Component {
                                         </div>
                                 }
                                 {
-                                    !this.state.videoData
+                                    this.state.loading === true
                                         ? <SplashScreen />
                                         :
                                         <div>
