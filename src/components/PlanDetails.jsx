@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
+import { Link } from 'react-router-dom'
+import splashScreen from './SplashScreen'
 
 
 class PlanDetails extends Component {
@@ -38,8 +40,7 @@ class PlanDetails extends Component {
                         db.collection('providers').doc(doc.data().providerName)
                             .get()
                             .then(providerDoc => {
-                                
-                                this.setState({ companyData: data.companyData, companyName: data.companyName, /*companyProvider: providerDoc.data().name,*/ companyProviderWebsite: providerWebsite, spd })
+                                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProviderWebsite: providerWebsite, spd })
                             })
                     })
             })
@@ -54,45 +55,43 @@ class PlanDetails extends Component {
                         :
                         <div>
                             {
-                                !this.state.companyData
-                                    ? ''
+                                this.state.loading === true
+                                    ? <splashScreen />
                                     :
-                                    <h1>For additional information on your
-                                    <br />
-                                        {localStorage.getItem('company')} retirement plan:
-                                    <br />
-                                        <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
-                                            Click Here
+                                    <div className="page">
+                                        <h2>{`For additional information on your
+                                        ${localStorage.getItem('company')} retirement plan:
+                            `}<a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
+                                                Click Here
                                         </a>
-                                    </h1>
+                                        </h2>
+                                    </div>
                             }
-                            <button onClick={() => {
-                                localStorage.removeItem('company')
-                                this.props.history.push(
-                                    '/'
-                                )
-                            }}>Logout</button>
+                            <br />
+                            <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
+                                <button
+                                    className="buttons"
+                                    type="button">
+                                    Back to {localStorage.getItem('company')} Home
+                                </button>
+                            </Link>
+                            <br />
+                            <button
+                                className="buttons"
+                                type="button"
+                                onClick={() => {
+                                    localStorage.removeItem('company')
+                                    this.props.history.push(
+                                        '/'
+                                    )
+                                }}>
+                                Logout
+                            </button>
                         </div>
                 }
             </div>
         )
     }
 }
-
-// const mapState = (state) => {
-//     return {
-//         allCompanies: state.allCompanies,
-//         company: state.company
-//     }
-// }
-
-// const mapDispatch = (dispatch) => ({
-//     loadCompanyData(company) {
-//         console.log('typeof', typeof getCompanyData)
-//         dispatch(getCompanyData(company))
-//     }
-// })
-
-// export default CompanyHome
 
 export default PlanDetails

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
+import splashScreen from './SplashScreen'
+import SplashScreen from './SplashScreen';
 
 export default class EditMedia extends Component {
   constructor(props) {
@@ -78,7 +80,7 @@ export default class EditMedia extends Component {
       <div>
         {
           !this.props.mediaType && !this.props.mediaTitle
-            ? <h1>No media to edit</h1>
+            ? <SplashScreen />
             :
             <div>
               <h1>{`Edit ${media} "${this.props.mediaTitle}"`}</h1>
@@ -106,14 +108,27 @@ export default class EditMedia extends Component {
               </form>
             </div>
         }
-        <button type="button" onClick={() => { this.props.returnToMediaHome() }}>Back to Media Home</button>
-        <Link to="/Admin"><button type="button">Back to Admin Home</button></Link>
-        <button onClick={() => {
-          localStorage.removeItem('admin')
-          this.props.history.push(
-            '/'
-          )
-        }}>Logout of Admin</button>
+        <button
+          className="buttons"
+          type="button"
+          onClick={() => { this.props.returnToMediaHome() }}>Back to Media Home
+        </button>
+        <Link to="/Admin">
+          <button
+            className="buttons"
+            type="button">Back to Admin Home
+          </button>
+        </Link>
+        <button
+          className="buttons"
+          type="button"
+          onClick={() => {
+            localStorage.removeItem('admin')
+            this.props.history.push(
+              '/'
+            )
+          }}>Logout of Admin
+        </button>
       </div>
     )
   }

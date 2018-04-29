@@ -32,7 +32,6 @@ class Routes extends Component {
   }
   componentDidMount() {
     this.props.loadInitialData()
-
   }
 
   handleChange = (event, logged) => this.setState({ logged: logged })
@@ -85,12 +84,8 @@ class Routes extends Component {
                 : (
                   <div>
                     <Route
-                      exact path="/PlanDetails"
+                      exact path="/YourAccount"
                       component={PlanDetails}
-                    />
-                    <Route
-                      exact path="/AudioInteriors"
-                      component={Transamerica}
                     />
                     <Route
                       exact path="/Norms"
@@ -118,7 +113,7 @@ class Routes extends Component {
             {
               !localStorage.getItem('admin')
                 ? null
-                : (   
+                : (
                   <div>
                     <Route
                       exact path="/AddEditMedia"
@@ -133,7 +128,6 @@ class Routes extends Component {
       </Router>
     )
   }
-
 }
 
 const mapState = (state) => {

@@ -6,14 +6,27 @@ body {
   border: lawngreen;
 }
 
-.clientContent {
-  margin: 5vw;
+.buttons {
+  margin: 2vh;
+}
+
+.page {
+  border-radius: 1vw;
+  box-shadow: 0px 0px 1.4vw .2vw white;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(140, 191, 132);
+  margin: 2vh 2vw;
+  padding: 2vh 2vw;
 }
 
 #menu {
   top: 2vh;
   left: 3vw;
   width: 10%;
+}
+
+.splashScreen {
+  margin: 2vh;
 }
 
 .articles {

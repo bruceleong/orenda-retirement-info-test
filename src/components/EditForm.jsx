@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
+import SplashScreen from './SplashScreen';
 
 export default class EditForm extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class EditForm extends Component {
       <div>
         {
           !this.props.company && !this.props.formToUpdate
-            ? <h1>No forms to edit</h1>
+            ? <SplashScreen />
             :
             <div>
               <h1>{`${this.state.company} Edit "${this.state.formToUpdate}"`}</h1>
@@ -76,14 +77,26 @@ export default class EditForm extends Component {
               </form>
             </div>
         }
-        <button type="button" onClick={() => { this.props.returnToSelectedCompany(this.props.company); this.props.removeFormToUpdate() }}>Back to Company Home</button>
-        <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
-        <button onClick={() => {
-          localStorage.removeItem('admin')
-          this.props.history.push(
-            '/'
-          )
-        }}>Logout of Admin</button>
+        <button
+          className="buttons"
+          type="button"
+          onClick={() => { this.props.returnToSelectedCompany(this.props.company); this.props.removeFormToUpdate() }}>Back to Company Home
+        </button>
+        <button
+          className="buttons"
+          type="button"
+          onClick={() => { this.props.returnLink() }}>Back to Admin Home
+        </button>
+        <button
+          className="buttons"
+          type="button"
+          onClick={() => {
+            localStorage.removeItem('admin')
+            this.props.history.push(
+              '/'
+            )
+          }}>Logout of Admin
+        </button>
       </div>
     )
   }

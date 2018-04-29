@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
 import firebase from 'firebase'
 import EditMedia from './EditMedia'
+import SplashScreen from './SplashScreen';
 
 export default class AddEditMedia extends Component {
   constructor(props) {
-    console.log('in AddEditMedia')
     super(props)
     this.state = {
-      mediaType: 'article'
+      mediaType: 'article',
+      articleData: [],
+      videoData: [],
+      loading: true
     }
   }
 
@@ -46,7 +49,7 @@ export default class AddEditMedia extends Component {
             videoData.push([key, videos[key]])
           }
         })
-        this.setState({ videoData })
+        this.setState({ videoData, loading: false })
       })
   }
 
@@ -90,7 +93,6 @@ export default class AddEditMedia extends Component {
   }
 
   render() {
-    console.log('on add edit media page')
     return (
       !this.state.mediaToUpdate
         ?
@@ -126,55 +128,68 @@ export default class AddEditMedia extends Component {
           </form>
           <h2>Articles</h2>
           {
-            !this.state.articleData
-              ? <h3>There are no articles</h3>
-              : this.state.articleData.map(ele => (
-                <div key={ele[0]}>
-                  <p>Title: {ele[0]}</p>
-                  <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
-                  <button
-                    type="button"
-                    onClick={() => this.editForm('article', ele[0], ele[1])}>Edit Link
-                </button>
-                  <button
-                    type="button"
-                    onClick={
-                      () => {
-                        db.collection('articles').doc('newsArticles').update({
-                          [ele[0]]: firebase.firestore.FieldValue.delete()
-                        })
-                        this.getNewsData()
-                      }
-                    }>Delete Article
-                </button>
-                </div>
-              ))
+            this.state.loading === true
+              ? <SplashScreen />
+              :
+              <div>
+                {
+                  this.state.articleData.length === 0
+                    ? <h3>There are no articles</h3>
+                    : this.state.articleData.map(ele => (
+                      <div key={ele[0]}>
+                        <p>Title: {ele[0]}</p>
+                        <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
+                        <button
+                          type="button"
+                          onClick={() => this.editForm('article', ele[0], ele[1])}>Edit Link
+                        </button>
+                        <button
+                          type="button"
+                          onClick={
+                            () => {
+                              db.collection('articles').doc('newsArticles').update({
+                                [ele[0]]: firebase.firestore.FieldValue.delete()
+                              })
+                              this.getNewsData()
+                            }
+                          }>Delete Article
+                        </button>
+                      </div>
+                    ))
+                }
+              </div>
           }
           <h2>Videos</h2>
           {
-            !this.state.videoData
-              ? <h3>There are no videos</h3>
-              : this.state.videoData.map(ele => (
-                  <div key={ele[0]} style={{marginBottom: "60px"}}>
-                    <p>Title: {ele[0]}</p>
-                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
-                    <button type="button" onClick={() => this.editForm('video', ele[0], ele[1])}>Edit Link</button>
-                    <button
-                      type="button"
-                      onClick={
-                        () => {
-                          db.collection('videos').doc('videoData').update({
-                            [ele[0]]: firebase.firestore.FieldValue.delete()
-                          })
-                          this.getVideoData()
-                        }
-                      }>Delete Video
-                    </button>
-                  </div>
-                ))
+            this.state.loading === true
+              ? <SplashScreen />
+              :
+              <div>
+                {
+                  this.state.videoData.length === 0
+                    ? <h3>There are no videos</h3>
+                    :
+                    this.state.videoData.map(ele => (
+                      <div key={ele[0]} style={{ marginBottom: "60px" }}>
+                        <p>Title: {ele[0]}</p>
+                        <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
+                        <button type="button" onClick={() => this.editForm('video', ele[0], ele[1])}>Edit Link</button>
+                        <button
+                          type="button"
+                          onClick={
+                            () => {
+                              db.collection('videos').doc('videoData').update({
+                                [ele[0]]: firebase.firestore.FieldValue.delete()
+                              })
+                              this.getVideoData()
+                            }
+                          }>Delete Video
+                        </button>
+                      </div>
+                    ))
+                }
+              </div>
           }
-
-          <Link to="/Admin"><button type="button">Back to Admin Home</button></Link>
         </div>
         :
         (

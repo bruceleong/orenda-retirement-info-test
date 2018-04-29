@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
 import { Link } from 'react-router-dom'
+import SplashScreen from './SplashScreen'
 
 class Forms extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class Forms extends Component {
       companyProvider: '',
       companyData: [],
       spd: '',
-      companyProviderWebsite: ''
+      companyProviderWebsite: '',
+      loading: true
     }
   }
 
@@ -42,8 +44,8 @@ class Forms extends Component {
             db.collection('providers').doc(doc.data().providerName)
               .get()
               .then(providerDoc => {
-                  this.setState({ companyData: data.companyData, companyName: data.companyName, /*companyProvider: providerDoc.data().name,*/ companyProviderWebsite: providerWebsite, spd })
-                
+                this.setState({ companyData: data.companyData, companyName: data.companyName, /*companyProvider: providerDoc.data().name,*/ companyProviderWebsite: providerWebsite, spd, loading: false })
+
               })
           })
       })
@@ -51,46 +53,48 @@ class Forms extends Component {
 
 
   render() {
-    return (
-      <div>
-        <div>
-          <h1>{this.state.companyName} Forms & Notices</h1>
-          <h2>Here you can find forms for commonly requested items</h2>
-          <p>To view and download the form, click on the links</p>
+    return this.state.loading === true
+      ? (<SplashScreen />)
+      : (
+        <div className="page">
           <div>
-            {
-              this.state.companyData.map(form => {
-                return (
-                  <div key={form[0]}>
-                    <a target="_blank" rel="noopener noreferrer" href={form[1]} style={{ textDecoration: 'none' }}><li>{form[0]}</li></a>
-                  </div>
-                )
-              })
-            }
-            <br />
-            <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
-              Back to {this.state.companyName} Home
-            </Link>
-            <br />
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              Back to SBSF Home
-            </Link>
-            <br />
-            <br />
-            <button
-              type="button"
-              onClick={() => {
-                localStorage.removeItem('company')
-                this.props.history.push(
-                  '/'
-                )
-              }}>
-              Logout
-            </button>
+            <h1>{this.state.companyName} Forms & Notices</h1>
+            <h2>Here you can find forms for commonly requested items</h2>
+            <p>To view and download the form, click on the links</p>
+            <div>
+              {
+                this.state.companyData.map(form => {
+                  return (
+                    <div key={form[0]}>
+                      <a target="_blank" rel="noopener noreferrer" href={form[1]} style={{ textDecoration: 'none' }}><li>{form[0]}</li></a>
+                    </div>
+                  )
+                })
+              }
+              <br />
+              <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
+                <button
+                  className="buttons"
+                  type="button">
+                Back to {this.state.companyName} Home
+                </button>
+              </Link>
+              <br />
+              <button
+                className="buttons"
+                type="button"
+                onClick={() => {
+                  localStorage.removeItem('company')
+                  this.props.history.push(
+                    '/'
+                  )
+                }}>
+                Logout
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
   }
 }
 
