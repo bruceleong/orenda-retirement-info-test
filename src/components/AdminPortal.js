@@ -102,6 +102,7 @@ export default class AdminPortal extends Component {
     }
 
     render() {
+        console.log(this.state, 'current state')
         return this.state.loading === true
             ? (<SplashScreen />)
             : (
@@ -118,15 +119,12 @@ export default class AdminPortal extends Component {
                                 <p>Here you can add/edit company information</p>
                                 {
                                     !this.state.allCompanies
-                                        ?
-                                        <div>
-                                            <h3>Currently there are no companies</h3>
-                                        </div>
+                                        ? <SplashScreen />
                                         :
                                         <div>
                                             {
-                                                !this.state.allCompanies.length
-                                                    ? <SplashScreen />
+                                                this.state.allCompanies.length === 0
+                                                    ? <h3>Currently there are: no companies</h3>
                                                     :
                                                     <h3>Currently there are: {this.state.allCompanies.length} companies</h3>
                                             }
@@ -169,15 +167,12 @@ export default class AdminPortal extends Component {
                                 <p>Here you can add/edit media information (news/videos)</p>
                                 {
                                     !this.state.articleData
-                                        ?
-                                        <div>
-                                            <h3>Current there are no videos</h3>
-                                        </div>
+                                        ? <SplashScreen />
                                         :
                                         <div>
                                             {
-                                                !this.state.articleData.length
-                                                    ? <SplashScreen />
+                                                this.state.articleData.length === 0
+                                                    ? <h3>Currently there are: no articles</h3>
                                                     :
                                                     <h3>Currently there are: {this.state.articleData.length} articles</h3>
                                             }
@@ -185,15 +180,12 @@ export default class AdminPortal extends Component {
                                 }
                                 {
                                     !this.state.videoData
-                                        ?
-                                        <div>
-                                            <h3>Currently there are: no videos</h3>
-                                        </div>
+                                        ? <SplashScreen />
                                         :
                                         <div>
                                             {
-                                                !this.state.videoData.length
-                                                    ? <SplashScreen />
+                                                this.state.videoData.length === 0
+                                                    ? <h3>Currently there are: no videos</h3>
                                                     :
                                                     <h3>Currently there are: {this.state.videoData.length} articles</h3>
                                             }

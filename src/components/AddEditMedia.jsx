@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
 import firebase from 'firebase'
 import EditMedia from './EditMedia'
+import SplashScreen from './SplashScreen';
 
 export default class AddEditMedia extends Component {
   constructor(props) {
     console.log('in AddEditMedia')
     super(props)
     this.state = {
-      mediaType: 'article'
+      mediaType: 'article',
+      articleData: [],
+      videoData: []
     }
   }
 
@@ -90,7 +93,6 @@ export default class AddEditMedia extends Component {
   }
 
   render() {
-    console.log('on add edit media page')
     return (
       !this.state.mediaToUpdate
         ?
@@ -154,27 +156,33 @@ export default class AddEditMedia extends Component {
           {
             !this.state.videoData
               ? <h3>There are no videos</h3>
-              : this.state.videoData.map(ele => (
-                <div key={ele[0]} style={{ marginBottom: "60px" }}>
-                  <p>Title: {ele[0]}</p>
-                  <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
-                  <button type="button" onClick={() => this.editForm('video', ele[0], ele[1])}>Edit Link</button>
-                  <button
-                    type="button"
-                    onClick={
-                      () => {
-                        db.collection('videos').doc('videoData').update({
-                          [ele[0]]: firebase.firestore.FieldValue.delete()
-                        })
-                        this.getVideoData()
-                      }
-                    }>Delete Video
-                    </button>
-                </div>
-              ))
+              :
+              <div>
+                {
+                  this.state.videoData.length === 0
+                    ? <SplashScreen />
+                    :
+                    this.state.videoData.map(ele => (
+                      <div key={ele[0]} style={{ marginBottom: "60px" }}>
+                        <p>Title: {ele[0]}</p>
+                        <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
+                        <button type="button" onClick={() => this.editForm('video', ele[0], ele[1])}>Edit Link</button>
+                        <button
+                          type="button"
+                          onClick={
+                            () => {
+                              db.collection('videos').doc('videoData').update({
+                                [ele[0]]: firebase.firestore.FieldValue.delete()
+                              })
+                              this.getVideoData()
+                            }
+                          }>Delete Video
+                        </button>
+                      </div>
+                    ))
+                }
+              </div>
           }
-
-          <Link to="/Admin"><button type="button">Back to Admin Home</button></Link>
         </div>
         :
         (

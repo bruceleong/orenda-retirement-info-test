@@ -143,44 +143,46 @@ export default class AddEditCompany extends Component {
                 !this.state.formToUpdate
                     ?
                     <div className="page">
-                        <h2>{this.state.staticCompanyName} Company Info</h2>
-                        <h3>Company Name: {this.state.staticCompanyName}</h3>
-                        <h3>Company Provider: {this.state.companyProvider}</h3>
-                        <h3>Company Provider Website: {this.state.providerWebsite}</h3>
-                        <a target="_blank" rel="noopener noreferrer" href={this.state.spd}><h3>Summary Plan Description:  {this.state.spd}</h3></a>
-                        <form onSubmit={this.updateCompanyProfile}>
-                            <label style={{ display: 'block', margin: '10px' }} htmlFor="companyName">Company Name:<input
-                                name="dynamicCompanyName" value={this.state.dynamicCompanyName}
-                                required
-                                onChange={this.handleChange} />
-                            </label>
-                            <label style={{ display: 'block', margin: '10px' }} htmlFor="companyProvider">Company Provider:<input
-                                name="companyProvider" value={this.state.companyProvider}
-                                required
-                                onChange={this.handleChange} />
-                            </label>
-                            <label style={{ display: 'block', margin: '10px' }} htmlFor="providerWebsite">Company Provider Website:<input
-                                name="providerWebsite" value={this.state.providerWebsite}
-                                required
-                                onChange={this.handleChange} />
-                            </label>
-                            <label style={{ display: 'block', margin: '10px' }} htmlFor="companyProvider">Summary Plan Description:<input
-                                name="spd" value={this.state.spd}
-                                required
-                                onChange={this.handleChange} />
-                            </label>
-                            <button type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
-                            {
-                                this.state.changesSubmitted &&
-                                <div>
-                                    <button style={{ display: 'block', margin: '0 auto' }} type="button" onClick={() => {
-                                        let newBool = !this.state.changesSubmitted;
-                                        this.setState({ changesSubmitted: newBool })
-                                    }}>Click to make additional changes</button>
-                                    <h1>Your changes were submitted</h1>
-                                </div>
-                            }
-                        </form>
+                        <div className="page">
+                            <h2>{this.state.staticCompanyName} Company Info</h2>
+                            <h3>Company Name: {this.state.staticCompanyName}</h3>
+                            <h3>Company Provider: {this.state.companyProvider}</h3>
+                            <h3>Company Provider Website: {this.state.providerWebsite}</h3>
+                            <a target="_blank" rel="noopener noreferrer" href={this.state.spd}><h3>Summary Plan Description:  {this.state.spd}</h3></a>
+                            <form onSubmit={this.updateCompanyProfile}>
+                                <label style={{ display: 'block', margin: '10px' }} htmlFor="companyName">Company Name:<input
+                                    name="dynamicCompanyName" value={this.state.dynamicCompanyName}
+                                    required
+                                    onChange={this.handleChange} />
+                                </label>
+                                <label style={{ display: 'block', margin: '10px' }} htmlFor="companyProvider">Company Provider:<input
+                                    name="companyProvider" value={this.state.companyProvider}
+                                    required
+                                    onChange={this.handleChange} />
+                                </label>
+                                <label style={{ display: 'block', margin: '10px' }} htmlFor="providerWebsite">Company Provider Website:<input
+                                    name="providerWebsite" value={this.state.providerWebsite}
+                                    required
+                                    onChange={this.handleChange} />
+                                </label>
+                                <label style={{ display: 'block', margin: '10px' }} htmlFor="companyProvider">Summary Plan Description:<input
+                                    name="spd" value={this.state.spd}
+                                    required
+                                    onChange={this.handleChange} />
+                                </label>
+                                <button type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
+                                {
+                                    this.state.changesSubmitted &&
+                                    <div>
+                                        <button style={{ display: 'block', margin: '0 auto' }} type="button" onClick={() => {
+                                            let newBool = !this.state.changesSubmitted;
+                                            this.setState({ changesSubmitted: newBool })
+                                        }}>Click to make additional changes</button>
+                                        <h1>Your changes were submitted</h1>
+                                    </div>
+                                }
+                            </form>
+                        </div>
                         {
                             this.state.adding
                                 ? null
@@ -208,12 +210,12 @@ export default class AddEditCompany extends Component {
                                                     <div key={ele[0]}>
                                                         <br />
                                                         <p>{"Name of form: "}
-                                                        <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                            <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
                                                                 {ele[0]}
                                                             </a>
                                                         </p>
                                                         <p>{"Link of form: "}
-                                                        <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                            <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
                                                                 {ele[1]}
                                                             </a>
                                                         </p>
@@ -251,7 +253,7 @@ export default class AddEditCompany extends Component {
                                     '/'
                                 )
                             }}>Logout of Admin
-                    </button>
+                        </button>
                     </div>
                     :
                     (
