@@ -56,7 +56,7 @@ class PlanDetails extends Component {
                         :
                         <div>
                             {
-                                !this.state.companyData
+                                this.state.loading === true
                                     ? <splashScreen />
                                     :
                                     <div className="page">
@@ -94,21 +94,5 @@ class PlanDetails extends Component {
         )
     }
 }
-
-// const mapState = (state) => {
-//     return {
-//         allCompanies: state.allCompanies,
-//         company: state.company
-//     }
-// }
-
-// const mapDispatch = (dispatch) => ({
-//     loadCompanyData(company) {
-//         console.log('typeof', typeof getCompanyData)
-//         dispatch(getCompanyData(company))
-//     }
-// })
-
-// export default CompanyHome
 
 export default PlanDetails

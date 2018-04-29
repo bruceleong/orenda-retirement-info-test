@@ -8,7 +8,9 @@ export default class News extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true
+      loading: true,
+      videoData: [],
+      articleData: []
     }
   }
 
@@ -63,7 +65,7 @@ export default class News extends Component {
           <h1>Our Favorite Videos</h1>
           <div className="videos">
             {
-              !this.state.videoData
+              this.state.videoData.length === 0
                 ? <h2>We are updating this page, check back soon</h2>
                 :
                 this.state.videoData.map(video => (
@@ -79,7 +81,7 @@ export default class News extends Component {
           <h1>Our Top Articles</h1>
           <div className="articles">
             {
-              !this.state.articleData
+              this.state.articleData.length === 0
                 ? <h2>We are updating this page, check back soon</h2>
                 :
                 this.state.articleData.map(article => (
@@ -94,13 +96,14 @@ export default class News extends Component {
                     </div>
                   </div>
                 ))
+
             }
           </div>
           <h1>Latest Financial News</h1>
           <div className="articles">
             {
-              !this.state.articles ?
-                <h2>There is no content</h2>
+              this.state.articles === 0
+                ? <h2>There is no content</h2>
                 : this.state.articles.map(article => {
                   return (
                     <div key={article.title} className="article">
@@ -122,7 +125,7 @@ export default class News extends Component {
             <button
               className="buttons"
               type="button">
-            Back to {localStorage.getItem('company')} Home
+              Back to {localStorage.getItem('company')} Home
             </button>
           </Link>
           <br />
