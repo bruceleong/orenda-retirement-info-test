@@ -32,7 +32,6 @@ class Routes extends Component {
   }
   componentDidMount() {
     this.props.loadInitialData()
-
   }
 
   handleChange = (event, logged) => this.setState({ logged: logged })
@@ -129,7 +128,6 @@ class Routes extends Component {
       </Router>
     )
   }
-
 }
 
 const mapState = (state) => {
