@@ -141,4 +141,14 @@ class Routes extends Component {
 
 const mapState = ({routeBoolean}) => ({routeBoolean})
 
-export default connect(mapState)(Routes)
+
+const mapDispatch = (dispatch) => {
+  return {
+    reRoute(boolean){
+        console.log('in the reRoute')
+      dispatch(reRenderRoutes(boolean))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Routes)

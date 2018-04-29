@@ -62,13 +62,13 @@ class AdminLogin extends Component {
 
 const mapState = ({routeBoolean}) => ({routeBoolean})
 
-const mapDispatch = (boolean) => (dispatch) => {
-  return {
-    reRoute(){
-      dispatch(reRenderRoutes(boolean))
+const mapDispatch = (dispatch) => {
+    return {
+      reRoute(boolean){
+        dispatch(reRenderRoutes(boolean))
+      }
     }
   }
-}
 
 export default connect(mapState, mapDispatch)(AdminLogin)
 

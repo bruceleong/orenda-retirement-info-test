@@ -31,10 +31,12 @@ export const reRenderRoutes = (newBoolean) =>
  * REDUCER
  */
 export default function (state = defaultRouteState, action) {
+  console.log('in the reducer newBoolean', action.newBoolean, state)
   switch (action.type) {
     case SET_ROUTE:
       return action.newBoolean
     default:
+    
       return state
   }
 }

@@ -200,12 +200,12 @@ class AdminPortal extends Component {
 
 const mapState = ({reroute}) => ({routeBoolean: reroute})
 
-const mapDispatch = (boolean) => (dispatch) => {
-  return {
-    reRoute(){
-      dispatch(reRenderRoutes(boolean))
+const mapDispatch = (dispatch) => {
+    return {
+      reRoute(boolean){
+        dispatch(reRenderRoutes(boolean))
+      }
     }
   }
-}
 
 export default connect(mapState, mapDispatch)(AdminPortal)

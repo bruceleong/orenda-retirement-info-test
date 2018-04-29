@@ -81,9 +81,9 @@ class Home extends Component {
             this.setState({ firstAttempt: false })
 
         } else {
+            this.props.reRoute(!this.props.routeBoolean)
             console.log('in the else')
             localStorage.setItem('company', this.state.allCompanies[idx])
-            this.props.reRoute(!this.props.routeBoolean)
             this.props.history.push(`/companyHome`)
 
         }
@@ -170,9 +170,10 @@ class Home extends Component {
 
 const mapState = ({routeBoolean}) => ({routeBoolean})
 
-const mapDispatch = (boolean) => (dispatch) => {
+const mapDispatch = (dispatch) => {
   return {
-    reRoute(){
+    reRoute(boolean){
+        console.log('in the reRoute')
       dispatch(reRenderRoutes(boolean))
     }
   }
