@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { db } from '../config/constants'
-import splashScreen from './SplashScreen';
+import { Link } from 'react-router-dom'
+import splashScreen from './SplashScreen'
 
 
 class PlanDetails extends Component {
@@ -58,22 +59,34 @@ class PlanDetails extends Component {
                                 !this.state.companyData
                                     ? <splashScreen />
                                     :
-                                    <h2>For additional information on your
+                                    <div className="page">
+                                        <h2>For additional information on your
                                         {localStorage.getItem('company')} retirement plan:
                                         <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
-                                            Click Here
+                                                Click Here
                                         </a>
-                                    </h2>
+                                        </h2>
+                                    </div>
                             }
+                            <br />
+                            <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
+                                <button
+                                    className="buttons"
+                                    type="button">
+                                    Back to {localStorage.getItem('company')} Home
+                                </button>
+                            </Link>
+                            <br />
                             <button
                                 className="buttons"
                                 type="button"
                                 onClick={() => {
-                                localStorage.removeItem('company')
-                                this.props.history.push(
-                                    '/'
-                                )
-                            }}>Logout
+                                    localStorage.removeItem('company')
+                                    this.props.history.push(
+                                        '/'
+                                    )
+                                }}>
+                                Logout
                             </button>
                         </div>
                 }

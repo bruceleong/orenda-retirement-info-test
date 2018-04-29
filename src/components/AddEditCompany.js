@@ -142,7 +142,7 @@ export default class AddEditCompany extends Component {
             : (
                 !this.state.formToUpdate
                     ?
-                    <div>
+                    <div className="page">
                         <h2>{this.state.staticCompanyName} Company Info</h2>
                         <h3>Company Name: {this.state.staticCompanyName}</h3>
                         <h3>Company Provider: {this.state.companyProvider}</h3>
@@ -185,8 +185,8 @@ export default class AddEditCompany extends Component {
                             this.state.adding
                                 ? null
                                 : (
-                                    <div>
-                                        <h2>Company Forms</h2>
+                                    <div className="page">
+                                        <h2>Company Forms:</h2>
                                         <form onSubmit={this.formHandleSubmit}>
                                             <h3>Add new Forms</h3>
                                             <div>

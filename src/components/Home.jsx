@@ -67,12 +67,12 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-                <div className="page">
+            <div className="page">
+                <div>
                     <h1>Welcome to your Employee Resource</h1>
                     <h2>by Side by Side Financials</h2>
                     <p>On "Employee Resource", you can access your 401(k) account and get comprehensive information about your retirement planning. Retirement Planning is an important phase in your life. As you continue your working career, we are here to provide you the tools and education you need to help reach your retirement goals.</p>
-                <div>
+                <div className="page">
                     {!localStorage.getItem('company')
                         ?
                         <div>

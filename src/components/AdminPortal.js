@@ -108,8 +108,8 @@ export default class AdminPortal extends Component {
                 !this.state.selectedCompany
                     ?
                     (
-                        <div>
-                            <div className="page">
+                        <div className="page">
+                            <div>
                                 <h1>Welcome Admin</h1>
                                 <p>In this portal you add/edit company data, media data, and more</p>
                             </div>
