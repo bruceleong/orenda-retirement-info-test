@@ -40,7 +40,6 @@ class PlanDetails extends Component {
                         db.collection('providers').doc(doc.data().providerName)
                             .get()
                             .then(providerDoc => {
-
                                 this.setState({ companyData: data.companyData, companyName: data.companyName, companyProviderWebsite: providerWebsite, spd })
                             })
                     })

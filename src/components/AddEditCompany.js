@@ -20,8 +20,6 @@ export default class AddEditCompany extends Component {
             staticCompanyName: this.props.company,
             loading: true
         }
-        //exists to make load time a little faster
-
         this.updateCompanyData()
     }
 
@@ -44,12 +42,9 @@ export default class AddEditCompany extends Component {
     }
 
     formHandleSubmit = evt => {
-
         evt.preventDefault()
-
         let url = evt.target.companyFormUrl.value
         if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
-
 
         db.collection('companies').doc(this.state.dynamicCompanyName).collection('Forms')
             .doc('formDoc')
@@ -62,12 +57,8 @@ export default class AddEditCompany extends Component {
     }
 
     updateCompanyProfile = (evt) => {
-
         console.log('in updateCompanyProfile')
-
         evt.preventDefault()
-
-
         if (this.state.staticCompanyName === this.state.dynamicCompanyName) {
             evt.preventDefault()
             db.collection('companies').doc(this.state.staticCompanyName)
@@ -170,7 +161,7 @@ export default class AddEditCompany extends Component {
                                     required
                                     onChange={this.handleChange} />
                                 </label>
-                                <button type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
+                                <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
                                 {
                                     this.state.changesSubmitted &&
                                     <div>
@@ -201,7 +192,7 @@ export default class AddEditCompany extends Component {
                                                     name="companyFormUrl" onChange={this.handleChange}
                                                     value={this.state.companyFormUrl} />
                                             </div>
-                                            <input type="submit" />
+                                            <input className="buttons" type="submit" />
                                         </form>
                                         <h3>Current Forms:</h3>
                                         <ul>
