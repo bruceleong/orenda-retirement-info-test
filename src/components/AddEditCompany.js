@@ -99,6 +99,7 @@ export default class AddEditCompany extends Component {
         console.log('in updateComanyData')
 
         if (this.state.staticCompanyName !== 'newCompany') {
+            console.log('in update company data')
 
             let companyRef = db.collection('companies').doc(this.state.staticCompanyName)
 
@@ -124,11 +125,10 @@ export default class AddEditCompany extends Component {
                             this.setState({ companyData: data.companyData, dynamicCompanyName: data.dynamicCompanyName, companyProvider: doc.data().providerName, providerWebsite: doc.data().providerWebsite, spd, adding: false, loading: false })
                         })
                 })
-        } else {
-            this.setState({loading: false})
         }
     }
     render() {
+        console.log(this.state, 'current state of add/edicomappny')
         return this.state.loading === true
             ? (<SplashScreen />)
             : (
@@ -170,10 +170,6 @@ export default class AddEditCompany extends Component {
                                 }
                             </form>
                         </div>
-                        {
-                            this.state.adding
-                                ? null
-                                : (
                                     <div className="page">
                                         <h2>Company Forms:</h2>
                                         <form onSubmit={this.formHandleSubmit}>
@@ -236,7 +232,6 @@ export default class AddEditCompany extends Component {
                                         </ul>
                                     </div>
                                 )
-                        }
                         <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
                         <button
                             className="buttons"
