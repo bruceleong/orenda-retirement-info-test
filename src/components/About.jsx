@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import sbsfLogo from './sbsfLogo.png'
 
 export default class About extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ export default class About extends Component {
     render() {
         return (
             <div className="page">
-                <img src="https://sbsfinancials.com/wp-content/uploads/2017/03/cropped-Turtle-logo-MC-Final-with-tagline1200x527bluer-1.png" style={{ width: '30vw', height: 'auto', marginTop: '5vh' }} alt="SBSF logo" />
+                <img src={sbsfLogo} style={{ width: '30vw', height: 'auto', marginTop: '5vh' }} alt="SBSF logo" />
                 <h2>Side by Side Financials</h2>
                 <h2>Your Retirement Planning Team</h2>
                 <h4>Ricky Tran</h4>

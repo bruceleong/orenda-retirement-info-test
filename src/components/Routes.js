@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch, Router } from 'react-router-dom'
 import Home from './Home'
-import Transamerica from './Transamerica'
 import About from './About'
 import Login from './Login'
 import Norms from './Home-Norms'
@@ -13,6 +12,7 @@ import { connect } from 'react-redux'
 import history from './history'
 import AppDrawerLoggedOut from './AppDrawerLoggedOut'
 import AppDrawerLoggedIn from './AppDrawerLoggedIn'
+import SBSFLogo from './sbsfLogo.png'
 
 import AppBar from 'material-ui/AppBar'
 
@@ -20,6 +20,7 @@ import AppBar from 'material-ui/AppBar'
 import News from './News'
 import Forms from './Forms'
 import { getAllCompaniesData } from '../store'
+import { IconButton } from 'material-ui';
 
 class Routes extends Component {
   constructor() {
@@ -57,7 +58,14 @@ class Routes extends Component {
               />
           }
           <AppBar
-            title="Side By Side Financials"
+            title={
+              <div
+                onClick={this.handleToggle} style={{
+                  marginRight:
+                    '130vh'
+                }}><span>Menu</span>
+              </div>}
+            iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
             style={{ backgroundColor: 'green' }}
           />

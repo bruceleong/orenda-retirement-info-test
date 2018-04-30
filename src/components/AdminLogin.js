@@ -34,12 +34,12 @@ export default class AdminLogin extends Component {
         return (
                 !localStorage.getItem('admin')
                 ? (
-                    <div>
+                    <div className="page">
                         <h4>Enter Login Details:</h4>
                         <form onSubmit={this.handleSubmit}>
                             <label style={{display: 'block', margin: '10px'}}>Username: <input type="text" name="userName" /></label>
                             <label style={{display: 'block', margin: '10px'}}>Password: <input type="password" name="password" /></label>
-                            <button type="submit">Submit</button>
+                            <button className="buttons" type="submit">Submit</button>
                             {
                                 this.state.firstAttempt
                                     ? null

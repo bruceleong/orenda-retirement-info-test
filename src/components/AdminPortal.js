@@ -12,7 +12,8 @@ export default class AdminPortal extends Component {
             articleData: [],
             videoData: [],
             showEditMedia: false,
-            loading: true
+            loading: true,
+            selectedCompany: false
         }
     }
 
@@ -34,6 +35,7 @@ export default class AdminPortal extends Component {
     }
 
     returnButton = () => {
+        this.getCompanies()
         this.setState({ selectedCompany: '' })
     }
 
@@ -52,6 +54,7 @@ export default class AdminPortal extends Component {
         this.getCompanies()
         this.getNewsData()
         this.getVideoData()
+        console.log('are you mounting - admin portal')
     }
 
     showEditMediaPage = () => {
@@ -78,7 +81,6 @@ export default class AdminPortal extends Component {
             .then(snapshot => {
                 let articles = snapshot.data(),
                     articleData = []
-
                 Object.keys(articles).forEach(key => {
                     articleData.push([key, articles[key]])
                 })
@@ -101,13 +103,14 @@ export default class AdminPortal extends Component {
     }
 
     render() {
+        console.log('this state', this.state)
         return this.state.loading === true
             ? (<SplashScreen />)
             : (
                 !this.state.selectedCompany
                     ?
                     (
-                        <div className="page">
+                        <div>
                             <div>
                                 <h1>Welcome Admin</h1>
                                 <p>In this portal you add/edit company data, media data, and more</p>

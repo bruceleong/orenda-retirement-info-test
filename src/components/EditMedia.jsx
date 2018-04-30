@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
-import splashScreen from './SplashScreen'
 import SplashScreen from './SplashScreen';
 
 export default class EditMedia extends Component {
@@ -48,28 +47,22 @@ export default class EditMedia extends Component {
   }
 
   handleChange = evt => {
-    console.log('are you changing at least')
     this.setState({ [evt.target.name]: evt.target.value })
   }
 
   handleMediaSubmit = evt => {
-    console.log('are you getting to handle submit')
     evt.preventDefault()
 
     if (this.state.mediaType === 'video') {
-      console.log('am i hereererereraereaere video')
       db.collection('videos').doc('videoData')
         .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
     } else {
-      console.log('am i here', this.state.mediaTitle, 'title', this.state.mediaLink, 'link')
       db.collection('articles').doc('newsArticles')
         .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
     }
   }
 
   render() {
-    // console.log(this.props, '------------- props -------')
-    console.log(this.state, 'current state in edit form')
     let media;
     if (this.props.mediaType === 'article') {
       media = 'Article'

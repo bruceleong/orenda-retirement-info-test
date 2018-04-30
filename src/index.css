@@ -2,21 +2,51 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: lightgray;
+  background-color: white;
   border: lawngreen;
 }
 
-.buttons {
+/* button {
   margin: 2vh;
+  background-color: #4CAF50;
+} */
+
+.buttons {
+  margin: 1vh;
+  background-color: #4CAF50;
+  font-size: 1.5em;
 }
 
 .page {
   border-radius: 1vw;
-  box-shadow: 0px 0px 1.4vw .2vw white;
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid rgb(140, 191, 132);
   margin: 2vh 2vw;
   padding: 2vh 2vw;
+  align-content: center;
+  align-items: center;
+}
+
+.companyHomeButtons {
+  border: 1px solid white;
+  background-color: white;
+  height: 10vh;
+  width: 300px;
+  font-size: 2em;
+}
+
+.links {
+  text-decoration: none;
+}
+
+.companyHome {
+  border-radius: 1vw;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(140, 191, 132);
+  margin: 2vh;
+  width: 55vw;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 
 #menu {
@@ -91,7 +121,6 @@ body {
 }
 
 #header {
- background: url("../src/Financial-planning-1.jpg");
  background-size: cover;
  background-color: lightgreen;
  height: 30vh;
@@ -99,6 +128,10 @@ body {
 
 .formFormating {
   display: inline;
+}
+
+.textContent {
+  margin: 5vw;
 }
 
 #title {

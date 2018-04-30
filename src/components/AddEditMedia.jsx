@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
 import firebase from 'firebase'
 import EditMedia from './EditMedia'

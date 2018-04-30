@@ -30,14 +30,23 @@ export default class CompanyHome extends Component {
                         ? <splashScreen />
                         :
                         <div className="page">
-                            <h1 style={{ marginBottom: '10px' }}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page</h1>
-                            <p>On this website you can get more information on forms, notices and etc</p>
-                            <p>Click on the navigation on the top left or click below to go to each page</p>
-                            <Link to="/YourAccount" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Your Account</Link>
-                            <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Plan Documents</a>
-                            <Link to="/Forms" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Forms & Notices</Link>
-                            <Link to="/News" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>News</Link>
-                            <Link to="/Contact" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Contact</Link>
+                            <h1>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
+                            </h1>
+                            <div>
+                                <Link className="links" to="/YourAccount" style={{ textDecoration: 'none'}}><button className="companyHomeButtons" type="button">&#9673; Your Account</button></Link>
+                            </div>
+                            <div>
+                                <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd}><button className="companyHomeButtons" type="button">&#9673; Plan Documents</button></a>
+                            </div>
+                            <div>
+                                <Link className="links" to="/Forms"><button className="companyHomeButtons" type="button">&#9673; Forms & Notices</button></Link>
+                            </div>
+                            <div>
+                                <Link className="links" to="/News"><button className="companyHomeButtons" type="button">&#9673; News</button></Link>
+                            </div>
+                            <div>
+                                <Link className="links" to="/Contact"><button className="companyHomeButtons" type="button">&#9673; Contact</button></Link>
+                            </div>
                             <button
                                 className="buttons"
                                 type="button" onClick={() => {
