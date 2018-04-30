@@ -122,7 +122,7 @@ export default class AddEditCompany extends Component {
                         })
                 })
         } else {
-            this.setState({loading: false})
+            this.setState({ loading: false })
         }
     }
     render() {
@@ -168,67 +168,74 @@ export default class AddEditCompany extends Component {
                                 }
                             </form>
                         </div>
-                                    <div className="page">
-                                        <h2>Company Forms:</h2>
-                                        <form onSubmit={this.formHandleSubmit}>
-                                            <h3>Add new Forms</h3>
-                                            <div>
-                                                <label htmlFor="companyFormName">Name of form: </label><input
-                                                    name="companyFormName" onChange={this.handleChange}
-                                                    required
-                                                    value={this.state.companyFormName} />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="companyFormUrl">Website of form: </label><input
-                                                    name="companyFormUrl" onChange={this.handleChange}
-                                                    required
-                                                    value={this.state.companyFormUrl} />
-                                            </div>
-                                            {
-                                                this.state.companyFormName.length > 0 && this.state.companyFormUrl.length > 0
-                                                    ?
-                                                    <input className="buttons" type="submit" />
-                                                    : ''
-                                            }
-                                        </form>
-                                        <h3>Current Forms:</h3>
-                                        <ul>
-                                            {
-                                                this.state.companyData.map((ele, idx) => (
-                                                    <div key={ele[0]}>
-                                                        <br />
-                                                        <p>{"Name of form: "}
-                                                            <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                                                {ele[0]}
-                                                            </a>
-                                                        </p>
-                                                        <p>{"Link of form: "}
-                                                            <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
-                                                                {ele[1]}
-                                                            </a>
-                                                        </p>
-                                                        <button type="button" onClick={() => this.editForm(ele[0], ele[1])}>
-                                                            Edit Link
-                                                    </button>
-                                                        <button
-                                                            type='button'
-                                                            onClick={
-                                                                () => {
-                                                                    db.collection('companies').doc(this.state.dynamicCompanyName).collection('Forms')
-                                                                        .doc('formDoc')
-                                                                        .update({
-                                                                            [ele[0]]: firebase.firestore.FieldValue.delete()
-                                                                        })
-                                                                    this.updateCompanyData()
-                                                                }
-                                                            }>Delete Form</button>
-                                                        <br />
-                                                        <br />
-                                                    </div>
-                                                ))
-                                            }
-                                        </ul>
+                        {
+                            this.state.adding
+                            ? null
+                            :
+                            (
+                            <div className="page">
+                                <h2>Company Forms:</h2>
+                                <form onSubmit={this.formHandleSubmit}>
+                                    <h3>Add new Forms</h3>
+                                    <div>
+                                        <label htmlFor="companyFormName">Name of form: </label><input
+                                            name="companyFormName" onChange={this.handleChange}
+                                            required
+                                            value={this.state.companyFormName} />
                                     </div>
+                                    <div>
+                                        <label htmlFor="companyFormUrl">Website of form: </label><input
+                                            name="companyFormUrl" onChange={this.handleChange}
+                                            required
+                                            value={this.state.companyFormUrl} />
+                                    </div>
+                                    {
+                                        this.state.companyFormName.length > 0 && this.state.companyFormUrl.length > 0
+                                            ?
+                                            <input className="buttons" type="submit" />
+                                            : ''
+                                    }
+                                </form>
+                                <h3>Current Forms:</h3>
+                                <ul>
+                                    {
+                                        this.state.companyData.map((ele, idx) => (
+                                            <div key={ele[0]}>
+                                                <br />
+                                                <p>{"Name of form: "}
+                                                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                        {ele[0]}
+                                                    </a>
+                                                </p>
+                                                <p>{"Link of form: "}
+                                                    <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
+                                                        {ele[1]}
+                                                    </a>
+                                                </p>
+                                                <button type="button" onClick={() => this.editForm(ele[0], ele[1])}>
+                                                    Edit Link
+                                                    </button>
+                                                <button
+                                                    type='button'
+                                                    onClick={
+                                                        () => {
+                                                            db.collection('companies').doc(this.state.dynamicCompanyName).collection('Forms')
+                                                                .doc('formDoc')
+                                                                .update({
+                                                                    [ele[0]]: firebase.firestore.FieldValue.delete()
+                                                                })
+                                                            this.updateCompanyData()
+                                                        }
+                                                    }>Delete Form</button>
+                                                <br />
+                                                <br />
+                                            </div>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                                )
+                        }
                         <button className="buttons" type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
                         <button
                             className="buttons"
