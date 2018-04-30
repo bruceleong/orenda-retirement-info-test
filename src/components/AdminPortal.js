@@ -41,9 +41,10 @@ export default class AdminPortal extends Component {
 
     handleDelete = (evt) => {
         evt.preventDefault()
-        db.collection('companies').doc(evt.target.selectCompany.value).delete()
-        this.getCompanies()
-
+        if (window.confirm('Are you sure you want to delete this company?')) {
+            db.collection('companies').doc(evt.target.selectCompany.value).delete()
+            this.getCompanies()
+        }
     }
 
     returnToSelectedCompany = company => {
