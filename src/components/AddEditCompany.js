@@ -126,6 +126,7 @@ export default class AddEditCompany extends Component {
             this.setState({ loading: false })
         }
     }
+    
     render() {
         console.log(this.state, 'current state of add/edicomappny')
         return this.state.loading === true

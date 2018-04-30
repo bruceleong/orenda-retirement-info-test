@@ -123,7 +123,7 @@ export default class AddEditMedia extends Component {
               </select>
             </div>
             <br />
-            <button type="submit">Add Media</button>
+            <button className="buttons" type="submit">Add Media</button>
           </form>
           <h2>Articles</h2>
           {
@@ -140,10 +140,12 @@ export default class AddEditMedia extends Component {
                         <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
                         <button
                           type="button"
+                          className="buttons"
                           onClick={() => this.editForm('article', ele[0], ele[1])}>Edit Link
                         </button>
                         <button
                           type="button"
+                          className="buttons"
                           onClick={
                             () => {
                               db.collection('articles').doc('newsArticles').update({
@@ -172,9 +174,15 @@ export default class AddEditMedia extends Component {
                       <div key={ele[0]} style={{ marginBottom: "60px" }}>
                         <p>Title: {ele[0]}</p>
                         <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
-                        <button type="button" onClick={() => this.editForm('video', ele[0], ele[1])}>Edit Link</button>
                         <button
                           type="button"
+                          className="buttons"
+                          onClick={() => this.editForm('video', ele[0], ele[1])}>
+                          Edit Link
+                        </button>
+                        <button
+                          type="button"
+                          className="buttons"
                           onClick={
                             () => {
                               db.collection('videos').doc('videoData').update({
