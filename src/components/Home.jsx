@@ -124,7 +124,7 @@ class Home extends Component {
                                                 <div key={video[0]} className="video">
                                                     <div className="videoContainer">
                                                         <h2>{video[0]}</h2>
-                                                        <iframe width="320" title="News video" height="auto" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
+                                                        <iframe width="320" title="News video" height="200" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
                                                     </div>
                                                 </div>
                                             ))
