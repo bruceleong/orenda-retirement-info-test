@@ -29,15 +29,24 @@ export default class CompanyHome extends Component {
                     !localStorage.getItem('company')
                         ? <splashScreen />
                         :
-                        <div className="page">
-                            <h1 style={{ marginBottom: '10px' }}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page</h1>
-                            <p>On this website you can get more information on forms, notices and etc</p>
-                            <p>Click on the navigation on the top left or click below to go to each page</p>
-                            <Link to="/YourAccount" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Your Account</Link>
-                            <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Plan Documents</a>
-                            <Link to="/Forms" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Forms & Notices</Link>
-                            <Link to="/News" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>News</Link>
-                            <Link to="/Contact" style={{ textDecoration: 'none', margin: '10px', display: 'block' }}>Contact</Link>
+                        <div>
+                            <h1>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
+                            </h1>
+                            <div className="companyHome">
+                                <Link to="/YourAccount" style={{ textDecoration: 'none', margin: '10vh' }}>Your Account</Link>
+                            </div>
+                            <div className="companyHome">
+                                <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none' }}>Plan Documents</a>
+                            </div>
+                            <div className="companyHome">
+                                <Link to="/Forms" style={{ textDecoration: 'none' }}>Forms & Notices</Link>
+                            </div>
+                            <div className="companyHome">
+                                <Link to="/News" style={{ textDecoration: 'none' }}>News</Link>
+                            </div>
+                            <div className="companyHome">
+                                <Link to="/Contact" style={{ textDecoration: 'none' }}>Contact</Link>
+                            </div>
                             <button
                                 className="buttons"
                                 type="button" onClick={() => {
