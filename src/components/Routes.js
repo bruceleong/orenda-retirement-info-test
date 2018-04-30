@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch, Router } from 'react-router-dom'
 import Home from './Home'
-import Transamerica from './Transamerica'
 import About from './About'
 import Login from './Login'
 import Norms from './Home-Norms'

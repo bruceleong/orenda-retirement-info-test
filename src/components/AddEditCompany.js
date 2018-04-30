@@ -16,6 +16,7 @@ export default class AddEditCompany extends Component {
             companyFormName: '',
             companyFormUrl: '',
             changesSubmitted: false,
+            providerWebsite: '',
             adding: true,
             staticCompanyName: this.props.company,
             loading: true
@@ -88,7 +89,7 @@ export default class AddEditCompany extends Component {
             //.then(() => this.updateCompanyData())
 
             db.collection('companies').doc(this.state.staticCompanyName).delete()
-            this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value })
+            this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false })
 
         }
 
@@ -119,12 +120,12 @@ export default class AddEditCompany extends Component {
                     companyRef
                         .get()
                         .then(doc => {
-                            //spd is now required so ignore error that comes up when spd is not defined
                             let spd = doc.data().spd
-
                             this.setState({ companyData: data.companyData, dynamicCompanyName: data.dynamicCompanyName, companyProvider: doc.data().providerName, providerWebsite: doc.data().providerWebsite, spd, adding: false, loading: false })
                         })
                 })
+        } else {
+            this.setState({loading: false})
         }
     }
     render() {
@@ -161,16 +162,11 @@ export default class AddEditCompany extends Component {
                                     required
                                     onChange={this.handleChange} />
                                 </label>
-                                <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
                                 {
-                                    this.state.changesSubmitted &&
-                                    <div>
-                                        <button style={{ display: 'block', margin: '0 auto' }} type="button" onClick={() => {
-                                            let newBool = !this.state.changesSubmitted;
-                                            this.setState({ changesSubmitted: newBool })
-                                        }}>Click to make additional changes</button>
-                                        <h1>Your changes were submitted</h1>
-                                    </div>
+                                    this.state.companyProvider.length > 0 && this.state.dynamicCompanyName.length > 0 && this.state.providerWebsite.length > 0 && this.state.spd.length > 0
+                                        ?
+                                        <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
+                                        : ''
                                 }
                             </form>
                         </div>
@@ -185,14 +181,21 @@ export default class AddEditCompany extends Component {
                                             <div>
                                                 <label htmlFor="companyFormName">Name of form: </label><input
                                                     name="companyFormName" onChange={this.handleChange}
+                                                    required
                                                     value={this.state.companyFormName} />
                                             </div>
                                             <div>
                                                 <label htmlFor="companyFormUrl">Website of form: </label><input
                                                     name="companyFormUrl" onChange={this.handleChange}
+                                                    required
                                                     value={this.state.companyFormUrl} />
                                             </div>
-                                            <input className="buttons" type="submit" />
+                                            {
+                                                this.state.companyFormName.length > 0 && this.state.companyFormUrl.length > 0
+                                                    ?
+                                                    <input className="buttons" type="submit" />
+                                                    : ''
+                                            }
                                         </form>
                                         <h3>Current Forms:</h3>
                                         <ul>
@@ -253,3 +256,14 @@ export default class AddEditCompany extends Component {
             )
     }
 }
+
+// {
+//     this.state.changesSubmitted &&
+//     <div>
+//         <button style={{ display: 'block', margin: '0 auto' }} type="button" onClick={() => {
+//             let newBool = !this.state.changesSubmitted;
+//             this.setState({ changesSubmitted: newBool })
+//         }}>Click to make additional changes</button>
+//         <h1>Your changes were submitted</h1>
+//     </div>
+// }
