@@ -86,13 +86,9 @@ export default class AddEditCompany extends Component {
                     newCompanyRef.collection('Forms').doc('formDoc').set(obj)
 
                 })
-            //.then(() => this.updateCompanyData())
-
             db.collection('companies').doc(this.state.staticCompanyName).delete()
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false })
-
         }
-
     }
 
     updateCompanyData = () => {
@@ -125,6 +121,8 @@ export default class AddEditCompany extends Component {
                             this.setState({ companyData: data.companyData, dynamicCompanyName: data.dynamicCompanyName, companyProvider: doc.data().providerName, providerWebsite: doc.data().providerWebsite, spd, adding: false, loading: false })
                         })
                 })
+        } else {
+            this.setState({loading: false})
         }
     }
     render() {
@@ -134,7 +132,7 @@ export default class AddEditCompany extends Component {
             : (
                 !this.state.formToUpdate
                     ?
-                    <div className="page">
+                    <div>
                         <div className="page">
                             <h2>{this.state.staticCompanyName} Company Info</h2>
                             <h3>Company Name: {this.state.staticCompanyName}</h3>
@@ -231,8 +229,7 @@ export default class AddEditCompany extends Component {
                                             }
                                         </ul>
                                     </div>
-                                )
-                        <button type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
+                        <button className="buttons" type="button" onClick={() => { this.props.returnLink() }}>Back to Admin Home</button>
                         <button
                             className="buttons"
                             type="button"
