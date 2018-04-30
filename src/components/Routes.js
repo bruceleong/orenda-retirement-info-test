@@ -58,8 +58,14 @@ class Routes extends Component {
               />
           }
           <AppBar
-            title=""
-            iconElementRight={<div><img style={{ height: '40px', margin: '1vh'}} alt="logo" src={SBSFLogo} /></div>}
+            title={
+              <div
+                onClick={this.handleToggle} style={{
+                  marginRight:
+                    '130vh'
+                }}><span>Menu</span>
+              </div>}
+            iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
             style={{ backgroundColor: 'green' }}
           />

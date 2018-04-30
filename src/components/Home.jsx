@@ -72,15 +72,17 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="page">
+            <div>
                 <div>
                     <img src={sbsfLogo} style={{ width: '30vw', height: 'auto', marginTop: '5vh' }} alt="SBSF logo" />
+                    <div className="textContent">
                     <h4>Hello Employee. Access your 401(k) account and get comprehensive information about retirement planning. Retirement Planning is an important phase in your life. As you continue your working career, it is our hope to help provide you the tools and education you need to help reach your goals.
-                </h4>
+                    </h4>
+                    </div>
                     <div>
                         {!localStorage.getItem('company')
                             ?
-                            <div className="Home">
+                            <div>
                                 <h4>Enter your company name for more details on your retirement plan:</h4>
                                 <form onSubmit={this.handleInput}>
                                     <input type="text" name="inputField" />
@@ -125,7 +127,7 @@ class Home extends Component {
                                                 <div key={video[0]} className="video">
                                                     <div className="videoContainer">
                                                         <h2>{video[0]}</h2>
-                                                        <iframe width="320" title="News video" height="200" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
+                                                        <iframe width="320" title="News video" height="220" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
                                                     </div>
                                                 </div>
                                             ))

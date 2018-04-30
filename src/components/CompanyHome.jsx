@@ -29,23 +29,23 @@ export default class CompanyHome extends Component {
                     !localStorage.getItem('company')
                         ? <splashScreen />
                         :
-                        <div>
+                        <div className="page">
                             <h1>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
                             </h1>
-                            <div className="companyHome">
-                                <Link to="/YourAccount" style={{ textDecoration: 'none', margin: '10vh' }}>Your Account</Link>
+                            <div>
+                                <Link className="links" to="/YourAccount" style={{ textDecoration: 'none'}}><button className="companyHomeButtons" type="button">&#9673; Your Account</button></Link>
                             </div>
-                            <div className="companyHome">
-                                <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none' }}>Plan Documents</a>
+                            <div>
+                                <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd}><button className="companyHomeButtons" type="button">&#9673; Plan Documents</button></a>
                             </div>
-                            <div className="companyHome">
-                                <Link to="/Forms" style={{ textDecoration: 'none' }}>Forms & Notices</Link>
+                            <div>
+                                <Link className="links" to="/Forms"><button className="companyHomeButtons" type="button">&#9673; Forms & Notices</button></Link>
                             </div>
-                            <div className="companyHome">
-                                <Link to="/News" style={{ textDecoration: 'none' }}>News</Link>
+                            <div>
+                                <Link className="links" to="/News"><button className="companyHomeButtons" type="button">&#9673; News</button></Link>
                             </div>
-                            <div className="companyHome">
-                                <Link to="/Contact" style={{ textDecoration: 'none' }}>Contact</Link>
+                            <div>
+                                <Link className="links" to="/Contact"><button className="companyHomeButtons" type="button">&#9673; Contact</button></Link>
                             </div>
                             <button
                                 className="buttons"
