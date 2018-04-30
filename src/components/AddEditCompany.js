@@ -136,11 +136,21 @@ export default class AddEditCompany extends Component {
                     ?
                     <div>
                         <div className="page">
-                            <h2>{this.state.staticCompanyName} Company Info</h2>
-                            <h3>Company Name: {this.state.staticCompanyName}</h3>
-                            <h3>Company Provider: {this.state.companyProvider}</h3>
-                            <h3>Company Provider Website: {this.state.providerWebsite}</h3>
-                            <a target="_blank" rel="noopener noreferrer" href={this.state.spd}><h3>Summary Plan Description:  {this.state.spd}</h3></a>
+                            {!this.state.adding
+                            ?
+                                (   <div>
+                                        <h2>{this.state.staticCompanyName} Company Info</h2>
+                                        <h3>Company Name: {this.state.staticCompanyName}</h3>
+                                        <h3>Company Provider: {this.state.companyProvider}</h3>
+                                        <h3>Company Provider Website: {this.state.providerWebsite}</h3>
+                                        <a target="_blank" rel="noopener noreferrer" href={this.state.spd}>
+                                            <h3>Summary Plan Description:  {this.state.spd}</h3>
+                                        </a>
+                                    </div>
+                                )
+                            :   <h2>Enter your New Company's Info</h2>
+                            }
+                           
                             <form onSubmit={this.updateCompanyProfile}>
                                 <label style={{ display: 'block', margin: '10px' }} htmlFor="companyName">Company Name:<input
                                     name="dynamicCompanyName" value={this.state.dynamicCompanyName}
