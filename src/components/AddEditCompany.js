@@ -44,6 +44,7 @@ export default class AddEditCompany extends Component {
 
     formHandleSubmit = evt => {
         evt.preventDefault()
+        console.log('in formHandleSubmit')
         let url = evt.target.companyFormUrl.value
         if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
 
@@ -189,12 +190,7 @@ export default class AddEditCompany extends Component {
                                             required
                                             value={this.state.companyFormUrl} />
                                     </div>
-                                    {
-                                        this.state.companyFormName.length > 0 && this.state.companyFormUrl.length > 0
-                                            ?
-                                            <input className="buttons" type="submit" />
-                                            : ''
-                                    }
+                                    <input className="buttons" type="submit" />
                                 </form>
                                 <h3>Current Forms:</h3>
                                 <ul>
