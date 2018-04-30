@@ -44,6 +44,7 @@ export default class AddEditCompany extends Component {
 
     formHandleSubmit = evt => {
         evt.preventDefault()
+        console.log('in formHandleSubmit')
         let url = evt.target.companyFormUrl.value
         if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
 
@@ -87,7 +88,7 @@ export default class AddEditCompany extends Component {
 
                 })
             db.collection('companies').doc(this.state.staticCompanyName).delete()
-            this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false })
+            this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
         }
     }
 
@@ -125,6 +126,7 @@ export default class AddEditCompany extends Component {
             this.setState({ loading: false })
         }
     }
+    
     render() {
         console.log(this.state, 'current state of add/edicomappny')
         return this.state.loading === true
@@ -160,12 +162,12 @@ export default class AddEditCompany extends Component {
                                     required
                                     onChange={this.handleChange} />
                                 </label>
-                                {
-                                    this.state.companyProvider.length > 0 && this.state.dynamicCompanyName.length > 0 && this.state.providerWebsite.length > 0 && this.state.spd.length > 0
-                                        ?
-                                        <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
-                                        : ''
-                                }
+                                
+                                        <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }}>
+                                            Submit Changes
+                                        </button>
+                                        
+                                
                             </form>
                         </div>
                         {
@@ -189,12 +191,7 @@ export default class AddEditCompany extends Component {
                                             required
                                             value={this.state.companyFormUrl} />
                                     </div>
-                                    {
-                                        this.state.companyFormName.length > 0 && this.state.companyFormUrl.length > 0
-                                            ?
-                                            <input className="buttons" type="submit" />
-                                            : ''
-                                    }
+                                    <input className="buttons" type="submit" />
                                 </form>
                                 <h3>Current Forms:</h3>
                                 <ul>

@@ -50,12 +50,6 @@ class Home extends Component {
             })
     }
 
-    handleSubmit = (evt) => {
-        evt.preventDefault()
-        this.props.loadCompanyData(evt.target.selectCompany.value)
-        this.props.history.push(`/companyHome`)
-    }
-
     handleInput = (evt) => {
         evt.preventDefault()
         let lowerCaseAllCompanies = this.props.allCompanies.map(ele => ele.toLowerCase())

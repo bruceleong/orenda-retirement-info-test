@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Route, Switch, Router } from 'react-router-dom'
 import Home from './Home'
 import About from './About'
-import Login from './Login'
-import Norms from './Home-Norms'
 import PlanDetails from './PlanDetails'
 import CompanyHome from './CompanyHome'
 import AdminLogin from './AdminLogin'
@@ -75,10 +73,6 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route
-              exact path="/Login"
-              component={Login}
-            />
-            <Route
               exact path="/Contact"
               component={About}
             />
@@ -94,10 +88,6 @@ class Routes extends Component {
                     <Route
                       exact path="/YourAccount"
                       component={PlanDetails}
-                    />
-                    <Route
-                      exact path="/Norms"
-                      component={Norms}
                     />
                     <Route
                       exact path="/News"
