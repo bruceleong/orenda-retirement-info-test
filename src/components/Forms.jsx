@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { db } from '../config/constants'
 import { Link } from 'react-router-dom'
 import SplashScreen from './SplashScreen'
+import circle from './circle.png'
 
 class Forms extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class Forms extends Component {
                 this.state.companyData.map(form => {
                   return (
                     <div key={form[0]}>
-                      <a target="_blank" rel="noopener noreferrer" href={form[1]} style={{ textDecoration: 'none' }}><li>{form[0]}</li></a>
+                      <a target="_blank" rel="noopener noreferrer" href={form[1]} style={{ textDecoration: 'none', color: 'black' }}><img src={circle} style={{width: '2vw'}} />{form[0]}</a>
                     </div>
                   )
                 })
