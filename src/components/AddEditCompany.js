@@ -87,7 +87,7 @@ export default class AddEditCompany extends Component {
 
                 })
             db.collection('companies').doc(this.state.staticCompanyName).delete()
-            this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false })
+            this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
         }
     }
 
@@ -160,12 +160,12 @@ export default class AddEditCompany extends Component {
                                     required
                                     onChange={this.handleChange} />
                                 </label>
-                                {
-                                    this.state.companyProvider.length > 0 && this.state.dynamicCompanyName.length > 0 && this.state.providerWebsite.length > 0 && this.state.spd.length > 0
-                                        ?
-                                        <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }} onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted, adding: false }) }}>Submit Changes</button>
-                                        : ''
-                                }
+                                
+                                        <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }}>
+                                            Submit Changes
+                                        </button>
+                                        
+                                
                             </form>
                         </div>
                         {
