@@ -147,6 +147,13 @@ body {
     font-size: 1.2em;
     color: #cccccc
   }
+
+  .loggedInHeader {
+    background-size: cover;
+    background-image: url("backgroundAfterLogin.jpeg");
+    align-content: center;
+    height: 35vh;
+   }
 }
 
 @media (min-width: 651px) {
