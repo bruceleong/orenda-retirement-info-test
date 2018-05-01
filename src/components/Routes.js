@@ -54,7 +54,6 @@ class Routes extends Component {
   }
 
  render() {
-    console.log(this.props, 'current props')
     return (
       <Router history={history}>
         <div>
@@ -73,12 +72,7 @@ class Routes extends Component {
           }
           <AppBar
             id="appBar"
-            title={
-              <div
-                onClick={this.handleToggle} style={{
-                  marginRight:
-                    '130vh'
-                }} />}
+            title={<div onClick={this.handleToggle}></div>}
             iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
             style={{ backgroundColor: 'white' }}
@@ -152,9 +146,6 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData() {
-      dispatch(getAllCompaniesData())
-    },
     loadCompanyData(company) {
       dispatch(getCompanyData(company))
   }
