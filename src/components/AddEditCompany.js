@@ -81,6 +81,11 @@ export default class AddEditCompany extends Component {
 
                 })
             db.collection('companies').doc(this.state.staticCompanyName).delete()
+
+            if (localStorage.company === this.state.staticCompanyName){
+                localStorage.company = evt.target.dynamicCompanyName.value
+            }
+            
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
         }
     }
