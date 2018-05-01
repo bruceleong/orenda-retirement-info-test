@@ -11,19 +11,20 @@ import history from './history'
 import AppDrawerLoggedOut from './AppDrawerLoggedOut'
 import AppDrawerLoggedIn from './AppDrawerLoggedIn'
 import SBSFLogo from './sbsfLogo.png'
+import { getCompanyData, getAllCompaniesData  } from '../store'
 
 import AppBar from 'material-ui/AppBar'
 
 
 import News from './News'
 import Forms from './Forms'
-import { getAllCompaniesData } from '../store'
 import { IconButton } from 'material-ui';
 
 class Routes extends Component {
   constructor() {
     super();
     this.state = {
+      firstAttempt: true,
       logged: true,
       open: false,
       authed: false,
@@ -37,8 +38,22 @@ class Routes extends Component {
   handleClose = () => this.setState({ open: false })
   handleToggle = () => this.setState({ open: !this.state.open })
 
-  render() {
+  handleInput = (evt) => {
+    evt.preventDefault()
+    let lowerCaseAllCompanies = this.props.allCompanies.map(ele => ele.toLowerCase())
+    let idx = lowerCaseAllCompanies.indexOf(evt.target.inputField.value.toLowerCase())
+    if (idx === -1) {
+        this.setState({ firstAttempt: false })
 
+    } else {
+        this.props.loadCompanyData(this.props.allCompanies[idx])
+        localStorage.setItem('company', this.props.allCompanies[idx])
+        this.props.history.push(`/companyHome`)
+    }
+}
+
+  render() {
+    console.log(this.props, 'current props')
     return (
       <Router history={history}>
         <div>
@@ -61,15 +76,11 @@ class Routes extends Component {
                 onClick={this.handleToggle} style={{
                   marginRight:
                     '130vh'
-                }}><span>Menu</span>
-              </div>}
+                }} />}
             iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
-            style={{ backgroundColor: 'green' }}
+            style={{ backgroundColor: '#339933' }}
           />
-          <div id="header">
-            <h1 id="title">Employee Resource</h1>
-          </div>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route
@@ -141,7 +152,10 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(getAllCompaniesData())
-    }
+    },
+    loadCompanyData(company) {
+      dispatch(getCompanyData(company))
+  }
   }
 }
 

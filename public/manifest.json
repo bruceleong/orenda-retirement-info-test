@@ -8,8 +8,8 @@
       "type": "image/x-icon"
     }
   ],
-  "scope": "https://mighty-temple-51121.herokuapp.com/",
-  "start_url": "https://mighty-temple-51121.herokuapp.com/",
+  "scope": "https://sbsf.herokuapp.com/",
+  "start_url": "https://sbsf.herokuapp.com/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

@@ -12,7 +12,7 @@ export default class App extends Component {
             <Routes />
           </div>
         <div id="footer">
-          <p>Side by Side Financials LLC. 2018</p>
+          <p>© 2018 · Side By Side Financials · All Rights Reserved.</p>
         </div>
       </div>
     )
