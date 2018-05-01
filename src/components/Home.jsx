@@ -123,7 +123,7 @@ class Home extends Component {
                         this.state.loading === true
                             ? <SplashScreen />
                             :
-                            <div>
+                            <div className="companyPages">
                                 <h2>Our Favorite Videos and Articles</h2>
                                 <div className="videos">
                                     {
