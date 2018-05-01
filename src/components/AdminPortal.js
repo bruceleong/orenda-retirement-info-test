@@ -42,6 +42,9 @@ export default class AdminPortal extends Component {
     handleDelete = (evt) => {
         evt.preventDefault()
         if (window.confirm('Are you sure you want to delete this company?')) {
+            if (localStorage.company === evt.target.selectCompany.value){
+                localStorage.company = ''
+            }
             db.collection('companies').doc(evt.target.selectCompany.value).delete()
             this.getCompanies()
         }
@@ -137,15 +140,18 @@ export default class AdminPortal extends Component {
                                 <button
                                     className="buttons"
                                     type="button"
-                                    onClick={this.onAdd}>Add Company</button>
+                                    onClick={this.onAdd}>Add Company
+                                </button>
                                 <button
                                     className="buttons"
                                     type="button"
-                                    onClick={this.onEdit}>Edit Company</button>
+                                    onClick={this.onEdit}>Edit Company
+                                </button>
                                 <button
                                     className="buttons"
                                     type="button"
-                                    onClick={this.onDelete}>Delete Company</button>
+                                    onClick={this.onDelete}>Delete Company
+                                </button>
                                 {
                                     this.state.action === 'edit' || this.state.action === 'delete'
                                         ? (
@@ -197,7 +203,8 @@ export default class AdminPortal extends Component {
                                 <button
                                     className="buttons"
                                     type="button"
-                                    onClick={this.showEditMediaPage}>Edit Media</button>
+                                    onClick={this.showEditMediaPage}>Edit Media
+                                </button>
                                 {
                                     this.state.showEditMedia &&
                                     <AddEditMedia />
@@ -213,7 +220,7 @@ export default class AdminPortal extends Component {
                                         '/'
                                     )
                                 }}>Logout of Admin
-                        </button>
+                            </button>
                         </div>
                     )
                     : (<AddEditCompany company={this.state.selectedCompany} returnLink={this.returnButton} returnToSelectedCompany={this.returnToSelectedCompany} history={this.props.history} adding={this.state.adding} />)
