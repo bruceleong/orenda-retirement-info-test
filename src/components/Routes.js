@@ -35,22 +35,6 @@ class Routes extends Component {
   handleClose = () => this.setState({ open: false })
   handleToggle = () => this.setState({ open: !this.state.open })
 
-  handleInput = (evt) => {
-    evt.preventDefault()
-    let lowerCaseAllCompanies = this.props.allCompanies.map(ele => ele.toLowerCase())
-    let idx = lowerCaseAllCompanies.indexOf(evt.target.inputField.value.toLowerCase())
-    if (idx === -1) {
-        this.setState({ firstAttempt: false })
-
-    } else {
-        this.props.loadCompanyData(this.props.allCompanies[idx])
-        localStorage.setItem('company', this.props.allCompanies[idx])
-        this.props.history.push(`/companyHome`)
-    }
-}
-  componentDidMount = () => {
-}
-
  render() {
     return (
       <Router history={history}>
