@@ -55,9 +55,12 @@ export default class AddEditMedia extends Component {
   mediaHandleSubmit = evt => {
     evt.preventDefault()
 
+    let url = this.state.mediaLink
+    if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
+
     if (this.state.mediaType === 'video') {
       db.collection('videos').doc('videoData')
-        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+        .set({ [this.state.mediaTitle]: url }, { merge: true })
       this.setState({
         mediaTitle: '',
         mediaLink: ''
@@ -66,7 +69,7 @@ export default class AddEditMedia extends Component {
       this.getVideoData()
     } else {
       db.collection('articles').doc('newsArticles')
-        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+        .set({ [this.state.mediaTitle]: url }, { merge: true })
       this.setState({
         mediaTitle: '',
         mediaLink: ''

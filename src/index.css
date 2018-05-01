@@ -119,7 +119,7 @@ body {
   border: none;
   border-radius: 1vw;
   font-size: 1em;
-  color: #cccccc
+  color: #bfbfbf
 }
 }
 
@@ -145,7 +145,7 @@ body {
     border: none;
     border-radius: 1vw;
     font-size: 1.2em;
-    color: #cccccc
+    color: #bfbfbf
   }
 
   .loggedInHeader {
@@ -187,7 +187,7 @@ body {
     border: none;
     border-radius: 1vw;
     font-size: 1.2em;
-    color: #cccccc
+    color: #bfbfbf
   }
 }
 

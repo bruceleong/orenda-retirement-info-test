@@ -3,7 +3,6 @@ import { db } from '../config/constants'
 import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
 import SplashScreen from './SplashScreen'
-import sbsfLogo from './sbsfLogo.png'
 
 class Home extends Component {
     constructor(props) {
