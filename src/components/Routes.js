@@ -49,9 +49,7 @@ class Routes extends Component {
     }
 }
   componentDidMount = () => {
-    //this is very hacky
-    document.getElementById('appBar').firstChild.firstChild.firstChild.style.fill = 'black'
-  }
+}
 
  render() {
     return (
@@ -75,7 +73,6 @@ class Routes extends Component {
             title={<div onClick={this.handleToggle}></div>}
             iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
-            style={{ backgroundColor: 'white' }}
           />
           <Switch>
             <Route path="/" exact component={Home} />

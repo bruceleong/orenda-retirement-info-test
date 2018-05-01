@@ -5,22 +5,18 @@ import App from './components/App.js';
 import registerServiceWorker from './registerServiceWorker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './store'
 
 
-const muiTheme = getMuiTheme(
+export const muiTheme = getMuiTheme(
   {
-    "palette": {
-        "primary1Color": "#382a19",
-        "primary2Color": "#689f38",
-        "accent1Color": "#b2ff59",
-        "pickerHeaderColor": "#009688"
-    },
-    "textField": {
-        "errorColor": "#ff5722"
+    "appBar": {
+      "color": "#ffffff",
+      "textColor": "#000000",
+      "padding": 24
     }
-});
+  });
 
 ReactDOM.render(
   <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>

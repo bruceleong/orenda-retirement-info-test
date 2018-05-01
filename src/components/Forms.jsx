@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { db } from '../config/constants'
 import { Link } from 'react-router-dom'
 import SplashScreen from './SplashScreen'
-import circle from './circle.png'
 
 class Forms extends Component {
   constructor(props) {
