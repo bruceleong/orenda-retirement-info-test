@@ -20,7 +20,7 @@ import Forms from './Forms'
 
 class Routes extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       logged: true,
       open: false,
@@ -31,6 +31,11 @@ class Routes extends Component {
   handleChange = (event, logged) => this.setState({ logged: logged })
   handleClose = () => this.setState({ open: false })
   handleToggle = () => this.setState({ open: !this.state.open })
+
+  componentDidMount = () => {
+    //this is very hacky
+    document.getElementById('appBar').firstChild.firstChild.firstChild.style.fill = 'black'
+  }
 
   render() {
 
@@ -51,6 +56,7 @@ class Routes extends Component {
               />
           }
           <AppBar
+            id="appBar"
             title={
               <div
                 onClick={this.handleToggle} style={{
@@ -60,7 +66,7 @@ class Routes extends Component {
               </div>}
             iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
-            style={{ backgroundColor: 'green' }}
+            style={{ backgroundColor: 'white' }}
           />
           <div id="header">
             <h1 id="title">Employee Resource</h1>
@@ -118,7 +124,9 @@ class Routes extends Component {
             <Route render={() => <h3>No Match</h3>} />
           </Switch>
         </div>
+       
       </Router>
+
     )
   }
 }
