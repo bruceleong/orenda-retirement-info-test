@@ -116,7 +116,7 @@ body {
 }
 
 .buttonInput {
-  border: none;
+  border: 1px solid grey;
   border-radius: 1vw;
   font-size: 1em;
   color: #bfbfbf

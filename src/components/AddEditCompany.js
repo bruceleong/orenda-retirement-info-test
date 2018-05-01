@@ -85,7 +85,7 @@ export default class AddEditCompany extends Component {
             if (localStorage.company === this.state.staticCompanyName){
                 localStorage.company = evt.target.dynamicCompanyName.value
             }
-            
+
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
         }
     }
@@ -212,10 +212,11 @@ export default class AddEditCompany extends Component {
                                                         {ele[1]}
                                                     </a>
                                                 </p>
-                                                <button type="button" onClick={() => this.editForm(ele[0], ele[1])}>
+                                                <button className="buttons" type="button" onClick={() => this.editForm(ele[0], ele[1])}>
                                                     Edit Link
                                                     </button>
                                                 <button
+                                                    className="buttons"
                                                     type='button'
                                                     onClick={
                                                         () => {
