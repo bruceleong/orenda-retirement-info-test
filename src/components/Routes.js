@@ -22,16 +22,13 @@ import { IconButton } from 'material-ui';
 
 class Routes extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       firstAttempt: true,
       logged: true,
       open: false,
       authed: false,
     }
-  }
-  componentDidMount() {
-    this.props.loadInitialData()
   }
 
   handleChange = (event, logged) => this.setState({ logged: logged })
@@ -51,8 +48,12 @@ class Routes extends Component {
         this.props.history.push(`/companyHome`)
     }
 }
+  componentDidMount = () => {
+    //this is very hacky
+    document.getElementById('appBar').firstChild.firstChild.firstChild.style.fill = 'black'
+  }
 
-  render() {
+ render() {
     console.log(this.props, 'current props')
     return (
       <Router history={history}>
@@ -71,6 +72,7 @@ class Routes extends Component {
               />
           }
           <AppBar
+            id="appBar"
             title={
               <div
                 onClick={this.handleToggle} style={{
@@ -79,7 +81,7 @@ class Routes extends Component {
                 }} />}
             iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
-            style={{ backgroundColor: '#339933' }}
+            style={{ backgroundColor: 'white' }}
           />
           <Switch>
             <Route path="/" exact component={Home} />
@@ -134,16 +136,16 @@ class Routes extends Component {
             <Route render={() => <h3>No Match</h3>} />
           </Switch>
         </div>
+
       </Router>
+
     )
   }
 }
 
 const mapState = (state) => {
   return {
-    allCompanies: state.allCompanies,
     selectedCompany: state.company,
-    isLoggedIn: Boolean(state.company)
   }
 }
 

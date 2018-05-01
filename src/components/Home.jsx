@@ -12,6 +12,7 @@ class Home extends Component {
             firstAttempt: true,
             videoData: [],
             articleData: [],
+            allCompanies: [],
             loading: true
         }
     }
@@ -19,6 +20,7 @@ class Home extends Component {
     componentDidMount() {
         this.getNewsData()
         this.getVideoData()
+        this.getAllCompanies()
     }
 
     getVideoData = () => {
@@ -37,6 +39,19 @@ class Home extends Component {
             })
     }
 
+    getAllCompanies = () => {
+
+        db.collection('companies')
+        .get()
+        .then(snapshot => {
+            let allCompanies = []
+            snapshot.forEach(doc => {
+                allCompanies.push(doc.data().name)
+            })
+            this.setState({allCompanies})
+        })
+    }
+
     getNewsData = () => {
         db.collection('articles').doc('newsArticles')
             .get()
@@ -52,14 +67,14 @@ class Home extends Component {
 
     handleInput = (evt) => {
         evt.preventDefault()
-        let lowerCaseAllCompanies = this.props.allCompanies.map(ele => ele.toLowerCase())
+        let lowerCaseAllCompanies = this.state.allCompanies.map(ele => ele.toLowerCase())
         let idx = lowerCaseAllCompanies.indexOf(evt.target.inputField.value.toLowerCase())
         if (idx === -1) {
             this.setState({ firstAttempt: false })
 
         } else {
-            this.props.loadCompanyData(this.props.allCompanies[idx])
-            localStorage.setItem('company', this.props.allCompanies[idx])
+            this.props.loadCompanyData(this.state.allCompanies[idx])
+            localStorage.setItem('company', this.state.allCompanies[idx])
             this.props.history.push(`/companyHome`)
         }
     }
@@ -153,14 +168,10 @@ class Home extends Component {
     }
 }
 
-const mapState = ({ allCompanies }) => ({
-    allCompanies
-})
-
 const mapDispatch = (dispatch) => ({
     loadCompanyData(company) {
         dispatch(getCompanyData(company))
     }
 })
 
-export default connect(mapState, mapDispatch)(Home)
+export default connect(null, mapDispatch)(Home)
