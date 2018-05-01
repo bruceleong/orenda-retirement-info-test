@@ -96,13 +96,6 @@ body {
   background-color: #339933
 }
 
-.loggedInHeader {
-  background-size: cover;
-  background-image: url("backgroundAfterLogin.jpeg");
-  align-content: center;
-  height: 35vh;
- }
-
 .header {
  background-size: cover;
 }
@@ -161,6 +154,14 @@ body {
     background-image: url("homePageDesktop.png");
     height: 35vh;
   }
+
+  .loggedInHeader {
+    background-size: cover;
+    background-image: url("backgroundAfterLogin.jpeg");
+    align-content: center;
+    height: 35vh;
+   }
+
   .companyHomeLinks {
     justify-content: center;
     display: flex;
