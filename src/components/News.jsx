@@ -50,13 +50,14 @@ export default class News extends Component {
     return this.state.loading === true
       ? (<SplashScreen />)
       : (
-        <div className="page">
-          <h1>Tips on Retirement Planning</h1>
-          <h1>Our Favorite Videos</h1>
+        <div>
+        <div className="loggedInHeader" />
+          <div className="companyPages">
+          <h1>On this page, you will find videos and tutorials and topics to help you prepare and get the most out of retirement.</h1>
           <div className="videos">
             {
               this.state.videoData.length === 0
-                ? <h2>We are updating this page, check back soon</h2>
+                ? ''
                 :
                 this.state.videoData.map(video => (
                   <div key={video[0]} className="video">
@@ -68,11 +69,10 @@ export default class News extends Component {
                 ))
             }
           </div>
-          <h1>Our Top Articles</h1>
           <div className="articles">
             {
               this.state.articleData.length === 0
-                ? <h2>We are updating this page, check back soon</h2>
+                ? ''
                 :
                 this.state.articleData.map(article => (
                   <div key={article[0]} className="article">
@@ -81,7 +81,7 @@ export default class News extends Component {
                         <h4><b>{article[0]}</b></h4>
                       </a>
                       <a href={article[1]}>
-                        <p><strong>Read Article Here</strong></p>
+                        <p><strong>More Info</strong></p>
                       </a>
                     </div>
                   </div>
@@ -108,6 +108,7 @@ export default class News extends Component {
             }}>
             Logout
           </button>
+          </div>
         </div>
       )
   }

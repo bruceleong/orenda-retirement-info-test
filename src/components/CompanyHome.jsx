@@ -25,27 +25,35 @@ export default class CompanyHome extends Component {
     render() {
         return (
             <div>
+                <div className="loggedInHeader" />
                 {
                     !localStorage.getItem('company')
                         ? <splashScreen />
                         :
-                        <div className="page">
+                        <div className="companyPages">
                             <h1>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
                             </h1>
-                            <div>
-                                <Link className="links" to="/YourAccount" style={{ textDecoration: 'none'}}><button className="companyHomeButtons" type="button">&#9673; Your Account</button></Link>
-                            </div>
-                            <div>
-                                <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd}><button className="companyHomeButtons" type="button">&#9673; Plan Documents</button></a>
-                            </div>
-                            <div>
-                                <Link className="links" to="/Forms"><button className="companyHomeButtons" type="button">&#9673; Forms & Notices</button></Link>
-                            </div>
-                            <div>
-                                <Link className="links" to="/News"><button className="companyHomeButtons" type="button">&#9673; News</button></Link>
-                            </div>
-                            <div>
-                                <Link className="links" to="/Contact"><button className="companyHomeButtons" type="button">&#9673; Contact</button></Link>
+                            <p>On this page, you have access to your 401(k) account and can find comprehensive information about retirement planning.  Retirement Planning is an important phase in your life.  As you continue your working career, it is our hope to help provide you the tools and education you need to help reach your goals.</p>
+                            <div className="companyHomeLinks">
+                                <div>
+                                    <Link className="links" to="/YourAccount" style={{ textDecoration: 'none' }}>&#9673; Your Account</Link>
+                                </div>
+                                <div style={{ width: '1vw' }} />
+                                <div>
+                                    <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd}>&#9673; Plan Documents</a>
+                                </div>
+                                <div style={{ width: '1vw' }} />
+                                <div>
+                                    <Link className="links" to="/Forms">&#9673; Forms & Notices</Link>
+                                </div>
+                                <div style={{ width: '1vw' }} />
+                                <div>
+                                    <Link className="links" to="/News">&#9673; News</Link>
+                                </div>
+                                <div style={{ width: '1vw' }} />
+                                <div>
+                                    <Link className="links" to="/Contact">&#9673; Contact</Link>
+                                </div>
                             </div>
                             <button
                                 className="buttons"

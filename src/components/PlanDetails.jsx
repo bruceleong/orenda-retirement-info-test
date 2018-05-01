@@ -49,6 +49,7 @@ class PlanDetails extends Component {
     render() {
         return (
             <div>
+                <div className="loggedInHeader" />
                 {
                     !localStorage.getItem('company')
                         ? 'Wrong Page'
@@ -58,13 +59,13 @@ class PlanDetails extends Component {
                                 this.state.loading === true
                                     ? <splashScreen />
                                     :
-                                    <div className="page">
-                                        <h2>{`For additional information on your
+                                    <div className="companyPages">
+                                        <h1>{`For additional information on your
                                         ${localStorage.getItem('company')} retirement plan:
                             `}<a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
                                                 Click Here
                                         </a>
-                                        </h2>
+                                        </h1>
                                     </div>
                             }
                             <br />

@@ -11,17 +11,20 @@ import history from './history'
 import AppDrawerLoggedOut from './AppDrawerLoggedOut'
 import AppDrawerLoggedIn from './AppDrawerLoggedIn'
 import SBSFLogo from './sbsfLogo.png'
+import { getCompanyData, getAllCompaniesData  } from '../store'
 
 import AppBar from 'material-ui/AppBar'
 
 
 import News from './News'
 import Forms from './Forms'
+import { IconButton } from 'material-ui';
 
 class Routes extends Component {
   constructor() {
     super()
     this.state = {
+      firstAttempt: true,
       logged: true,
       open: false,
       authed: false,
@@ -32,13 +35,7 @@ class Routes extends Component {
   handleClose = () => this.setState({ open: false })
   handleToggle = () => this.setState({ open: !this.state.open })
 
-  componentDidMount = () => {
-    //this is very hacky
-    document.getElementById('appBar').firstChild.firstChild.firstChild.style.fill = 'black'
-  }
-
-  render() {
-
+ render() {
     return (
       <Router history={history}>
         <div>
@@ -57,20 +54,10 @@ class Routes extends Component {
           }
           <AppBar
             id="appBar"
-            title={
-              <div
-                onClick={this.handleToggle} style={{
-                  marginRight:
-                    '130vh'
-                }}><span>Menu</span>
-              </div>}
+            title={<div onClick={this.handleToggle}></div>}
             iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
-            style={{ backgroundColor: 'white' }}
           />
-          <div id="header">
-            <h1 id="title">Employee Resource</h1>
-          </div>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route
@@ -124,7 +111,7 @@ class Routes extends Component {
             <Route render={() => <h3>No Match</h3>} />
           </Switch>
         </div>
-       
+
       </Router>
 
     )
@@ -137,4 +124,14 @@ const mapState = (state) => {
   }
 }
 
-export default connect(mapState)(Routes)
+
+const mapDispatch = (dispatch) => {
+  return {
+    loadCompanyData(company) {
+      dispatch(getCompanyData(company))
+  }
+  }
+}
+
+
+export default connect(mapState, mapDispatch)(Routes)

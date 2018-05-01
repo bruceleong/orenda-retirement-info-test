@@ -3,18 +3,6 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: white;
-  border: lawngreen;
-}
-
-/* button {
-  margin: 2vh;
-  background-color: #4CAF50;
-} */
-
-.buttons {
-  margin: 1vh;
-  background-color: #4CAF50;
-  font-size: 1.5em;
 }
 
 .page {
@@ -27,26 +15,14 @@ body {
   align-items: center;
 }
 
-.companyHomeButtons {
-  border: 1px solid white;
-  background-color: white;
-  height: 10vh;
-  width: 300px;
-  font-size: 2em;
-}
-
 .links {
   text-decoration: none;
+  color: #339933;
+  font-size: 1.5em;
 }
 
-.companyHome {
-  border-radius: 1vw;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgb(140, 191, 132);
-  margin: 2vh;
-  width: 55vw;
-  margin-left: 20vw;
-  margin-right: 20vw;
+.companyPages {
+  margin: 5vw;
 }
 
 #menu {
@@ -117,13 +93,102 @@ body {
 }
 
 .login-button button{
-  background-color: green
+  background-color: #339933
 }
 
-#header {
+.header {
  background-size: cover;
- background-color: lightgreen;
- height: 30vh;
+}
+
+@media (max-width: 400px) {
+.header {
+    background-image: url("homePage.png");
+    align-content: center;
+    height: 35vh;
+  }
+.buttons {
+  margin: 1vh;
+  background-color: #4CAF50;
+  font-size: 1em;
+  border: none;
+  border-radius: 1vw;
+  color: white;
+}
+
+.buttonInput {
+  border: none;
+  border-radius: 1vw;
+  font-size: 1em;
+  color: #cccccc
+}
+}
+
+@media (min-width: 401px) and (max-width: 650px) {
+  .header {
+    background-image: url("homePage.png");
+    align-content: center;
+    height: 35vh;
+  }
+  .companyHomeLinks div::before {
+    content: "\A";
+  }
+  .buttons {
+    margin: 1vh;
+    background-color: #4CAF50;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 1vw;
+    color: white;
+  }
+
+  .buttonInput {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.2em;
+    color: #cccccc
+  }
+
+  .loggedInHeader {
+    background-size: cover;
+    background-image: url("backgroundAfterLogin.jpeg");
+    align-content: center;
+    height: 35vh;
+   }
+}
+
+@media (min-width: 651px) {
+  .header {
+    background-image: url("homePageDesktop.png");
+    height: 35vh;
+  }
+
+  .loggedInHeader {
+    background-size: cover;
+    background-image: url("backgroundAfterLogin.jpeg");
+    align-content: center;
+    height: 35vh;
+   }
+
+  .companyHomeLinks {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .buttons {
+    margin: 1vh;
+    background-color: #4CAF50;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 1vw;
+    color: white;
+  }
+
+  .buttonInput {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.2em;
+    color: #cccccc
+  }
 }
 
 .formFormating {
@@ -137,20 +202,17 @@ body {
 #title {
   text-align: center;
   font-style: lora;
-  font-size: 50px;
-  font-weight: 900;
+  font-size: 1.25em;
   color: black;
   display: inline-block;
-  padding: .1em .1em;
   letter-spacing: .05em;
-  margin-top: 5vh;
-  margin-bottom: 15vh;
-  clear: both;
+  margin: 3vw;
+  /* clear: both; */
 }
 
 #footer {
   width: 100%;
-  border-top: solid 2px green;
+  border-top: solid 2px #339933;
   font-family: Lora;
   color: black;
   bottom: 0;

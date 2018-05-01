@@ -25,7 +25,6 @@ export default class AddEditCompany extends Component {
     }
 
     componentDidMount() {
-        console.log('in componentDidMount')
         this.updateCompanyData()
     }
 
@@ -44,7 +43,6 @@ export default class AddEditCompany extends Component {
 
     formHandleSubmit = evt => {
         evt.preventDefault()
-        console.log('in formHandleSubmit')
         let url = evt.target.companyFormUrl.value
         if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
 
@@ -59,7 +57,6 @@ export default class AddEditCompany extends Component {
     }
 
     updateCompanyProfile = (evt) => {
-        console.log('in updateCompanyProfile')
         evt.preventDefault()
         if (this.state.staticCompanyName === this.state.dynamicCompanyName) {
             evt.preventDefault()
@@ -69,8 +66,6 @@ export default class AddEditCompany extends Component {
 
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value })
         } else {
-            console.log('in the else')
-
             let newCompanyRef = db.collection('companies').doc(this.state.dynamicCompanyName)
 
             newCompanyRef
@@ -82,8 +77,6 @@ export default class AddEditCompany extends Component {
                     this.state.companyData.forEach((ele) => {
                         obj[ele[0]] = ele[1]
                     })
-
-                    console.log('about to set', obj)
                     newCompanyRef.collection('Forms').doc('formDoc').set(obj)
 
                 })
@@ -93,10 +86,7 @@ export default class AddEditCompany extends Component {
     }
 
     updateCompanyData = () => {
-        console.log('in updateComanyData')
-
         if (this.state.staticCompanyName !== 'newCompany') {
-            console.log('in update company data')
 
             let companyRef = db.collection('companies').doc(this.state.staticCompanyName)
 
@@ -105,7 +95,6 @@ export default class AddEditCompany extends Component {
                 .then(doc => {
                     let formObj = doc.data(),
                         companyData = []
-                    console.log('formObj is', formObj)
                     if (formObj) {
                         Object.keys(formObj).forEach(key => {
                             companyData.push([key, formObj[key]])
@@ -126,9 +115,8 @@ export default class AddEditCompany extends Component {
             this.setState({ loading: false })
         }
     }
-    
+
     render() {
-        console.log(this.state, 'current state of add/edicomappny')
         return this.state.loading === true
             ? (<SplashScreen />)
             : (
@@ -150,7 +138,7 @@ export default class AddEditCompany extends Component {
                                 )
                             :   <h2>Enter your New Company's Info</h2>
                             }
-                           
+
                             <form onSubmit={this.updateCompanyProfile}>
                                 <label style={{ display: 'block', margin: '10px' }} htmlFor="companyName">Company Name:<input
                                     name="dynamicCompanyName" value={this.state.dynamicCompanyName}
@@ -172,12 +160,12 @@ export default class AddEditCompany extends Component {
                                     required
                                     onChange={this.handleChange} />
                                 </label>
-                                
+
                                         <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }}>
                                             Submit Changes
                                         </button>
-                                        
-                                
+
+
                             </form>
                         </div>
                         {
