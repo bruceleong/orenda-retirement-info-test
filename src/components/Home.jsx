@@ -79,7 +79,6 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.state, 'state', this.props, 'current props')
         return (
             <div>
                 <div>

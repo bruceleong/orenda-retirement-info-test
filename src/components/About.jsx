@@ -45,7 +45,6 @@ class About extends Component {
     }
 
     render() {
-        console.log(this.props, 'current props', this.state, 'current state')
         return (
             <div>
                 <div className="header">
