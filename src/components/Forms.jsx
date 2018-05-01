@@ -66,13 +66,17 @@ class Forms extends Component {
             <div>
               <div>
                 {
-                  this.state.companyData.map(form => {
-                    return (
-                      <div key={form[0]}>
-                          <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673;{form[0]}</a>
-                      </div>
-                    )
-                  })
+                  this.state.companyData.length === 0
+                  ? <h3>This company does not have any forms or notices.</h3>
+                  : (
+                    this.state.companyData.map(form => {
+                      return (
+                        <div key={form[0]}>
+                            <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673;{form[0]}</a>
+                        </div>
+                      )
+                    })
+                  )  
                 }
               </div>
               <br />
