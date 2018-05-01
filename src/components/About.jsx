@@ -3,30 +3,49 @@ import { Link } from 'react-router-dom'
 import sbsfLogo from './sbsfLogo.png'
 import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
+import { db } from '../config/constants'
 
 class About extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstAttempt: true
+            firstAttempt: true,
+            allCompanies: []
         }
+    }
+
+    componentDidMount() {
+        this.getAllCompanies()
+    }
+
+    getAllCompanies = () => {
+        db.collection('companies')
+            .get()
+            .then(snapshot => {
+                let allCompanies = []
+                snapshot.forEach(doc => {
+                    allCompanies.push(doc.data().name)
+                })
+                this.setState({ allCompanies })
+            })
     }
 
     handleInput = (evt) => {
         evt.preventDefault()
-        let lowerCaseAllCompanies = this.props.allCompanies.map(ele => ele.toLowerCase())
+        let lowerCaseAllCompanies = this.state.allCompanies.map(ele => ele.toLowerCase())
         let idx = lowerCaseAllCompanies.indexOf(evt.target.inputField.value.toLowerCase())
         if (idx === -1) {
             this.setState({ firstAttempt: false })
 
         } else {
-            this.props.loadCompanyData(this.props.allCompanies[idx])
-            localStorage.setItem('company', this.props.allCompanies[idx])
+            this.props.loadCompanyData(this.state.allCompanies[idx])
+            localStorage.setItem('company', this.state.allCompanies[idx])
             this.props.history.push(`/companyHome`)
         }
     }
 
     render() {
+        console.log(this.props, 'current props', this.state, 'current state')
         return (
             <div>
                 <div className="header">
@@ -112,7 +131,7 @@ class About extends Component {
                                     )
                                 }}>
                                 Logout
-                </button>
+                            </button>
                         }
                     </div>
                 </div>
@@ -121,14 +140,10 @@ class About extends Component {
     }
 }
 
-const mapState = ({ allCompanies }) => ({
-    allCompanies
-})
-
 const mapDispatch = (dispatch) => ({
     loadCompanyData(company) {
         dispatch(getCompanyData(company))
     }
 })
 
-export default connect(mapState, mapDispatch)(About)
+export default connect(null, mapDispatch)(About)

@@ -71,7 +71,6 @@ class Home extends Component {
         let idx = lowerCaseAllCompanies.indexOf(evt.target.inputField.value.toLowerCase())
         if (idx === -1) {
             this.setState({ firstAttempt: false })
-
         } else {
             this.props.loadCompanyData(this.state.allCompanies[idx])
             localStorage.setItem('company', this.state.allCompanies[idx])
@@ -80,6 +79,7 @@ class Home extends Component {
     }
 
     render() {
+        console.log(this.state, 'state', this.props, 'current props')
         return (
             <div>
                 <div>
