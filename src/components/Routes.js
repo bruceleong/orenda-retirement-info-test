@@ -17,25 +17,25 @@ import AppBar from 'material-ui/AppBar'
 
 import News from './News'
 import Forms from './Forms'
-import { getAllCompaniesData } from '../store'
-import { IconButton } from 'material-ui';
 
 class Routes extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       logged: true,
       open: false,
       authed: false,
     }
   }
-  componentDidMount() {
-    this.props.loadInitialData()
-  }
 
   handleChange = (event, logged) => this.setState({ logged: logged })
   handleClose = () => this.setState({ open: false })
   handleToggle = () => this.setState({ open: !this.state.open })
+
+  componentDidMount = () => {
+    //this is very hacky
+    document.getElementById('appBar').firstChild.firstChild.firstChild.style.fill = 'black'
+  }
 
   render() {
 
@@ -56,6 +56,7 @@ class Routes extends Component {
               />
           }
           <AppBar
+            id="appBar"
             title={
               <div
                 onClick={this.handleToggle} style={{
@@ -65,7 +66,7 @@ class Routes extends Component {
               </div>}
             iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
-            style={{ backgroundColor: 'green' }}
+            style={{ backgroundColor: 'white' }}
           />
           <div id="header">
             <h1 id="title">Employee Resource</h1>
@@ -123,27 +124,17 @@ class Routes extends Component {
             <Route render={() => <h3>No Match</h3>} />
           </Switch>
         </div>
+       
       </Router>
+
     )
   }
 }
 
 const mapState = (state) => {
   return {
-    allCompanies: state.allCompanies,
     selectedCompany: state.company,
-    isLoggedIn: Boolean(state.company)
   }
 }
 
-
-const mapDispatch = (dispatch) => {
-  return {
-    loadInitialData() {
-      dispatch(getAllCompaniesData())
-    }
-  }
-}
-
-
-export default connect(mapState, mapDispatch)(Routes)
+export default connect(mapState)(Routes)

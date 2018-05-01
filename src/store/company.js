@@ -20,7 +20,6 @@ const setCompany = company => ({type: SET_COMPANY, company})
 export const getCompanyData = (companyName) =>
  (dispatch) => {
   try {
-    //hmmm maybe we should grab everything else from firestore directly
     dispatch(setCompany(companyName))
   }
   catch (err) {
