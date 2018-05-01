@@ -11,14 +11,10 @@ import history from './history'
 import AppDrawerLoggedOut from './AppDrawerLoggedOut'
 import AppDrawerLoggedIn from './AppDrawerLoggedIn'
 import SBSFLogo from './sbsfLogo.png'
-import { getCompanyData, getAllCompaniesData  } from '../store'
-
+import { getCompanyData } from '../store'
 import AppBar from 'material-ui/AppBar'
-
-
 import News from './News'
 import Forms from './Forms'
-import { IconButton } from 'material-ui';
 
 class Routes extends Component {
   constructor() {

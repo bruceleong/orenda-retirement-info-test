@@ -1,9 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import sbsfLogo from './sbsfLogo.png'
-import { connect } from 'react-redux'
-import { getCompanyData } from '../store'
-import { db } from '../config/constants'
 
 const About = (props) => (
     <div>
