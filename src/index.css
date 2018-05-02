@@ -105,7 +105,7 @@ body {
 /* .header {
     background-image: url("homePage.png");
     align-content: center;
-    height: 35vh; 
+    height: 35vh;
   } */
 .buttons {
   /* margin: 1vh; */
@@ -146,20 +146,19 @@ body {
     font-size: 1.2em;
     color: #bfbfbf
   }
-
 }
 
 @media (min-width: 651px) {
   .header {
     background-image: url("homePageDesktop.png");
-    height: 35vh;
+    height: 42vh;
   }
 
   .loggedInHeader {
     background-size: cover;
-    background-image: url("backgroundAfterLogin.jpeg");
-    align-content: center;
-    height: 35vh;
+    /* background-image: url("backgroundAfterLoginTest.jpeg"); */
+    background-image: url("homePageDesktop.png");
+    height: 42vh;
    }
 
   .companyHomeLinks {
