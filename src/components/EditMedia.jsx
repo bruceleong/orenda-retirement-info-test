@@ -56,9 +56,11 @@ export default class EditMedia extends Component {
     if (this.state.mediaType === 'video') {
       db.collection('videos').doc('videoData')
         .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+        alert("Success")
     } else {
       db.collection('articles').doc('newsArticles')
         .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+        alert("Success")
     }
   }
 
@@ -80,24 +82,12 @@ export default class EditMedia extends Component {
               <form onSubmit={this.handleMediaSubmit}>
                 <div>
                   <label>{media} URL: </label>
-                  <input name="mediaLink" value={this.state.mediaLink} onChange={this.handleChange} style={{ width: '25vw', height: 'auto' }} />
+                  <input className="buttonInput" name="mediaLink" value={this.state.mediaLink} onChange={this.handleChange} style={{ width: '25vw', height: 'auto' }} />
                 </div>
                 <div>
                   <a target="_blank" href={this.state.mediaLink} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.state.mediaLink}</p></a>
                 </div>
-                <button type="submit" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
-                {
-                  this.state.changesSubmitted &&
-                  <div>
-                    <br />
-                    <button type="button" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Click to make additional changes</button>
-                    <br />
-
-                    <h1>
-                      Your changes were submitted
-                    </h1>
-                  </div>
-                }
+                <button className="buttons" type="submit" onClick={() => { this.setState({ changesSubmitted: !this.state.changesSubmitted }) }}>Submit Changes</button>
               </form>
             </div>
         }
