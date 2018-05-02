@@ -100,10 +100,10 @@ export default class AddEditCompany extends Component {
 
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
 
+
             if (localStorage.company === this.state.staticCompanyName) localStorage.company = evt.target.dynamicCompanyName.value
             
             alert('Success')
-            
         }
     }
 

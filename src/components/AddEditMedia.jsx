@@ -88,8 +88,8 @@ export default class AddEditMedia extends Component {
         this.getVideoData()
       }
       alert("Success")
-
     }
+    alert("Success")
   }
 
   returnToMediaHome = () => {
