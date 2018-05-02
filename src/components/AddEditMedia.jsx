@@ -65,6 +65,7 @@ export default class AddEditMedia extends Component {
         mediaTitle: '',
         mediaLink: ''
       })
+      alert("Success")
       this.getNewsData()
       this.getVideoData()
     } else {
@@ -76,6 +77,7 @@ export default class AddEditMedia extends Component {
       })
       this.getNewsData()
       this.getVideoData()
+      alert("Success")
     }
   }
 
@@ -90,8 +92,7 @@ export default class AddEditMedia extends Component {
   }
 
   editForm = (type, title, url) => {
-    this.setState({ mediaType: type, mediaURL: url })
-    this.setState({ mediaToUpdate: title })
+    this.setState({ mediaType: type, mediaURL: url, mediaToUpdate: title })
   }
 
   render() {
@@ -100,17 +101,18 @@ export default class AddEditMedia extends Component {
         ?
         <div>
           <h1>Edit Media</h1>
-          <h2>Add Media</h2>
           <form onSubmit={this.mediaHandleSubmit}>
-            <h3>Add new Forms</h3>
+            <h3>Add New Media</h3>
             <div>
-              <label>Name of form:</label><input
+              <label>Media Title:</label><input
+                className="buttonInput"
                 name="mediaTitle"
                 onChange={this.handleChange}
                 value={this.state.mediaTitle} />
             </div>
             <div>
-              <label>Url of media:</label><input
+              <label>URL of media:</label><input
+                className="buttonInput"
                 name="mediaLink"
                 onChange={this.handleChange}
                 value={this.state.mediaLink} />
@@ -119,6 +121,7 @@ export default class AddEditMedia extends Component {
             <div>
               <label>Type of Media: </label>
               <select
+                className="buttonInput"
                 name="mediaType"
                 onChange={this.handleChange}>
                 <option value="article">Article</option>
@@ -138,7 +141,7 @@ export default class AddEditMedia extends Component {
                   this.state.articleData.length === 0
                     ? <h3>There are no articles</h3>
                     : this.state.articleData.map(ele => (
-                      <div key={ele[0]}>
+                      <div className="companyPages" key={ele[0]}>
                         <p>Title: {ele[0]}</p>
                         <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
                         <button
@@ -174,7 +177,7 @@ export default class AddEditMedia extends Component {
                     ? <h3>There are no videos</h3>
                     :
                     this.state.videoData.map(ele => (
-                      <div key={ele[0]} style={{ marginBottom: "60px" }}>
+                      <div className="companyPages" key={ele[0]} style={{ marginBottom: "5vh" }}>
                         <p>Title: {ele[0]}</p>
                         <a target="_blank" href={ele[1]} style={{ display: 'inline' }}> <p>Link: {ele[1]}</p></a>
                         <button
