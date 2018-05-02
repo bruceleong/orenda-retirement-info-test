@@ -85,7 +85,7 @@ export default class AddEditCompany extends Component {
         } else  if (this.validFirestoreDocNameCheck('Company Name', this.state.dynamicCompanyName)){
 
             let newCompanyRef = db.collection('companies').doc(this.state.dynamicCompanyName)
-            
+
             newCompanyRef
                 .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.dynamicCompanyName, providerWebsite: this.state.providerWebsite }, { merge: true })
                 .then(() => {
@@ -102,9 +102,9 @@ export default class AddEditCompany extends Component {
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
 
             if (localStorage.company === this.state.staticCompanyName) localStorage.company = evt.target.dynamicCompanyName.value
-            
+
             alert('Success')
-            
+
 
         }
     }
@@ -219,18 +219,24 @@ className="buttonInput"
                                         <form onSubmit={this.formHandleSubmit}>
                                             <h3>Add new Forms</h3>
                                             <div>
-                                                <label htmlFor="companyFormName">Name of form: </label><input
+                                                <label htmlFor="companyFormName">Name of form: </label>
+                                                <div>
+                                                <input
                                                     className="buttonInput"
                                                     name="companyFormName" onChange={this.handleChange}
                                                     required
                                                     value={this.state.companyFormName} />
+                                                    </div>
                                             </div>
                                             <div>
-                                                <label htmlFor="companyFormUrl">Website of form: </label><input
+                                                <label htmlFor="companyFormUrl">Website of form: </label>
+                                                <div>
+                                                <input
                                                     className="buttonInput"
                                                     name="companyFormUrl" onChange={this.handleChange}
                                                     required
                                                     value={this.state.companyFormUrl} />
+                                                    </div>
                                             </div>
                                             <input className="buttons" type="submit" />
                                         </form>

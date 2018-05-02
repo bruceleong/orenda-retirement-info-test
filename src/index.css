@@ -5,6 +5,10 @@ body {
   background-color: white;
 }
 
+.buttons {
+  margin: 3vh;
+}
+
 .page {
   border-radius: 1vw;
   background-color: rgba(255, 255, 255, 0.5);
@@ -101,85 +105,123 @@ body {
  background-size: cover;
 }
 
+.contactHeader {
+  background-size: cover;
+ }
+
+.companyHomeLinks {
+  align-content: left;
+}
+
+.companyHomeForms {
+  align-content: left;
+}
+
 @media (max-width: 400px) {
-/* .header {
-    background-image: url("homePage.png");
+.header {
+    margin-top: 20vh;
     align-content: center;
-    height: 35vh;
-  } */
+    height: 60vh;
+  }
+.contactHeader {
+    align-content: center;
+  }
 .buttons {
-  /* margin: 1vh; */
-  margin: 1px;
-  background-color: #4CAF50;
+  background-color: #339933;
   font-size: 1em;
   border: none;
   border-radius: 1vw;
   color: white;
+  font-weight: bold;
 }
 
 .buttonInput {
   border: 1px solid grey;
   border-radius: 1vw;
-  font-size: 1em;
-  color: #bfbfbf
+  font-size: 1.2em;
+  color: #bfbfbf;
+  margin: 1vh;
+}
+
+.buttonInput div::before {
+  content: "\A";
+}
+.companyHomeLinks {
+  margin-left: 25vw;
+}
+.companyHomeForms {
+  margin-left: 18vw;
 }
 }
 
 @media (min-width: 401px) and (max-width: 650px) {
 
   .companyHomeLinks div::before {
-    content: "\A";
+    margin-left: 25vw;
   }
   .buttons {
-    /* margin: 1vh; */
-    margin: 1px;
-    background-color: #4CAF50;
+    background-color: #339933;
     font-size: 1.2em;
     border: none;
     border-radius: 1vw;
     color: white;
+    font-weight: bold;
   }
 
   .buttonInput {
     border: 1px solid grey;
     border-radius: 1vw;
     font-size: 1.2em;
-    color: #bfbfbf
+    color: #bfbfbf;
+    margin: 1vh;
+  }
+
+  .companyHomeLinks {
+    margin-left: 25vw;
+  }
+  .companyHomeForms {
+    margin-left: 18vw;
   }
 }
 
 @media (min-width: 651px) {
   .header {
     background-image: url("homePageDesktop.png");
-    height: 42vh;
+    height: 40vh;
+  }
+  .contactHeader {
+    background-image: url("homePage.png");
+    align-content: center;
+    height: 40vh;
   }
 
   .loggedInHeader {
     background-size: cover;
-    /* background-image: url("backgroundAfterLoginTest.jpeg"); */
     background-image: url("homePageDesktop.png");
-    height: 42vh;
+    height: 40vh;
    }
 
-  .companyHomeLinks {
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
+   .companyHomeLinks {
+    margin-left: 35vw;
+  }
+  .companyHomeForms {
+    margin-left: 30vw;
   }
   .buttons {
-    margin: 1vh;
-    background-color: #4CAF50;
+    background-color: #339933;
     font-size: 1.2em;
     border: none;
     border-radius: 1vw;
     color: white;
+    font-weight: bold;
   }
 
   .buttonInput {
     border: 1px solid grey;
     border-radius: 1vw;
     font-size: 1.2em;
-    color: #bfbfbf
+    color: #bfbfbf;
+    margin: 1vh;
   }
 }
 
@@ -199,7 +241,6 @@ body {
   display: inline-block;
   letter-spacing: .05em;
   margin: 3vw;
-  /* clear: both; */
 }
 
 #footer {

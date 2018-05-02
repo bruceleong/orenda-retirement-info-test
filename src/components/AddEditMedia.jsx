@@ -54,7 +54,7 @@ export default class AddEditMedia extends Component {
 
   validFirestoreDocNameCheck = (field, proposedName) => {
 
-    if (proposedName.search(/[~*/[\]]/g) !== -1){
+    if (proposedName.search(/[~*/[\]]/g) !== -1) {
       alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
       return false
     }
@@ -64,7 +64,7 @@ export default class AddEditMedia extends Component {
   mediaHandleSubmit = evt => {
     evt.preventDefault()
 
-    if (this.validFirestoreDocNameCheck('Title', this.state.mediaTitle)){
+    if (this.validFirestoreDocNameCheck('Title', this.state.mediaTitle)) {
 
       let url = this.state.mediaLink
       if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
@@ -116,18 +116,24 @@ export default class AddEditMedia extends Component {
           <form onSubmit={this.mediaHandleSubmit}>
             <h3>Add New Media</h3>
             <div>
-              <label>Media Title:</label><input
-                className="buttonInput"
-                name="mediaTitle"
-                onChange={this.handleChange}
-                value={this.state.mediaTitle} />
+              <label>Media Title:</label>
+              <div>
+                <input
+                  className="buttonInput"
+                  name="mediaTitle"
+                  onChange={this.handleChange}
+                  value={this.state.mediaTitle} />
+              </div>
             </div>
             <div>
-              <label>URL of media:</label><input
-                className="buttonInput"
-                name="mediaLink"
-                onChange={this.handleChange}
-                value={this.state.mediaLink} />
+              <label>URL of media:</label>
+              <div>
+                <input
+                  className="buttonInput"
+                  name="mediaLink"
+                  onChange={this.handleChange}
+                  value={this.state.mediaLink} />
+              </div>
             </div>
             <br />
             <div>
