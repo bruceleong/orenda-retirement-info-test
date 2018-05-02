@@ -51,7 +51,7 @@ class Routes extends Component {
           <AppBar
             id="appBar"
             title={<div onClick={this.handleToggle}></div>}
-            iconElementRight={<div><img style={{ height: '40px', margin: '1vh' }} alt="logo" src={SBSFLogo} /></div>}
+            iconElementRight={<div><img style={{ height: '40px', margin: '3px' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
           />
           <Switch>
