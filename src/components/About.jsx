@@ -6,7 +6,7 @@ const About = (props) => (
     <div>
         <div className="header" />
         <div className="companyPages">
-            <img src={sbsfLogo} style={{ width: '30vw', height: 'auto', marginTop: '5vh' }} alt="SBSF logo" />
+            <img src={sbsfLogo} style={{ width: '30vw', height: 'auto', marginTop: '3px' }} alt="SBSF logo" />
             <h4>Heather Cox</h4>
             <p>Administrator</p>
             <a href="mailto:hcox@sbsfinancials.com?Subject=Inquiry" target="_top">Contact</a>

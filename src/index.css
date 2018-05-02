@@ -108,7 +108,8 @@ body {
     height: 35vh; 
   } */
 .buttons {
-  margin: 1vh;
+  /* margin: 1vh; */
+  margin: 1px;
   background-color: #4CAF50;
   font-size: 1em;
   border: none;
@@ -125,16 +126,13 @@ body {
 }
 
 @media (min-width: 401px) and (max-width: 650px) {
-  /* .header {
-    background-image: url("homePage.png");
-    align-content: center;
-    height: 35vh;
-  } */
+
   .companyHomeLinks div::before {
     content: "\A";
   }
   .buttons {
-    margin: 1vh;
+    /* margin: 1vh; */
+    margin: 1px;
     background-color: #4CAF50;
     font-size: 1.2em;
     border: none;
@@ -149,12 +147,6 @@ body {
     color: #bfbfbf
   }
 
-  /* .loggedInHeader {
-    background-size: cover;
-    background-image: url("backgroundAfterLogin.jpeg");
-    align-content: center;
-    height: 35vh;
-   } */
 }
 
 @media (min-width: 651px) {
