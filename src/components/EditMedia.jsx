@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
-import SplashScreen from './SplashScreen';
+import SplashScreen from './SplashScreen'
 
 export default class EditMedia extends Component {
   constructor(props) {
@@ -14,36 +14,12 @@ export default class EditMedia extends Component {
     }
   }
 
-  getNewsData = () => {
-    db.collection('articles').doc('newsArticles')
-      .get()
-      .then(snapshot => {
-        let articles = snapshot.data(),
-          articleData = []
-
-        Object.keys(articles).forEach(key => {
-          if (key) {
-            articleData.push([key, articles[key]])
-          }
-        })
-        this.setState({ articleData })
-      })
-  }
-
-  getVideoData = () => {
-    db.collection('videos').doc('videoData')
-      .get()
-      .then(snapshot => {
-        let videos = snapshot.data(),
-          videoData = []
-
-        Object.keys(videos).forEach(key => {
-          if (key) {
-            videoData.push([key, videos[key]])
-          }
-        })
-        this.setState({ videoData })
-      })
+  validFirestoreDocNameCheck = (field, proposedName) => {
+    if (proposedName.search(/[\~\*\/\[\]]/g)){
+      alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
+      return false
+    }
+    return true
   }
 
   handleChange = evt => {
@@ -53,19 +29,22 @@ export default class EditMedia extends Component {
   handleMediaSubmit = evt => {
     evt.preventDefault()
 
-    if (this.state.mediaType === 'video') {
-      db.collection('videos').doc('videoData')
-        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
-        alert("Success")
-    } else {
-      db.collection('articles').doc('newsArticles')
-        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
-        alert("Success")
+    if (this.validFirestoreDocNameCheck('Title', this.state.mediaTitle)){
+
+      if (this.state.mediaType === 'video') {
+        db.collection('videos').doc('videoData')
+          .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+      } else {
+        db.collection('articles').doc('newsArticles')
+          .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+      }
+      alert('Success')
     }
+    alert('Success')
   }
 
   render() {
-    let media;
+    let media
     if (this.props.mediaType === 'article') {
       media = 'Article'
     } else {

@@ -52,33 +52,44 @@ export default class AddEditMedia extends Component {
       })
   }
 
+  validFirestoreDocNameCheck = (field, proposedName) => {
+    if (proposedName.search(/[\~\*\/\[\]]/g)){
+      alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
+      return false
+    }
+    return true
+  }
+
   mediaHandleSubmit = evt => {
     evt.preventDefault()
 
-    let url = this.state.mediaLink
-    if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
+    if (this.validFirestoreDocNameCheck('Title', this.state.mediaTitle)){
 
-    if (this.state.mediaType === 'video') {
-      db.collection('videos').doc('videoData')
-        .set({ [this.state.mediaTitle]: url }, { merge: true })
-      this.setState({
-        mediaTitle: '',
-        mediaLink: ''
-      })
-      alert("Success")
-      this.getNewsData()
-      this.getVideoData()
-    } else {
-      db.collection('articles').doc('newsArticles')
-        .set({ [this.state.mediaTitle]: url }, { merge: true })
-      this.setState({
-        mediaTitle: '',
-        mediaLink: ''
-      })
-      this.getNewsData()
-      this.getVideoData()
+      let url = this.state.mediaLink
+      if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
+
+      if (this.state.mediaType === 'video') {
+        db.collection('videos').doc('videoData')
+          .set({ [this.state.mediaTitle]: url }, { merge: true })
+        this.setState({
+          mediaTitle: '',
+          mediaLink: ''
+        })
+        this.getNewsData()
+        this.getVideoData()
+      } else {
+        db.collection('articles').doc('newsArticles')
+          .set({ [this.state.mediaTitle]: url }, { merge: true })
+        this.setState({
+          mediaTitle: '',
+          mediaLink: ''
+        })
+        this.getNewsData()
+        this.getVideoData()
+      }
       alert("Success")
     }
+    alert("Success")
   }
 
   returnToMediaHome = () => {

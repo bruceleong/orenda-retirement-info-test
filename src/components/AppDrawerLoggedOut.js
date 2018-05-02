@@ -25,7 +25,3 @@ const AppDrawerLoggedOut = (props) => (
 )
 
 export default AppDrawerLoggedOut
-
-// <Link to="/Admin" style={{ textDecoration: 'none' }}>
-// <ListItem primaryText="Admin" onClick={props.handleClose} />
-// </Link>

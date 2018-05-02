@@ -7,7 +7,6 @@ export default class AdminLogin extends Component {
         super()
         this.state = {
             firstAttempt: true,
-            adminLoggedIn: false
         }
     }
 
@@ -21,7 +20,6 @@ export default class AdminLogin extends Component {
             .get()
             .then(doc => {
                 if (doc.data()[un] === pw) {
-                    this.setState({ adminLoggedIn: true })
                     localStorage.setItem('admin', 'true')
                     this.props.history.push('/admin')
                 } else {

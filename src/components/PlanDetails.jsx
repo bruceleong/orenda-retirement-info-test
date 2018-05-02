@@ -8,40 +8,18 @@ class PlanDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            companyName: '',
-            companyProvider: '',
-            companyData: [],
-            spd: '',
             companyProviderWebsite: ''
         }
     }
 
     componentDidMount() {
-        let companyRef = db.collection('companies').doc(localStorage.getItem('company'))
-
-        companyRef.collection('Forms').doc('formDoc')
+        db.collection('companies').doc(localStorage.getItem('company'))
             .get()
             .then(doc => {
-                let formObj = doc.data(),
-                    companyData = []
-
-                Object.keys(formObj).forEach(key => {
-                    companyData.push([key, formObj[key]])
-                })
-
-                return { companyData, companyName: localStorage.getItem('company') }
-            })
-            .then(data => {
-                companyRef
+                db.collection('providers').doc(doc.data().providerName)
                     .get()
-                    .then(doc => {
-                        let spd = doc.data().spd
-                        let providerWebsite = doc.data().providerWebsite
-                        db.collection('providers').doc(doc.data().providerName)
-                            .get()
-                            .then(providerDoc => {
-                                this.setState({ companyData: data.companyData, companyName: data.companyName, companyProviderWebsite: providerWebsite, spd })
-                            })
+                    .then(() => {
+                        this.setState({ companyProviderWebsite: doc.data().providerWebsite })
                     })
             })
     }

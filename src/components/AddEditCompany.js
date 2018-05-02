@@ -43,19 +43,31 @@ export default class AddEditCompany extends Component {
         this.setState({ [evt.target.name]: evt.target.value })
     }
 
+    validFirestoreDocNameCheck = (field, proposedName) => {
+        if (proposedName.search(/[\~\*\/\[\]]/g)){
+          alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
+          return false
+        }
+        return true
+    }
+
     formHandleSubmit = evt => {
         evt.preventDefault()
-        let url = evt.target.companyFormUrl.value
-        if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
 
-        db.collection('companies').doc(this.state.dynamicCompanyName).collection('Forms')
-            .doc('formDoc')
-            .set({ [evt.target.companyFormName.value]: url }, { merge: true })
-        this.setState({
-            companyFormName: '',
-            companyFormUrl: ''
-        })
-        this.updateCompanyData()
+        if (this.validFirestoreDocNameCheck('Form Name', evt.target.companyFormName.value)){
+
+            let url = evt.target.companyFormUrl.value
+            if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
+
+            db.collection('companies').doc(this.state.dynamicCompanyName).collection('Forms')
+                .doc('formDoc')
+                .set({ [evt.target.companyFormName.value]: url }, { merge: true })
+            this.setState({
+                companyFormName: '',
+                companyFormUrl: ''
+            })
+            this.updateCompanyData()
+        }
     }
 
     updateCompanyProfile = (evt) => {
@@ -66,18 +78,18 @@ export default class AddEditCompany extends Component {
                 .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.dynamicCompanyName, providerWebsite: this.state.providerWebsite }, { merge: true })
                 .then(() => this.updateCompanyData())
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value })
-            alert("Success")
+            alert('Success')
         } else if (this.state.allCompanies.includes(this.state.dynamicCompanyName)) {
             alert("That company name already exists, try changing your company name or going to the 'Edit Company Page'. Thank you!")
-        } else {
-            let newCompanyRef = db.collection('companies').doc(this.state.dynamicCompanyName)
+        } else  if (this.validFirestoreDocNameCheck('Company Name', this.state.dynamicCompanyName)){
 
+            let newCompanyRef = db.collection('companies').doc(this.state.dynamicCompanyName)
+            
             newCompanyRef
                 .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.dynamicCompanyName, providerWebsite: this.state.providerWebsite }, { merge: true })
                 .then(() => {
 
                     let obj = {}
-
                     this.state.companyData.forEach((ele) => {
                         obj[ele[0]] = ele[1]
                     })
@@ -86,12 +98,12 @@ export default class AddEditCompany extends Component {
                 })
             db.collection('companies').doc(this.state.staticCompanyName).delete()
 
-            if (localStorage.company === this.state.staticCompanyName) {
-                localStorage.company = evt.target.dynamicCompanyName.value
-            }
-
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
-            alert("Success")
+
+
+            if (localStorage.company === this.state.staticCompanyName) localStorage.company = evt.target.dynamicCompanyName.value
+            
+            alert('Success')
         }
     }
 
@@ -157,23 +169,26 @@ export default class AddEditCompany extends Component {
                                     <a target="_blank" rel="noopener noreferrer" href={this.state.spd}>
                                         <h3>Summary Plan Description:  {this.state.spd}</h3>
                                     </a>
-                                </div>
+                                 </div>
                                 )
                                 : <h2>Enter your New Company's Info</h2>
                             }
 
                             <form onSubmit={this.updateCompanyProfile}>
-                                <label style={{ display: 'block', margin: '10px' }} htmlFor="companyName">Company Name:<input className="buttonInput"
+                                <label style={{ display: 'block', margin: '10px' }} htmlFor="companyName">Company Name:<input
+className="buttonInput"
                                     name="dynamicCompanyName" value={this.state.dynamicCompanyName}
                                     required
                                     onChange={this.handleChange} />
                                 </label>
-                                <label style={{ display: 'block', margin: '10px' }} htmlFor="companyProvider">Company Provider:<input className="buttonInput"
+                                <label style={{ display: 'block', margin: '10px' }} htmlFor="companyProvider">Company Provider:<input
+className="buttonInput"
                                     name="companyProvider" value={this.state.companyProvider}
                                     required
                                     onChange={this.handleChange} />
                                 </label>
-                                <label style={{ display: 'block', margin: '10px' }} htmlFor="providerWebsite">Company Provider Website:<input className="buttonInput"
+                                <label style={{ display: 'block', margin: '10px' }} htmlFor="providerWebsite">Company Provider Website:<input
+className="buttonInput"
                                     name="providerWebsite" value={this.state.providerWebsite}
                                     required
                                     onChange={this.handleChange} />
@@ -187,7 +202,7 @@ export default class AddEditCompany extends Component {
 
                                 <button className="buttons" type="submit" style={{ display: 'block', margin: '0 auto' }}>
                                     Submit Changes
-                                        </button>
+                                </button>
 
 
                             </form>
@@ -223,22 +238,22 @@ export default class AddEditCompany extends Component {
                                                 this.state.companyData.map((ele, idx) => (
                                                     <div className="companyPages" key={ele[0]}>
                                                         <br />
-                                                        <p>{"Name of form: "}
+                                                        <p>{'Name of form: '}
                                                             <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
                                                                 {ele[0]}
                                                             </a>
                                                         </p>
-                                                        <p>{"Link of form: "}
+                                                        <p>{'Link of form: '}
                                                             <a target="_blank" href={ele[1]} style={{ display: 'inline' }}>
                                                                 {ele[1]}
                                                             </a>
                                                         </p>
                                                         <button className="buttons" type="button" onClick={() => this.editForm(ele[0], ele[1])}>
                                                             Edit Link
-                                                    </button>
+                                                        </button>
                                                         <button
                                                             className="buttons"
-                                                            type='button'
+                                                            type="button"
                                                             onClick={
                                                                 () => {
                                                                     db.collection('companies').doc(this.state.dynamicCompanyName).collection('Forms')
@@ -248,7 +263,8 @@ export default class AddEditCompany extends Component {
                                                                         })
                                                                     this.updateCompanyData()
                                                                 }
-                                                            }>Delete Form</button>
+                                                            }>Delete Form
+                                                        </button>
                                                         <br />
                                                         <br />
                                                     </div>
