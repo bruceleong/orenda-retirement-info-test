@@ -158,12 +158,12 @@ export default class AdminPortal extends Component {
                                             <div>
                                                 <h1>What Company would you like to {this.state.action}?</h1>
                                                 <form onSubmit={this.state.action === 'edit' ? this.handleSubmit : this.handleDelete}>
-                                                    <select name="selectCompany">
+                                                    <select className="buttonInput" name="selectCompany">
                                                         {this.state.allCompanies.map(company => (
                                                             <option key={company} value={company}>{company}</option>
                                                         ))}
                                                     </select>
-                                                    <input type="submit" value={this.state.action} />
+                                                    <input className="buttons" type="submit" value={this.state.action} />
                                                 </form>
                                             </div>
                                         )
