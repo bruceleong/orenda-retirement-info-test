@@ -14,37 +14,13 @@ export default class EditMedia extends Component {
     }
   }
 
-  // getNewsData = () => {
-  //   db.collection('articles').doc('newsArticles')
-  //     .get()
-  //     .then(snapshot => {
-  //       let articles = snapshot.data(),
-  //         articleData = []
-
-  //       Object.keys(articles).forEach(key => {
-  //         if (key) {
-  //           articleData.push([key, articles[key]])
-  //         }
-  //       })
-  //       this.setState({ articleData })
-  //     })
-  // }
-
-  // getVideoData = () => {
-  //   db.collection('videos').doc('videoData')
-  //     .get()
-  //     .then(snapshot => {
-  //       let videos = snapshot.data(),
-  //         videoData = []
-
-  //       Object.keys(videos).forEach(key => {
-  //         if (key) {
-  //           videoData.push([key, videos[key]])
-  //         }
-  //       })
-  //       this.setState({ videoData })
-  //     })
-  // }
+  validFirestoreDocNameCheck = (field, proposedName) => {
+    if (proposedName.search(/[\~\*\/\[\]]/g)){
+      alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
+      return false
+    }
+    return true
+  }
 
   handleChange = evt => {
     this.setState({ [evt.target.name]: evt.target.value })
@@ -53,14 +29,18 @@ export default class EditMedia extends Component {
   handleMediaSubmit = evt => {
     evt.preventDefault()
 
-    if (this.state.mediaType === 'video') {
-      db.collection('videos').doc('videoData')
-        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
-    } else {
-      db.collection('articles').doc('newsArticles')
-        .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+    if (this.validFirestoreDocNameCheck('Title', this.state.mediaTitle)){
+
+      if (this.state.mediaType === 'video') {
+        db.collection('videos').doc('videoData')
+          .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+      } else {
+        db.collection('articles').doc('newsArticles')
+          .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
+      }
+      alert('Success')
+      
     }
-    alert('Success')
   }
 
   render() {

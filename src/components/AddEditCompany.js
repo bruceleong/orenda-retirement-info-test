@@ -49,7 +49,7 @@ export default class AddEditCompany extends Component {
           return false
         }
         return true
-      }
+    }
 
     formHandleSubmit = evt => {
         evt.preventDefault()
@@ -81,15 +81,15 @@ export default class AddEditCompany extends Component {
             alert('Success')
         } else if (this.state.allCompanies.includes(this.state.dynamicCompanyName)) {
             alert("That company name already exists, try changing your company name or going to the 'Edit Company Page'. Thank you!")
-        } else {
-            let newCompanyRef = db.collection('companies').doc(this.state.dynamicCompanyName)
+        } else  if (this.validFirestoreDocNameCheck('Company Name', this.state.dynamicCompanyName)){
 
+            let newCompanyRef = db.collection('companies').doc(this.state.dynamicCompanyName)
+            
             newCompanyRef
                 .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.dynamicCompanyName, providerWebsite: this.state.providerWebsite }, { merge: true })
                 .then(() => {
 
                     let obj = {}
-
                     this.state.companyData.forEach((ele) => {
                         obj[ele[0]] = ele[1]
                     })
@@ -98,12 +98,12 @@ export default class AddEditCompany extends Component {
                 })
             db.collection('companies').doc(this.state.staticCompanyName).delete()
 
-            if (localStorage.company === this.state.staticCompanyName) {
-                localStorage.company = evt.target.dynamicCompanyName.value
-            }
-
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
+
+            if (localStorage.company === this.state.staticCompanyName) localStorage.company = evt.target.dynamicCompanyName.value
+            
             alert('Success')
+            
         }
     }
 
