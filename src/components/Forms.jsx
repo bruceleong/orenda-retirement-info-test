@@ -55,11 +55,11 @@ class Forms extends Component {
         <div className="loggedInHeader" />
         <div className="companyPages">
           <div>
-            <h1>{this.state.companyName} Forms & Notices</h1>
-            <h2>Here you can find forms for commonly requested items:</h2>
+            <h2>{this.state.companyName} Forms & Notices</h2>
+            <p>Here you can find forms for commonly requested items:</p>
             <p>Click to download</p>
             <div>
-              <div>
+              <div className="companyHomeForms" style={{textAlign: 'left'}}>
                 {
                   this.state.companyData.length === 0
                   ? <h3>This company does not have any forms or notices.</h3>
@@ -67,11 +67,11 @@ class Forms extends Component {
                     this.state.companyData.map(form => {
                       return (
                         <div key={form[0]}>
-                            <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673;{form[0]}</a>
+                            <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673; {form[0]}</a>
                         </div>
                       )
                     })
-                  )  
+                  )
                 }
               </div>
               <br />

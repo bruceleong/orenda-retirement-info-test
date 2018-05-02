@@ -53,7 +53,7 @@ export default class News extends Component {
         <div>
         <div className="loggedInHeader" />
           <div className="companyPages">
-          <h1>On this page, you will find videos and tutorials and topics to help you prepare and get the most out of retirement.</h1>
+          <h2>On this page, you will find videos and tutorials and topics to help you prepare and get the most out of retirement.</h2>
           <div className="videos">
             {
               this.state.videoData.length === 0

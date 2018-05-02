@@ -96,7 +96,7 @@ class Home extends Component {
                                             {
                                                 this.state.firstAttempt
                                                     ? null
-                                                    : <p style={{ color: 'white', backgroundColor: 'red', borderRadius: '5px', width: '50vw', border: '1px solid white', margin: '0 auto 0 auto', fontSize: '1em' }}>Did not recognize company</p>
+                                                    : <p style={{ color: 'white', backgroundColor: 'blue', borderRadius: '5px', width: '50vw', border: '1px solid white', margin: '10vh auto 0 auto', fontSize: '1em' }}>Did not recognize company</p>
                                             }
                                         </div>
                                         :
@@ -117,50 +117,6 @@ class Home extends Component {
                             </div>
                     </div>
                 </div>
-                <div>
-                    {
-                        this.state.loading === true
-                            ? <SplashScreen />
-                            :
-                            <div className="companyPages">
-                                <h2>Our Favorite Videos and Articles</h2>
-                                <div className="videos">
-                                    {
-                                        this.state.videoData.length === 0
-                                            ? <h2>We are updating this page, check back soon</h2>
-                                            :
-                                            this.state.videoData.map(video => (
-                                                <div key={video[0]} className="video">
-                                                    <div className="videoContainer">
-                                                        <h2>{video[0]}</h2>
-                                                        <iframe width="310" title="News video" height="220" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
-                                                    </div>
-                                                </div>
-                                            ))
-                                    }
-                                </div>
-                                <div className="articles">
-                                    {
-                                        this.state.articleData === 0
-                                            ? <h2>We are updating this page, check back soon</h2>
-                                            :
-                                            this.state.articleData.map(article => (
-                                                <div key={article[0]} className="article">
-                                                    <div className="articleContainer">
-                                                        <a target="_blank" rel="noopener noreferrer" href={article[1]}>
-                                                            <h4><b>{article[0]}</b></h4>
-                                                        </a>
-                                                        <a target="_blank" rel="noopener noreferrer" href={article[1]}>
-                                                            <p><strong>More Info</strong></p>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            ))
-                                    }
-                                </div>
-                            </div>
-                    }
-                </div>
             </div>
         )
     }
@@ -173,3 +129,48 @@ const mapDispatch = (dispatch) => ({
 })
 
 export default connect(null, mapDispatch)(Home)
+
+// <div>
+//                     {
+//                         this.state.loading === true
+//                             ? <SplashScreen />
+//                             :
+//                             <div className="companyPages">
+//                                 <h2>Our Favorite Videos and Articles</h2>
+//                                 <div className="videos">
+//                                     {
+//                                         this.state.videoData.length === 0
+//                                             ? <h2>We are updating this page, check back soon</h2>
+//                                             :
+//                                             this.state.videoData.map(video => (
+//                                                 <div key={video[0]} className="video">
+//                                                     <div className="videoContainer">
+//                                                         <h2>{video[0]}</h2>
+//                                                         <iframe width="310" title="News video" height="220" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
+//                                                     </div>
+//                                                 </div>
+//                                             ))
+//                                     }
+//                                 </div>
+//                                 <div className="articles">
+//                                     {
+//                                         this.state.articleData === 0
+//                                             ? <h2>We are updating this page, check back soon</h2>
+//                                             :
+//                                             this.state.articleData.map(article => (
+//                                                 <div key={article[0]} className="article">
+//                                                     <div className="articleContainer">
+//                                                         <a target="_blank" rel="noopener noreferrer" href={article[1]}>
+//                                                             <h4><b>{article[0]}</b></h4>
+//                                                         </a>
+//                                                         <a target="_blank" rel="noopener noreferrer" href={article[1]}>
+//                                                             <p><strong>More Info</strong></p>
+//                                                         </a>
+//                                                     </div>
+//                                                 </div>
+//                                             ))
+//                                     }
+//                                 </div>
+//                             </div>
+//                     }
+//                 </div>

@@ -67,7 +67,7 @@ export default class EditForm extends Component {
               <form onSubmit={this.handleSubmit}>
                 <div>
                   <label>Form URL: </label>
-                  <input name="formURL" value={this.state.formURL} onChange={this.handleChange} style={{ width: '25vw', height: 'auto' }} />
+                  <input className="buttonInput" name="formURL" value={this.state.formURL} onChange={this.handleChange} style={{ width: '25vw', height: 'auto' }} />
                 </div>
                 <div>
                   <a target="_blank" href={this.state.formURL} style={{ display: 'inline' }}> <p>Click to test Link: <br /> {this.state.formURL}</p></a>

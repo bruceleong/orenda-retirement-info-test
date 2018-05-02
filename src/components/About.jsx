@@ -4,7 +4,7 @@ import sbsfLogo from './sbsfLogo.png'
 
 const About = (props) => (
     <div>
-        <div className="header" />
+        <div className="contactHeader" />
         <div className="companyPages">
             <img src={sbsfLogo} style={{ width: '30vw', height: 'auto', marginTop: '3px' }} alt="SBSF logo" />
             <h4>Heather Cox</h4>
