@@ -115,7 +115,7 @@ export default class AdminPortal extends Component {
                     ?
                     (
                         <div>
-                            <div>
+                            <div className='companyPages'>
                                 <h1>Welcome Admin</h1>
                                 <p>In this portal you add/edit company data, media data, and more</p>
                             </div>

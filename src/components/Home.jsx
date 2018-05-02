@@ -96,7 +96,7 @@ class Home extends Component {
                                             {
                                                 this.state.firstAttempt
                                                     ? null
-                                                    : <p className="homeWrongCompanyMessage" style={{ color: 'white', backgroundColor: 'red', borderRadius: '5px', width: '50vw', border: '1px solid white', margin: '0 auto 0 auto', fontSize: '1em' }}>Did not recognize company</p>
+                                                    : <p style={{ color: 'white', backgroundColor: 'red', borderRadius: '5px', width: '50vw', border: '1px solid white', margin: '0 auto 0 auto', fontSize: '1em' }}>Did not recognize company</p>
                                             }
                                         </div>
                                         :
