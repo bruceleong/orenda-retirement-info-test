@@ -8,10 +8,7 @@ class Forms extends Component {
     super(props)
     this.state = {
       companyName: '',
-      companyProvider: '',
       companyData: [],
-      spd: '',
-      companyProviderWebsite: '',
       loading: true
     }
   }
@@ -39,12 +36,10 @@ class Forms extends Component {
         companyRef
           .get()
           .then(doc => {
-            let spd = doc.data().spd
-            let providerWebsite = doc.data().providerWebsite
             db.collection('providers').doc(doc.data().providerName)
               .get()
-              .then(providerDoc => {
-                this.setState({ companyData: data.companyData, companyName: data.companyName, /*companyProvider: providerDoc.data().name,*/ companyProviderWebsite: providerWebsite, spd, loading: false })
+              .then(() => {
+                this.setState({ companyData: data.companyData, companyName: data.companyName, loading: false })
 
               })
           })

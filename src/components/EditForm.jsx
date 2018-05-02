@@ -9,9 +9,16 @@ export default class EditForm extends Component {
       company: this.props.company,
       formToUpdate: this.props.formToUpdate,
       formURL: this.props.formURL,
-      companyData: [],
       changesSubmitted: false
     }
+  }
+
+  validFirestoreDocNameCheck = (field, proposedName) => {
+    if (proposedName.search(/[\~\*\/\[\]]/g)){
+      alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
+      return false
+    }
+    return true
   }
 
   updateCompanyData = () => {
@@ -35,13 +42,17 @@ export default class EditForm extends Component {
   }
 
   handleSubmit = evt => {
+    console.log('where i want to check')
     evt.preventDefault()
-    db.collection('companies').doc(this.state.company).collection('Forms')
-      .doc('formDoc')
-      .set({ [this.state.formToUpdate]: this.state.formURL }, { merge: true })
-      .then(() => {
-      })
-    this.updateCompanyData()
+    if (this.validFirestoreDocNameCheck('Form Name', this.state.formToUpdate)){
+      db.collection('companies').doc(this.state.company).collection('Forms')
+        .doc('formDoc')
+        .set({ [this.state.formToUpdate]: this.state.formURL }, { merge: true })
+        .then(() => {
+        })
+      this.updateCompanyData()
+    }
+
   }
 
   render() {
