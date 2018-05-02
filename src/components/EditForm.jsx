@@ -13,6 +13,14 @@ export default class EditForm extends Component {
     }
   }
 
+  validFirestoreDocNameCheck = (field, proposedName) => {
+    if (proposedName.search(/[\~\*\/\[\]]/g)){
+      alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
+      return false
+    }
+    return true
+  }
+
   updateCompanyData = () => {
     let companyRef = db.collection('companies').doc(this.props.company)
     companyRef.collection('Forms').doc('formDoc')
@@ -34,13 +42,17 @@ export default class EditForm extends Component {
   }
 
   handleSubmit = evt => {
+    console.log('where i want to check')
     evt.preventDefault()
-    db.collection('companies').doc(this.state.company).collection('Forms')
-      .doc('formDoc')
-      .set({ [this.state.formToUpdate]: this.state.formURL }, { merge: true })
-      .then(() => {
-      })
-    this.updateCompanyData()
+    if (this.validFirestoreDocNameCheck('Form Name', this.state.formToUpdate)){
+      db.collection('companies').doc(this.state.company).collection('Forms')
+        .doc('formDoc')
+        .set({ [this.state.formToUpdate]: this.state.formURL }, { merge: true })
+        .then(() => {
+        })
+      this.updateCompanyData()
+    }
+
   }
 
   render() {
