@@ -14,7 +14,7 @@ export default class EditForm extends Component {
   }
 
   validFirestoreDocNameCheck = (field, proposedName) => {
-    if (proposedName.search(/[\~\*\/\[\]]/g)){
+    if (proposedName.search(/[~*/[\]]/g) !== -1){
       alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
       return false
     }

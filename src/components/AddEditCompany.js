@@ -44,7 +44,8 @@ export default class AddEditCompany extends Component {
     }
 
     validFirestoreDocNameCheck = (field, proposedName) => {
-        if (proposedName.search(/[\~\*\/\[\]]/g)){
+        if (proposedName.search(/[~*/[\]]/g) !== -1){
+
           alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
           return false
         }
@@ -100,10 +101,11 @@ export default class AddEditCompany extends Component {
 
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value, loading: false, changesSubmitted: !this.state.changesSubmitted, adding: false })
 
-
             if (localStorage.company === this.state.staticCompanyName) localStorage.company = evt.target.dynamicCompanyName.value
             
             alert('Success')
+            
+
         }
     }
 

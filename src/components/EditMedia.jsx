@@ -15,7 +15,7 @@ export default class EditMedia extends Component {
   }
 
   validFirestoreDocNameCheck = (field, proposedName) => {
-    if (proposedName.search(/[\~\*\/\[\]]/g)){
+    if (proposedName.search(/[~*/[\]]/g) !== -1){
       alert(`${field} can't contain any '~' '*', '/', '[', or ']'`)
       return false
     }
@@ -40,7 +40,6 @@ export default class EditMedia extends Component {
       }
       alert('Success')
     }
-    alert('Success')
   }
 
   render() {
