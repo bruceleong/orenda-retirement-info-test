@@ -20,14 +20,10 @@ class Routes extends Component {
   constructor() {
     super()
     this.state = {
-      firstAttempt: true,
-      logged: true,
       open: false,
-      authed: false,
     }
   }
 
-  handleChange = (event, logged) => this.setState({ logged: logged })
   handleClose = () => this.setState({ open: false })
   handleToggle = () => this.setState({ open: !this.state.open })
 
@@ -50,7 +46,7 @@ class Routes extends Component {
           }
           <AppBar
             id="appBar"
-            title={<div onClick={this.handleToggle}></div>}
+            title={<div onClick={this.handleToggle} />}
             iconElementRight={<div><img style={{ height: '40px', margin: '3px' }} alt="logo" src={SBSFLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
           />

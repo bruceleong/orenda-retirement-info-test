@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { db } from '../config/constants'
 
-//Bruce look!
-
 export default class AppDrawerLoggedIn extends Component {
   constructor(props) {
     super(props)

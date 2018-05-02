@@ -9,7 +9,6 @@ export default class EditForm extends Component {
       company: this.props.company,
       formToUpdate: this.props.formToUpdate,
       formURL: this.props.formURL,
-      companyData: [],
       changesSubmitted: false
     }
   }

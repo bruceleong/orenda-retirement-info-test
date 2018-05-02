@@ -65,7 +65,6 @@ export default class AddEditMedia extends Component {
         mediaTitle: '',
         mediaLink: ''
       })
-      alert("Success")
       this.getNewsData()
       this.getVideoData()
     } else {
@@ -77,8 +76,8 @@ export default class AddEditMedia extends Component {
       })
       this.getNewsData()
       this.getVideoData()
-      alert("Success")
     }
+    alert("Success")
   }
 
   returnToMediaHome = () => {

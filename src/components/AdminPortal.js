@@ -73,7 +73,6 @@ export default class AdminPortal extends Component {
                 snapshot.forEach(doc => {
                     allCompanies.push(doc.data().name)
                 })
-                console.log('about to set state', allCompanies)
                 this.setState({ allCompanies })
             })
 
@@ -130,8 +129,7 @@ export default class AdminPortal extends Component {
                                             {
                                                 this.state.allCompanies.length === 0
                                                     ? <h3>Currently there are: no companies</h3>
-                                                    :
-                                                    <h3>Currently there are: {this.state.allCompanies.length} companies</h3>
+                                                    : <h3>Currently there are: {this.state.allCompanies.length} companies</h3>
                                             }
                                         </div>
 
