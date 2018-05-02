@@ -39,7 +39,6 @@ export default class EditMedia extends Component {
           .set({ [this.state.mediaTitle]: this.state.mediaLink }, { merge: true })
       }
       alert('Success')
-
     }
   }
 
