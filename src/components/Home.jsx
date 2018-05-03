@@ -81,13 +81,13 @@ class Home extends Component {
         return (
             <div>
                 <div>
-                    <div className="header">
+                    <div className="header" />
                             <div>
                                 {
                                     !localStorage.getItem('company')
                                         ?
                                         <div id="title">
-                                            <h4>Dear Participant, enter your company name for more details on your retirement plan.
+                                            <h4 style={{width: '70%', margin: '3vh auto 2vh auto'}}>Dear Participant, enter your company name for more details on your retirement plan.
                                             </h4>
                                             <form onSubmit={this.handleInput}>
                                                 <input className="buttonInput" type="text" name="inputField" />
@@ -96,7 +96,7 @@ class Home extends Component {
                                             {
                                                 this.state.firstAttempt
                                                     ? null
-                                                    : <p style={{ color: 'white', backgroundColor: 'blue', borderRadius: '5px', width: '50vw', border: '1px solid white', margin: '10vh auto 0 auto', fontSize: '1em' }}>Did not recognize company</p>
+                                                    : <p style={{ color: 'blue', /*backgroundColor: 'blue', borderRadius: '5px',*/ width: '50vw', margin: '4vh auto 0 auto', fontSize: '1.4em' }}>Did not recognize company</p>
                                             }
                                         </div>
                                         :
@@ -115,7 +115,7 @@ class Home extends Component {
                                         </div>
                                 }
                             </div>
-                    </div>
+                    
                 </div>
             </div>
         )
