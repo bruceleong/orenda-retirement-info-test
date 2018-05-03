@@ -57,6 +57,7 @@ const About = (props) => (
                 }
             </div>
         </div>
+        <div className="contactHeaderMobile" />
     </div>
 )
 

@@ -119,8 +119,8 @@ body {
 
 @media (max-width: 400px) {
 .header {
-    margin-top: 20vh;
-    height: 0vh;
+    margin-top: 15vh;
+    /* height: 100vh; */
   }
   #title{
     height: 75vh;
@@ -129,8 +129,12 @@ body {
 
   }
 .contactHeader {
+    margin-top: 10vh;
     align-content: center;
   }
+.contactHeaderMobile {
+  margin-top: 20vh;
+}
 .buttons {
   background-color: #339933;
   font-size: 1em;
