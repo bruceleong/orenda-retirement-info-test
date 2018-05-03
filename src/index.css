@@ -119,14 +119,14 @@ body {
 
 @media (max-width: 400px) {
 .header {
-   
+    margin-top: 20vh;
     height: 0vh;
   }
   #title{
     height: 75vh;
     margin-top: 15vh;
 
-  
+
   }
 .contactHeader {
     align-content: center;
@@ -165,14 +165,13 @@ body {
 
 @media (min-width: 401px) and (max-width: 650px) {
   .header {
-    margin-top: 0vh;
-    align-content: center;
+    margin-top: 20vh;
     height: 0vh;
   }
   #title{
     margin-top: 10vh;
     height: 75vh;
-  
+
   }
   .contactHeader {
     align-content: center;
@@ -212,7 +211,7 @@ body {
   }
   #title{
     height: 30vh
-  
+
   }
   .contactHeader {
     background-image: url("backgroundimage.png");
