@@ -41,14 +41,14 @@ class Home extends Component {
     getAllCompanies = () => {
 
         db.collection('companies')
-        .get()
-        .then(snapshot => {
-            let allCompanies = []
-            snapshot.forEach(doc => {
-                allCompanies.push(doc.data().name)
+            .get()
+            .then(snapshot => {
+                let allCompanies = []
+                snapshot.forEach(doc => {
+                    allCompanies.push(doc.data().name)
+                })
+                this.setState({ allCompanies })
             })
-            this.setState({allCompanies})
-        })
     }
 
     getNewsData = () => {
@@ -82,40 +82,44 @@ class Home extends Component {
             <div>
                 <div>
                     <div className="header" />
-                            <div>
-                                {
-                                    !localStorage.getItem('company')
-                                        ?
-                                        <div id="title">
-                                            <h4 style={{width: '70%', margin: '3vh auto 2vh auto'}}>Dear Participant, enter your company name for more details on your retirement plan.
-                                            </h4>
-                                            <form onSubmit={this.handleInput}>
-                                                <input className="buttonInput" type="text" name="inputField" />
-                                                <input className="buttons" type="submit" />
-                                            </form>
-                                            {
-                                                this.state.firstAttempt
-                                                    ? null
-                                                    : <p style={{ color: 'blue', /*backgroundColor: 'blue', borderRadius: '5px',*/ width: '50vw', margin: '4vh auto 0 auto', fontSize: '1.4em' }}>Did not recognize company</p>
-                                            }
-                                        </div>
-                                        :
-                                        <div id="title">
-                                            <h4>You are currently logged in</h4>
-                                            <button
-                                                className="buttons"
-                                                type="button"
-                                                onClick={() => {
-                                                    localStorage.removeItem('company')
-                                                    this.props.history.push(
-                                                        '/'
-                                                    )
-                                                }}>Logout
+                    <div>
+                        {
+                            !localStorage.getItem('company')
+                                ?
+                                <div id="title">
+                                    <h4 style={{ width: '95%', margin: '3vh auto 2vh auto', fontSize: '.75em' }}>Dear Participant, enter your company name for more details on your retirement plan.
+                                    </h4>
+                                    <form onSubmit={this.handleInput}>
+                                        <input className="buttonInput" type="text" name="inputField" />
+                                        {
+                                            this.state.firstAttempt
+                                                ? null
+                                                :
+                                                <div>
+                                                    <div style={{ color: 'blue',fontSize: '.75em'  /*backgroundColor: 'blue', borderRadius: '5px', width: '50vw', margin: '4vh auto 0 auto',*/}}>Did not recognize company</div>
+                                                </div>
+                                        }
+                                        <br />
+                                        <input className="buttons" type="submit" />
+                                    </form>
+                                </div>
+                                :
+                                <div id="title">
+                                    <h4>You are currently logged in</h4>
+                                    <button
+                                        className="buttons"
+                                        type="button"
+                                        onClick={() => {
+                                            localStorage.removeItem('company')
+                                            this.props.history.push(
+                                                '/'
+                                            )
+                                        }}>Logout
                                             </button>
-                                        </div>
-                                }
-                            </div>
-                    
+                                </div>
+                        }
+                    </div>
+
                 </div>
             </div>
         )
