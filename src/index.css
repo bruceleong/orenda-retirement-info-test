@@ -147,15 +147,22 @@ body {
   content: "\A";
 }
 .companyHomeLinks {
-  margin-left: 25vw;
+  margin-left: 20vw;
 }
 .companyHomeForms {
-  margin-left: 18vw;
+  margin-left: 13vw;
 }
 }
 
 @media (min-width: 401px) and (max-width: 650px) {
-
+  .header {
+    margin-top: 20vh;
+    align-content: center;
+    height: 60vh;
+  }
+  .contactHeader {
+    align-content: center;
+  }
   .companyHomeLinks div::before {
     margin-left: 25vw;
   }
@@ -177,10 +184,10 @@ body {
   }
 
   .companyHomeLinks {
-    margin-left: 25vw;
+    margin-left: 20vw;
   }
   .companyHomeForms {
-    margin-left: 18vw;
+    margin-left: 13vw;
   }
 }
 
@@ -202,10 +209,10 @@ body {
    }
 
    .companyHomeLinks {
-    margin-left: 35vw;
+    margin-left: 38vw;
   }
   .companyHomeForms {
-    margin-left: 30vw;
+    margin-left: 33vw;
   }
   .buttons {
     background-color: #339933;
