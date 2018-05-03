@@ -40,8 +40,8 @@ class PlanDetails extends Component {
                                     <div className="companyPages" style={{marginTop: '20vh'}}>
                                         <h2>{`For additional information on your
                                         ${localStorage.getItem('company')} retirement plan:
-                            `}          <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite}>
-                                                Click Here
+                            `}          <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite} style={{textDecoration: 'none'}}>
+                                                <h3>Click Here</h3>
                                         </a>
                                         </h2>
                                     </div>
