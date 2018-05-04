@@ -15,8 +15,19 @@ const About = (props) => (
             <h4>You can contact us directly at:</h4>
             <h4>+1 212-564-2464</h4>
             <div>
-                {!localStorage.getItem('company')
-                    ? ''
+                {
+                    !localStorage.getItem('company')
+                    ?
+                    <div>
+                    <Link to="/">
+                        <button
+                            className="buttons"
+                            type="button"
+                        >
+                            Return to SBSF Home
+                        </button>
+                    </Link>
+                    </div>
                     :
                     <div>
                         <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
@@ -30,14 +41,6 @@ const About = (props) => (
                     </div>
                 }
             </div>
-            <Link to="/">
-                <button
-                    className="buttons"
-                    type="button"
-                >
-                    Return to SBSF Home
-                </button>
-            </Link>
             <br />
             <div>
                 {!localStorage.getItem('company')

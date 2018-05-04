@@ -90,7 +90,7 @@ class Home extends Component {
                                     <h4 style={{ width: '90%', margin: '3vh auto 2vh auto'}}>Dear Participant, enter your company name for more details on your retirement plan.
                                     </h4>
                                     <form onSubmit={this.handleInput}>
-                                        <input className="buttonInput" type="text" name="inputField" />
+                                        <input className="buttonInput" type="text" style={{textAlign: 'center'}} />
                                         {
                                             this.state.firstAttempt
                                                 ?
@@ -99,12 +99,12 @@ class Home extends Component {
                                                 </div>
                                                 :
                                                 <div>
-                                                    <div style={{ color: 'blue',fontSize: '.75em'}}>Did not recognize company
+                                                    <div style={{ color: 'blue', fontSize: '.75em'}}>Did not recognize company
                                                     </div>
                                                 </div>
                                         }
                                         <br />
-                                        <input className="buttons" type="submit" />
+                                        <button className="buttons" type="submit">Submit</button>
                                     </form>
                                 </div>
                                 :
