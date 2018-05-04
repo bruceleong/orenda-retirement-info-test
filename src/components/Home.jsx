@@ -87,13 +87,16 @@ class Home extends Component {
                             !localStorage.getItem('company')
                                 ?
                                 <div id="title">
-                                    <h4 style={{ width: '90%', margin: '3vh auto 2vh auto', fontSize: '.75em' }}>Dear Participant, enter your company name for more details on your retirement plan.
+                                    <h4 style={{ width: '90%', margin: '3vh auto 2vh auto'}}>Dear Participant, enter your company name for more details on your retirement plan.
                                     </h4>
                                     <form onSubmit={this.handleInput}>
                                         <input className="buttonInput" type="text" name="inputField" />
                                         {
                                             this.state.firstAttempt
-                                                ? null
+                                                ?
+                                                <div>
+                                                    <div style={{ height: '.85em'}} />
+                                                </div>
                                                 :
                                                 <div>
                                                     <div style={{ color: 'blue',fontSize: '.75em'}}>Did not recognize company
