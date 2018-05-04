@@ -90,7 +90,7 @@ class Home extends Component {
                                     <h4 style={{ width: '90%', margin: '3vh auto 2vh auto'}}>Dear Participant, enter your company name for more details on your retirement plan.
                                     </h4>
                                     <form onSubmit={this.handleInput}>
-                                        <input className="buttonInput" type="text" style={{textAlign: 'center'}} />
+                                        <input className="buttonInput" type="text" name="inputField" style={{textAlign: 'center'}} />
                                         {
                                             this.state.firstAttempt
                                                 ?
