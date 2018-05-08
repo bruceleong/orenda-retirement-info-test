@@ -140,11 +140,13 @@ export default class AdminPortal extends Component {
                                     type="button"
                                     onClick={this.onAdd}>Add Company
                                 </button>
+                                <br />
                                 <button
                                     className="buttons"
                                     type="button"
                                     onClick={this.onEdit}>Edit Company
                                 </button>
+                                <br />
                                 <button
                                     className="buttons"
                                     type="button"
