@@ -73,10 +73,16 @@ export default class AddEditCompany extends Component {
 
     updateCompanyProfile = (evt) => {
         evt.preventDefault()
+
+        let providerUrl = this.state.providerWebsite
+        let spdUrl = this.state.spd
+        if (providerUrl.startsWith('https://') === false && providerUrl.startsWith('http://') === false) providerUrl = 'https://' + providerUrl
+        if (spdUrl.startsWith('https://') === false && spdUrl.startsWith('http://') === false) spdUrl = 'https://' + spdUrl
+
         if (this.state.staticCompanyName === this.state.dynamicCompanyName) {
             evt.preventDefault()
             db.collection('companies').doc(this.state.staticCompanyName)
-                .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.dynamicCompanyName, providerWebsite: this.state.providerWebsite }, { merge: true })
+                .set({ providerName: this.state.companyProvider, spd: spdUrl, name: this.state.dynamicCompanyName, providerWebsite: providerUrl }, { merge: true })
                 .then(() => this.updateCompanyData())
             this.setState({ staticCompanyName: evt.target.dynamicCompanyName.value })
             alert('Success')
@@ -87,7 +93,7 @@ export default class AddEditCompany extends Component {
             let newCompanyRef = db.collection('companies').doc(this.state.dynamicCompanyName)
 
             newCompanyRef
-                .set({ providerName: this.state.companyProvider, spd: this.state.spd, name: this.state.dynamicCompanyName, providerWebsite: this.state.providerWebsite }, { merge: true })
+                .set({ providerName: this.state.companyProvider, spd: spdUrl, name: this.state.dynamicCompanyName, providerWebsite: providerUrl }, { merge: true })
                 .then(() => {
 
                     let obj = {}
@@ -111,6 +117,12 @@ export default class AddEditCompany extends Component {
 
     updateCompanyData = () => {
         if (this.state.staticCompanyName !== 'newCompany') {
+
+            let providerUrl = this.state.providerWebsite
+            let spdUrl = this.state.spd
+            if (providerUrl.startsWith('https://') === false && providerUrl.startsWith('http://') === false) providerUrl = 'https://' + providerUrl
+            if (spdUrl.startsWith('https://') === false && spdUrl.startsWith('http://') === false) spdUrl = 'https://' + spdUrl
+
 
             let companyRef = db.collection('companies').doc(this.state.staticCompanyName)
 
