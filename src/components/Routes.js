@@ -100,7 +100,7 @@ class Routes extends Component {
                   </div>
                 )
             }
-            <Route render={() => <h3>No Match</h3>} />
+            <Route render={() => <h3>Page Not Found</h3>} />
           </Switch>
         </div>
 
