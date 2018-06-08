@@ -59,7 +59,7 @@ export default class AppDrawerLoggedIn extends Component {
                   <ListItem primaryText="Forms & Notices" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/News" style={{ textDecoration: 'none' }}>
-                  <ListItem primaryText="News" onClick={this.props.handleClose} />
+                  <ListItem primaryText="News & Videos" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/Contact" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Contact" onClick={this.props.handleClose} />
