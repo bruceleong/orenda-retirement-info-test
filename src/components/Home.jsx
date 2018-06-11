@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { db } from '../config/constants'
 import { connect } from 'react-redux'
 import { getCompanyData } from '../store'
-import SplashScreen from './SplashScreen'
 
 class Home extends Component {
     constructor(props) {

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import sbsfLogo from './sbsfLogo.png'
 
 const About = (props) => (
     <div>
