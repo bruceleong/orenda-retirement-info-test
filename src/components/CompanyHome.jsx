@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
-import splashScreen from './SplashScreen'
 
 
 export default class CompanyHome extends Component {

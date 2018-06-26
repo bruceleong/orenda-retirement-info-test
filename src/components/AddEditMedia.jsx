@@ -13,7 +13,6 @@ export default class AddEditMedia extends Component {
       videoData: [],
       loading: true
     }
-    // this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -100,22 +99,11 @@ export default class AddEditMedia extends Component {
     this.getVideoData()
   }
 
-  handleChange = evt => {
-    console.log(this, 'current this')
-    // this.setState({ [evt.target.name]: evt.target.value })
-  }
-
-  // handleChange (evt) {
-  //   console.log(this, 'current this')
-  //   // this.setState({ [evt.target.name]: evt.target.value })
-  // }
-
   editForm = (type, title, url) => {
     this.setState({ mediaType: type, mediaURL: url, mediaToUpdate: title })
   }
 
   render() {
-    console.log(this.state, 'current state')
     return (
       !this.state.mediaToUpdate
         ?
@@ -129,7 +117,6 @@ export default class AddEditMedia extends Component {
                 <input
                   className="buttonInput"
                   name="mediaTitle"
-                  onChange={this.handleChange}
                   value={this.state.mediaTitle} />
               </div>
             </div>

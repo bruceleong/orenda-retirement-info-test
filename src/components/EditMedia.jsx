@@ -80,16 +80,6 @@ export default class EditMedia extends Component {
             type="button">Back to Admin Home
           </button>
         </Link>
-        <button
-          className="buttons"
-          type="button"
-          onClick={() => {
-            localStorage.removeItem('admin')
-            this.props.history.push(
-              '/'
-            )
-          }}>Logout of Admin
-        </button>
       </div>
     )
   }

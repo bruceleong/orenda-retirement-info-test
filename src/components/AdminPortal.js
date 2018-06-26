@@ -58,7 +58,6 @@ export default class AdminPortal extends Component {
         this.getCompanies()
         this.getNewsData()
         this.getVideoData()
-        console.log('are you mounting - admin portal')
     }
 
     showEditMediaPage = () => {
@@ -106,7 +105,6 @@ export default class AdminPortal extends Component {
     }
 
     render() {
-        console.log('this state', this.state)
         return this.state.loading === true
             ? (<SplashScreen />)
             : (
