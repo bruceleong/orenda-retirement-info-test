@@ -42,7 +42,6 @@ export default class EditForm extends Component {
   }
 
   handleSubmit = evt => {
-    console.log('where i want to check')
     evt.preventDefault()
     if (this.validFirestoreDocNameCheck('Form Name', this.state.formToUpdate)){
       db.collection('companies').doc(this.state.company).collection('Forms')
