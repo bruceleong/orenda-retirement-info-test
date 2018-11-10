@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 import { Route, Switch, Router } from 'react-router-dom'
 import Home from './Home'
 import About from './About'
@@ -51,7 +51,9 @@ class Routes extends Component {
             onLeftIconButtonClick={this.handleToggle}
           />
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route
+              path="/"
+              exact component={Home} />
             <Route
               exact path="/Contact"
               component={About}
@@ -64,7 +66,7 @@ class Routes extends Component {
               !localStorage.getItem('company')
                 ? null
                 : (
-                  <div>
+                  <Fragment>
                     <Route
                       exact path="/YourAccount"
                       component={PlanDetails}
@@ -85,25 +87,24 @@ class Routes extends Component {
                       exact path="/Admin"
                       component={AdminLogin}
                     />
-                  </div>
+                  </Fragment>
                 )
             }
             {
               !localStorage.getItem('admin')
                 ? null
                 : (
-                  <div>
+                  <Fragment>
                     <Route
                       exact path="/AddEditMedia"
                       component={AddEditMedia}
                     />
-                  </div>
+                  </Fragment>
                 )
             }
             <Route render={() => <h3>Page Not Found</h3>} />
           </Switch>
         </div>
-
       </Router>
 
     )

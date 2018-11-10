@@ -74,6 +74,7 @@ export default class News extends Component {
               this.state.articleData.length === 0
                 ? ''
                 :
+
                 this.state.articleData.map(article => (
                   <div key={article[0]} className="article">
                     <div className="articleContainer">
