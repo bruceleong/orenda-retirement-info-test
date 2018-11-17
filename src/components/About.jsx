@@ -10,9 +10,11 @@ const About = (props) => (
             <a className="buttons" style={{ padding: '2px', textDecoration: 'none' }} href="mailto:hcox@orendaretirement.com?Subject=Inquiry" target="_top">Email Heather</a>
             <h4>Lindi Carpenter</h4>
             <p>401k Payroll Processor</p>
-            <a className="buttons" style={{ padding: '2px', textDecoration: 'none'}} href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" target="_top">Email Linda</a>
+            <a className="buttons" style={{ padding: '2px', textDecoration: 'none' }} href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" target="_top">Email Linda</a>
             <h4>You can contact us directly at:</h4>
-            <h4>+1 212-564-2464</h4>
+            <h4>
+                <a href="tel:2125642464">+1 212-564-2464</a>
+            </h4>
             <div>
                 {
                     !localStorage.getItem('company')
