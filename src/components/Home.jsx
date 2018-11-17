@@ -86,7 +86,7 @@ class Home extends Component {
                             !localStorage.getItem('company')
                                 ?
                                 <div id="title">
-                                    <h4 id="header" style={{ width: '90%', margin: '3vh auto 2vh auto' }}>WELCOME TO PARTICIPANT CENTER
+                                    <h4 id="header" style={{ width: '90%', margin: '3vh auto 2vh auto' }}>WELCOME TO THE PARTICIPANT CENTER
                                     </h4>
                                     <p className="homeText">
                                         Please enter your company name for more details on your retirement plan.
