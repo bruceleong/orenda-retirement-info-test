@@ -35,7 +35,7 @@ export default class AppDrawerLoggedIn extends Component {
               ?
               <List>
                 <Link to="/" style={{ textDecoration: 'none' }}>
-                  <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
+                  <ListItem primaryText="Home" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/Contact" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Contact" onClick={this.props.handleClose} />
@@ -44,7 +44,7 @@ export default class AppDrawerLoggedIn extends Component {
               :
               <List>
                 <Link to="/" style={{ textDecoration: 'none' }}>
-                  <ListItem primaryText="SBSF Home" onClick={this.props.handleClose} />
+                  <ListItem primaryText="Home" onClick={this.props.handleClose} />
                 </Link>
                 <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText={`${localStorage.getItem('company')} Home`} onClick={this.props.handleClose} />

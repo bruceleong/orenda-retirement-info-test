@@ -41,7 +41,7 @@ export default class AdminLogin extends Component {
                             {
                                 this.state.firstAttempt
                                     ? null
-                                    : <p style={{ color: 'red' }}>We have notified the authorities</p>
+                                    : <p style={{ color: 'red' }}>Your credentials are incorrect</p>
                             }
                         </form>
                     </div>

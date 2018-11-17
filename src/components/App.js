@@ -9,12 +9,9 @@ const App = () => (
       <Routes />
     </div>
     <div id="footer">
-      <p>© 2018 · Side By Side Financials · All Rights Reserved.</p>
-      <a style={{ textDecoration: 'none', fontSize: '1em' }} href="mailto:stevendeverehere@gmail.com,brucewleong@gmail.com?Subject=Issue with SBSF" target="_top">Report an Issue</a>
+      <p>© 2019 · Orenda Retirement · All Rights Reserved.</p>
+      <a style={{ textDecoration: 'none', fontSize: '.75em' }} href="mailto:brucewleong@gmail.com?Subject=Issue with Orenda Retirement" target="_top">Report an Issue</a>
       <br />
-      <div style={{ fontSize: '.75em' }}>
-        {/*<p>Design by <a style={{textDecoration: 'none', color: 'black'}}href="https://www.bruceleong.com" target="_blank" rel="noopener noreferrer" >Leong</a> & <a style={{textDecoration: 'none', color: 'black'}} href="https://devere-here.github.io/portfolioPage/" target="_blank" rel="noopener noreferrer" >Devere</a> Designs</p>*/}
-      </div>
     </div>
   </div>
 

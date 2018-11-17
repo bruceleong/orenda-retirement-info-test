@@ -14,7 +14,7 @@ const AppDrawerLoggedOut = (props) => (
     >
       <List>
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <ListItem primaryText="SBSF Home" onClick={props.handleClose} />
+          <ListItem primaryText="Home" onClick={props.handleClose} />
         </Link>
         <Link to="/Contact" style={{ textDecoration: 'none' }}>
           <ListItem primaryText="Contact" onClick={props.handleClose} />

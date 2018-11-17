@@ -81,30 +81,35 @@ class Home extends Component {
             <div>
                 <div>
                     <div className="header" />
-                    <div>
+                    <div className="greySection">
                         {
                             !localStorage.getItem('company')
                                 ?
                                 <div id="title">
-                                    <h4 style={{ width: '90%', margin: '3vh auto 2vh auto'}}>Dear Participant, enter your company name for more details on your retirement plan.
+                                    <h4 id="header" style={{ width: '90%', margin: '3vh auto 2vh auto' }}>WELCOME TO PARTICIPANT CENTER
                                     </h4>
+                                    <p className="homeText">
+                                        Please enter your company name for more details on your retirement plan.
+                                    </p>
                                     <form onSubmit={this.handleInput}>
-                                        <input className="buttonInput" type="text" name="inputField" style={{textAlign: 'center'}} />
+                                        <input className="buttonInput" type="text" name="inputField" style={{ textAlign: 'center' }} />
                                         {
                                             this.state.firstAttempt
                                                 ?
                                                 <div>
-                                                    <div style={{ height: '.85em'}} />
+                                                    <div style={{ height: '.85em' }} />
                                                 </div>
                                                 :
                                                 <div>
-                                                    <div style={{ color: 'blue', fontSize: '.75em'}}>Did not recognize company
+                                                    <div style={{ color: 'blue', fontSize: '.75em' }}>Did not recognize company
                                                     </div>
                                                 </div>
                                         }
-                                        <br />
-                                        <button className="buttons" type="submit">Submit</button>
+                                        <button className="buttons" type="submit">Login</button>
                                     </form>
+                                    <p className="bold">
+                                        In a hurry, or questions? Call us +1 212-564-2464
+                                    </p>
                                 </div>
                                 :
                                 <div id="title">
@@ -119,10 +124,36 @@ class Home extends Component {
                                             )
                                         }}>Logout
                                     </button>
+                                    <p className="bold">
+                                        In a hurry, or questions? Call us +1 212-564-2464
+                                    </p>
                                 </div>
                         }
                     </div>
-
+                    <div>
+                        <h4 id="subHeader">
+                            ORENDA RETIREMENT
+                        </h4>
+                        <p className="homeText">
+                            Some label Orenda Retirement as a contemporary professional group, while others think of us as determined and loyal. Regardless of the label, it is our duty as retirement plan administrators,to bring our clients and partners a very personal experience that exceeds expectations. As a group, we strive to make sure that customer service is our top priority. With over 10 years of experience in retirement services, we understand the needs of the market. By building a close relationship with our clients, we are able to meet their every need.
+                        </p>
+                    </div>
+                    <div className="greySection">
+                        <h4 id="subHeader">
+                            CONTACT US
+                        </h4>
+                        <p className="homeText">
+                            It is never too early to get started on your investment plans. Tell us more about your goals, and we will get you started on a plan to achieve them.
+                        </p>
+                        <h4>Heather Cox</h4>
+                        <p>Administrator</p>
+                        <a className="buttons" style={{padding: '2px', textDecoration: 'none'}} href="mailto:hcox@orendaretirement.com?Subject=Inquiry" target="_top">Email Heather</a>
+                        <h4>Lindi Carpenter</h4>
+                        <p>401k Payroll Processor</p>
+                        <a className="buttons" style={{padding: '2px', textDecoration: 'none'}} href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" target="_top">Email Lindi</a>
+                        <h4>You can contact us directly at:</h4>
+                        <h4>+1 212-564-2464</h4>
+                    </div>
                 </div>
             </div>
         )
@@ -136,48 +167,3 @@ const mapDispatch = (dispatch) => ({
 })
 
 export default connect(null, mapDispatch)(Home)
-
-// <div>
-//                     {
-//                         this.state.loading === true
-//                             ? <SplashScreen />
-//                             :
-//                             <div className="companyPages">
-//                                 <h2>Our Favorite Videos and Articles</h2>
-//                                 <div className="videos">
-//                                     {
-//                                         this.state.videoData.length === 0
-//                                             ? <h2>We are updating this page, check back soon</h2>
-//                                             :
-//                                             this.state.videoData.map(video => (
-//                                                 <div key={video[0]} className="video">
-//                                                     <div className="videoContainer">
-//                                                         <h2>{video[0]}</h2>
-//                                                         <iframe width="310" title="News video" height="220" src={video[1]} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
-//                                                     </div>
-//                                                 </div>
-//                                             ))
-//                                     }
-//                                 </div>
-//                                 <div className="articles">
-//                                     {
-//                                         this.state.articleData === 0
-//                                             ? <h2>We are updating this page, check back soon</h2>
-//                                             :
-//                                             this.state.articleData.map(article => (
-//                                                 <div key={article[0]} className="article">
-//                                                     <div className="articleContainer">
-//                                                         <a target="_blank" rel="noopener noreferrer" href={article[1]}>
-//                                                             <h4><b>{article[0]}</b></h4>
-//                                                         </a>
-//                                                         <a target="_blank" rel="noopener noreferrer" href={article[1]}>
-//                                                             <p><strong>More Info</strong></p>
-//                                                         </a>
-//                                                     </div>
-//                                                 </div>
-//                                             ))
-//                                     }
-//                                 </div>
-//                             </div>
-//                     }
-//                 </div>

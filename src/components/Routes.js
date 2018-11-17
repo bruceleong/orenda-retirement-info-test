@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import history from './history'
 import AppDrawerLoggedOut from './AppDrawerLoggedOut'
 import AppDrawerLoggedIn from './AppDrawerLoggedIn'
-import SBSFLogo from './sbsfLogo.png'
+import orendaLogo from '../images/orenda.png'
 import { getCompanyData } from '../store'
 import AppBar from 'material-ui/AppBar'
 import News from './News'
@@ -47,7 +47,7 @@ class Routes extends Component {
           <AppBar
             id="appBar"
             title={<div onClick={this.handleToggle} />}
-            iconElementRight={<div><img style={{ height: '40px', margin: '3px' }} alt="logo" src={SBSFLogo} /></div>}
+            iconElementRight={<div><img style={{ height: '40px', margin: '3px' }} alt="logo" src={orendaLogo} /></div>}
             onLeftIconButtonClick={this.handleToggle}
           />
           <Switch>

@@ -63,9 +63,7 @@ export default class AddEditMedia extends Component {
 
   mediaHandleSubmit = evt => {
     evt.preventDefault()
-
     if (this.validFirestoreDocNameCheck('Title', this.state.mediaTitle)) {
-
       let url = this.state.mediaLink
       if (url.startsWith('https://') === false && url.startsWith('http://') === false) url = 'https://' + url
 
@@ -103,6 +101,13 @@ export default class AddEditMedia extends Component {
     this.setState({ mediaType: type, mediaURL: url, mediaToUpdate: title })
   }
 
+  handleChange = (evt) => {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
+
+
   render() {
     return (
       !this.state.mediaToUpdate
@@ -117,6 +122,7 @@ export default class AddEditMedia extends Component {
                 <input
                   className="buttonInput"
                   name="mediaTitle"
+                  onChange={this.handleChange}
                   value={this.state.mediaTitle} />
               </div>
             </div>

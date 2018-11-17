@@ -5,15 +5,42 @@ body {
   background-color: white;
 }
 
+#header {
+  color: #D22C2C;
+  font-size: 2rem;
+}
+
+#subHeader {
+  color: #D22C2C;
+  font-size: 2rem;
+  margin: 6vh auto 2vh auto;
+  width: 90%;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.greySection {
+  background-color: #EBEDEF;
+  padding: 4vh;
+}
+
+.homeText {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
 .buttons {
   margin: 3vh;
-  background-color: #339933;
+  background-color: #D22C2C;
 }
 
 .page {
   border-radius: 1vw;
   background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgb(140, 191, 132);
+  border: 1px solid #D22C2C;
   margin: 2vh 2vw;
   padding: 2vh 2vw;
   align-content: center;
@@ -22,7 +49,7 @@ body {
 
 .links {
   text-decoration: none;
-  color: #339933;
+  color: #D22C2C;
   font-size: 1.5em;
 }
 
@@ -55,7 +82,7 @@ body {
   margin: 10px;
   padding: 10px;
   font-size: 14px;
-  background-color: rgb(144, 238, 194);
+  background-color: #EBEDEF;
 }
 
 .article:hover {
@@ -83,7 +110,7 @@ body {
   margin: 10px;
   padding: 10px;
   font-size: 14px;
-  background-color: rgb(144, 238, 194);
+  background-color: #EBEDEF;
 }
 
 .videoContainer {
@@ -99,7 +126,7 @@ body {
 }
 
 .login-button button{
-  background-color: #339933
+  background-color: #D22C2C
 }
 
 .header {
@@ -120,14 +147,10 @@ body {
 
 @media (max-width: 400px) {
 .header {
-    margin-top: 15vh;
-    /* height: 100vh; */
   }
   #title{
     height: 60vh;
     margin-top: 15vh;
-
-
   }
 .contactHeader {
     margin-top: 10vh;
@@ -137,7 +160,7 @@ body {
   margin-top: 10vh;
 }
 .buttons {
-  background-color: #339933;
+  background-color: #D22C2C;
   font-size: 1em;
   border: none;
   border-radius: 1vw;
@@ -152,8 +175,6 @@ body {
   color: #bfbfbf;
   margin: 1vh;
 }
-
-
 
 .buttonInput div::before {
   content: "\A";
@@ -170,7 +191,6 @@ body {
 
 @media (min-width: 401px) and (max-width: 650px) {
   .header {
-    margin-top: 20vh;
     height: 0vh;
   }
   #title{
@@ -189,7 +209,7 @@ body {
     margin-left: 25vw;
   }
   .buttons {
-    background-color: #339933;
+    background-color: #D22C2C;
     font-size: 1.2em;
     border: none;
     border-radius: 1vw;
@@ -241,7 +261,7 @@ body {
     margin-left: 33vw;
   }
   .buttons {
-    background-color: #339933;
+    background-color: #D22C2C;
     font-size: 1.2em;
     border: none;
     border-radius: 1vw;
@@ -278,9 +298,10 @@ body {
 
 #footer {
   width: 100%;
-  border-top: solid 2px #339933;
+  border-top: solid 2px #D22C2C;
   font-family: Lora;
   color: black;
   bottom: 0;
   align-items: center;
+  font-size: .75rem;
 }
