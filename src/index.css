@@ -287,15 +287,12 @@ body {
     margin: 1vh;
   }
 }
-
 .formFormating {
   display: inline;
 }
-
 .textContent {
   margin: 5vw;
 }
-
 #title {
   text-align: center;
   font-style: lora;
