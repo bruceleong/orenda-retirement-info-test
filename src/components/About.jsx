@@ -5,7 +5,7 @@ const About = (props) => (
     <div>
         <div className="contactHeader" />
         <div className="companyPages">
-            <h2 className="spacingMargin">CONTACT US
+            <h2 className="spacingMargin">CONTACT US TODAY
             </h2>
             <h4>Heather Cox</h4>
             <p>Administrator</p>

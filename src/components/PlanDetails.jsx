@@ -43,7 +43,13 @@ class PlanDetails extends Component {
                             `}          <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite} style={{textDecoration: 'none'}}>
                                                 <h3 className="spacingMargin">Click Here</h3>
                                         </a>
+                                        <br />
                                         </h2>
+                                        <br />
+                                        <p>
+                                            *You will be redirected to the financial provider's website and be prompted to log on.
+                                        </p>
+                                        <br />
                                     </div>
                             }
                             <br />

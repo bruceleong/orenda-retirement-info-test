@@ -57,12 +57,13 @@ class Forms extends Component {
           <div>
             <h2 className="spacingMargin">{this.state.companyName} Forms & Notices</h2>
             <p className="spacingMargin">Here you can find forms for commonly requested items:</p>
-            <p className="spacingMargin">Click to download</p>
+            <p className="spacingMargin">Click to download applicable forms</p>
+            <br />
             <div>
               <div className="companyHomeForms" style={{textAlign: 'left'}}>
                 {
                   this.state.companyData.length === 0
-                  ? <h3>This company does not have any forms or notices.</h3>
+                  ? <h3>There are currently no forms or notices.</h3>
                   : (
                     this.state.companyData.map(form => {
                       return (
@@ -75,6 +76,10 @@ class Forms extends Component {
                 }
               </div>
               <br />
+              <p className="spacingMargin">Can't find what your looking for? Reach out to us now by
+                <a style={{ padding: '2px', textDecoration: 'none' }} href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" target="_top"><br /> clicking here
+                </a>
+              </p>
               <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
                 <button
                   className="buttons"
