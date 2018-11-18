@@ -13,7 +13,7 @@ body {
 #subHeader {
   color: #D22C2C;
   font-size: 2rem;
-  margin: 6vh auto 2vh auto;
+  margin: 6vh auto 6vh auto;
   width: 90%;
 }
 
@@ -24,6 +24,10 @@ body {
 
 .greySection {
   background-color: #EBEDEF;
+  padding: 4vh;
+}
+
+.whiteSection {
   padding: 4vh;
 }
 
@@ -38,7 +42,7 @@ body {
 }
 
 .page {
-  border-radius: 1vw;
+  /* border-radius: 1vw; */
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid #D22C2C;
   margin: 2vh 2vw;
@@ -126,7 +130,7 @@ body {
 }
 
 .login-button button{
-  background-color: #D22C2C
+  background-color: #D22C2C;
 }
 
 .header {
@@ -161,17 +165,17 @@ body {
 }
 .buttons {
   background-color: #D22C2C;
-  font-size: 1em;
+  font-size: .75rem;
   border: none;
-  border-radius: 1vw;
+  /* border-radius: 1vw; */
   color: white;
   font-weight: bold;
 }
 
 .buttonInput {
   border: 1px solid grey;
-  border-radius: 1vw;
-  font-size: 1.2em;
+  /* border-radius: 1vw; */
+  font-size: 1.5rem;
   color: #bfbfbf;
   margin: 1vh;
 }
@@ -210,17 +214,17 @@ body {
   }
   .buttons {
     background-color: #D22C2C;
-    font-size: 1.2em;
+    font-size: .75rem;
     border: none;
-    border-radius: 1vw;
+    /* border-radius: 1vw; */
     color: white;
     font-weight: bold;
   }
 
   .buttonInput {
     border: 1px solid grey;
-    border-radius: 1vw;
-    font-size: 1.2em;
+    /* border-radius: 1vw; */
+    font-size: 1.5rem;
     color: #bfbfbf;
     margin: 1vh;
   }
@@ -262,17 +266,17 @@ body {
   }
   .buttons {
     background-color: #D22C2C;
-    font-size: 1.2em;
+    font-size: .75rem;
     border: none;
-    border-radius: 1vw;
+    /* border-radius: 1vw; */
     color: white;
     font-weight: bold;
   }
 
   .buttonInput {
     border: 1px solid grey;
-    border-radius: 1vw;
-    font-size: 1.2em;
+    /* border-radius: 1vw; */
+    font-size: 1.5rem;
     color: #bfbfbf;
     margin: 1vh;
   }
@@ -289,10 +293,10 @@ body {
 #title {
   text-align: center;
   font-style: lora;
-  font-size: 1.25em;
+  font-size: 1.25rem;
   color: black;
   display: inline-block;
-  letter-spacing: .05em;
+  letter-spacing: .05rem;
   margin: 3vw;
 }
 
@@ -300,8 +304,19 @@ body {
   width: 100%;
   border-top: solid 2px #D22C2C;
   font-family: Lora;
-  color: black;
+  color: white;
+  background-color: black;
   bottom: 0;
   align-items: center;
   font-size: .75rem;
 }
+
+/* #footer {
+  width: 100%;
+  border-top: solid 2px #D22C2C;
+  font-family: Lora;
+  color: black;
+  bottom: 0;
+  align-items: center;
+  font-size: .75rem;
+} */

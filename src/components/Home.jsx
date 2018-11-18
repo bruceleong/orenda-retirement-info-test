@@ -101,11 +101,11 @@ class Home extends Component {
                                                 </div>
                                                 :
                                                 <div>
-                                                    <div style={{ color: 'blue', fontSize: '.75em' }}>Did not recognize company
+                                                    <div style={{ color: 'blue', fontSize: '.75rem' }}>Did not recognize company
                                                     </div>
                                                 </div>
                                         }
-                                        <button className="buttons" type="submit">Login</button>
+                                        <button className="buttons" style={{fontSize: '1.2rem'}} type="submit">Login</button>
                                     </form>
                                     <p className="bold">
                                         In a hurry, or questions? Call us&nbsp;<a href="tel:2125642464">+1 212-564-2464</a>
@@ -130,7 +130,7 @@ class Home extends Component {
                                 </div>
                         }
                     </div>
-                    <div>
+                    <div className="whiteSection">
                         <h4 id="subHeader">
                             ORENDA RETIREMENT
                         </h4>
