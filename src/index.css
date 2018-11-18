@@ -32,9 +32,8 @@ body {
 }
 
 .homeText {
-  /* margin-left: 4rem;
-  margin-right: 4rem; */
-  margin: auto;
+  margin-left: 4rem;
+  margin-right: 4rem;
 }
 
 .buttons {
@@ -192,7 +191,9 @@ body {
 .companyHomeForms {
   margin-left: 13vw;
 }
-
+.homeText {
+  margin: auto;
+}
 
 }
 
@@ -240,6 +241,9 @@ body {
   }
   .companyHomeForms {
     margin-left: 13vw;
+  }
+  .homeText {
+    margin: auto;
   }
 }
 
