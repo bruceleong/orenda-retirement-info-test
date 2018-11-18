@@ -55,9 +55,9 @@ class Forms extends Component {
         <div className="loggedInHeader" />
         <div className="companyPages">
           <div>
-            <h2>{this.state.companyName} Forms & Notices</h2>
-            <p>Here you can find forms for commonly requested items:</p>
-            <p>Click to download</p>
+            <h2 className="spacingMargin">{this.state.companyName} Forms & Notices</h2>
+            <p className="spacingMargin">Here you can find forms for commonly requested items:</p>
+            <p className="spacingMargin">Click to download</p>
             <div>
               <div className="companyHomeForms" style={{textAlign: 'left'}}>
                 {

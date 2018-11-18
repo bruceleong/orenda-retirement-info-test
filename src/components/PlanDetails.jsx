@@ -37,11 +37,11 @@ class PlanDetails extends Component {
                                 this.state.loading === true
                                     ? <splashScreen />
                                     :
-                                    <div className="companyPages" style={{marginTop: '20vh'}}>
-                                        <h2>{`For additional information on your
+                                    <div className="companyPages" style={{marginTop: '18vh'}}>
+                                        <h2 className="spacingMargin">{`For additional information on your
                                         ${localStorage.getItem('company')} retirement plan:
                             `}          <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite} style={{textDecoration: 'none'}}>
-                                                <h3>Click Here</h3>
+                                                <h3 className="spacingMargin">Click Here</h3>
                                         </a>
                                         </h2>
                                     </div>

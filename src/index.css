@@ -13,7 +13,7 @@ body {
 #subHeader {
   color: #D22C2C;
   font-size: 2rem;
-  margin: 6vh auto 6vh auto;
+  margin: 4vh auto 4vh auto;
   width: 90%;
 }
 
@@ -149,6 +149,10 @@ body {
   align-content: left;
 }
 
+.spacingMargin {
+  margin: 5vh auto 5vh auto;
+}
+
 @media (max-width: 400px) {
 .header {
   }
@@ -185,8 +189,8 @@ body {
 }
 .companyHomeLinks {
   margin-left: 22vw;
-  margin-top: 4vh;
-  margin-bottom: 4vh;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
 }
 .companyHomeForms {
   margin-left: 13vw;
@@ -203,7 +207,7 @@ body {
   }
   #title{
     margin-top: 10vh;
-    height: 75vh;
+    height: 70vh;
 
   }
   .contactHeader {
@@ -236,8 +240,8 @@ body {
 
   .companyHomeLinks {
     margin-left: 22vw;
-    margin-top: 4vh;
-    margin-bottom: 4vh;
+    margin-top: 6vh;
+    margin-bottom: 6vh;
   }
   .companyHomeForms {
     margin-left: 13vw;
