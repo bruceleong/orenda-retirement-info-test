@@ -105,7 +105,7 @@ class Home extends Component {
                                                     </div>
                                                 </div>
                                         }
-                                        <button className="buttons" style={{fontSize: '1.2rem'}} type="submit">Login</button>
+                                        <button className="buttons" style={{ fontSize: '1.2rem' }} type="submit">Login</button>
                                     </form>
                                     <p className="bold">
                                         In a hurry, or questions? Call us&nbsp;<a href="tel:2125642464">+1 212-564-2464</a>
@@ -113,6 +113,8 @@ class Home extends Component {
                                 </div>
                                 :
                                 <div id="title">
+                                    <h4 id="header" style={{ width: '90%', margin: '3vh auto 2vh auto' }}>WELCOME TO THE PARTICIPANT CENTER
+                                    </h4>
                                     <h4>You are currently logged in</h4>
                                     <button
                                         className="buttons"
@@ -137,6 +139,7 @@ class Home extends Component {
                         <p className="homeText">
                             Some label Orenda Retirement as a contemporary professional group, while others think of us as determined and loyal. Regardless of the label, it is our duty as retirement plan administrators,to bring our clients and partners a very personal experience that exceeds expectations. As a group, we strive to make sure that customer service is our top priority. With over 10 years of experience in retirement services, we understand the needs of the market. By building a close relationship with our clients, we are able to meet their every need.
                         </p>
+                        <br />
                     </div>
                     <div className="greySection">
                         <h4 id="subHeader">

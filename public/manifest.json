@@ -1,6 +1,6 @@
 {
-  "short_name": "SBSF",
-  "name": "Side by Side Financials",
+  "short_name": "OR",
+  "name": "Orenda Retirement",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,8 +8,8 @@
       "type": "image/x-icon"
     }
   ],
-  "scope": "https://sbsf.herokuapp.com/",
-  "start_url": "https://sbsf.herokuapp.com/",
+  "scope": "https://orendaretirement.com/",
+  "start_url": "https://orendaretirement.com/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
