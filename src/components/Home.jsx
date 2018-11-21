@@ -159,6 +159,7 @@ class Home extends Component {
                             <a className="linkStyling" href="tel:2125642464">+1 212-564-2464</a>
                         </h4>
                         <br />
+                        <br />
                     </div>
                 </div>
             </div>
