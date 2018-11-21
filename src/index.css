@@ -217,7 +217,6 @@ body {
   .greySection {
     background-color: #EBEDEF;
     padding: 4vh;
-    height: 50vh;
   }
   .spacingMarginHeader {
     width: 100%;
@@ -259,6 +258,10 @@ body {
 
   .companyHomeLinks div::before {
     margin-left: 25vw;
+  }
+
+  .buttonInput div::before {
+    content: "\A";
   }
 
   .buttonInput {
@@ -328,6 +331,10 @@ body {
   }
   .companyHomeForms {
     margin-left: 33vw;
+  }
+
+  .buttonInput div::before {
+    content: "\A";
   }
 
   .buttonInput {
