@@ -5,6 +5,11 @@ body {
   background-color: white;
 }
 
+.linkStyling {
+  text-decoration: none;
+  color: black;
+}
+
 #header {
   color: #D22C2C;
   font-size: 2rem;
@@ -13,7 +18,7 @@ body {
 #subHeader {
   color: #D22C2C;
   font-size: 2rem;
-  margin: 4vh auto 4vh auto;
+  margin: 4vh auto 6vh auto;
   width: 90%;
 }
 
@@ -31,14 +36,14 @@ body {
   padding: 4vh;
 }
 
-.homeText {
-  margin-left: 4rem;
-  margin-right: 4rem;
-}
-
 .buttons {
   margin: 3vh;
   background-color: #D22C2C;
+  font-size: 1.2rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: .25rem;
 }
 
 .page {
@@ -53,7 +58,7 @@ body {
 
 .links {
   text-decoration: none;
-  color: #D22C2C;
+  color: black;
   font-size: 1.5em;
 }
 
@@ -149,12 +154,30 @@ body {
   align-content: left;
 }
 
-.spacingMargin {
-  margin: 5vh auto 5vh auto;
-}
-
 @media (max-width: 400px) {
+  .spacingMarginHeader {
+    width: 100%;
+    font-size: 1.5rem;
+    color: #D22C2C;
+    margin: 5vh auto 5vh auto;
+  }
+
+  .spacingMarginText {
+    color: black;
+    margin: 5vh 1rem 5vh 1rem;
+  }
 .header {
+  }
+  .homeText {
+    line-height: 1rem;
+    font-size: .75rem;
+    margin: auto;
+  }
+
+  .contactText {
+    line-height: 1rem;
+    font-size: .75rem;
+    margin: auto;
   }
   #title{
     height: 60vh;
@@ -166,14 +189,6 @@ body {
   }
 .contactHeaderMobile {
   margin-top: 10vh;
-}
-.buttons {
-  background-color: #D22C2C;
-  font-size: .75rem;
-  border: none;
-  /* border-radius: 1vw; */
-  color: white;
-  font-weight: bold;
 }
 
 .buttonInput {
@@ -195,21 +210,45 @@ body {
 .companyHomeForms {
   margin-left: 13vw;
 }
-.homeText {
-  margin: auto;
-}
 
 }
 
 @media (min-width: 401px) and (max-width: 650px) {
+  .greySection {
+    background-color: #EBEDEF;
+    padding: 4vh;
+    height: 50vh;
+  }
+  .spacingMarginHeader {
+    width: 100%;
+    font-size: 1.5rem;
+    color: #D22C2C;
+    margin: 5vh auto 5vh auto;
+  }
+
+  .spacingMarginText {
+    color: black;
+    margin: 5vh 1rem 5vh 1rem;
+  }
   .header {
     height: 0vh;
   }
   #title{
     margin-top: 10vh;
     height: 70vh;
-
   }
+  .homeText {
+    line-height: 1rem;
+    font-size: .75rem;
+    margin: auto;
+  }
+
+  .contactText {
+    line-height: 1rem;
+    font-size: .75rem;
+    margin: auto;
+  }
+
   .contactHeader {
     margin-top: 10vh;
     align-content: center;
@@ -220,14 +259,6 @@ body {
 
   .companyHomeLinks div::before {
     margin-left: 25vw;
-  }
-  .buttons {
-    background-color: #D22C2C;
-    font-size: .75rem;
-    border: none;
-    /* border-radius: 1vw; */
-    color: white;
-    font-weight: bold;
   }
 
   .buttonInput {
@@ -246,15 +277,35 @@ body {
   .companyHomeForms {
     margin-left: 13vw;
   }
-  .homeText {
-    margin: auto;
-  }
 }
 
 @media (min-width: 651px) {
   .header {
     background-image: url("backgroundimage.png");
     height: 40vh;
+  }
+  .homeText {
+    line-height: 1rem;
+    font-size: .75em;
+    margin-right: 10rem;
+    margin-left: 10rem;
+  }
+  .spacingMarginHeader {
+    width: 100%;
+    font-size: 1.5rem;
+    color: #D22C2C;
+    margin: 5vh auto 5vh auto;
+  }
+
+  .spacingMarginText {
+    color: black;
+    margin: 5vh 8rem 5vh 8rem;
+  }
+  .contactText {
+    line-height: 1rem;
+    font-size: .75em;
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
   #title{
     height: 30vh
@@ -277,14 +328,6 @@ body {
   }
   .companyHomeForms {
     margin-left: 33vw;
-  }
-  .buttons {
-    background-color: #D22C2C;
-    font-size: .75rem;
-    border: none;
-    /* border-radius: 1vw; */
-    color: white;
-    font-weight: bold;
   }
 
   .buttonInput {

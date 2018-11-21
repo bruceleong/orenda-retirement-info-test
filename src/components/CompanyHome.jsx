@@ -30,9 +30,9 @@ export default class CompanyHome extends Component {
                         ? <splashScreen />
                         :
                         <div className="companyPages">
-                            <h2 className="spacingMargin">Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
+                            <h2 className="spacingMarginHeader" style={{color: '#D22C2C'}}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
                             </h2>
-                            <p className="spacingMargin" style={{ textAlign: 'left' }}>On this page, you have access to your 401(k) account and can find comprehensive information about retirement planning.  Retirement Planning is an important phase in your life.  As you continue your working career, it is our hope to help provide you the tools and education you need to help reach your goals.</p>
+                            <p className="spacingMarginText" style={{ textAlign: 'left' }}>On this page, you have access to your 401(k) account and can find comprehensive information about retirement planning.  Retirement Planning is an important phase in your life.  As you continue your working career, it is our hope to help provide you the tools and education you need to help reach your goals.</p>
                             <div className="companyHomeLinks" style={{ textAlign: 'left' }}>
                                 <div>
                                     <Link className="links" to="/YourAccount" style={{ textDecoration: 'none' }}>&#9673; Your Account</Link>

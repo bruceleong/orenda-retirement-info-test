@@ -53,7 +53,7 @@ export default class News extends Component {
         <div>
         <div className="loggedInHeader" />
           <div className="companyPages">
-          <h2>On this page, you will find videos and tutorials on topics to help you prepare and get the most out of retirement.</h2>
+          <h2 className="spacingMarginHeader">On this page, you will find videos and tutorials on topics to help you prepare and get the most out of retirement.</h2>
           <div className="videos">
             {
               this.state.videoData.length === 0
@@ -78,10 +78,10 @@ export default class News extends Component {
                 this.state.articleData.map(article => (
                   <div key={article[0]} className="article">
                     <div className="articleContainer">
-                      <a target="_blank" rel="noopener noreferrer" href={article[1]}>
+                      <a className="linkStyling" target="_blank" rel="noopener noreferrer" href={article[1]}>
                         <h4><b>{article[0]}</b></h4>
                       </a>
-                      <a href={article[1]}>
+                      <a className="linkStyling" href={article[1]}>
                         <p><strong>More Info</strong></p>
                       </a>
                     </div>

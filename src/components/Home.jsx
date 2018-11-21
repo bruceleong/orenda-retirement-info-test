@@ -86,7 +86,7 @@ class Home extends Component {
                             !localStorage.getItem('company')
                                 ?
                                 <div id="title">
-                                    <h4 id="header" style={{ width: '90%', margin: '3vh auto 2vh auto' }}>WELCOME TO THE PARTICIPANT CENTER
+                                    <h4 id="header" style={{ margin: '3vh auto 2vh auto' }}>WELCOME TO THE PARTICIPANT CENTER
                                     </h4>
                                     <p className="homeText">
                                         Please enter your company name for more details on your retirement plan.
@@ -105,15 +105,15 @@ class Home extends Component {
                                                     </div>
                                                 </div>
                                         }
-                                        <button className="buttons" style={{ fontSize: '1.2rem' }} type="submit">Login</button>
+                                        <button className="buttons" type="submit">Login</button>
                                     </form>
                                     <p className="bold">
-                                        In a hurry, or questions? Call us&nbsp;<a href="tel:2125642464">+1 212-564-2464</a>
+                                        In a hurry, or questions? Call us&nbsp;<a className="linkStyling" href="tel:2125642464">+1 212-564-2464</a>
                                     </p>
                                 </div>
                                 :
                                 <div id="title">
-                                    <h4 id="header" style={{ width: '90%', margin: '3vh auto 2vh auto' }}>WELCOME TO THE PARTICIPANT CENTER
+                                    <h4 id="header" style={{ margin: '3vh auto 2vh auto' }}>WELCOME TO THE PARTICIPANT CENTER
                                     </h4>
                                     <h4>You are currently logged in</h4>
                                     <button
@@ -127,7 +127,7 @@ class Home extends Component {
                                         }}>Logout
                                     </button>
                                     <p className="bold">
-                                        In a hurry, or questions? Call us&nbsp;<a href="tel:2125642464">+1 212-564-2464</a>
+                                        In a hurry, or questions? Call us&nbsp;<a className="linkStyling" href="tel:2125642464">+1 212-564-2464</a>
                                     </p>
                                 </div>
                         }
@@ -145,18 +145,18 @@ class Home extends Component {
                         <h4 id="subHeader">
                             CONTACT US
                         </h4>
-                        <p className="homeText">
+                        <p className="contactText">
                             It is never too early to get started on your investment plans. Tell us more about your goals, and we will get you started on a plan to achieve them.
                         </p>
-                        <h4>Heather Cox</h4>
+                        <br />
+                        <a className="linkStyling" href="mailto:hcox@orendaretirement.com?Subject=Inquiry" target="_top"><h4>Heather Cox</h4></a>
                         <p>Administrator</p>
-                        <a className="buttons" style={{ padding: '2px', textDecoration: 'none' }} href="mailto:hcox@orendaretirement.com?Subject=Inquiry" target="_top">Email Heather</a>
-                        <h4>Lindi Carpenter</h4>
+                        <a className="linkStyling" href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" target="_top"><h4>Linda Carpenter</h4>
+                        </a>
                         <p>401k Payroll Processor</p>
-                        <a className="buttons" style={{ padding: '2px', textDecoration: 'none' }} href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" target="_top">Email Lindi</a>
                         <h4>You can contact us directly at:</h4>
                         <h4>
-                            <a href="tel:2125642464">+1 212-564-2464</a>
+                            <a className="linkStyling" href="tel:2125642464">+1 212-564-2464</a>
                         </h4>
                     </div>
                 </div>

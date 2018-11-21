@@ -55,10 +55,9 @@ class Forms extends Component {
         <div className="loggedInHeader" />
         <div className="companyPages">
           <div>
-            <h2 className="spacingMargin">{this.state.companyName} Forms & Notices</h2>
-            <p className="spacingMargin">Here you can find forms for commonly requested items:</p>
-            <p className="spacingMargin">Click to download applicable forms</p>
-            <br />
+            <h2 className="spacingMarginHeader">{this.state.companyName} Forms & Notices</h2>
+            <p className="spacingMarginText">Here you can find forms for commonly requested items:</p>
+            <p className="spacingMarginText">Click to download applicable forms</p>
             <div>
               <div className="companyHomeForms" style={{textAlign: 'left'}}>
                 {
@@ -76,8 +75,8 @@ class Forms extends Component {
                 }
               </div>
               <br />
-              <p className="spacingMargin">Can't find what your looking for? Reach out to us now by
-                <a style={{ padding: '2px', textDecoration: 'none' }} href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" target="_top"><br /> clicking here
+              <p className="spacingMarginText">Can't find what your looking for? Reach out to us now by
+                <a className="linkStyling" href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" target="_top"> email.
                 </a>
               </p>
               <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
