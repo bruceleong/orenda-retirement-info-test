@@ -3,6 +3,7 @@ import { List, ListItem } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { db } from '../config/constants'
+import { tip, planDocTip } from '../helpers/global';
 
 export default class AppDrawerLoggedIn extends Component {
   constructor(props) {
@@ -19,10 +20,6 @@ export default class AppDrawerLoggedIn extends Component {
         let spd = doc.data().spd
         this.setState({ spd })
       })
-  }
-
-  tip = () => {
-    alert("To fill out the form/s online, click 'Open with' and selected 'DocHub' at the top middle of the page. Thank you!")
   }
 
   render() {
@@ -57,7 +54,7 @@ export default class AppDrawerLoggedIn extends Component {
                   <ListItem primaryText="Your Account" onClick={this.props.handleClose} />
                 </Link>
                 <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none' }}>
-                  <ListItem primaryText="Plan Documents" onClick={this.tip} />
+                  <ListItem primaryText="Plan Documents" onClick={() => { planDocTip() }} />
                 </a>
                 <Link to="/Forms" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Forms & Notices" onClick={this.props.handleClose} />

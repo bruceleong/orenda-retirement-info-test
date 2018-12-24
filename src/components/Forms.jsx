@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { db } from '../config/constants'
 import { Link } from 'react-router-dom'
 import SplashScreen from './SplashScreen'
+import { tip } from '../helpers/global';
 
 class Forms extends Component {
   constructor(props) {
@@ -52,55 +53,55 @@ class Forms extends Component {
       ? (<SplashScreen />)
       : (
         <div>
-        <div className="loggedInHeader" />
-        <div className="companyPages">
-          <div>
-            <h2 className="spacingMarginHeader">{this.state.companyName} Forms & Notices</h2>
-            <p className="spacingMarginText">Here you can find forms for commonly requested items:</p>
-            <p className="spacingMarginText">Click to download applicable forms</p>
+          <div className="loggedInHeader" />
+          <div className="companyPages">
             <div>
-              <div className="companyHomeForms" style={{textAlign: 'left'}}>
-                {
-                  this.state.companyData.length === 0
-                  ? <h3>There are currently no forms or notices.</h3>
-                  : (
-                    this.state.companyData.map(form => {
-                      return (
-                        <div key={form[0]}>
-                            <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673; {form[0]}</a>
-                        </div>
+              <h2 className="spacingMarginHeader">{this.state.companyName} Forms & Notices</h2>
+              <p className="spacingMarginText">Here you can find forms for commonly requested items:</p>
+              <p className="spacingMarginText">Click to download applicable forms</p>
+              <div>
+                <div className="companyHomeForms" style={{ textAlign: 'left' }}>
+                  {
+                    this.state.companyData.length === 0
+                      ? <h3>There are currently no forms or notices.</h3>
+                      : (
+                        this.state.companyData.map(form => {
+                          return (
+                            <div key={form[0]}>
+                              <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]} onClick={() => { tip() }}>&#9673; {form[0]}</a>
+                            </div>
+                          )
+                        })
                       )
-                    })
-                  )
-                }
-              </div>
-              <br />
-              <p className="spacingMarginText">Can't find what your looking for? Reach out to us now by
+                  }
+                </div>
+                <br />
+                <p className="spacingMarginText">Can't find what your looking for? Reach out to us now by
                 <a className="linkStyling" href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" target="_top"> email.
                 </a>
-              </p>
-              <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
+                </p>
+                <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
+                  <button
+                    className="buttons"
+                    type="button">
+                    Back to {this.state.companyName} Home
+                </button>
+                </Link>
+                <br />
                 <button
                   className="buttons"
-                  type="button">
-                  Back to {this.state.companyName} Home
-                </button>
-              </Link>
-              <br />
-              <button
-                className="buttons"
-                type="button" id="noMarginButton"
-                onClick={() => {
-                  localStorage.removeItem('company')
-                  this.props.history.push(
-                    '/'
-                  )
-                }}>
-                Logout
+                  type="button" id="noMarginButton"
+                  onClick={() => {
+                    localStorage.removeItem('company')
+                    this.props.history.push(
+                      '/'
+                    )
+                  }}>
+                  Logout
               </button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       )
   }
