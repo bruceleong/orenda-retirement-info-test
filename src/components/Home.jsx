@@ -136,7 +136,7 @@ class Home extends Component {
                         <h4 id="subHeader">
                             ORENDA RETIREMENT
                         </h4>
-                        <p className="homeText">
+                        <p className="homeText" style={{fontSize: '1rem'}}>
                             Some label Orenda Retirement as a contemporary professional group, while others think of us as determined and loyal. Regardless of the label, it is our duty as retirement plan administrators,to bring our clients and partners a very personal experience that exceeds expectations. As a group, we strive to make sure that customer service is our top priority. With over 10 years of experience in retirement services, we understand the needs of the market. By building a close relationship with our clients, we are able to meet their every need.
                         </p>
                         <br />
@@ -145,7 +145,7 @@ class Home extends Component {
                         <h4 id="subHeader">
                             CONTACT US
                         </h4>
-                        <p className="contactText">
+                        <p className="contactText" style={{fontSize: '1rem'}}>
                             It is never too early to get started on your investment plans. Tell us more about your goals, and we will get you started on a plan to achieve them.
                         </p>
                         <br />
@@ -158,7 +158,6 @@ class Home extends Component {
                         <h4>
                             <a className="linkStyling" href="tel:2125642464">+1 212-564-2464</a>
                         </h4>
-                        <br />
                         <br />
                     </div>
                 </div>

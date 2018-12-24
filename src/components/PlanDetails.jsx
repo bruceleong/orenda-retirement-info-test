@@ -37,38 +37,39 @@ class PlanDetails extends Component {
                                 this.state.loading === true
                                     ? <splashScreen />
                                     :
-                                    <div className="companyPages" style={{marginTop: '10vh'}}>
+                                    <div className="companyPages">
                                         <h2 className="spacingMarginHeader">{`For additional information on your
                                         ${localStorage.getItem('company')} retirement plan:
                             `}          <a target="_blank" rel="noopener noreferrer" href={this.state.companyProviderWebsite} className="linkStyling">
                                                 <h3 className="spacingMarginText">Click Here</h3>
-                                        </a>
+                                            </a>
                                         </h2>
                                         <p>
                                             *You will be redirected to the financial provider's website and be prompted to log on.
                                         </p>
+                                        <br />
+                                        <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
+                                            <button
+                                                className="buttons"
+                                                type="button" id="marginTopButton">
+                                                Back to {localStorage.getItem('company')} Home
+                                            </button>
+                                        </Link>
+                                        <br />
+                                        <button
+                                            className="buttons"
+                                            id="noMarginBottom"
+                                            type="button"
+                                            onClick={() => {
+                                                localStorage.removeItem('company')
+                                                this.props.history.push(
+                                                    '/'
+                                                )
+                                            }}>
+                                            Logout
+                                        </button>
                                     </div>
                             }
-                            <br />
-                            <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
-                                <button
-                                    className="buttons"
-                                    type="button">
-                                    Back to {localStorage.getItem('company')} Home
-                                </button>
-                            </Link>
-                            <br />
-                            <button
-                                className="buttons"
-                                type="button"
-                                onClick={() => {
-                                    localStorage.removeItem('company')
-                                    this.props.history.push(
-                                        '/'
-                                    )
-                                }}>
-                                Logout
-                            </button>
                         </div>
                 }
             </div>

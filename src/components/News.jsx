@@ -53,7 +53,7 @@ export default class News extends Component {
         <div>
         <div className="loggedInHeader" />
           <div className="companyPages">
-          <h2 className="spacingMarginHeader">On this page, you will find videos and tutorials on topics to help you prepare and get the most out of retirement.</h2>
+          <h2 className="spacingMarginHeader">On this page, you will find videos and tutorials on topics to help you prepare and get the most out of retirement</h2>
           <div className="videos">
             {
               this.state.videoData.length === 0
@@ -93,14 +93,14 @@ export default class News extends Component {
           <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
             <button
               className="buttons"
-              type="button">
+              type="button" id="marginTopButton">
               Back to {localStorage.getItem('company')} Home
             </button>
           </Link>
           <br />
           <button
             className="buttons"
-            type="button"
+            type="button" id="noMarginBottom"
             onClick={() => {
               localStorage.removeItem('company')
               this.props.history.push(

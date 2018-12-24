@@ -21,6 +21,10 @@ export default class CompanyHome extends Component {
             })
     }
 
+    tip = () => {
+            alert("To fill out the form/s online, click 'Open with' and selected 'DocHub' at the top middle of the page. Thank you!")
+    }
+
     render() {
         return (
             <div>
@@ -30,7 +34,7 @@ export default class CompanyHome extends Component {
                         ? <splashScreen />
                         :
                         <div className="companyPages">
-                            <h2 className="spacingMarginHeader" style={{color: '#D22C2C'}}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
+                            <h2 className="spacingMarginHeader" style={{ color: '#D22C2C' }}>Welcome to the {localStorage.getItem('company')} Retirement Plan Portal Page
                             </h2>
                             <p className="spacingMarginText" style={{ textAlign: 'left' }}>On this page, you have access to your 401(k) account and can find comprehensive information about retirement planning.  Retirement Planning is an important phase in your life.  As you continue your working career, it is our hope to help provide you the tools and education you need to help reach your goals.</p>
                             <div className="companyHomeLinks" style={{ textAlign: 'left' }}>
@@ -39,7 +43,7 @@ export default class CompanyHome extends Component {
                                 </div>
                                 <div style={{ width: '1vw' }} />
                                 <div>
-                                    <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd}>&#9673; Plan Documents</a>
+                                    <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd} onClick={this.tip}>&#9673; Plan Documents</a>
                                 </div>
                                 <div style={{ width: '1vw' }} />
                                 <div>
@@ -56,7 +60,7 @@ export default class CompanyHome extends Component {
                             </div>
                             <button
                                 className="buttons"
-                                type="button" onClick={() => {
+                                type="button" id="marginTopButton" onClick={() => {
                                     localStorage.removeItem('company')
                                     this.props.history.push(
                                         '/'

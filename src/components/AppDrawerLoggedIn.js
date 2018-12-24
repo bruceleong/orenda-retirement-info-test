@@ -21,6 +21,10 @@ export default class AppDrawerLoggedIn extends Component {
       })
   }
 
+  tip = () => {
+    alert("To fill out the form/s online, click 'Open with' and selected 'DocHub' at the top middle of the page. Thank you!")
+  }
+
   render() {
     return (
       <div>
@@ -53,7 +57,7 @@ export default class AppDrawerLoggedIn extends Component {
                   <ListItem primaryText="Your Account" onClick={this.props.handleClose} />
                 </Link>
                 <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none' }}>
-                  <ListItem primaryText="Plan Documents" onClick={this.props.handleClose} />
+                  <ListItem primaryText="Plan Documents" onClick={this.tip} />
                 </a>
                 <Link to="/Forms" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Forms & Notices" onClick={this.props.handleClose} />
