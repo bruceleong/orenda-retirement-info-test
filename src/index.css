@@ -5,6 +5,14 @@ body {
   background-color: white;
 }
 
+#marginTopButton {
+  margin-top: 3rem;
+}
+
+#noMarginBottom {
+  margin-bottom: 0;
+}
+
 .linkStyling {
   text-decoration: none;
   color: black;
@@ -63,7 +71,7 @@ body {
 }
 
 .companyPages {
-  margin: 5vw;
+  margin: 5rem 4vw;
   word-wrap: break-word;
 }
 
@@ -154,6 +162,39 @@ body {
   align-content: left;
 }
 
+#title {
+  margin: 3rem 3vw 6rem 3vw;
+}
+
+.homeText {
+  font-size: 1rem;
+}
+
+.contactText {
+  font-size: 1rem;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
 @media (max-width: 400px) {
   .spacingMarginHeader {
     width: 100%;
@@ -170,18 +211,16 @@ body {
   }
   .homeText {
     line-height: 1rem;
-    font-size: .75rem;
     margin: auto;
   }
 
   .contactText {
     line-height: 1rem;
-    font-size: .75rem;
     margin: auto;
   }
   #title{
     height: 60vh;
-    margin-top: 15vh;
+    margin: 1rem 3vw 14rem 3vw;
   }
 .contactHeader {
     margin-top: 10vh;
@@ -233,18 +272,15 @@ body {
     height: 0vh;
   }
   #title{
-    margin-top: 10vh;
     height: 70vh;
   }
   .homeText {
     line-height: 1rem;
-    font-size: .75rem;
     margin: auto;
   }
 
   .contactText {
     line-height: 1rem;
-    font-size: .75rem;
     margin: auto;
   }
 
@@ -289,7 +325,6 @@ body {
   }
   .homeText {
     line-height: 1rem;
-    font-size: .75em;
     margin-right: 10rem;
     margin-left: 10rem;
   }
@@ -306,13 +341,8 @@ body {
   }
   .contactText {
     line-height: 1rem;
-    font-size: .75em;
     margin-left: 12rem;
     margin-right: 12rem;
-  }
-  #title{
-    height: 30vh
-
   }
   .contactHeader {
     background-image: url("backgroundimage.png");
@@ -352,13 +382,12 @@ body {
   margin: 5vw;
 }
 #title {
+  height: 30vh;
   text-align: center;
-  font-style: lora;
   font-size: 1.25rem;
   color: black;
   display: inline-block;
   letter-spacing: .05rem;
-  margin: 3vw;
 }
 
 #footer {

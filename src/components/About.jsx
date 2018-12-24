@@ -5,7 +5,7 @@ const About = (props) => (
     <div>
         <div className="contactHeader" />
         <div className="companyPages">
-            <h2 className="spacingMarginHeader">CONTACT US TODAY
+            <h2 className="spacingMarginHeader">Contact us today
             </h2>
             <p className="contactText">
                 It is never too early to get started on your investment plans. Tell us more about your goals, and we will get you started on a plan to achieve them.
@@ -39,7 +39,7 @@ const About = (props) => (
                             <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
                                 <button
                                     className="buttons"
-                                    type="button">
+                                    type="button" id="marginTopButton">
                                     Back to {localStorage.getItem('company')} Home
                             </button>
                             </Link>
@@ -54,7 +54,7 @@ const About = (props) => (
                     :
                     <button
                         className="buttons"
-                        type="button"
+                        type="button" id="noMarginBottom"
                         onClick={() => {
                             localStorage.removeItem('company')
                             props.history.push(
