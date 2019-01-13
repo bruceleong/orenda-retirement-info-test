@@ -57,8 +57,9 @@ class Forms extends Component {
           <div className="companyPages">
             <div>
               <h2 className="spacingMarginHeader">{this.state.companyName} Forms & Notices</h2>
-              <p className="spacingMarginText">Here you can find forms for commonly requested items:</p>
-              <p className="spacingMarginText">Click to download applicable forms</p>
+              <p className="spacingMarginText">Here you can find forms for commonly requested items. To fill out the form(s) online in Google Drive, click  “open with” and selected “DocHub” at the top of the page. Please make sure that your device has been installed with <strong>Google Drive</strong> and <strong>DocHub</strong> in advance. Alternatively, you can download and print the forms.
+              </p>
+              <p className="spacingMarginText">Click to open applicable forms</p>
               <div>
                 <div className="companyHomeForms" style={{ textAlign: 'left' }}>
                   {
@@ -68,7 +69,7 @@ class Forms extends Component {
                         this.state.companyData.map(form => {
                           return (
                             <div key={form[0]}>
-                              <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]} onClick={() => { tip() }}>&#9673; {form[0]}</a>
+                              <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]} /*onClick={() => { tip() }}*/>&#9673; {form[0]}</a>
                             </div>
                           )
                         })
