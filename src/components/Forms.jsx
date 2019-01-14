@@ -49,6 +49,7 @@ class Forms extends Component {
 
 
   render() {
+    console.log(this.state, ' current state')
     return this.state.loading === true
       ? (<SplashScreen />)
       : (
@@ -67,16 +68,37 @@ class Forms extends Component {
                       ? <h3>There are currently no forms or notices.</h3>
                       : (
                         this.state.companyData.map(form => {
-                          return (
-                            <div key={form[0]}>
-                              <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]} /*onClick={() => { tip() }}*/>&#9673; {form[0]}</a>
-                            </div>
-                          )
+                          if (form[1].toLowerCase().indexOf('surveymonkey') === -1) {
+                            return (
+                              <div key={form[0]}>
+                                <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673; {form[0]}</a>
+                              </div>
+                            )
+                          }
                         })
                       )
                   }
                 </div>
                 <br />
+                <p className="spacingMarginText">Would you like to save time? We understand that your time is always limited. Let us to know some simple, but important information through the interactive forms below and we will have your request processed.
+                </p>
+                <div className="companyHomeForms" style={{ textAlign: 'left' }}>
+                  {
+                    this.state.companyData.length === 0
+                      ? <h3>There are currently no forms or notices.</h3>
+                      : (
+                        this.state.companyData.map(form => {
+                          if (form[1].toLowerCase().indexOf('surveymonkey') > -1) {
+                            return (
+                              <div key={form[0]}>
+                                <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673; {form[0]}</a>
+                              </div>
+                            )
+                          }
+                        })
+                      )
+                  }
+                </div>
                 <p className="spacingMarginText">Can't find what your looking for? Reach out to us now by
                 <a className="linkStyling" href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" target="_top"> email.
                 </a>
@@ -86,7 +108,7 @@ class Forms extends Component {
                     className="buttons"
                     type="button">
                     Back to {this.state.companyName} Home
-                </button>
+                  </button>
                 </Link>
                 <br />
                 <button
@@ -99,7 +121,7 @@ class Forms extends Component {
                     )
                   }}>
                   Logout
-              </button>
+                </button>
               </div>
             </div>
           </div>
