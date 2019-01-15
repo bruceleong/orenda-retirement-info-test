@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../config/constants'
-import { planDocTip } from '../helpers/global'
+// import { planDocTip } from '../helpers/global'
 
 export default class CompanyHome extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ export default class CompanyHome extends Component {
                                 </div>
                                 <div style={{ width: '1vw' }} />
                                 <div>
-                                    <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd} onClick={() => {planDocTip()}}>&#9673; Plan Documents</a>
+                                    <a className="links" target="_blank" rel="noopener noreferrer" href={this.state.spd}>&#9673; Plan Documents</a>
                                 </div>
                                 <div style={{ width: '1vw' }} />
                                 <div>

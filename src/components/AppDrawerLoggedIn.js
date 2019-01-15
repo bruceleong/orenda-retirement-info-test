@@ -3,7 +3,7 @@ import { List, ListItem } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { db } from '../config/constants'
-import { tip, planDocTip } from '../helpers/global';
+// import { tip, planDocTip } from '../helpers/global';
 
 export default class AppDrawerLoggedIn extends Component {
   constructor(props) {
@@ -54,7 +54,7 @@ export default class AppDrawerLoggedIn extends Component {
                   <ListItem primaryText="Your Account" onClick={this.props.handleClose} />
                 </Link>
                 <a target="_blank" rel="noopener noreferrer" href={this.state.spd} style={{ textDecoration: 'none' }}>
-                  <ListItem primaryText="Plan Documents" onClick={() => { planDocTip() }} />
+                  <ListItem primaryText="Plan Documents" />
                 </a>
                 <Link to="/Forms" style={{ textDecoration: 'none' }}>
                   <ListItem primaryText="Forms & Notices" onClick={this.props.handleClose} />
