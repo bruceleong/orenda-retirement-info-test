@@ -47,9 +47,25 @@ class Forms extends Component {
       })
   }
 
+  interactiveForm() {
+    const interactiveFormArray = []
+    if (this.state.companyData.length) {
+      for (let i = 0; i < this.state.companyData.length; i++) {
+        const ele = this.state.companyData[i];
+        const website = ele[1].toLowerCase()
+        if (website.indexOf('surveymonkey') > -1 || website.indexOf('docusign') > -1 || website.indexOf('google.com/forms') > -1) {
+          interactiveFormArray.push([
+            ele[0],
+            ele[1]
+          ])
+        }
+      }
+    }
+    return interactiveFormArray;
+  }
+
 
   render() {
-    console.log(this.state, ' current state')
     return this.state.loading === true
       ? (<SplashScreen />)
       : (
@@ -80,25 +96,30 @@ class Forms extends Component {
                   }
                 </div>
                 <br />
-                <p className="spacingMarginText">Would you like to save time? We understand that your time is always limited. Let us to know some simple, but important information through the interactive forms below and we will have your request processed.
-                </p>
-                <div className="companyHomeForms" style={{ textAlign: 'left' }}>
-                  {
-                    this.state.companyData.length === 0
-                      ? <h3>There are currently no interactive forms available.</h3>
-                      : (
-                        this.state.companyData.map(form => {
-                          if (form[1].toLowerCase().indexOf('surveymonkey') > -1) {
-                            return (
-                              <div key={form[0]}>
-                                <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673; {form[0]}</a>
-                              </div>
-                            )
-                          }
-                        })
-                      )
-                  }
-                </div>
+                {
+                  this.state.companyData.length && this.interactiveForm().length
+                  ?
+                  <div>
+                    <p className="spacingMarginText">Would you like to save time? We understand that your time is always limited. Let us to know some simple, but important information through the interactive forms below and we will have your request processed.
+                    </p>
+                    <div className="companyHomeForms" style={{ textAlign: 'left' }}>
+                      {
+                        !this.interactiveForm().length
+                          ? <h3>There are currently no interactive forms available.</h3>
+                          : (
+                            this.interactiveForm().map(form => {
+                                return (
+                                  <div key={form[0]}>
+                                    <a className="links" target="_blank" rel="noopener noreferrer" href={form[1]}>&#9673; {form[0]}</a>
+                                  </div>
+                                )
+                            })
+                          )
+                      }
+                    </div>
+                  </div>
+                  : ''
+                }
                 <p className="spacingMarginText">Can't find what your looking for? Reach out to us now by
                 <a className="linkStyling" href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" target="_top"> <strong>email.</strong>
                 </a>
