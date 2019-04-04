@@ -11,9 +11,10 @@ const About = (props) => (
                 It is never too early to get started on your investment plans. Tell us more about your goals, and we will get you started on a plan to achieve them.
             </p>
             <br />
-            <a className="linkStyling" href="mailto:hcox@orendaretirement.com?Subject=Inquiry" target="_top"><h4>Heather Cox</h4></a>
+            <a className="linkStyling" href="mailto:hcox@orendaretirement.com?Subject=Inquiry" /*target="_top"*/><h4>Heather Cox</h4></a>
             <p>Administrator</p>
-            <a className="linkStyling" href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" target="_top"><h4>Linda Carpenter</h4>
+            <a className="linkStyling" href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" /*target="_top"*/
+            ><h4>Linda Carpenter</h4>
             </a>
             <p>401k Payroll Processor</p>
             <h4>You can contact us directly at:</h4>
