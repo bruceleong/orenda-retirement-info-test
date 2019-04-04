@@ -121,7 +121,7 @@ class Forms extends Component {
                   : ''
                 }
                 <p className="spacingMarginText">Can't find what your looking for? Reach out to us now by
-                <a className="linkStyling" href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" target="_top"> <strong>email.</strong>
+                <a className="linkStyling" href="mailto:hcox@orendaretirement.com?   Subject=Inquiry" /*target="_top"*/> <strong>email.</strong>
                 </a>
                 </p>
                 <Link to="/CompanyHome" style={{ textDecoration: 'none' }}>
