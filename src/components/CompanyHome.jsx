@@ -43,7 +43,7 @@ export default class CompanyHome extends Component {
                                 </div>
                                 <div style={{ width: '1vw' }} />
                                 <div>
-                                    <Link className="links" to="/Forms">&#9673; Forms & Notices</Link>
+                                    <Link className="links" to="/Forms">&#9673; Forms</Link>
                                 </div>
                                 <div style={{ width: '1vw' }} />
                                 <div>

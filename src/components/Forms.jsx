@@ -88,7 +88,7 @@ class Forms extends Component {
                 <div className="companyHomeForms" style={{ textAlign: 'left' }}>
                   {
                     this.state.companyData.length === 0
-                      ? <h3>There are currently no forms or notices.</h3>
+                      ? <h3>There are currently no forms.</h3>
                       : (
                         this.state.companyData.map(form => {
                           if (form[1].toLowerCase().indexOf('surveymonkey') === -1) {
