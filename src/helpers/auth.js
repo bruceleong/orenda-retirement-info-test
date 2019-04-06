@@ -32,7 +32,7 @@
 // }
 
 function tip() {
-  alert("To fill out the form/s online, in Google Drive - click 'Open with' and selected 'DocHub' at the top middle of the page. Thank you!")
+  // alert("To fill out the form/s online, in Google Drive - click 'Open with' and selected 'DocHub' at the top middle of the page. Thank you!")
 }
 
 export default tip;
