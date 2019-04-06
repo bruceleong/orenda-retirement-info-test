@@ -73,10 +73,17 @@ class Forms extends Component {
           <div className="loggedInHeader" />
           <div className="companyPages">
             <div>
-              <h2 className="spacingMarginHeader">{this.state.companyName} Forms & Notices</h2>
-              <p className="spacingMarginText">Here you can find forms for commonly requested items. To fill out the form(s) online in Google Drive, click  “open with” and selected “DocHub” at the top of the page. Please make sure that your device has been installed with <strong>Google Drive</strong> and <strong>DocHub</strong> in advance. Alternatively, you can download and print the forms.
-              </p>
+              <h2 className="spacingMarginHeader">{this.state.companyName} Forms
+
+              {/*  & Notices*/}
+
+              </h2>
+              {/*
+                <p className="spacingMarginText">Here you can find forms for commonly requested items. To fill out the form(s) online in Google Drive, click  “open with” and selected “DocHub” at the top of the page. Please make sure that your device has been installed with <strong>Google Drive</strong> and <strong>DocHub</strong> in advance. Alternatively, you can download and print the forms.
+                </p>
+
               <p className="spacingMarginText">Click to open applicable forms</p>
+              */}
               <div>
                 <div className="companyHomeForms" style={{ textAlign: 'left' }}>
                   {
@@ -100,8 +107,12 @@ class Forms extends Component {
                   this.state.companyData.length && this.interactiveForm().length
                   ?
                   <div>
-                    <p className="spacingMarginText">Would you like to save time? We understand that your time is always limited. Let us to know some simple, but important information through the interactive forms below and we will have your request processed.
-                    </p>
+                    {
+                      /**
+                       <p className="spacingMarginText">Would you like to save time? We understand that your time is always limited. Let us to know some simple, but important information through the interactive forms below and we will have your request processed.
+                       </p>
+                       */
+                    }
                     <div className="companyHomeForms" style={{ textAlign: 'left' }}>
                       {
                         !this.interactiveForm().length
