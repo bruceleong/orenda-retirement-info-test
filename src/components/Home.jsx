@@ -154,7 +154,7 @@ class Home extends Component {
                         <a className="linkStyling" href="mailto:lcarpenter@orendaretirement.com?Subject=Inquiry" /*target="_top"*/><h4>Linda Carpenter</h4>
                         </a>
                         <p>401k Payroll Processor</p>
-                        <h4>You can contact us directly at</h4>
+                        <h4>You can contact us directly at:</h4>
                         <h4>
                             <a className="linkStyling" href="tel:2125642464">+1 212-564-2464</a>
                         </h4>
