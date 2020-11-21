@@ -138,6 +138,7 @@ class Home extends Component {
                         </h4>
                         <p className="homeText" style={{fontSize: '1rem'}}>
                             Some label Orenda Retirement as a contemporary professional group, while others think of us as determined and loyal. Regardless of the label, it is our duty as retirement plan administrators,to bring our clients and partners a very personal experience that exceeds expectations. As a group, we strive to make sure that customer service is our top priority. With over 10 years of experience in retirement services, we understand the needs of the market. By building a close relationship with our clients, we are able to meet their every need.
+                            At Orenda Retirement, LLC we provide Third Party Administration and ERISA 3(16) Plan Administration Services to qualified retirement plans for Plan Sponsors.
                         </p>
                         <br />
                     </div>
