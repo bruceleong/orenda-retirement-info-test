@@ -11,9 +11,8 @@ const About = (props) => (
                 It is never too early to get started on your investment plans. Tell us more about your goals, and we will get you started on a plan to achieve them.
             </p>
             <p>Orenda Retirement</p>
-< p>1670 McKendree Church Road, Bldg 50</p>
-<p>Lawrenceville, GA 30043</p>
-  
+            <p>1670 McKendree Church Road, Bldg 50</p>
+            <p>Lawrenceville, GA 30043</p>
             <h4>You can contact us directly at:</h4>
             <h4>
                 <a className="linkStyling" href="tel:2125642464">+1 212-564-2464</a>
