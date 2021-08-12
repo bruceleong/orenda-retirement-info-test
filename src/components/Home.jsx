@@ -27,7 +27,6 @@ class Home extends Component {
             .then(snapshot => {
                 let videos = snapshot.data(),
                     videoData = []
-                console.log("test")
                 Object.keys(videos).forEach(key => {
                     if (key) {
                         videoData.push([key, videos[key]])
